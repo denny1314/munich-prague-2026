@@ -87,7 +87,7 @@ document.addEventListener('error',function(ev){
 },true);
 
 function renderHotelTonight(date){var h=D.hotels.find(function(h){return date>=h.checkin&&date<h.checkout});if(!h)return '';return '<aside class="stay-tonight"><div><div class="stay-kicker">今晚住宿 · Tonight’s hotel</div><strong>'+E(h.name)+'</strong></div><a class="action" target="_blank" rel="noopener noreferrer" href="'+mapurl(h.address)+'">導航至飯店 ↗</a></aside>'}
-function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+photoForEvent(e)+(body?'<details><summary>'+(shouldShowMap(e)?'詳細資訊／地圖':'詳細資訊')+'</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<div class="day-summary"><h2>'+E(md(d.date)+'（'+d.weekday+'）｜'+d.title)+'</h2><span class="citypill">'+E(d.city)+'</span></div><div class="highlight">'+E(d.highlight)+'</div>'+renderHotelTonight(d.date)+renderDayRoutes(d)+'<div id="weatherSlot" aria-live="polite"></div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});refreshWeatherUI()}
+function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event" data-category="'+E(e.cat)+'"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+photoForEvent(e)+(body?'<details><summary>'+(shouldShowMap(e)?'詳細資訊／地圖':'詳細資訊')+'</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<header class="day-intro" data-city="'+E(d.city)+'"><div class="day-overline"><span>CHAPTER '+String(dayIndex+1).padStart(2,'0')+' / 09</span><span>2026.11.'+d.date.slice(-2)+' · 星期'+E(d.weekday)+'</span></div><div class="day-summary"><h2>'+E(d.title)+'</h2><span class="citypill">'+E(({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'舊金山'}[d.city]||d.city))+'</span></div><div class="highlight">'+E(d.highlight)+'</div></header>'+renderHotelTonight(d.date)+renderDayRoutes(d)+'<div id="weatherSlot" aria-live="polite"></div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});refreshWeatherUI()}
 
 /* Weather data: Open-Meteo non-commercial forecast; live current conditions only for the selected local date */
 var WEATHER_CACHE='winter-notes-forecast-2026-v2';
@@ -289,7 +289,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v6',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v7',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -302,7 +302,7 @@ else{zh='此瀏覽器不支援離線快取';en='Offline caching unsupported';sta
 text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程'
 }
 async function checkOfflineCache(){if(!('caches' in window)){offlineReady=false;renderOfflineStatus();return}
-try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','app.js','trip.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
+try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','travel-theme.css','app.js','trip.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
 var found=await Promise.all(urls.map(function(url){return cache.match(url)}));offlineReady=found.every(Boolean)}
 catch(e){offlineReady=false}
 renderOfflineStatus()
