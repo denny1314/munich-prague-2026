@@ -1,0 +1,18 @@
+{
+  "name": "Winter Notes | Munich → Prague 2026",
+  "short_name": "Winter Notes",
+  "description": "2026 慕尼黑與布拉格家庭旅行行程手帳",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6f1",
+  "theme_color": "#173b35",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
