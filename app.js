@@ -40,40 +40,75 @@ if(e.loungeLinks&&e.loungeLinks.length)body+='<div class="actionrow">'+e.loungeL
 if(shouldShowMap(e))body+='<div class="actionrow"><a class="action primary" target="_blank" rel="noopener noreferrer" href="'+mapurl(e.place)+'">Google Maps 導航 ↗</a></div>';return body}
 
 
-/* The daily route is a permanently visible, non-geographic schematic. */
+
+/* Actual geographic maps over OpenStreetMap tiles; pins use stored approximate coordinates.
+   No Google Maps, no collapse, no bulk prefetching. */
 function routeLocation(key){
-  var hotel=key.indexOf('hotel:')===0;
-  var value=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):
-    D.events.find(function(e){return e.id===key});
-  if(!value)return null;
-  var t=hotel?'':String(value.time||'');
-  return {label:value.routeLabel||(hotel?value.name:value.title),
-    time:/^\d\d:\d\d/.test(t)?t.slice(0,5):''};
+ var hotel=key.indexOf('hotel:')===0;
+ var p=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):D.events.find(function(e){return e.id===key});
+ if(!p||!p.geo)return null;
+ var en=typeof lang!=='undefined'&&lang==='en'&&typeof EN!=='undefined'&&EN;
+ return {label:hotel?p.name:en&&EN.events[p.id]?EN.events[p.id].title:p.routeLabel||p.title,
+   lat:Number(p.geo[0]),lon:Number(p.geo[1])};
 }
+function isEnglishMap(){return typeof lang!=='undefined'&&lang==='en'}
 function renderDayRoutes(day){
-  if(!day.route||!Array.isArray(day.route.groups))return '';
-  var modes={walking:'步行',transit:'大眾運輸',driving:'專車',bus:'巴士',train:'火車',flight:'航班'};
-  var icons={walking:'🚶',transit:'🚉',driving:'🚘',bus:'🚌',train:'🚆',flight:'✈'};
-  var parts=day.route.groups.map(function(group){
-    var points=group.stops.map(routeLocation).filter(Boolean);
-    points=points.filter(function(p,i){return i===0||p.label!==points[i-1].label});
-    if(!points.length)return '';
-    var stops=points.map(function(p){
-      return '<li class="route-stop"><span class="route-dot" aria-hidden="true"></span><span class="route-stop-name">'+
-        E(p.label)+'</span>'+(p.time?'<time class="route-stop-time">'+E(p.time)+'</time>':'')+'</li>';
-    }).join('');
-    return '<div class="route-group"><div class="route-group-heading">'+
-      '<span class="route-mode-icon" aria-hidden="true">'+(icons[group.mode]||'➜')+'</span>'+
-      '<strong>'+E(group.title)+'</strong><span class="route-mode">'+E(modes[group.mode]||'行程')+'</span>'+
-      '</div><ol class="route-stops">'+stops+'</ol></div>';
-  }).filter(Boolean);
-  if(!parts.length)return '';
-  return '<section class="day-route" aria-label="整日路線示意圖">'+
-    '<div class="route-overview-heading"><span class="route-symbol" aria-hidden="true">⌁</span>'+
-    '<div><h3>整日路線</h3><p>依行程順序排列的示意圖 · 非實際比例</p></div></div>'+
-    '<div class="route-groups">'+parts.join('')+'</div>'+
-    (day.route.note?'<p class="route-note">'+E(day.route.note)+'</p>':'')+'</section>';
+ if(!day.route)return '';
+ var icon={walking:'🚶',transit:'🚇',driving:'🚘',train:'🚆',bus:'🚌',flight:'✈'};
+ var blocks=day.route.groups.map(function(g,i){
+  var pts=g.stops.map(routeLocation).filter(Boolean);if(!pts.length)return '';
+  var translated=isEnglishMap()&&typeof EN!=='undefined'&&EN&&EN.days[day.date];
+  var name=translated&&translated.routeGroups[i]||g.title;
+  return '<article class="geo-group"><div class="geo-heading"><span>'+icon[g.mode]+'</span><strong>'+E(name)+'</strong></div>'+
+    '<div class="geo-map" data-geogroup="'+i+'" role="img" aria-label="'+E(name)+'">'+
+    '<div class="geo-tiles" aria-hidden="true"></div><svg class="geo-lines" aria-hidden="true"></svg>'+
+    '<div class="geo-pins" aria-hidden="true"></div><div class="geo-credit">© <a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a></div></div>'+
+    '<div class="geo-legend">'+pts.map(function(p,n){return '<span><b>'+(n+1)+'</b>'+E(p.label)+'</span>'}).join('')+'</div></article>';
+ }).filter(Boolean);
+ if(!blocks.length)return '';
+ var en=isEnglishMap()&&typeof EN!=='undefined'&&EN&&EN.days[day.date];
+ return '<section class="day-route" aria-label="'+(isEnglishMap()?'Geographic route map':'整日地理位置圖')+'">'+
+ '<div class="route-overview-heading"><span class="route-symbol" aria-hidden="true">⌖</span><div><h3>'+(isEnglishMap()?'Daily geographic map':'整日路線 · 地理位置圖')+'</h3>'+
+ '<p>'+(isEnglishMap()?'Real geographic positions · straight lines are not street directions':'實際地理位置 · 連線代表順序，並非街道導航')+'</p></div></div>'+
+ '<div class="geo-grid">'+blocks.join('')+'</div><p class="route-note">'+E(en?en.routeNote:day.route.note||'')+'</p></section>';
 }
+function mapPixel(lat,lon,z){
+ var n=256*Math.pow(2,z),r=Math.max(-85.05,Math.min(85.05,lat))*Math.PI/180;
+ return {x:(lon+180)/360*n,y:(1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n};
+}
+function drawGeoGroup(el,stops){
+ if(!el.clientWidth)return;
+ var pts=stops.map(routeLocation).filter(Boolean);if(!pts.length)return;
+ var width=el.clientWidth,height=el.clientHeight||260,pad=48,z=2,values;
+ for(var candidate=16;candidate>=2;candidate--){
+  var a=pts.map(function(p){return mapPixel(p.lat,p.lon,candidate)}),xs=a.map(p=>p.x),ys=a.map(p=>p.y);
+  if(Math.max(...xs)-Math.min(...xs)<=width-pad*2&&Math.max(...ys)-Math.min(...ys)<=height-pad*2){z=candidate;values=a;break}
+ }
+ if(!values)values=pts.map(function(p){return mapPixel(p.lat,p.lon,z)});
+ if(pts.length===1){z=13;values=pts.map(function(p){return mapPixel(p.lat,p.lon,z)})}
+ var xs=values.map(p=>p.x),ys=values.map(p=>p.y),cx=(Math.max(...xs)+Math.min(...xs))/2,cy=(Math.max(...ys)+Math.min(...ys))/2;
+ var nTiles=Math.pow(2,z),tiles=[],left=Math.floor((cx-width/2)/256),right=Math.floor((cx+width/2)/256),top=Math.floor((cy-height/2)/256),bottom=Math.floor((cy+height/2)/256);
+ for(var tx=left;tx<=right;tx++)for(var ty=top;ty<=bottom;ty++){
+  if(ty<0||ty>=nTiles)continue;
+  tiles.push('<img loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin" alt="" width="256" height="256" style="left:'+Math.round(tx*256-cx+width/2)+'px;top:'+Math.round(ty*256-cy+height/2)+'px" src="https://tile.openstreetmap.org/'+z+'/'+((tx%nTiles+nTiles)%nTiles)+'/'+ty+'.png">');
+ }
+ el.querySelector('.geo-tiles').innerHTML=tiles.join('');
+ var p=values.map(v=>({x:v.x-cx+width/2,y:v.y-cy+height/2}));
+ var svg=el.querySelector('.geo-lines');svg.setAttribute('viewBox','0 0 '+width+' '+height);
+ svg.innerHTML=p.length>1?'<polyline points="'+p.map(v=>v.x.toFixed(2)+','+v.y.toFixed(2)).join(' ')+'" fill="none" stroke="#b35b37" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"/>':'';
+ el.querySelector('.geo-pins').innerHTML=p.map(function(v,i){
+   var duplicate=p.slice(0,i).filter(q=>Math.hypot(v.x-q.x,v.y-q.y)<10).length;
+   return '<span class="geo-pin" title="'+E(pts[i].label)+'" style="left:'+(v.x+duplicate*13).toFixed(1)+'px;top:'+(v.y+duplicate*10).toFixed(1)+'px">'+(i+1)+'</span>';
+ }).join('');
+}
+function drawDayGeoMaps(){
+ var day=D.days[dayIndex];if(!day||!day.route)return;
+ document.querySelectorAll('#daycontent [data-geogroup]').forEach(function(node){
+  var g=day.route.groups[Number(node.dataset.geogroup)];
+  if(g)drawGeoGroup(node,g.stops);
+ });
+}
+window.addEventListener('resize',function(){if(document.getElementById('s-itinerary').classList.contains('active'))drawDayGeoMaps()});
 function photoForEvent(e){
   if(!e.photo)return '';
   var p=e.photo;
@@ -87,7 +122,7 @@ document.addEventListener('error',function(ev){
 },true);
 
 function renderHotelTonight(date){var h=D.hotels.find(function(h){return date>=h.checkin&&date<h.checkout});if(!h)return '';return '<aside class="stay-tonight"><div><div class="stay-kicker">今晚住宿 · Tonight’s hotel</div><strong>'+E(h.name)+'</strong></div><a class="action" target="_blank" rel="noopener noreferrer" href="'+mapurl(h.address)+'">導航至飯店 ↗</a></aside>'}
-function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event" data-category="'+E(e.cat)+'"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+photoForEvent(e)+(body?'<details><summary>'+(shouldShowMap(e)?'詳細資訊／地圖':'詳細資訊')+'</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<header class="day-intro" data-city="'+E(d.city)+'"><div class="day-overline"><span>CHAPTER '+String(dayIndex+1).padStart(2,'0')+' / 09</span><span>2026.11.'+d.date.slice(-2)+' · 星期'+E(d.weekday)+'</span></div><div class="day-summary"><h2>'+E(d.title)+'</h2><span class="citypill">'+E(({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'舊金山'}[d.city]||d.city))+'</span></div><div class="highlight">'+E(d.highlight)+'</div></header>'+renderHotelTonight(d.date)+renderDayRoutes(d)+'<div id="weatherSlot" aria-live="polite"></div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});refreshWeatherUI()}
+function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event" data-category="'+E(e.cat)+'"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+photoForEvent(e)+(body?'<details><summary>'+(shouldShowMap(e)?'詳細資訊／地圖':'詳細資訊')+'</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<header class="day-intro" data-city="'+E(d.city)+'"><div class="day-overline"><span>CHAPTER '+String(dayIndex+1).padStart(2,'0')+' / 09</span><span>2026.11.'+d.date.slice(-2)+' · 星期'+E(d.weekday)+'</span></div><div class="day-summary"><h2>'+E(d.title)+'</h2><span class="citypill">'+E(({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'舊金山'}[d.city]||d.city))+'</span></div><div class="highlight">'+E(d.highlight)+'</div></header>'+renderHotelTonight(d.date)+renderDayRoutes(d)+'<div id="weatherSlot" aria-live="polite"></div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});refreshWeatherUI();requestAnimationFrame(drawDayGeoMaps)}
 
 /* Weather data: Open-Meteo non-commercial forecast; live current conditions only for the selected local date */
 var WEATHER_CACHE='winter-notes-forecast-2026-v2';
@@ -289,7 +324,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v7',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v8',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -302,7 +337,7 @@ else{zh='此瀏覽器不支援離線快取';en='Offline caching unsupported';sta
 text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程'
 }
 async function checkOfflineCache(){if(!('caches' in window)){offlineReady=false;renderOfflineStatus();return}
-try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','travel-theme.css','app.js','trip.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
+try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','travel-theme.css','app.js','trip.json','trip-en.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
 var found=await Promise.all(urls.map(function(url){return cache.match(url)}));offlineReady=found.every(Boolean)}
 catch(e){offlineReady=false}
 renderOfflineStatus()
