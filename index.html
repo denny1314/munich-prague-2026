@@ -213,7 +213,7 @@ function weatherCard(){
 var node=$('weatherSlot');if(!node)return;
 var day=D.days[dayIndex],key=weatherDays[day.date],place=weatherPlaces[key],result=forecastFor(day);
 var top='<div class="wx-head"><div><div class="wx-caption">Daily weather · 每日天氣</div><h3 class="wx-place">'+E(place.name)+'</h3></div><button class="wx-refresh" type="button" data-weather-refresh="1" '+(weatherLoading?'disabled':'')+'>'+(weatherLoading?'更新中…':'↻ 更新天氣')+'</button></div>';
-var credit='<div class="wx-meta"><span>'+(result?E(weatherMeta(key,result.updated)):'天氣由氣象預報服務提供；不等於確定天氣')+'</span><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather by Open-Meteo ↗</a></div>';
+var credit='<div class="wx-meta"><span>'+(result?E(weatherMeta(key,result.updated)):'天氣資料需網路更新；無可用預報時只顯示一般穿衣提醒')+'</span><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather by Open-Meteo ↗</a></div>';
 var note='<p class="wx-specific">'+E(dayClothingNote(day))+'</p>';
 var main='';
 if(!result){
@@ -221,10 +221,10 @@ var localDay=localDateFor(place.zone),msg=day.date<localDay?'這個日期已過�
 main='<p class="wx-message">'+E(msg)+'</p><div class="wx-wear"><div class="wx-wear-label">🧥 穿衣建議（一般冬季準備）</div><p>'+E(clothingGuide(day,null,null))+'</p>'+note+'</div>';
 }else{
 var desc=weatherLabel(result.code),hi=Math.round(result.hi),lo=Math.round(result.lo);
-var isCurrent=day.date===localDateFor(place.zone),nowData=isCurrent?result.current:null;
+var isCurrent=day.date===localDateFor(place.zone),nowFresh=Date.now()-result.updated<60*60000&&!weatherErrors[key],nowData=isCurrent&&nowFresh?result.current:null;
 var nowTemp=nowData&&nowData.temperature_2m!=null&&Number.isFinite(Number(nowData.temperature_2m))?Math.round(Number(nowData.temperature_2m)):null;
 var apparent=nowData&&nowData.apparent_temperature!=null&&Number.isFinite(Number(nowData.apparent_temperature))?Math.round(Number(nowData.apparent_temperature)):null;
-var rainTxt=result.rain===null?'降雨機率暫缺':('降雨機率 '+Math.round(result.rain)+'%');
+var rainTxt=result.rain===null?'降雨機率暫缺':('最高降雨機率 '+Math.round(result.rain)+'%');
 var windTxt=result.wind===null?'風速暫缺':('最大風速 '+Math.round(result.wind)+' km/h');
 main='<div class="wx-main"><span class="wx-symbol" aria-hidden="true">'+desc.icon+'</span><div><div class="wx-temperature">'+lo+'° — '+hi+'° <small>C</small></div><p class="wx-condition">'+E(desc.name)+' · '+E(rainTxt)+' · '+E(windTxt)+'</p>'+(nowTemp===null?'':'<p class="wx-current">目前 '+nowTemp+'°C'+(apparent===null?'':' · 體感 '+apparent+'°C')+'（當地即時觀測／模型資料）</p>')+'</div></div>';
 main+='<div class="wx-wear"><div class="wx-wear-label">🧥 今天怎麼穿</div><p>'+E(clothingGuide(day,result,nowData))+'</p>'+note+'</div>';
