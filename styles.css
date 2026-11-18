@@ -998,3 +998,31 @@ border-color:#405344}
 color:#eaf6eb}
 
 }
+
+/* Day-long route controls and licensed landmark photographs */
+.day-route{margin:13px 0 18px;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.route-toggle{width:100%;padding:13px 17px;background:transparent;color:var(--ink);display:flex;gap:10px;align-items:center;text-align:left;font-weight:850;font-size:14px}
+.route-toggle>span{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;background:var(--sage);border-radius:9px;color:var(--forest2);font-size:24px}
+.route-toggle>small{margin-left:auto;background:var(--sage);color:var(--forest2);border-radius:99px;padding:2px 9px;white-space:nowrap}
+.route-toggle[aria-expanded=true]{background:var(--sage)}
+.route-panel{border-top:1px solid var(--line);padding:15px}
+.route-panel[hidden]{display:none}
+.route-panel>p{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:9px}
+.route-panel>p.route-limit{font-size:11px;margin-bottom:13px}
+.route-segments{display:grid;gap:10px}
+.route-segment{border:1px solid var(--line);border-radius:11px;padding:13px;background:var(--paper)}
+.route-segment-head{display:flex;gap:10px;align-items:start;justify-content:space-between}
+.route-segment-head strong{font-size:13px;line-height:1.5}
+.route-segment-head span{white-space:nowrap;font-size:11px;color:var(--muted)}
+.route-segment ol{font-size:12px;padding-left:22px;margin:10px 0 14px;line-height:1.8;color:var(--ink)}
+.route-segment li{padding-left:2px}
+.route-segment .action{min-height:38px}
+.place-figure{margin:13px 0 3px;border-radius:11px;overflow:hidden;background:var(--sage)}
+.place-photo{width:100%;display:block;aspect-ratio:16/9;height:auto;object-fit:cover;object-position:center;background:var(--sage)}
+.place-figure figcaption{font-size:10px;line-height:1.4;text-align:right;padding:6px 10px;background:var(--white)}
+.place-figure figcaption a{color:var(--muted);text-decoration:none}
+.place-figure figcaption a:hover{text-decoration:underline}
+.place-figure.photo-unavailable img,.place-figure.photo-unavailable figcaption{display:none}
+.place-figure.photo-unavailable{background:transparent}
+@media(min-width:750px){.route-segments{grid-template-columns:repeat(2,minmax(0,1fr))}.place-photo{max-height:270px}}
+@media(prefers-color-scheme:dark){.day-route,.place-figure figcaption{background:#203029;border-color:#385345}.route-toggle{color:#eef5ed}.route-toggle[aria-expanded=true]{background:#284638}.route-toggle>small,.route-toggle>span{background:#2b4a37;color:#d3eedb}.route-segment{background:#1b2c22;border-color:#3a5144}.route-segment ol{color:#e7f1e6}.place-figure{background:#273f32}}

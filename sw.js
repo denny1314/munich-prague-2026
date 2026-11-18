@@ -1,6 +1,6 @@
 /* Munich & Prague family itinerary offline shell.
    HTML contains all CSS, JS and travel JSON; external maps/weather still need a connection. */
-const CACHE_NAME='mp26-core-20261117-v4';
+const CACHE_NAME='mp26-core-20261117-v5';
 const CACHE_PREFIX='mp26-core-';
 const BASE=new URL(self.registration.scope);
 const INDEX_URL=new URL('./index.html',BASE).href;
@@ -59,7 +59,20 @@ self.addEventListener('fetch',event=>{
   const request=event.request;
   if(request.method!=='GET')return;
   const url=new URL(request.url);
-  if(url.origin!==BASE.origin)return; // Do not cache third-party sites, maps or weather APIs.
+  if(request.destination==='image'&&url.hostname==='thumb.wikimedia.org'){
+    event.respondWith((async()=>{
+      const cache=await caches.open('mp26-photo-cache-v1');
+      const found=await cache.match(request);
+      if(found)return found;
+      try{
+        const response=await fetch(request);
+        if(response.ok||response.type==='opaque')await cache.put(request,response.clone());
+        return response;
+      }catch(error){return Response.error()}
+    })());
+    return;
+  }
+  if(url.origin!==BASE.origin)return; // Don't cache Maps, weather or unrelated external content.
   const doc=url.pathname===BASE.pathname||url.pathname===new URL(INDEX_URL).pathname;
   const isDocument=doc&&(request.mode==='navigate'||request.destination==='document');
   const key=isDocument?INDEX_URL:url.href;
