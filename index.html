@@ -103,7 +103,7 @@ button{border:0}small{font-size:12px}.serif{font-family:Georgia,"Times New Roman
 </section>
 <section class="section" id="s-more" aria-label="旅行記帳與購物">
 <div class="section-top"><div><div class="section-kicker">Pocket notebook</div><h2>旅行筆記</h2><p>簡單記帳、購物地點與實用連結</p></div></div>
-<div class="block"><h3>旅費記帳</h3><p style="margin-bottom:14px">保留原幣金額，並用自訂匯率估算約合台幣；資料只存在此裝置。</p><form id="expenseForm" class="expense-form"><label class="field full">用途<input name="name" placeholder="例：午餐／地鐵票" maxlength="70" required></label><label class="field">金額<input name="amount" type="number" min=".01" step=".01" placeholder="0.00" required></label><label class="field">幣別<select name="currency"><option>EUR</option><option>CZK</option><option>USD</option></select></label><button class="action primary" type="submit">＋ 新增</button></form><div class="fx-panel"><h4 id="fxHeading">自訂匯率 · 台幣估算</h4><div class="fx-rate-grid"><label for="rateEUR"><span>1 EUR ≈</span><input id="rateEUR" data-rate="EUR" type="number" step="any" min="0.000001" inputmode="decimal" aria-label="每歐元的台幣估算匯率"><span>TWD</span></label><label for="rateCZK"><span>1 CZK ≈</span><input id="rateCZK" data-rate="CZK" type="number" step="any" min="0.000001" inputmode="decimal" aria-label="每克朗的台幣估算匯率"><span>TWD</span></label></div><p id="fxHelp">35 與 1.4 只是可修改的示例匯率，並非即時行情。設定保存在這台裝置。</p></div><div id="expenseTotals" style="margin-top:15px" aria-live="polite"></div><div id="expenseRows"></div></div>
+<div class="block"><h3>旅費記帳</h3><p style="margin-bottom:14px">保留原幣金額，並用自訂匯率估算美元（USD）總額；資料只存在此裝置。</p><form id="expenseForm" class="expense-form"><label class="field full">用途<input name="name" placeholder="例：午餐／地鐵票" maxlength="70" required></label><label class="field">金額<input name="amount" type="number" min=".01" step=".01" placeholder="0.00" required></label><label class="field">幣別<select name="currency"><option>EUR</option><option>CZK</option><option>USD</option></select></label><button class="action primary" type="submit">＋ 新增</button></form><div class="fx-panel"><h4 id="fxHeading">自訂匯率 · 美元估算</h4><div class="fx-rate-grid"><label for="rateEUR"><span>1 EUR ≈</span><input id="rateEUR" data-rate="EUR" type="number" step="any" min="0.000001" inputmode="decimal" aria-label="每歐元的美元估算匯率"><span>USD</span></label><label for="rateCZK"><span>1 CZK ≈</span><input id="rateCZK" data-rate="CZK" type="number" step="any" min="0.000001" inputmode="decimal" aria-label="每克朗的美元估算匯率"><span>USD</span></label></div><p id="fxHelp">請手動輸入 1 EUR 和 1 CZK 約合多少 USD。舊台幣匯率不會沿用；未設定時不估算該幣別。</p></div><div id="expenseTotals" style="margin-top:15px" aria-live="polite"></div><div id="expenseRows"></div></div>
 <div class="block"><h3>購物與想逛的地方</h3><div id="shopping"></div></div>
 <div class="block"><h3>實用工具</h3><div class="actionrow"><a class="action" href="https://www.mvv-muenchen.de/en/" target="_blank" rel="noopener noreferrer">慕尼黑 MVV ↗</a><a class="action" href="https://pid.cz/en/" target="_blank" rel="noopener noreferrer">布拉格 PID ↗</a><a class="action" href="https://www.cd.cz/en/" target="_blank" rel="noopener noreferrer">捷克鐵路 ČD ↗</a><a class="action" href="https://www.prg.aero/en" target="_blank" rel="noopener noreferrer">布拉格機場 ↗</a><a class="action" href="https://www.hrad.cz/en/prague-castle-for-visitors" target="_blank" rel="noopener noreferrer">布拉格城堡 ↗</a><a class="action" href="https://www.ckrumlov.info/en/" target="_blank" rel="noopener noreferrer">CK 官方旅遊 ↗</a></div></div>
 <div class="notice-banner">此網站可公開瀏覽，因此不存放私人訂房編號、完整電子票、乘客資料或專屬改訂連結。驗票請使用自行離線保存的原始 PDF／航空公司 App。</div>
@@ -118,7 +118,7 @@ button{border:0}small{font-size:12px}.serif{font-family:Georgia,"Times New Roman
 'use strict';
 var D=JSON.parse(document.getElementById('trip-data').textContent);
 var KEY='winter-notes-2026-v1', navs=[{id:'itinerary',name:'行程',icon:'◷'},{id:'travel',name:'交通',icon:'↗'},{id:'ready',name:'待辦',icon:'✓'},{id:'more',name:'筆記',icon:'≡'}];
-var state={checked:{},expenses:[],rates:{EUR:35,CZK:1.4}};try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(saved&&typeof saved==='object'){state.checked=saved.checked||{};state.expenses=Array.isArray(saved.expenses)?saved.expenses:[];if(saved.rates&&typeof saved.rates==='object'){['EUR','CZK'].forEach(function(k){var v=saved.rates[k];state.rates[k]=v!==null&&v!==''&&Number.isFinite(Number(v))&&Number(v)>0?Number(v):null})}}}catch(e){}
+var state={checked:{},expenses:[],rates:{EUR:35,CZK:1.4},usdRates:{EUR:null,CZK:null}};try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(saved&&typeof saved==='object'){state.checked=saved.checked||{};state.expenses=Array.isArray(saved.expenses)?saved.expenses:[];if(saved.rates&&typeof saved.rates==='object'){['EUR','CZK'].forEach(function(k){var v=saved.rates[k];state.rates[k]=v!==null&&v!==''&&Number.isFinite(Number(v))&&Number(v)>0?Number(v):null})}if(saved.usdRates&&typeof saved.usdRates==='object'){['EUR','CZK'].forEach(function(k){var r=saved.usdRates[k];state.usdRates[k]=r!==null&&r!==''&&Number.isFinite(Number(r))&&Number(r)>0?Number(r):null})}}}catch(e){}
 var dayIndex=pickToday(),screen='itinerary',toastTimer;
 function $(id){return document.getElementById(id)}
 function E(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -284,18 +284,18 @@ function taskDerived(x){if(!x.activityIds)return null;var es=x.activityIds.map(f
 function isChecked(x){var a=taskDerived(x);return a?a.done:Object.prototype.hasOwnProperty.call(state.checked,x.id)?!!state.checked[x.id]:!!x.done}
 function renderTasks(){var all=D.todos.concat(D.packing),n=all.filter(isChecked).length,pct=Math.round(100*n/all.length);$('taskCount').textContent='已完成 '+n+' / '+all.length+' 項 · 訂票狀態從行程自動更新，其餘在此裝置儲存';$('taskFill').style.width=pct+'%';var groups=[['行前待辦',D.todos],['行李打包',D.packing]];$('tasks').innerHTML=groups.map(function(g){return '<h3 class="task-group">'+g[0]+'</h3><div class="block" style="padding:4px 14px">'+g[1].map(function(x){var derived=taskDerived(x),done=isChecked(x);return '<label class="task '+(derived?'task-derived':'')+'"><input type="checkbox" '+(derived?'disabled title="依行程狀態自動更新"':'data-check="'+E(x.id)+'"')+' '+(done?'checked':'')+'><span>'+E(x.text)+'</span>'+(derived?'<small class="'+(done?'':'pending')+'">'+E(derived.label)+'</small>':'')+'</label>'}).join('')+'</div>'}).join('')}
 function renderShopping(){$('shopping').innerHTML=D.shopping.map(function(s){return '<div class="shop"><strong>'+E(s.name)+'</strong><small>'+E(s.city)+'</small><p>'+E(s.tip)+'</p><a target="_blank" rel="noopener noreferrer" href="'+mapurl(s.address)+'">地圖導航 ↗</a>'+(s.website?'　<a target="_blank" rel="noopener noreferrer" href="'+E(s.website)+'">官方資訊 ↗</a>':'')+'</div>'}).join('')}
-function twdRate(currency){var r=state.rates[currency];return typeof r==='number'&&Number.isFinite(r)&&r>0?r:null}
+function usdRate(currency){var r=state.usdRates[currency];return typeof r==='number'&&Number.isFinite(r)&&r>0?r:null}
 function L(zh,en){return lang==='en'?en:zh}
-function formatTWD(v){return new Intl.NumberFormat(lang==='en'?'en-US':'zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(v)}
-function initializeRates(){['EUR','CZK'].forEach(function(k){var input=$('rate'+k);if(input)input.value=twdRate(k)===null?'':String(twdRate(k))})}
+function formatUSD(value){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(value)}
+function initializeRates(){['EUR','CZK'].forEach(function(k){var input=$('rate'+k);if(input)input.value=usdRate(k)===null?'':String(usdRate(k))})}
 function renderExpenses(){var totals={};state.expenses.forEach(function(x){var v=Number(x.amount);if(Number.isFinite(v)&&v>=0)totals[x.currency]=(totals[x.currency]||0)+v});
-var keys=Object.keys(totals),twd=0,converted=0,notConverted=[];
-var rows=keys.map(function(k){var rate=twdRate(k),v=totals[k],canConvert=k!=='USD'&&rate!==null;
-if(canConvert){twd+=v*rate;converted++}else notConverted.push(k);
-return '<div class="fx-summary-row"><strong>'+E(k)+' '+v.toFixed(2)+'</strong><span class="fx-converted">'+(canConvert?'≈ '+E(formatTWD(v*rate)):L('尚未換算','Not converted'))+'</span></div>'}).join('');
-var html='<div class="tinycaps">'+L('依幣別統計與台幣估值','Currency totals & TWD estimates')+'</div>'+rows;
-if(converted)html+='<div class="fx-grand"><span>'+L('約合台幣合計','Estimated total in TWD')+'</span><strong>'+E(formatTWD(twd))+'</strong></div>';
-if(notConverted.length)html+='<p class="fx-note">'+L('未計入台幣合計：','Not included in TWD total: ')+E(notConverted.join(', '))+'. '+L('不會猜測 USD 匯率。','No USD exchange rate is assumed.')+'</p>';
+var keys=Object.keys(totals),usd=0,converted=0,notConverted=[];
+var rows=keys.map(function(k){var rate=k==='USD'?1:usdRate(k),v=totals[k],canConvert=rate!==null;
+if(canConvert){usd+=v*rate;converted++}else notConverted.push(k);
+return '<div class="fx-summary-row"><strong>'+E(k)+' '+v.toFixed(2)+'</strong><span class="fx-converted">'+(canConvert?'≈ '+E(formatUSD(v*rate)):L('尚未設定匯率','Exchange rate not set'))+'</span></div>'}).join('');
+var html='<div class="tinycaps">'+L('依幣別統計與美元估值','Currency totals & USD estimates')+'</div>'+rows;
+if(converted)html+='<div class="fx-grand"><span>'+L('約合美元合計','Estimated total in USD')+'</span><strong>'+E(formatUSD(usd))+'</strong></div>';
+if(notConverted.length)html+='<p class="fx-note">'+L('以下幣別尚未納入美元合計：','Not included in USD total: ')+E(notConverted.join(', '))+' · '+L('請設定匯率後再查看完整估值。','Enter exchange rates for a full estimate.')+'</p>';
 $('expenseTotals').innerHTML=keys.length?html:'<div class="empty">'+L('目前沒有支出紀錄','No expenses yet')+'</div>';
 $('expenseRows').innerHTML=state.expenses.length?state.expenses.slice().reverse().map(function(x){return '<div class="expense-row"><div><strong>'+E(x.name)+'</strong><small>'+E(x.date)+'</small></div><div class="right"><b>'+E(x.currency)+' '+Number(x.amount).toFixed(2)+'</b><button class="delete" aria-label="'+L('刪除這筆支出','Delete expense')+'" type="button" data-del="'+E(x.id)+'">✕</button></div></div>'}).join(''):'';
 }
@@ -308,7 +308,7 @@ function updateHero(){var now=new Date(),t=new Date('2026-11-19T21:40:00-08:00')
 document.addEventListener('click',function(ev){var n=ev.target.closest('[data-nav]');if(n){showScreen(n.dataset.nav);return}var d=ev.target.closest('[data-day]');if(d){dayIndex=Number(d.dataset.day);renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}if(ev.target.closest('#nextView')){var ix=D.days.findIndex(function(x){return x.date===ev.target.closest('#nextView').dataset.nextDay});if(ix>=0){dayIndex=ix;showScreen('itinerary')}return}if(ev.target.closest('#goToday')){dayIndex=pickToday();renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}var del=ev.target.closest('[data-del]');if(del){state.expenses=state.expenses.filter(function(x){return x.id!==del.dataset.del});save();renderExpenses();return}});
 document.addEventListener('change',function(ev){if(ev.target.matches('[data-check]')){state.checked[ev.target.dataset.check]=ev.target.checked;save();renderTasks()}});
 $('expenseForm').addEventListener('submit',function(e){e.preventDefault();addExpense(e.currentTarget)});
-document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventListener('input',function(){var code=input.dataset.rate,raw=input.value.trim(),val=Number(raw);state.rates[code]=raw!==''&&Number.isFinite(val)&&val>0?val:null;input.setAttribute('aria-invalid',raw!==''&&(!Number.isFinite(val)||val<=0)?'true':'false');save();renderExpenses()})});
+document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventListener('input',function(){var code=input.dataset.rate,raw=input.value.trim(),val=Number(raw);state.usdRates[code]=raw!==''&&Number.isFinite(val)&&val>0?val:null;input.setAttribute('aria-invalid',raw!==''&&(!Number.isFinite(val)||val<=0)?'true':'false');save();renderExpenses()})});
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Bilingual presentation layer: translations use the same underlying itinerary and booking statuses. */
@@ -389,10 +389,10 @@ document.documentElement.lang=lang==='en'?'en':'zh-Hant';document.title=lang==='
 var b=$('languageToggle');b.textContent=lang==='en'?'中文':'EN';b.setAttribute('aria-label',lang==='en'?'Switch to Traditional Chinese':'Switch to English');b.setAttribute('aria-pressed',lang==='en'?'true':'false');
 var inp=document.querySelector('input[name="name"]');if(inp)inp.placeholder=lang==='en'?'e.g. Lunch / metro tickets':'例：午餐／地鐵票';
 var fxTitle=$('fxHeading'),fxHelp=$('fxHelp');
-if(fxTitle)fxTitle.textContent=lang==='en'?'Custom exchange rates · TWD estimates':'自訂匯率 · 台幣估算';
-if(fxHelp)fxHelp.textContent=lang==='en'?'35 and 1.4 are editable example rates, not live exchange rates. Saved on this device.':'35 與 1.4 只是可修改的示例匯率，並非即時行情。設定保存在這台裝置。';
-$('rateEUR').setAttribute('aria-label',lang==='en'?'Estimated TWD per EUR':'每歐元的台幣估算匯率');
-$('rateCZK').setAttribute('aria-label',lang==='en'?'Estimated TWD per CZK':'每克朗的台幣估算匯率');
+if(fxTitle)fxTitle.textContent=lang==='en'?'Custom exchange rates · USD estimates':'自訂匯率 · 美元估算';
+if(fxHelp)fxHelp.textContent=lang==='en'?'Enter how many USD you estimate for 1 EUR and 1 CZK. Old TWD rates are not reused; an unset rate is excluded from estimates.':'請手動輸入 1 EUR 和 1 CZK 約合多少 USD。舊台幣匯率不會沿用；未設定時不估算該幣別。';
+$('rateEUR').setAttribute('aria-label',lang==='en'?'Estimated USD per EUR':'每歐元的美元估算匯率');
+$('rateCZK').setAttribute('aria-label',lang==='en'?'Estimated USD per CZK':'每克朗的美元估算匯率');
 renderOfflineStatus()
 }finally{translatePage.active=false}}
 function wrapTranslate(fn){return function(){var out=fn.apply(this,arguments);translatePage();return out}}
