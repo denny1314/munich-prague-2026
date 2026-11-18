@@ -1,0 +1,460 @@
+{
+  "events": {
+    "d1-airport": {
+      "title": "Private ride with Jerry to SFO",
+      "note": "Pickup at 6:35 PM for four travelers and four large suitcases. The $50 fare has been paid through Venmo."
+    },
+    "d1-checkin": {
+      "title": "Airport check-in and luggage drop",
+      "note": "Check passports, baggage allowance, airline desk and gate before boarding."
+    },
+    "d1-pp-lounge": {
+      "title": "Priority Pass lounges at SFO (optional)",
+      "note": "The Club SFO is in Terminal 1 near Gate B4, while LH459 departs International Terminal G. Allow plenty of walking time. Check guest privileges for all four."
+    },
+    "d1-flight": {
+      "title": "Lufthansa LH459 nonstop to Munich",
+      "note": "Departs SFO at 9:40 PM; scheduled arrival in Munich is 5:55 PM the following day."
+    },
+    "d1-overnight": {
+      "title": "Overnight flight",
+      "note": "Sleep and get ready for the cold Munich evening."
+    },
+    "d2-arrive": {
+      "title": "Arrive at Munich Airport (MUC)",
+      "note": "Scheduled arrival is 5:55 PM local time."
+    },
+    "d2-ticket": {
+      "title": "Find airport S-Bahn and buy tickets",
+      "note": "Follow S-Bahn signs; check valid group airport-city tickets and fares before purchase."
+    },
+    "d2-s8": {
+      "title": "S8 train to Rosenheimer Platz",
+      "note": "Take S8 into the city and get off at Rosenheimer Platz. Check the live platform and service."
+    },
+    "d2-hotel": {
+      "title": "Check in at Holiday Inn Munich",
+      "note": "Follow the Motorama passage from Rosenheimer Platz to Holiday Inn City Centre; use the street entrance if the passage is closed."
+    },
+    "d2-dinner": {
+      "title": "Dinner and rest",
+      "note": "Eat somewhere nearby and rest after the overnight flight."
+    },
+    "d3-frauen": {
+      "title": "Frauenkirche Cathedral",
+      "note": "See Munich's famous twin towers and explore the cathedral if it is open."
+    },
+    "d3-stpeter": {
+      "title": "Meet near St. Peter's Church",
+      "note": "Walk to the meeting point before 10:30 AM and look for the yellow umbrella."
+    },
+    "d3-tour": {
+      "title": "Walkative! Old Town guided tour",
+      "note": "An English-language walking tour is confirmed. Be at the meeting point early."
+    },
+    "d3-lunch": {
+      "title": "Lunch at Viktualienmarkt",
+      "note": "Try Bavarian foods at the traditional outdoor food market."
+    },
+    "d3-kustermann": {
+      "title": "Kustermann: WÜSTHOF and RIEDEL shopping",
+      "note": "Optional shopping for German kitchen knives, glassware and cookware."
+    },
+    "d3-residenz": {
+      "title": "Munich Residenz Palace",
+      "note": "Explore historic palace rooms. Admission has not been purchased yet."
+    },
+    "d3-max": {
+      "title": "Walk along Maximilianstraße",
+      "note": "Enjoy historic buildings and shops before returning to Marienplatz."
+    },
+    "d3-music": {
+      "title": "Possible Christmas music at Marienplatz",
+      "note": "A musical performance around 5:30 PM is not yet confirmed; visit the market if there is no performance."
+    },
+    "d3-market": {
+      "title": "Marienplatz Christmas market and dinner",
+      "note": "Browse Christmas stalls, food and warm drinks."
+    },
+    "d4-breakfast": {
+      "title": "Breakfast and travel to castle tour meeting point",
+      "note": "Go to Sonnenstraße 1, at the bus stop outside Fielmann, and allow extra time."
+    },
+    "d4-tour": {
+      "title": "Mentor Reisen: Two Castles coach tour",
+      "note": "Your Viator booking starts at 9:15 AM. Meet at the bus stop outside Fielmann, Sonnenstraße 1. Coach expected from about 8:45 AM. Confirm admission and payment."
+    },
+    "d4-hohen": {
+      "title": "Hohenschwangau Castle",
+      "note": "Castle entrance tickets were held by the operator; confirm payment and admission time."
+    },
+    "d4-neusch": {
+      "title": "Neuschwanstein Castle",
+      "note": "Ask the operator for the confirmed entry time and take care on icy slopes."
+    },
+    "d4-alpsee": {
+      "title": "Lake Alpsee scenery",
+      "note": "Optional lakeside photo stop, depending on your tour and the weather."
+    },
+    "d4-bridge": {
+      "title": "Marienbrücke viewpoint",
+      "note": "Optional bridge view; it may close in winter due to ice or snow."
+    },
+    "d4-return": {
+      "title": "Return to Munich and pack",
+      "note": "Return time is an estimate. Prepare luggage and the EC353 train tickets for an early pickup."
+    },
+    "d5-checkout": {
+      "title": "Early checkout at Holiday Inn",
+      "note": "Pack breakfast, luggage and QR tickets for the 5:40 AM van."
+    },
+    "d5-black": {
+      "title": "Blacklane Business Van to Munich Central Station",
+      "note": "Confirmed 5:40 AM pickup at Holiday Inn. Arrival time is estimated, not guaranteed."
+    },
+    "d5-platform": {
+      "title": "Find EC353 platform at München Hbf",
+      "note": "Check departure screens and find coach 259 in time."
+    },
+    "d5-train": {
+      "title": "EC353 train from Munich to Prague",
+      "note": "Four tickets bought: second class, coach 259, seats 54, 56, 65, 67. 6:44 AM to 12:21 PM."
+    },
+    "d5-prague": {
+      "title": "Arrive at Prague Main Station",
+      "note": "Scheduled arrival at Praha hlavní nádraží: 12:21 PM."
+    },
+    "d5-grand": {
+      "title": "Bag drop at The Grand Mark",
+      "note": "Leave luggage at the hotel; standard check-in begins at 3 PM."
+    },
+    "d5-oldtown": {
+      "title": "Old Town Square and Astronomical Clock",
+      "note": "Enjoy your first look at Prague's historic center."
+    },
+    "d5-bridge": {
+      "title": "Charles Bridge at sunset",
+      "note": "Take photos of Charles Bridge and the Vltava river at dusk."
+    },
+    "d5-miru": {
+      "title": "Náměstí Míru Christmas market",
+      "note": "Browse Christmas stalls in Peace Square and enjoy warm treats."
+    },
+    "d5-evening": {
+      "title": "Dinner and back to The Grand Mark",
+      "note": "Relax before a full sightseeing day."
+    },
+    "d6-transit": {
+      "title": "Travel to Prague Castle",
+      "note": "Take Prague transit toward the castle and allow time for walking uphill."
+    },
+    "d6-castle": {
+      "title": "Prague Castle highlights",
+      "note": "Visit courtyards, St. Vitus Cathedral and other historic sites. Admission must be confirmed."
+    },
+    "d6-starbucks": {
+      "title": "Coffee break at Prague Castle",
+      "note": "Warm up with a drink and enjoy the view."
+    },
+    "d6-porks": {
+      "title": "Malá Strana and pork-knuckle lunch",
+      "note": "Explore Lesser Town and consider lunch at Pork's. No reservation has been made."
+    },
+    "d6-river": {
+      "title": "Vltava river and Charles Bridge photos",
+      "note": "Take a short riverside photo stop, weather permitting."
+    },
+    "d6-ujezd": {
+      "title": "Walk to Újezd funicular stop",
+      "note": "Reach the lower funicular stop and check whether it is operating."
+    },
+    "d6-up": {
+      "title": "Petřín funicular uphill",
+      "note": "Planned ride only if service is operating; confirm tickets and any closure."
+    },
+    "d6-petrin": {
+      "title": "Petřín Hill lookout",
+      "note": "Enjoy views of Prague; the observation tower is optional and ticketed."
+    },
+    "d6-down": {
+      "title": "Petřín funicular downhill",
+      "note": "Return toward Újezd if service is running."
+    },
+    "d6-rest": {
+      "title": "Return to The Grand Mark for a break",
+      "note": "Rest before the potential evening concert."
+    },
+    "d6-dinner": {
+      "title": "Dinner near Municipal House",
+      "note": "Have dinner early if you plan to attend the concert."
+    },
+    "d6-entry": {
+      "title": "Go to Smetana Hall",
+      "note": "The concert is not booked. Buy tickets and confirm entry rules first."
+    },
+    "d6-concert": {
+      "title": "Classical music at Smetana Hall (not booked)",
+      "note": "An 8 PM concert is under consideration; tickets have not been purchased."
+    },
+    "d6-back": {
+      "title": "Return to The Grand Mark",
+      "note": "Head back and rest."
+    },
+    "d7-breakfast": {
+      "title": "Breakfast and pack luggage",
+      "note": "Relaxed morning before exploring Old Town and changing hotels."
+    },
+    "d7-checkout": {
+      "title": "Check out and leave bags at The Grand Mark",
+      "note": "Leave luggage at the front desk for collection later."
+    },
+    "d7-square": {
+      "title": "Old Town Square, clock and Týn Church",
+      "note": "Explore the square, Astronomical Clock and church surroundings."
+    },
+    "d7-lunch": {
+      "title": "Lunch in Old Town",
+      "note": "Choose a restaurant in the historic center."
+    },
+    "d7-josefov": {
+      "title": "Walk through the Jewish Quarter",
+      "note": "See the historic neighborhood. Indoor admissions need separate tickets."
+    },
+    "d7-celetna": {
+      "title": "Browse shops along Celetná Street",
+      "note": "Visit local craft, glass and souvenir shops."
+    },
+    "d7-manuf": {
+      "title": "MANUFAKTURA souvenir shopping",
+      "note": "Find Czech soaps, skincare and gifts."
+    },
+    "d7-powder": {
+      "title": "Powder Tower and Municipal House",
+      "note": "Explore the architectural highlights near Republic Square."
+    },
+    "d7-republiky": {
+      "title": "Republic Square Christmas market",
+      "note": "Visit the market scheduled to open November 25."
+    },
+    "d7-move": {
+      "title": "Collect luggage and move to Hotel Royal",
+      "note": "Take Metro B toward Křižíkova and walk to Hotel Royal."
+    },
+    "d7-dinner": {
+      "title": "Dinner in Karlín",
+      "note": "Dinner near Hotel Royal and rest for tomorrow's early CK trip."
+    },
+    "d8-breakfast": {
+      "title": "Meet friends at Hotel Royal and head to bus station",
+      "note": "Plan to leave together around 6:15–6:40 AM for Anděl / Na Knížecí. Final timing depends on booked tickets."
+    },
+    "d8-busout": {
+      "title": "Coach to Český Krumlov with friends (unbooked)",
+      "note": "Target departure around 7 AM; allow roughly 2.5–3.25 hours. The bus, price and stops are not confirmed."
+    },
+    "d8-walk": {
+      "title": "Arrive in CK and walk into the old town",
+      "note": "Estimated arrival 9:45–10:15 AM. Špičák stop works well for castle-side sightseeing, if your bus uses it."
+    },
+    "d8-castle": {
+      "title": "Castle courtyards and Vltava viewpoints",
+      "note": "Enjoy castle courtyards, red rooftops and the S-shaped river bend. Tower and indoor museum are optional, not required."
+    },
+    "d8-latran": {
+      "title": "Latrán Street and Lazebnický Bridge",
+      "note": "Walk among historic buildings and take photos of the castle tower from the wooden bridge."
+    },
+    "d8-lunch": {
+      "title": "Czech lunch with friends",
+      "note": "Find a cozy Czech restaurant or tavern for grilled dishes, stew or soup. No reservation yet."
+    },
+    "d8-oldtown": {
+      "title": "Svornosti Square and medieval Old Town",
+      "note": "Explore cobblestone lanes, St. Vitus Church surroundings and historic views."
+    },
+    "d8-river": {
+      "title": "Vltava river walk and second photo stop",
+      "note": "Enjoy more riverside viewpoints before sunset. Fog may hide distant castle views."
+    },
+    "d8-market": {
+      "title": "Český Krumlov Christmas market",
+      "note": "Browse the market and enjoy warm drinks and snacks. The friend's guide lists Thursday hours of 11 AM–6 PM; reconfirm locally."
+    },
+    "d8-busback": {
+      "title": "Return bus to Prague with friends (unbooked)",
+      "note": "Target bus around 5–6 PM, subject to real tickets. Hotel arrival is estimated around 8–9 PM."
+    },
+    "d8-hotel": {
+      "title": "Return to Hotel Royal and pack for home",
+      "note": "Rest and prepare passports and SWISS tickets. Blacklane airport pickup is confirmed for 6:30 AM tomorrow."
+    },
+    "d9-checkout": {
+      "title": "Check out of Hotel Royal",
+      "note": "Leave the hotel ready for early pickup."
+    },
+    "d9-black": {
+      "title": "Blacklane Business Van to Prague Airport",
+      "note": "Confirmed pickup at 6:30 AM. Airport arrival around 7:02 AM is an estimate."
+    },
+    "d9-airport": {
+      "title": "Arrive at Prague Airport and check in",
+      "note": "Check bags and security at Terminal 2 for the Schengen flight."
+    },
+    "d9-pp-prg": {
+      "title": "Priority Pass: Erste Premier Lounge at PRG",
+      "note": "Optional lounge in Terminal 2 airside on Level 3, open from 5 AM. Check guest rules."
+    },
+    "d9-lx1485": {
+      "title": "SWISS LX1485: Prague to Zurich",
+      "note": "Scheduled 9:40 AM to 11:05 AM."
+    },
+    "d9-transfer": {
+      "title": "Transfer at Zurich Airport",
+      "note": "Allow time for passport control and your US-bound departure gate."
+    },
+    "d9-pp-zrh": {
+      "title": "Priority Pass: Aspire Lounge at Zurich (E Gates only)",
+      "note": "Only if LX38 uses E gates. Aspire is above Gate E52; skip if assigned to D gates or if the connection is tight."
+    },
+    "d9-lx38": {
+      "title": "SWISS LX38: Zurich to SFO",
+      "note": "Depart 1:15 PM; arrive SFO at 4:30 PM Pacific time."
+    },
+    "d9-uber": {
+      "title": "Uber Comfort pickup from SFO",
+      "note": "Pickup is booked for 4:30 PM, the same as scheduled landing. Verify or adjust to allow for baggage and immigration."
+    }
+  },
+  "days": {
+    "2026-11-19": {
+      "title": "Depart San Francisco",
+      "highlight": "Lufthansa LH459 overnight flight to Munich at 9:40 PM",
+      "routeNote": "Private ride to SFO at 6:35 PM. The public site never displays your home address.",
+      "routeGroups": [
+        "Private transfer to SFO",
+        "Overnight flight"
+      ]
+    },
+    "2026-11-20": {
+      "title": "Arrive in Munich",
+      "highlight": "Arrive at MUC 5:55 PM and travel via S8 to Rosenheimer Platz",
+      "routeNote": "Take S8 from Munich Airport to Rosenheimer Platz and walk to Holiday Inn. Check actual transit service.",
+      "routeGroups": [
+        "Airport S-Bahn to Rosenheimer Platz",
+        "Walk to Holiday Inn"
+      ]
+    },
+    "2026-11-21": {
+      "title": "Munich Old Town, Palace and Christmas market",
+      "highlight": "Confirmed 10:45 AM guided tour; Christmas music at 5:30 PM not confirmed",
+      "routeNote": "Stops are shown in the planned order. The walking tour guide decides where the tour ends.",
+      "routeGroups": [
+        "Walking through Munich Old Town"
+      ]
+    },
+    "2026-11-22": {
+      "title": "Neuschwanstein and Hohenschwangau Castles",
+      "highlight": "Mentor Reisen English coach tour begins at 9:15 AM",
+      "routeNote": "Mentor Reisen tour is booked. Castle stop order and Marienbrücke access depend on operator and weather.",
+      "routeGroups": [
+        "Holiday Inn to Mentor Reisen meeting point",
+        "Castle-area sightseeing"
+      ]
+    },
+    "2026-11-23": {
+      "title": "Train to Prague",
+      "highlight": "5:40 AM Blacklane pickup and 6:44 AM EC353 train, tickets purchased",
+      "routeNote": "Blacklane to Munich Central Station, then EC353 train to Prague and local sightseeing.",
+      "routeGroups": [
+        "Holiday Inn to Munich Central Station",
+        "EC353 train Munich to Prague",
+        "Prague arrival and sightseeing"
+      ]
+    },
+    "2026-11-24": {
+      "title": "Prague Castle and Petřín Hill",
+      "highlight": "Optional 8 PM classical concert; tickets not yet purchased",
+      "routeNote": "Castle, Lesser Town and Petřín. Funicular service requires checking; the concert is not booked.",
+      "routeGroups": [
+        "Grand Mark to Prague Castle",
+        "Prague Castle, Lesser Town and Petřín",
+        "Petřín to Municipal House",
+        "Municipal House to Grand Mark"
+      ]
+    },
+    "2026-11-25": {
+      "title": "Prague Old Town and hotel change",
+      "highlight": "Collect luggage at The Grand Mark and move to Hotel Royal",
+      "routeNote": "Old Town sightseeing, pick up bags from Grand Mark, then move to Hotel Royal.",
+      "routeGroups": [
+        "Prague Old Town walk",
+        "Grand Mark to Hotel Royal"
+      ]
+    },
+    "2026-11-26": {
+      "title": "Český Krumlov winter day trip with friends",
+      "highlight": "Meet friends at Hotel Royal for an early bus; castle, Old Town, river views and Christmas market. Bus tickets unbooked",
+      "routeNote": "Based on the friend's joint-trip guide. Bus times and stations are tentative, and four travelers must still have tickets. Airport pickup tomorrow is 6:30 AM.",
+      "routeGroups": [
+        "Hotel Royal to Na Knížecí coach station",
+        "Coach to Český Krumlov (unbooked)",
+        "Castle, Latrán, Old Town, river and market",
+        "Return to Prague (unbooked)"
+      ]
+    },
+    "2026-11-27": {
+      "title": "Return home via Zurich",
+      "highlight": "6:30 AM Blacklane to PRG, then SWISS flights via ZRH to SFO",
+      "routeNote": "Blacklane to PRG, flights through Zurich to SFO. Home address is not published.",
+      "routeGroups": [
+        "Hotel Royal to PRG Airport",
+        "Return flight through Zurich"
+      ]
+    }
+  },
+  "todos": {
+    "todos-1": "Check all four passports and entry documents",
+    "todos-2": "Verify all flight details",
+    "todos-3": "Verify the number of Munich hotel rooms each night",
+    "todos-4": "Verify all valid Grand Mark Prague reservations and rooms",
+    "todos-5": "Confirm the Hotel Royal Prague reservation",
+    "todos-6": "Walkative Munich tour booked for Nov 21",
+    "todos-7": "Verify Viator payment, final voucher and both castle admissions",
+    "todos-8": "Blacklane pickup in Munich confirmed for Nov 23",
+    "todos-9": "Four EC353 train tickets purchased for Nov 23",
+    "todos-10": "Confirm Prague Castle tickets and entry time",
+    "todos-11": "Check Petřín funicular service for Nov 24",
+    "todos-12": "Buy four tickets for the classical concert on Nov 24",
+    "todos-13": "Book Nov 26 round-trip coaches to Český Krumlov with friends",
+    "todos-14": "Prague Blacklane airport ride confirmed for Nov 27",
+    "todos-15": "Verify Christmas-market opening dates and times",
+    "todos-16": "Download offline maps, flight and train QR codes",
+    "todos-17": "Check roaming or an eSIM",
+    "todos-18": "Review travel insurance and emergency contacts"
+  },
+  "packing": {
+    "packing-1": "Passports and ID",
+    "packing-2": "Warm coats and thermal layers",
+    "packing-3": "Waterproof, non-slip shoes",
+    "packing-4": "Gloves, hats and scarves",
+    "packing-5": "European power adapters",
+    "packing-6": "Chargers and power banks",
+    "packing-7": "Phones and spare cables",
+    "packing-8": "Personal medicines",
+    "packing-9": "Travel insurance documents",
+    "packing-10": "Flight, train and event tickets / QR codes",
+    "packing-11": "Compact umbrella",
+    "packing-12": "Warm socks and spare clothes",
+    "packing-13": "Toiletries",
+    "packing-14": "Family daily essentials"
+  },
+  "shopping": {
+    "Viktualienmarkt": "Traditional market, Bavarian food and snacks; lunch planned Nov 21.",
+    "Kustermann": "Optional shopping for WÜSTHOF knives, RIEDEL glasses and German kitchenware.",
+    "Maximilianstraße": "Luxury boutiques, historic buildings and street scenery; Nov 21.",
+    "Marienplatz Christkindlmarkt": "Christmas crafts, ornaments, Glühwein and alcohol-free Kinderpunsch.",
+    "MANUFAKTURA": "Czech skincare, soaps and gifts; planned for Nov 25.",
+    "Celetná": "Czech glass, specialty shops and Old Town lanes.",
+    "Náměstí Republiky Christmas Market": "Christmas crafts, decorations and warm drinks; planned for Nov 25."
+  }
+}
