@@ -55,6 +55,7 @@ function routeLocation(key){
  if(!p||!p.geo)return null;
  var en=typeof lang!=='undefined'&&lang==='en'&&typeof EN!=='undefined'&&EN;
  var title=hotel?p.name:via?(en?p.enTitle:p.title):
+   p.geoLabel?(en?p.geoLabelEn:p.geoLabel):
    en&&EN.events[p.id]?EN.events[p.id].title:p.routeLabel||p.title;
  return {label:title,lat:Number(p.geo[0]),lon:Number(p.geo[1])};
 }
@@ -67,7 +68,7 @@ function renderDayRoutes(day){
   var translated=isEnglishMap()&&typeof EN!=='undefined'&&EN&&EN.days[day.date];
   var name=translated&&translated.routeGroups[i]||g.title;
   return '<article class="geo-group"><div class="geo-heading"><span>'+icon[g.mode]+'</span><strong>'+E(name)+'</strong></div>'+
-    '<div class="geo-map" data-geogroup="'+i+'" role="img" aria-label="'+E(name)+'">'+
+    '<div class="geo-map" data-mode="'+g.mode+'" data-geogroup="'+i+'" role="img" aria-label="'+E(name)+'">'+
     '<div class="geo-tiles" aria-hidden="true"></div><svg class="geo-lines" aria-hidden="true"></svg>'+
     '<div class="geo-pins" aria-hidden="true"></div><div class="geo-credit">© <a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a></div></div>'+
     '<div class="geo-legend">'+pts.map(function(p,n){return '<span><b>'+(n+1)+'</b>'+E(p.label)+'</span>'}).join('')+'</div>'+
@@ -84,36 +85,98 @@ function mapPixel(lat,lon,z){
  var n=256*Math.pow(2,z),r=Math.max(-85.05,Math.min(85.05,lat))*Math.PI/180;
  return {x:(lon+180)/360*n,y:(1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n};
 }
-function drawGeoGroup(el,stops){
+/* Interpolate the shorter great-circle arc over a sphere, not a straight
+   Mercator line. Intended only as a geographic illustration, not radar tracking. */
+function flightArc(a,b,steps){
+ var deg=Math.PI/180;
+ function v(p){var lat=p.lat*deg,lon=p.lon*deg,c=Math.cos(lat);return [c*Math.cos(lon),c*Math.sin(lon),Math.sin(lat)]}
+ var u=v(a),w=v(b),dot=Math.max(-1,Math.min(1,u[0]*w[0]+u[1]*w[1]+u[2]*w[2]));
+ var angle=Math.acos(dot),sin=Math.sin(angle),out=[];
+ if(angle<0.0000001)return [a,b];
+ for(var k=0;k<=steps;k++){
+  var t=k/steps,m1=Math.sin((1-t)*angle)/sin,m2=Math.sin(t*angle)/sin;
+  var x=u[0]*m1+w[0]*m2,y=u[1]*m1+w[1]*m2,z=u[2]*m1+w[2]*m2;
+  out.push({lat:Math.atan2(z,Math.hypot(x,y))/deg,lon:Math.atan2(y,x)/deg});
+ }
+ return out;
+}
+function geoGeometry(pts,mode){
+ if(mode!=='flight')return {path:pts,markers:pts.map((p,i)=>i),legs:[]};
+ var path=[],markers=[],legs=[];
+ if(!pts.length)return {path,markers,legs};
+ path.push(pts[0]);markers.push(0);
+ for(var i=1;i<pts.length;i++){
+  var prev=pts[i-1],next=pts[i];
+  if(Math.hypot(prev.lat-next.lat,prev.lon-next.lon)<0.00001){markers.push(path.length-1);continue}
+  var start=path.length-1,arc=flightArc(prev,next,64);
+  for(var j=1;j<arc.length;j++)path.push(arc[j]);
+  legs.push({start:start,end:path.length-1});
+  markers.push(path.length-1);
+ }
+ return {path,markers,legs};
+}
+function projectedContinuous(path,zoom){
+ var wrap=256*Math.pow(2,zoom),last=null;
+ return path.map(function(p){
+  var q=mapPixel(p.lat,p.lon,zoom);
+  if(last!==null){
+   while(q.x-last>wrap/2)q.x-=wrap;
+   while(q.x-last< -wrap/2)q.x+=wrap;
+  }
+  last=q.x;return q;
+ });
+}
+function geoFrame(pts,mode,width,height){
+ var geometry=geoGeometry(pts,mode),padding=mode==='flight'?36:48;
+ var zoom=0,transformed=null;
+ var maxZoom=mode==='flight'?7:16;
+ for(var z=maxZoom;z>=0;z--){
+  var projected=projectedContinuous(geometry.path,z),xs=projected.map(p=>p.x),ys=projected.map(p=>p.y);
+  if(Math.max(...xs)-Math.min(...xs)<=width-padding*2 && Math.max(...ys)-Math.min(...ys)<=height-padding*2){
+   zoom=z;transformed=projected;break;
+  }
+ }
+ if(!transformed)transformed=projectedContinuous(geometry.path,zoom);
+ if(pts.length===1){zoom=13;transformed=projectedContinuous(geometry.path,zoom)}
+ var xs=transformed.map(p=>p.x),ys=transformed.map(p=>p.y);
+ var cx=(Math.max(...xs)+Math.min(...xs))/2,cy=(Math.max(...ys)+Math.min(...ys))/2;
+ return {zoom:zoom,cx:cx,cy:cy,path:transformed.map(p=>({x:p.x-cx+width/2,y:p.y-cy+height/2})),
+  markerPositions:geometry.markers.map(i=>({x:transformed[i].x-cx+width/2,y:transformed[i].y-cy+height/2})),
+  legs:geometry.legs};
+}
+function drawGeoGroup(el,stops,mode){
  if(!el.clientWidth)return;
  var pts=stops.map(routeLocation).filter(Boolean);if(!pts.length)return;
- var width=el.clientWidth,height=el.clientHeight||260,pad=48,z=2,values;
- for(var candidate=16;candidate>=2;candidate--){
-  var a=pts.map(function(p){return mapPixel(p.lat,p.lon,candidate)}),xs=a.map(p=>p.x),ys=a.map(p=>p.y);
-  if(Math.max(...xs)-Math.min(...xs)<=width-pad*2&&Math.max(...ys)-Math.min(...ys)<=height-pad*2){z=candidate;values=a;break}
- }
- if(!values)values=pts.map(function(p){return mapPixel(p.lat,p.lon,z)});
- if(pts.length===1){z=13;values=pts.map(function(p){return mapPixel(p.lat,p.lon,z)})}
- var xs=values.map(p=>p.x),ys=values.map(p=>p.y),cx=(Math.max(...xs)+Math.min(...xs))/2,cy=(Math.max(...ys)+Math.min(...ys))/2;
+ var width=el.clientWidth,height=el.clientHeight||260,frame=geoFrame(pts,mode,width,height),z=frame.zoom,cx=frame.cx,cy=frame.cy;
  var nTiles=Math.pow(2,z),tiles=[],left=Math.floor((cx-width/2)/256),right=Math.floor((cx+width/2)/256),top=Math.floor((cy-height/2)/256),bottom=Math.floor((cy+height/2)/256);
  for(var tx=left;tx<=right;tx++)for(var ty=top;ty<=bottom;ty++){
   if(ty<0||ty>=nTiles)continue;
   tiles.push('<img loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin" alt="" width="256" height="256" style="left:'+Math.round(tx*256-cx+width/2)+'px;top:'+Math.round(ty*256-cy+height/2)+'px" src="https://tile.openstreetmap.org/'+z+'/'+((tx%nTiles+nTiles)%nTiles)+'/'+ty+'.png">');
  }
  el.querySelector('.geo-tiles').innerHTML=tiles.join('');
- var p=values.map(v=>({x:v.x-cx+width/2,y:v.y-cy+height/2}));
- var svg=el.querySelector('.geo-lines');svg.setAttribute('viewBox','0 0 '+width+' '+height);
- svg.innerHTML=p.length>1?'<polyline points="'+p.map(v=>v.x.toFixed(2)+','+v.y.toFixed(2)).join(' ')+'" fill="none" stroke="#b35b37" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"/>':'';
- el.querySelector('.geo-pins').innerHTML=p.map(function(v,i){
-   var duplicate=p.slice(0,i).filter(q=>Math.hypot(v.x-q.x,v.y-q.y)<10).length;
-   return '<span class="geo-pin" title="'+E(pts[i].label)+'" style="left:'+(v.x+duplicate*13).toFixed(1)+'px;top:'+(v.y+duplicate*10).toFixed(1)+'px">'+(i+1)+'</span>';
+ var coords=frame.markerPositions,svg=el.querySelector('.geo-lines');
+ svg.setAttribute('viewBox','0 0 '+width+' '+height);
+ if(mode==='flight'){
+  svg.innerHTML=frame.legs.map(function(leg){
+   var section=frame.path.slice(leg.start,leg.end+1),
+    poly=section.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' '),
+    middle=section[Math.floor(section.length/2)];
+   return '<polyline points="'+poly+'" fill="none" stroke="#247fa1" stroke-width="3.3" stroke-dasharray="9 5" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '<text x="'+middle.x.toFixed(1)+'" y="'+(middle.y-9).toFixed(1)+'" text-anchor="middle" font-size="19" fill="#176c8a" stroke="#fff" stroke-width="2" paint-order="stroke">✈</text>';
+  }).join('');
+ }else{
+  svg.innerHTML=coords.length>1?'<polyline points="'+coords.map(p=>p.x.toFixed(2)+','+p.y.toFixed(2)).join(' ')+'" fill="none" stroke="#b35b37" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"/>':'';
+ }
+ el.querySelector('.geo-pins').innerHTML=coords.map(function(v,i){
+   var dup=coords.slice(0,i).filter(q=>Math.hypot(v.x-q.x,v.y-q.y)<10).length;
+   return '<span class="geo-pin" title="'+E(pts[i].label)+'" style="left:'+(v.x+dup*13).toFixed(1)+'px;top:'+(v.y+dup*10).toFixed(1)+'px">'+(i+1)+'</span>';
  }).join('');
 }
 function drawDayGeoMaps(){
  var day=D.days[dayIndex];if(!day||!day.route)return;
  document.querySelectorAll('#daycontent [data-geogroup]').forEach(function(node){
   var g=day.route.groups[Number(node.dataset.geogroup)];
-  if(g)drawGeoGroup(node,g.stops);
+  if(g)drawGeoGroup(node,g.stops,g.mode);
  });
 }
 window.addEventListener('resize',function(){if(document.getElementById('s-itinerary').classList.contains('active'))drawDayGeoMaps()});
@@ -332,7 +395,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v11',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v12',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;

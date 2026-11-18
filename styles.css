@@ -936,68 +936,7 @@ transition:none!important}
 }
 
 
-@media(prefers-color-scheme:dark){
-:root{--forest:#245342;
---forest2:#a8d4ba;
---sage:#293f34;
---paper:#101a17;
---white:#202e27;
---ink:#eef5ed;
---muted:#afc1b4;
---line:#39493d;
---gold:#d7b681;
---orange:#dbad84;
---shadow:0 9px 26px rgba(0,0,0,.15)}
 
-html{color-scheme:dark}
-body{background:var(--paper)}
-
-.wordmark{color:var(--ink)}
-.mark{background:#375c4a}
-
-.signal,.block,.event-card,.stay-tonight,.wx-panel,.shop,.daybtn,.stat-box,.expense-form input,.expense-form select,.field input,.field select,.fx-rate-grid label,.fx-rate-grid input{background:#203029!important;
-color:var(--ink)!important;
-border-color:#385345!important}
-
-.next-stop,.wx-wear,.fx-panel{background:#1c3127!important;
-color:var(--ink)!important;
-border-color:#3a5947!important}
-
-.next-info>div{background:#23372d;
-border-color:#3e5949}
-.next-info small,.next-bottom p,.fx-panel p{color:#b0cbbb}
-.next-info strong,.fx-grand strong{color:#d4f0dc}
-
-.signal-icon{background:#443622;
-color:#e5bf88}
-.signal.signal-done .signal-icon{background:#254b37;
-color:#b8e6bd}
-
-.notice-banner{background:#3a3020;
-color:#eacb9f}
-.status.pending{color:#e3bd7f}
-.status.ok{color:#a9dcb7}
-
-.action{background:#263c32;
-color:#dcf4e2;
-border-color:#5c7966}
-.action.primary{background:#3b7555;
-color:white}
-.bottom-nav{background:#17261e!important;
-border-color:#405344}
-
-.route-card,.hero{background:#174034}
-.day-summary,.highlight,.event-time,.mini-label{color:var(--ink)}
-
-.task-progress{background:#33463c}
-.fx-grand{border-color:#536a57}
-.fx-summary-row strong,.expense-row strong{color:var(--ink)}
-
-.offline-bar{color:#b6d5bc}
-.offline-bar button{background:#254333;
-color:#eaf6eb}
-
-}
 
 
 /* Always-visible daily route diagrams and licensed photos */
@@ -1028,4 +967,4 @@ color:#eaf6eb}
 .place-figure.photo-unavailable img,.place-figure.photo-unavailable figcaption{display:none}
 .place-figure.photo-unavailable{background:transparent}
 @media(min-width:750px){.route-groups{grid-template-columns:repeat(2,minmax(0,1fr))}.place-photo{max-height:270px}}
-@media(prefers-color-scheme:dark){.day-route,.place-figure figcaption{background:#203029;border-color:#385345}.route-group{background:#1b2c22;border-color:#3a5144}.route-symbol,.route-mode-icon{background:#2b4a37;color:#d3eedb}.route-dot{background:#203029;border-color:#87bc97}.route-stop:first-child .route-dot,.route-stop:last-child .route-dot{background:#87bc97}.route-stop{border-left-color:#547c65}.route-stop:last-child{border-left-color:transparent}}
+

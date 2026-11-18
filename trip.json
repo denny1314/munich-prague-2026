@@ -24,7 +24,9 @@
             "stops": [
               "d1-airport",
               "d1-flight"
-            ]
+            ],
+            "note": "弧線是 SFO → MUC 的大圓航線示意，並非航空公司的即時飛行軌跡。",
+            "enNote": "The arc illustrates a great-circle route from SFO to MUC, not the aircraft's actual tracked path."
           }
         ]
       }
@@ -328,10 +330,10 @@
             "stops": [
               "d9-airport",
               "d9-lx1485",
-              "d9-transfer",
-              "d9-lx38",
-              "d9-uber"
-            ]
+              "d9-lx38"
+            ],
+            "note": "弧線分別代表 PRG → ZRH、ZRH → SFO；不是實際飛行軌跡。已合併重複的轉機與機場接送標記。",
+            "enNote": "Arcs show PRG → ZRH and ZRH → SFO, not the aircraft's actual flight path. Duplicate transfer and ground-pickup markers are omitted."
           }
         ]
       }
@@ -361,7 +363,9 @@
       "geo": [
         37.6213,
         -122.379
-      ]
+      ],
+      "geoLabel": "SFO · 舊金山機場",
+      "geoLabelEn": "SFO · San Francisco"
     },
     {
       "id": "d1-checkin",
@@ -426,7 +430,9 @@
       "geo": [
         48.3538,
         11.7861
-      ]
+      ],
+      "geoLabel": "MUC · 慕尼黑機場",
+      "geoLabelEn": "MUC · Munich"
     },
     {
       "id": "d1-overnight",
@@ -1966,7 +1972,9 @@
       "geo": [
         50.1008,
         14.2632
-      ]
+      ],
+      "geoLabel": "PRG · 布拉格機場",
+      "geoLabelEn": "PRG · Prague"
     },
     {
       "id": "d9-pp-prg",
@@ -2010,7 +2018,9 @@
       "geo": [
         47.4582,
         8.5555
-      ]
+      ],
+      "geoLabel": "ZRH · 蘇黎世機場",
+      "geoLabelEn": "ZRH · Zurich"
     },
     {
       "id": "d9-transfer",
@@ -2076,7 +2086,9 @@
       "geo": [
         37.6213,
         -122.379
-      ]
+      ],
+      "geoLabel": "SFO · 舊金山機場",
+      "geoLabelEn": "SFO · San Francisco"
     },
     {
       "id": "d9-uber",

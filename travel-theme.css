@@ -383,63 +383,7 @@ body.page-sub .next-stop{display:none}
  .daybtn{flex-basis:73px}
 }
 /* Dark follows the device, while the photographic cover stays colorful. */
-@media(prefers-color-scheme:dark){
-  :root{
-    --paper:#101b18;--white:#1b2a24;--ink:#f0f3eb;
-    --muted:#b2c2b7;--line:#384a3f;--sage:#2d4437;
-    --forest2:#a5d6bd;--shadow:0 12px 26px rgba(0,0,0,.16)
-  }
-  body{background:radial-gradient(ellipse at 30% 0%,rgba(70,83,54,.14),transparent 65%),#101b18}
-  .mast{background:rgba(16,27,24,.92)}
-  .wordmark,.day-intro .day-summary h2{color:var(--ink)}
-  .wordmark small{color:#adc2b3!important}
-  .offline-bar{color:#a9c8b6}
-  .hero{background:#182d2b}
-  .next-stop{background:#1e3028!important;border-color:#5b5747}
-  .next-stop:before,.next-stop:after{background:#101b18}
-  .next-label{color:#e3b987}
-  .next-info>div{background:#283c31;color:#e1e9df;border:0}
-  .next-info strong{color:#e3f5e9}
-  .next-bottom{border-color:#506151}
-  .signal,.block,.event-card,.stay-tonight{background:#1e2d26!important;border-color:#3a4a3f!important}
-  .signal.signal-done{background:#203b2e!important}
-  .signal-icon{background:#4b392d;color:#e5c094}
-  .day-btn,.daybtn{background:#203128!important;border-color:#435247!important}
-  .daybtn b{color:#e0ede2}
-  .daybtn[aria-selected=true]{background:#3a7054!important;border-color:#6fa989!important;color:#edf8ed}
-  .daybtn[aria-selected=true] b{color:#ffe0b1}
-  .day-intro,
-  .day-intro[data-city="Prague"],
-  .day-intro[data-city="Český Krumlov"],
-  .day-intro[data-city="San Francisco"]{
-    background:linear-gradient(125deg,#243e32,#2a3931 65%,#3c332c);
-    border-color:#3d5445
-  }
-  .day-overline{color:#b0c8b5}
-  .day-intro .highlight{color:#c3d0bf;background:transparent}
-  .citypill{color:#c4dec8;background:#304b3b;border-color:#476751}
-  .stay-tonight:before{background:#385944;color:#b9e3c7}
-  .stay-kicker{color:#debd93}
-  .day-route{background:linear-gradient(135deg,#1c2c24,#283429);border-color:#405447}
-  .route-group{background:#24372c;border-color:#425345}
-  .route-symbol,.route-mode-icon{background:#344b3b;color:#c8e2d0}
-  .route-stop{border-left-color:#647f69}
-  .route-stop:last-child{border-left-color:transparent}
-  .route-dot{background:#293e31;border-color:#94c5a0}
-  .route-stop:first-child .route-dot,.route-stop:last-child .route-dot{background:#94c5a0}
-  .event-card:before{box-shadow:0 0 0 2px #70987a;border-color:#101b18}
-  .minilabel{color:#bfd9c3;background:#344b3a}
-  .event-card details{border-color:#405146}
-  .event-card details p{color:#c2d4c8}
-  .place-figure figcaption{background:#1c2b24}
-  .place-figure figcaption a{color:#b6c8bc}
-  .wx-panel{background:linear-gradient(130deg,#223c30,#27372e)!important;border-color:#455b4c}
-  .wx-place,.wx-caption{color:#c6e7d0}
-  .bottom-nav{background:rgba(23,37,29,.94)!important}
-  .navitem[aria-current=page]{background:#385646;color:#d0ead4}
-  .route-card{background:linear-gradient(130deg,#1f4336,#335847)!important}
-  .site-foot{border-color:#31463b;color:#a0b4a5}
-}
+
 @media(prefers-reduced-motion:reduce){
   .event-card,.daybtn,.place-photo{transition:none!important}
 }
@@ -458,14 +402,87 @@ body.page-sub .next-stop{display:none}
 .geo-legend b{width:17px;height:17px;flex:0 0 17px;background:#b35b37;color:#fff;border-radius:50%;font-size:9px;display:grid;place-items:center}
 @media(min-width:900px){.geo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:699px){.geo-map{height:235px}}
-@media(prefers-color-scheme:dark){.geo-group{background:#24372d;border-color:#3d5946}.geo-map{background-color:#2b4034}.geo-legend span{color:#d5e4d7}}
+
 
 /* Locale switch, kept compact in mobile headers */
 .lang-toggle{margin-left:12px;flex:0 0 auto;min-width:48px;min-height:40px;padding:7px 11px;border:1px solid #bdd2c2;border-radius:999px;background:#fffdf7;color:#285344;font-weight:850;font-size:12px;cursor:pointer}
 .lang-toggle:focus-visible{outline:3px solid #9cc9af;outline-offset:2px}
 @media(max-width:699px){.mast-meta{display:none}.lang-toggle{margin-left:auto;min-width:43px;min-height:36px;padding:5px 8px}.wordmark{min-width:0;font-size:13px}.wordmark small{display:none}}
-@media(prefers-color-scheme:dark){.lang-toggle{background:#294232;color:#e4f4e9;border-color:#638a70}}
+
 
 /* A concise wayfinding warning when a station-to-hotel link is indoors. */
 .geo-group-note{margin:0;padding:10px 13px 13px;border-top:1px dashed #e2ddcf;background:#f8f4e9;font-size:11px;line-height:1.7;color:#665f50}
-@media(prefers-color-scheme:dark){.geo-group-note{background:#2d382c;border-color:#485747;color:#e2d7c3}}
+
+
+
+/* Bright Alpine travel palette. Deliberately remains light on all devices. */
+:root{color-scheme:light;--paper:#f7fbfc;--white:#ffffff;--ink:#203d45;--muted:#667f84;--line:#deedf0;--forest:#246e76;--forest2:#357e85;--sage:#e4f3f0;--gold:#e8bb7d;--orange:#c88658;--shadow:0 10px 28px rgba(42,93,111,.075)}
+html{color-scheme:light}
+body{background:radial-gradient(ellipse 520px 400px at 4% 2%,rgba(161,215,232,.19),transparent 80%),radial-gradient(ellipse 540px 440px at 99% 24%,rgba(255,218,166,.18),transparent 78%),#f7fbfc}
+.mast{background:rgba(250,253,254,.94)}
+.mark{background:linear-gradient(135deg,#70bbc3,#418f9a);box-shadow:0 6px 18px rgba(56,126,144,.15)}
+.wordmark small{color:#688792!important}
+.desktopnav .navitem[aria-current=page]{background:#e0f3f5;color:#195b65}
+.offline-bar{color:#527a83}
+.hero{background:linear-gradient(130deg,#bfe0e8,#d7e9ed);box-shadow:0 16px 40px rgba(37,105,120,.14)}
+.hero-gallery{background:#cee7ed}
+.hero-photo{filter:saturate(1.04) brightness(1.12) contrast(1.01)}
+.hero-shade{background:linear-gradient(90deg,rgba(16,56,66,.76),rgba(19,62,71,.47) 48%,rgba(34,78,85,.06) 100%),linear-gradient(0deg,rgba(12,51,60,.52),transparent 66%)}
+.hero .eyebrow,.hero-date-chip{color:#ffdfaa}
+.hero h1{color:#ffffff;text-shadow:0 3px 19px rgba(15,63,71,.32)}
+.hero h1 span{color:#ffe0ae}
+.hero-journey,.hero-subtitle,.hero-bottom{color:#f6ffff}
+.hero-journey small{color:#ddf0ec}
+.hero-stamp{background:rgba(241,249,251,.13);border-color:rgba(255,255,255,.52)}
+.next-stop{border:1px solid #d4e8e8;border-top:4px solid #84c4c7;background:#ffffff;box-shadow:0 13px 35px rgba(43,100,113,.11)}
+.next-stop:before,.next-stop:after{background:#f7fbfc}
+.next-label{color:#48808a}
+.next-info>div{background:#eef9f8}
+.next-info strong{color:#296d74}
+.next-bottom{border-color:#d6e9eb}
+.signal{background:#ffffff;border-color:#e3eff0}
+.signal-icon{background:#fff2de;color:#ab7744}
+.signal.signal-done{background:#ecf9ee;border-color:#cae6d1}
+.daybtn{background:#ffffff;border-color:#e0edf0;box-shadow:0 5px 14px rgba(34,91,115,.05)}
+.daybtn b{color:#2d6372}
+.daybtn[aria-selected=true]{background:#d9f0ef;border-color:#8fc8cd;color:#285e66;box-shadow:0 10px 20px rgba(39,110,121,.14)}
+.daybtn[aria-selected=true] b{color:#155761}
+.daybtn[aria-selected=true]:before{border-color:#55a7ae}
+.day-intro{background:linear-gradient(126deg,#e0f3f6,#f7fbf7 65%,#fff3dc);border-color:#d8ecee}
+.day-intro[data-city="Prague"]{background:linear-gradient(120deg,#e5f0ff,#fbfcff 65%,#fff0e4)}
+.day-intro[data-city="Český Krumlov"]{background:linear-gradient(120deg,#eaf6e8,#f9fcf6 68%,#fff1df)}
+.day-intro[data-city="San Francisco"]{background:linear-gradient(120deg,#e7f3fc,#f8fcff 70%,#fff3dd)}
+.day-overline,.day-intro .highlight{color:#587982}
+.citypill{background:#ffffffa6;color:#347887;border-color:#cee4e5}
+.stay-tonight{background:#ffffff;border-color:#e1eef0}
+.stay-tonight:before{background:#e8f7f5;color:#36808a}
+.day-route{background:linear-gradient(140deg,#f2fbff,#ffffff);border-color:#dcecf1}
+.route-symbol{background:#e6f5f7;color:#418c96}
+.geo-group,.route-group{background:#ffffff;border-color:#dcebef}
+.geo-heading strong{color:#284b56}
+.geo-map{background:#d8edf0;background-image:linear-gradient(#b8d8db55 1px,transparent 1px),linear-gradient(90deg,#b8d8db55 1px,transparent 1px)}
+.geo-legend{background:#ffffff}
+.geo-legend span{color:#4e6e76}
+.geo-pin,.geo-legend b{background:#257f93}
+.geo-pin{box-shadow:0 2px 9px rgba(21,76,95,.4)}
+.geo-group-note{background:#f1f9fa;border-color:#d6e7ea;color:#56737b}
+.event:before{background:#d4e8ea}
+.event-card{background:#ffffff;border-color:#e1ecf0;box-shadow:0 9px 24px rgba(44,97,118,.065)}
+.event-card:before{background:#66aab4;border-color:#f7fbfc;box-shadow:0 0 0 2px #abd6d9}
+.minilabel{background:#e5f4f7;color:#367b84}
+.event-card details{border-color:#e6eff1}
+.event-card summary{color:#307888}
+.event-card .place-figure{background:#e9f4f4}
+.place-figure figcaption{background:#f8fcfd}
+.wx-panel{background:linear-gradient(135deg,#e7f8fd,#ffffff 80%);border-color:#d9ecf1}
+.wx-wear{background:#f0fbf9}
+.block{background:#ffffff;border-color:#e2edef}
+.action.primary{background:#31818e;border-color:#31818e;color:#ffffff}
+.action{border-color:#cde4e7;background:#f6fcfc;color:#296d78}
+.action:hover{filter:brightness(.97)}
+.route-card{background:linear-gradient(125deg,#427f87,#5aa6ad)}
+.bottom-nav{background:rgba(255,255,255,.96)!important;border-color:#d8ebed}
+.navitem[aria-current=page]{background:#e0f2f4;color:#256a74}
+.lang-toggle{background:#ffffff;color:#2c7480;border-color:#badde1}
+.site-foot{border-color:#d2e5e9;color:#758e93}
+.fx-panel{background:#eff9f7;border-color:#d4e9e4}
