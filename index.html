@@ -341,10 +341,12 @@ function translateTasks(){var tasks=D.todos.concat(D.packing),nodes=$('tasks').q
 var small=el.querySelector('small');if(small)localText(small,el.querySelector('input').checked?'Confirmed from itinerary':'Pending in itinerary')});
 var count=$('taskCount');if(count)localText(count,$('tasks').querySelectorAll('.task input:checked').length+' / '+tasks.length+' done · Booking statuses follow the itinerary; other checks stay on this device')}
 function translateShopping(){$('shopping').querySelectorAll('.shop').forEach(function(el,i){var sh=D.shopping[i];if(!sh)return;localText(el.querySelector('p'),sh.en||sh.tip);localText(el.querySelector('small'),enCity(sh.city))})}
-function translateNext(){var t=$('nextTitle');if(!t)return;var text=originalElements.has(t)?originalElements.get(t).text:t.textContent;var e=D.events.find(function(x){return x.title===text||x.en&&x.en.title===text});
-if(e){localText(t,e.en&&e.en.title||e.title);localText($('nextHint'),e.warn?(e.id==='d9-uber'?'Verify the pickup time with Uber.':'Check booking details.'):enStatus(e))}
-var date=$('nextDate');if(date){var value=originalElements.has(date)?originalElements.get(date).text:date.textContent;localText(date,value.replace('美西時間','Pacific time').replace('歐洲時間','Central European time'))}
-var leave=$('nextLeave');if(leave){var v=originalElements.has(leave)?originalElements.get(leave).text:leave.textContent;localText(leave,v.replace('依路程安排','Plan travel time').replace('前抵達','arrive by').replace('送站','station pickup').replace('送機','airport pickup'))}}
+function translateNext(){if(lang==='zh')return;var title=$('nextTitle');if(!title)return;
+var raw=title.textContent,e=D.events.find(function(x){return x.title===raw||(x.en&&x.en.title===raw)});
+if(e){localText(title,e.en&&e.en.title||e.title);
+var hint=$('nextHint');if(hint)localText(hint,e.warn?(e.id==='d9-uber'?'Please verify your pickup time with Uber.':'Check booking details.'):enStatus(e))}
+var date=$('nextDate');if(date){var v=date.textContent;localText(date,v.replace('美西時間','Pacific time').replace('歐洲時間','Central European time'))}
+var leave=$('nextLeave');if(leave){var t=leave.textContent;localText(leave,t.replace('依路程安排','Plan travel time').replace('前抵達','arrive by').replace('送站','station pickup').replace('送機','airport pickup'))}}
 function translateWeather(){var slot=$('weatherSlot'),day=D.days[dayIndex];if(!slot||!slot.querySelector('.wx-panel'))return;
 localText(slot.querySelector('.wx-place'),weatherPlacesEn[weatherDays[day.date]]);
 var result=forecastFor(day),info=result&&weatherLabel(result.code),weatherEn={'晴朗':'Sunny','晴時多雲':'Partly cloudy','陰天':'Cloudy','有霧':'Foggy','毛毛雨':'Drizzle','有雨':'Rain','有雪':'Snow','雷雨':'Thunderstorms','天氣變化':'Variable weather'};
@@ -358,7 +360,12 @@ localText(wear,description);localText(slot.querySelector('.wx-specific'),weather
 var meta=slot.querySelector('.wx-meta span');if(meta&&result){var stamp=new Date(result.updated).toLocaleString('en-US',{timeZone:weatherPlaces[weatherDays[day.date]].zone,month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});localText(meta,'Forecast checked: '+stamp+' (local)'+(weatherErrors[weatherDays[day.date]]?' · Cached (offline)':''))}
 }
 function translateNavigation(){document.querySelectorAll('.navitem').forEach(function(item){var en={'itinerary':'Itinerary','travel':'Travel','ready':'Checklist','more':'Notes'};localText(item.querySelector('span'),en[item.dataset.nav]||'Menu')})}
-function translateHero(){var label=$('todayLabel'),v=originalElements.has(label)?originalElements.get(label).text:label.textContent;var m=v.match(/^距離出發還有 (\d+) 天$/);if(m)localText(label,m[1]+' days until departure');var desc=$('todayDesc');if(desc)localText(desc,'11/19 21:40 · SFO → MUC · Lufthansa LH459')}
+function translateHero(){if(lang==='zh')return;var label=$('todayLabel'),v=label&&label.textContent||'';
+var m=v.match(/^距離出發還有 (\d+) 天$/);if(m)localText(label,m[1]+' days until departure');
+else if(v.indexOf('旅行進行中')===0)localText(label,v.replace('旅行進行中','Trip underway'));
+var desc=$('todayDesc');if(desc){var t=desc.textContent;
+if(t==='查看每天的時間表與導航')localText(desc,'See the daily schedule and directions');
+else if(t==='回顧這段慕尼黑與布拉格的旅程')localText(desc,'Remember our family trip to Munich and Prague')}}
 function translatePage(){if(translatePage.active)return;translatePage.active=true;
 try{translateLabels();translateNavigation();translateDays();translateRides();translateTasks();translateShopping();translateNext();translateWeather();translateHero();
 document.documentElement.lang=lang==='en'?'en':'zh-Hant';document.title=lang==='en'?'Munich & Prague 2026 | Family Travel Itinerary':'2026 慕尼黑・布拉格家庭旅行｜每日行程與交通';
