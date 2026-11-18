@@ -39,61 +39,40 @@ function showMore(e){var body='';if(e.desc)body+='<p>'+E(e.desc)+'</p>';if(e.tra
 if(e.loungeLinks&&e.loungeLinks.length)body+='<div class="actionrow">'+e.loungeLinks.map(function(l){return '<a class="action primary" href="'+E(l.url)+'" target="_blank" rel="noopener noreferrer">'+E((typeof L==='function'?L(l.label,l.en||l.label):l.label))+' · Priority Pass ↗</a>'}).join('')+'</div>';
 if(shouldShowMap(e))body+='<div class="actionrow"><a class="action primary" target="_blank" rel="noopener noreferrer" href="'+mapurl(e.place)+'">Google Maps 導航 ↗</a></div>';return body}
 
-/* All-day Google Maps routes: the route order and source addresses live only in trip.json.
-   Mobile browsers support three intermediate waypoints per directions link. */
+
+/* The daily route is a permanently visible, non-geographic schematic. */
 function routeLocation(key){
   var hotel=key.indexOf('hotel:')===0;
-  var item=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):
+  var value=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):
     D.events.find(function(e){return e.id===key});
-  if(!item)return null;
-  return {label:hotel?item.name:item.title,place:hotel?item.address:item.place};
-}
-function googleDirections(stops,mode){
-  var q=new URLSearchParams();
-  q.set('api','1');
-  if(stops.length>1)q.set('origin',stops[0].place);
-  q.set('destination',stops[stops.length-1].place);
-  if(stops.length>2)q.set('waypoints',stops.slice(1,-1).map(function(s){return s.place}).join('|'));
-  if(mode)q.set('travelmode',mode);
-  return 'https://www.google.com/maps/dir/?'+q.toString();
+  if(!value)return null;
+  var t=hotel?'':String(value.time||'');
+  return {label:value.routeLabel||(hotel?value.name:value.title),
+    time:/^\d\d:\d\d/.test(t)?t.slice(0,5):''};
 }
 function renderDayRoutes(day){
   if(!day.route||!Array.isArray(day.route.groups))return '';
-  var segments=[];
-  day.route.groups.forEach(function(group){
-    var points=group.stops.map(routeLocation).filter(function(item){return item&&item.place});
-    points=points.filter(function(point,i,items){return i===0||point.place!==items[i-1].place});
-    if(!points.length)return;
-    if(points.length===1){
-      segments.push({group:group,points:points,url:googleDirections(points,group.mode)});
-    }else{
-      // 5 locations = origin + up to 3 waypoints + destination.
-      // Repeat the last stop as the next segment's starting point.
-      for(var first=0;first<points.length-1;first+=4){
-        var part=points.slice(first,first+5);
-        if(part.length<2)break;
-        segments.push({group:group,points:part,url:googleDirections(part,group.mode)});
-        if(first+part.length>=points.length)break;
-      }
-    }
-  });
-  if(!segments.length)return '';
-  if(segments.length===1){
-    return '<section class="day-route" aria-label="整日 Google Maps 路線">'+
-      '<a class="route-toggle" href="'+E(segments[0].url)+'" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌁</span>整日路線 · Google Maps <small>直接導航 ↗</small></a>'+
-      '<p class="route-one-note">'+E(day.route.note||'依當天行程順序安排。')+'</p></section>';
-  }
-  var modes={walking:'步行',transit:'大眾運輸',driving:'車輛接送'};
-  var segmentHTML=segments.map(function(s,i){
-    var stops=s.points.map(function(p){return '<li>'+E(p.label)+'</li>'}).join('');
-    return '<div class="route-segment"><div class="route-segment-head"><strong>第 '+(i+1)+' 段 · '+E(s.group.title)+'</strong><span>'+E(modes[s.group.mode]||s.group.mode)+'</span></div>'+
-      '<ol>'+stops+'</ol><a class="action primary" href="'+E(s.url)+'" target="_blank" rel="noopener noreferrer">Google Maps 開啟第 '+(i+1)+' 段 ↗</a></div>';
-  }).join('');
-  return '<section class="day-route" aria-label="整日 Google Maps 多站點路線">'+
-    '<button class="route-toggle" type="button" data-route-toggle="1" aria-expanded="false" aria-controls="routeSegments"><span aria-hidden="true">⌁</span>整日路線 · Google Maps <small>'+segments.length+' 段</small></button>'+
-    '<div id="routeSegments" class="route-panel" hidden><p>'+E(day.route.note||'依當天行程順序安排。')+'</p>'+
-    '<p class="route-limit">Google Maps 手機瀏覽器每段最多 3 個中途停靠點；較長的路線已分段並首尾相接，請依序開啟。</p>'+
-    '<div class="route-segments">'+segmentHTML+'</div></div></section>';
+  var modes={walking:'步行',transit:'大眾運輸',driving:'專車',bus:'巴士',train:'火車',flight:'航班'};
+  var icons={walking:'🚶',transit:'🚉',driving:'🚘',bus:'🚌',train:'🚆',flight:'✈'};
+  var parts=day.route.groups.map(function(group){
+    var points=group.stops.map(routeLocation).filter(Boolean);
+    points=points.filter(function(p,i){return i===0||p.label!==points[i-1].label});
+    if(!points.length)return '';
+    var stops=points.map(function(p){
+      return '<li class="route-stop"><span class="route-dot" aria-hidden="true"></span><span class="route-stop-name">'+
+        E(p.label)+'</span>'+(p.time?'<time class="route-stop-time">'+E(p.time)+'</time>':'')+'</li>';
+    }).join('');
+    return '<div class="route-group"><div class="route-group-heading">'+
+      '<span class="route-mode-icon" aria-hidden="true">'+(icons[group.mode]||'➜')+'</span>'+
+      '<strong>'+E(group.title)+'</strong><span class="route-mode">'+E(modes[group.mode]||'行程')+'</span>'+
+      '</div><ol class="route-stops">'+stops+'</ol></div>';
+  }).filter(Boolean);
+  if(!parts.length)return '';
+  return '<section class="day-route" aria-label="整日路線示意圖">'+
+    '<div class="route-overview-heading"><span class="route-symbol" aria-hidden="true">⌁</span>'+
+    '<div><h3>整日路線</h3><p>依行程順序排列的示意圖 · 非實際比例</p></div></div>'+
+    '<div class="route-groups">'+parts.join('')+'</div>'+
+    (day.route.note?'<p class="route-note">'+E(day.route.note)+'</p>':'')+'</section>';
 }
 function photoForEvent(e){
   if(!e.photo)return '';
@@ -303,14 +282,14 @@ function renderCriticalAlert(){
   }
 }
 function updateHero(){var now=new Date(),t=new Date('2026-11-19T21:40:00-08:00'),days=Math.max(0,Math.round((Date.UTC(2026,10,19)-Date.UTC(now.getFullYear(),now.getMonth(),now.getDate()))/86400000));if(now<t){$('todayLabel').textContent=days>0?'距離出發還有 '+days+' 天':'今晚出發！';$('todayDesc').textContent='11/19 21:40 · SFO → MUC · Lufthansa LH459'}else if(now<=new Date('2026-11-28T00:30:00Z')){$('todayLabel').textContent='旅行進行中 · Day '+(pickToday()+1);$('todayDesc').textContent='查看每天的時間表與導航'}else{$('todayLabel').textContent='2026 冬日旅行手帳';$('todayDesc').textContent='回顧這段慕尼黑與布拉格的旅程'}}
-document.addEventListener('click',function(ev){var toggle=ev.target.closest('[data-route-toggle]');if(toggle){var panel=$('routeSegments'),expanded=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',expanded?'true':'false');if(panel)panel.hidden=!expanded;return}var n=ev.target.closest('[data-nav]');if(n){showScreen(n.dataset.nav);return}var d=ev.target.closest('[data-day]');if(d){dayIndex=Number(d.dataset.day);renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}if(ev.target.closest('#nextView')){var ix=D.days.findIndex(function(x){return x.date===ev.target.closest('#nextView').dataset.nextDay});if(ix>=0){dayIndex=ix;showScreen('itinerary')}return}if(ev.target.closest('#goToday')){dayIndex=pickToday();renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}var del=ev.target.closest('[data-del]');if(del){state.expenses=state.expenses.filter(function(x){return x.id!==del.dataset.del});save();renderExpenses();return}});
+document.addEventListener('click',function(ev){var n=ev.target.closest('[data-nav]');if(n){showScreen(n.dataset.nav);return}var d=ev.target.closest('[data-day]');if(d){dayIndex=Number(d.dataset.day);renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}if(ev.target.closest('#nextView')){var ix=D.days.findIndex(function(x){return x.date===ev.target.closest('#nextView').dataset.nextDay});if(ix>=0){dayIndex=ix;showScreen('itinerary')}return}if(ev.target.closest('#goToday')){dayIndex=pickToday();renderDay();history.replaceState(null,'','#day='+D.days[dayIndex].date);return}var del=ev.target.closest('[data-del]');if(del){state.expenses=state.expenses.filter(function(x){return x.id!==del.dataset.del});save();renderExpenses();return}});
 document.addEventListener('change',function(ev){if(ev.target.matches('[data-check]')){state.checked[ev.target.dataset.check]=ev.target.checked;save();renderTasks();renderCriticalAlert()}});
 $('expenseForm').addEventListener('submit',function(e){e.preventDefault();addExpense(e.currentTarget)});
 document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventListener('input',function(){var code=input.dataset.rate,raw=input.value.trim(),val=Number(raw);state.usdRates[code]=raw!==''&&Number.isFinite(val)&&val>0?val:null;input.setAttribute('aria-invalid',raw!==''&&(!Number.isFinite(val)||val<=0)?'true':'false');save();renderExpenses()})});
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v5',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v6',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
