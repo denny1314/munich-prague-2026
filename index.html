@@ -285,6 +285,7 @@ function isChecked(x){var a=taskDerived(x);return a?a.done:Object.prototype.hasO
 function renderTasks(){var all=D.todos.concat(D.packing),n=all.filter(isChecked).length,pct=Math.round(100*n/all.length);$('taskCount').textContent='已完成 '+n+' / '+all.length+' 項 · 訂票狀態從行程自動更新，其餘在此裝置儲存';$('taskFill').style.width=pct+'%';var groups=[['行前待辦',D.todos],['行李打包',D.packing]];$('tasks').innerHTML=groups.map(function(g){return '<h3 class="task-group">'+g[0]+'</h3><div class="block" style="padding:4px 14px">'+g[1].map(function(x){var derived=taskDerived(x),done=isChecked(x);return '<label class="task '+(derived?'task-derived':'')+'"><input type="checkbox" '+(derived?'disabled title="依行程狀態自動更新"':'data-check="'+E(x.id)+'"')+' '+(done?'checked':'')+'><span>'+E(x.text)+'</span>'+(derived?'<small class="'+(done?'':'pending')+'">'+E(derived.label)+'</small>':'')+'</label>'}).join('')+'</div>'}).join('')}
 function renderShopping(){$('shopping').innerHTML=D.shopping.map(function(s){return '<div class="shop"><strong>'+E(s.name)+'</strong><small>'+E(s.city)+'</small><p>'+E(s.tip)+'</p><a target="_blank" rel="noopener noreferrer" href="'+mapurl(s.address)+'">地圖導航 ↗</a>'+(s.website?'　<a target="_blank" rel="noopener noreferrer" href="'+E(s.website)+'">官方資訊 ↗</a>':'')+'</div>'}).join('')}
 function twdRate(currency){var r=state.rates[currency];return typeof r==='number'&&Number.isFinite(r)&&r>0?r:null}
+function L(zh,en){return lang==='en'?en:zh}
 function formatTWD(v){return new Intl.NumberFormat(lang==='en'?'en-US':'zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(v)}
 function initializeRates(){['EUR','CZK'].forEach(function(k){var input=$('rate'+k);if(input)input.value=twdRate(k)===null?'':String(twdRate(k))})}
 function renderExpenses(){var totals={};state.expenses.forEach(function(x){var v=Number(x.amount);if(Number.isFinite(v)&&v>=0)totals[x.currency]=(totals[x.currency]||0)+v});
@@ -399,10 +400,8 @@ renderDay=wrapTranslate(renderDay);renderTravel=wrapTranslate(renderTravel);rend
 $('languageToggle').addEventListener('click',function(){lang=lang==='en'?'zh':'en';try{localStorage.setItem(LANG_KEY,lang)}catch(err){}
 renderDay();renderTravel();renderTasks();renderShopping();renderExpenses();renderNextStop();updateHero();updateNav();translatePage()});
 
-window.addEventListener('hashchange',fromHash);
-initializeRates();renderTravel();renderShopping();renderTasks();renderExpenses();updateHero();fromHash();renderNextStop();loadWeatherAll(true);setInterval(renderNextStop,60000);window.addEventListener('focus',renderNextStop);
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v1',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v2',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -440,6 +439,12 @@ reg.update().catch(function(){})
 }).catch(function(){offlineReady=false;renderOfflineStatus()})});
 }
 renderOfflineStatus();
+// Register offline support before starting the UI, so a future UI error cannot stall caching.
+window.addEventListener('hashchange',fromHash);
+initializeRates();
+renderTravel();renderShopping();renderTasks();renderExpenses();
+updateHero();fromHash();renderNextStop();loadWeatherAll(true);
+setInterval(renderNextStop,60000);window.addEventListener('focus',renderNextStop);
 
 })();
 </script>
