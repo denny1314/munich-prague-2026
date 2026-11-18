@@ -78,6 +78,11 @@ function renderDayRoutes(day){
     }
   });
   if(!segments.length)return '';
+  if(segments.length===1){
+    return '<section class="day-route" aria-label="整日 Google Maps 路線">'+
+      '<a class="route-toggle" href="'+E(segments[0].url)+'" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌁</span>整日路線 · Google Maps <small>直接導航 ↗</small></a>'+
+      '<p class="route-one-note">'+E(day.route.note||'依當天行程順序安排。')+'</p></section>';
+  }
   var modes={walking:'步行',transit:'大眾運輸',driving:'車輛接送'};
   var segmentHTML=segments.map(function(s,i){
     var stops=s.points.map(function(p){return '<li>'+E(p.label)+'</li>'}).join('');

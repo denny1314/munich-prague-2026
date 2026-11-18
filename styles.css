@@ -1026,3 +1026,7 @@ color:#eaf6eb}
 .place-figure.photo-unavailable{background:transparent}
 @media(min-width:750px){.route-segments{grid-template-columns:repeat(2,minmax(0,1fr))}.place-photo{max-height:270px}}
 @media(prefers-color-scheme:dark){.day-route,.place-figure figcaption{background:#203029;border-color:#385345}.route-toggle{color:#eef5ed}.route-toggle[aria-expanded=true]{background:#284638}.route-toggle>small,.route-toggle>span{background:#2b4a37;color:#d3eedb}.route-segment{background:#1b2c22;border-color:#3a5144}.route-segment ol{color:#e7f1e6}.place-figure{background:#273f32}}
+
+.day-route a.route-toggle{text-decoration:none}
+.day-route a.route-toggle:hover{filter:brightness(.98)}
+.day-route .route-one-note{font-size:11px;color:var(--muted);padding:0 17px 11px;line-height:1.6}
