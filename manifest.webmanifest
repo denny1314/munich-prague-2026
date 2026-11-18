@@ -1,7 +1,7 @@
 {
-  "name": "Winter Notes | Munich → Prague 2026",
-  "short_name": "Winter Notes",
-  "description": "2026 慕尼黑與布拉格家庭旅行行程手帳",
+  "name": "2026 慕尼黑・布拉格家庭旅行",
+  "short_name": "德國布拉格旅行",
+  "description": "2026 年 11 月 19–27 日家庭旅行：每日行程、下一站、交通接送、住宿與待辦事項",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
