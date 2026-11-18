@@ -252,23 +252,24 @@
       "date": "2026-11-26",
       "weekday": "四",
       "day": 8,
-      "title": "Český Krumlov（CK 小鎮）一日遊",
+      "title": "Český Krumlov｜與朋友同行的冬日小鎮",
       "city": "Český Krumlov",
-      "highlight": "老城散步、城堡庭院與博物館／塔樓（可選）；巴士尚未訂票，早上出發可彈性調整",
+      "highlight": "06:15–06:40 與朋友從 Hotel Royal 出發；城堡庭院、Latrán、老城河岸與聖誕市集（往返巴士待訂）",
       "hotel": "royal",
       "route": {
-        "note": "CK 巴士往返尚未購票，出發／上下車站需依確認的車票調整。",
+        "note": "以朋友《2026 布拉格 CK 1126 同行協調版行前說明書》11/26 版本為準。時間均為規劃、巴士尚未購票；11/27 06:30 預訂 Blacklane 送機。地圖點位為實際地理方位的概略位置，連線不是道路路徑。",
         "groups": [
           {
-            "title": "Hotel Royal → 布拉格巴士站",
+            "title": "飯店會合 → Na Knížecí 巴士站",
             "mode": "transit",
             "stops": [
               "hotel:royal",
+              "d8-breakfast",
               "d8-busout"
             ]
           },
           {
-            "title": "前往 CK 小鎮（巴士未購票）",
+            "title": "布拉格 → Český Krumlov（班次待訂）",
             "mode": "bus",
             "stops": [
               "d8-busout",
@@ -276,20 +277,24 @@
             ]
           },
           {
-            "title": "CK 城堡庭院 → 老城 → 聖維特教堂",
+            "title": "城堡庭院 → Latrán → 舊城 → 河岸 → 聖誕市集",
             "mode": "walking",
             "stops": [
               "d8-castle",
+              "d8-latran",
               "d8-lunch",
-              "d8-oldtown"
+              "d8-oldtown",
+              "d8-river",
+              "d8-market"
             ]
           },
           {
-            "title": "返回布拉格（巴士未購票）",
+            "title": "CK → 布拉格返回飯店（班次待訂）",
             "mode": "bus",
             "stops": [
-              "d8-oldtown",
-              "d8-busback"
+              "d8-market",
+              "d8-busback",
+              "hotel:royal"
             ]
           }
         ]
@@ -349,7 +354,11 @@
       "originLabel": "住家",
       "destinationLabel": "SFO 機場",
       "leaveAt": "18:35",
-      "routeLabel": "前往 SFO 機場"
+      "routeLabel": "前往 SFO 機場",
+      "geo": [
+        37.6213,
+        -122.379
+      ]
     },
     {
       "id": "d1-checkin",
@@ -410,7 +419,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "LH459 飛往慕尼黑"
+      "routeLabel": "LH459 飛往慕尼黑",
+      "geo": [
+        48.3538,
+        11.7861
+      ]
     },
     {
       "id": "d1-overnight",
@@ -462,7 +475,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "慕尼黑機場 S-Bahn"
+      "routeLabel": "慕尼黑機場 S-Bahn",
+      "geo": [
+        48.3538,
+        11.7861
+      ]
     },
     {
       "id": "d2-s8",
@@ -480,7 +497,11 @@
       "eta": "約 33 分鐘（參考）",
       "sub": [],
       "weather": "",
-      "routeLabel": "Rosenheimer Platz"
+      "routeLabel": "Rosenheimer Platz",
+      "geo": [
+        48.1286,
+        11.5938
+      ]
     },
     {
       "id": "d2-hotel",
@@ -539,7 +560,11 @@
         "license": "CC BY 4.0",
         "alt": "慕尼黑 Frauenkirche 聖母教堂內部拱頂與走道"
       },
-      "routeLabel": "聖母教堂"
+      "routeLabel": "聖母教堂",
+      "geo": [
+        48.1386,
+        11.5731
+      ]
     },
     {
       "id": "d3-stpeter",
@@ -557,7 +582,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "St. Peter 教堂集合點"
+      "routeLabel": "St. Peter 教堂集合點",
+      "geo": [
+        48.1367,
+        11.5768
+      ]
     },
     {
       "id": "d3-tour",
@@ -599,7 +628,11 @@
         "license": "CC BY-SA 4.0",
         "alt": "慕尼黑 Viktualienmarkt 傳統市場水果攤"
       },
-      "routeLabel": "Viktualienmarkt 市場"
+      "routeLabel": "Viktualienmarkt 市場",
+      "geo": [
+        48.1358,
+        11.5763
+      ]
     },
     {
       "id": "d3-kustermann",
@@ -617,7 +650,11 @@
       "eta": "",
       "sub": [],
       "weather": "可作為雨雪時的室內購物替代。",
-      "routeLabel": "Kustermann 廚具店"
+      "routeLabel": "Kustermann 廚具店",
+      "geo": [
+        48.1353,
+        11.5767
+      ]
     },
     {
       "id": "d3-residenz",
@@ -642,7 +679,11 @@
         "license": "CC BY-SA 4.0",
         "alt": "慕尼黑 Residenz 王宮外觀"
       },
-      "routeLabel": "慕尼黑王宮"
+      "routeLabel": "慕尼黑王宮",
+      "geo": [
+        48.1415,
+        11.5789
+      ]
     },
     {
       "id": "d3-max",
@@ -660,7 +701,11 @@
       "eta": "",
       "sub": [],
       "weather": "縮短室外逛街，改到可進入的室內商店。",
-      "routeLabel": "Maximilianstraße"
+      "routeLabel": "Maximilianstraße",
+      "geo": [
+        48.1388,
+        11.5831
+      ]
     },
     {
       "id": "d3-music",
@@ -695,7 +740,11 @@
       "eta": "",
       "sub": [],
       "weather": "雨雪較大時縮短市集戶外時間，改在周邊有室內座位的餐廳用餐。",
-      "routeLabel": "Marienplatz 聖誕市集"
+      "routeLabel": "Marienplatz 聖誕市集",
+      "geo": [
+        48.1373,
+        11.5755
+      ]
     },
     {
       "id": "d4-breakfast",
@@ -731,7 +780,11 @@
       "sub": [],
       "weather": "已預訂活動必須保留；若遭雪況影響，依旅行社公布調整。",
       "leaveAt": "建議 08:40–08:45 到集合點",
-      "routeLabel": "Mentor Reisen 集合點"
+      "routeLabel": "Mentor Reisen 集合點",
+      "geo": [
+        48.1358,
+        11.5654
+      ]
     },
     {
       "id": "d4-hohen",
@@ -756,7 +809,11 @@
         "license": "CC BY-SA 3.0",
         "alt": "山林中的高天鵝堡 Hohenschwangau"
       },
-      "routeLabel": "高天鵝堡"
+      "routeLabel": "高天鵝堡",
+      "geo": [
+        47.5555,
+        10.7361
+      ]
     },
     {
       "id": "d4-neusch",
@@ -781,7 +838,11 @@
         "license": "CC BY-SA 3.0",
         "alt": "巴伐利亞新天鵝堡 Neuschwanstein"
       },
-      "routeLabel": "新天鵝堡"
+      "routeLabel": "新天鵝堡",
+      "geo": [
+        47.5576,
+        10.7498
+      ]
     },
     {
       "id": "d4-alpsee",
@@ -799,7 +860,11 @@
       "eta": "",
       "sub": [],
       "weather": "大雪、風雨或結冰時不走湖岸小徑。",
-      "routeLabel": "Alpsee 湖"
+      "routeLabel": "Alpsee 湖",
+      "geo": [
+        47.5549,
+        10.7313
+      ]
     },
     {
       "id": "d4-bridge",
@@ -817,7 +882,11 @@
       "eta": "",
       "sub": [],
       "weather": "關閉時直接略過，不影響兩座城堡的內部參觀。",
-      "routeLabel": "瑪麗安橋（視天候）"
+      "routeLabel": "瑪麗安橋（視天候）",
+      "geo": [
+        47.5554,
+        10.7498
+      ]
     },
     {
       "id": "d4-return",
@@ -889,7 +958,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "慕尼黑中央車站"
+      "routeLabel": "慕尼黑中央車站",
+      "geo": [
+        48.1403,
+        11.5586
+      ]
     },
     {
       "id": "d5-train",
@@ -924,7 +997,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "布拉格中央車站"
+      "routeLabel": "布拉格中央車站",
+      "geo": [
+        50.0831,
+        14.4353
+      ]
     },
     {
       "id": "d5-grand",
@@ -966,7 +1043,11 @@
         "license": "CC BY 3.0",
         "alt": "布拉格老城廣場全景"
       },
-      "routeLabel": "布拉格老城廣場"
+      "routeLabel": "布拉格老城廣場",
+      "geo": [
+        50.0878,
+        14.4205
+      ]
     },
     {
       "id": "d5-bridge",
@@ -991,7 +1072,11 @@
         "license": "CC BY-SA 4.0",
         "alt": "布拉格查理大橋"
       },
-      "routeLabel": "查理大橋"
+      "routeLabel": "查理大橋",
+      "geo": [
+        50.0865,
+        14.4115
+      ]
     },
     {
       "id": "d5-miru",
@@ -1009,7 +1094,11 @@
       "eta": "",
       "sub": [],
       "weather": "雨雪較大時縮短市集時間，提早進室內用餐。",
-      "routeLabel": "和平廣場聖誕市集"
+      "routeLabel": "和平廣場聖誕市集",
+      "geo": [
+        50.0758,
+        14.4374
+      ]
     },
     {
       "id": "d5-evening",
@@ -1075,7 +1164,11 @@
         "license": "CC BY-SA 4.0",
         "alt": "從查理大橋眺望布拉格城堡"
       },
-      "routeLabel": "布拉格城堡"
+      "routeLabel": "布拉格城堡",
+      "geo": [
+        50.0911,
+        14.4015
+      ]
     },
     {
       "id": "d6-starbucks",
@@ -1093,7 +1186,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "城堡 Starbucks"
+      "routeLabel": "城堡 Starbucks",
+      "geo": [
+        50.0911,
+        14.3982
+      ]
     },
     {
       "id": "d6-porks",
@@ -1111,7 +1208,11 @@
       "eta": "",
       "sub": [],
       "weather": "雨雪可延長室內用餐；留意後續纜車及晚間音樂會。",
-      "routeLabel": "Pork’s 午餐"
+      "routeLabel": "Pork’s 午餐",
+      "geo": [
+        50.0875,
+        14.4049
+      ]
     },
     {
       "id": "d6-river",
@@ -1136,7 +1237,11 @@
         "license": "CC BY-SA 3.0",
         "alt": "伏爾塔瓦河與布拉格查理大橋景色"
       },
-      "routeLabel": "伏爾塔瓦河畔"
+      "routeLabel": "伏爾塔瓦河畔",
+      "geo": [
+        50.0857,
+        14.409
+      ]
     },
     {
       "id": "d6-ujezd",
@@ -1154,7 +1259,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "Újezd 纜車站"
+      "routeLabel": "Újezd 纜車站",
+      "geo": [
+        50.083,
+        14.4035
+      ]
     },
     {
       "id": "d6-up",
@@ -1189,7 +1298,11 @@
       "eta": "",
       "sub": [],
       "weather": "若風大或冰雪，避開登塔與濕滑步道，可縮短停留。",
-      "routeLabel": "Petřín 山"
+      "routeLabel": "Petřín 山",
+      "geo": [
+        50.0836,
+        14.3952
+      ]
     },
     {
       "id": "d6-down",
@@ -1258,7 +1371,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "市民會館 Smetana Hall"
+      "routeLabel": "市民會館 Smetana Hall",
+      "geo": [
+        50.0879,
+        14.4283
+      ]
     },
     {
       "id": "d6-concert",
@@ -1351,7 +1468,11 @@
         "license": "CC BY-SA 3.0",
         "alt": "入夜後的布拉格老城廣場與泰恩教堂"
       },
-      "routeLabel": "老城廣場／泰恩教堂"
+      "routeLabel": "老城廣場／泰恩教堂",
+      "geo": [
+        50.0878,
+        14.4205
+      ]
     },
     {
       "id": "d7-lunch",
@@ -1386,7 +1507,11 @@
       "eta": "",
       "sub": [],
       "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。",
-      "routeLabel": "猶太區 Josefov"
+      "routeLabel": "猶太區 Josefov",
+      "geo": [
+        50.0909,
+        14.4188
+      ]
     },
     {
       "id": "d7-celetna",
@@ -1404,7 +1529,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "Celetná 街"
+      "routeLabel": "Celetná 街",
+      "geo": [
+        50.0869,
+        14.4242
+      ]
     },
     {
       "id": "d7-manuf",
@@ -1422,7 +1551,11 @@
       "eta": "",
       "sub": [],
       "weather": "雨雪天可延長室內購物。",
-      "routeLabel": "MANUFAKTURA"
+      "routeLabel": "MANUFAKTURA",
+      "geo": [
+        50.0867,
+        14.4234
+      ]
     },
     {
       "id": "d7-powder",
@@ -1440,7 +1573,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "火藥塔"
+      "routeLabel": "火藥塔",
+      "geo": [
+        50.0879,
+        14.4277
+      ]
     },
     {
       "id": "d7-republiky",
@@ -1458,7 +1595,11 @@
       "eta": "",
       "sub": [],
       "weather": "天候不佳可改到附近 Palladium 室內購物。",
-      "routeLabel": "共和國廣場聖誕市集"
+      "routeLabel": "共和國廣場聖誕市集",
+      "geo": [
+        50.088,
+        14.4298
+      ]
     },
     {
       "id": "d7-move",
@@ -1497,75 +1638,87 @@
     {
       "id": "d8-breakfast",
       "date": "2026-11-26",
-      "time": "07:30–08:15（可調）",
-      "title": "早餐／依實際車票前往巴士站",
+      "time": "06:15–06:40",
+      "title": "Hotel Royal 與朋友會合、前往巴士站",
       "cat": "交通",
       "place": "Hotel Royal Prague, Thámova 36, Praha, Czechia",
-      "desc": "不需為尚未購票的巴士固定 06:45 起床。建議先確認 RegioJet／FlixBus 11/26 真正可訂的班次及出發站，再決定早餐與交通時間。",
-      "duration": "45 分",
-      "state": "pending",
-      "status": "巴士尚未購票",
+      "desc": "依朋友的同行協調版，大家在 Hotel Royal 會合後一同前往 Anděl／Praha Na Knížecí 巴士站。06:15–06:40 是規劃時間，請依最後購買的車票確認。",
+      "duration": "25 分（規劃）",
+      "state": "planned",
+      "status": "共同規劃／集合時間待確認",
       "warn": "",
-      "trans": "Hotel Royal → Křižíkova 搭 Metro B 往 Zličín 方向 → Anděl → 步行至 Praha Na Knížecí；若業者改自 Florenc 出發，務必依票券更改。",
+      "trans": "Křižíkova（Metro B）→ Anděl／Na Knížecí；若巴士改站，依車票調整。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "Hotel Royal 朋友會合",
+      "geo": [
+        50.0926,
+        14.4556
+      ]
     },
     {
       "id": "d8-busout",
       "date": "2026-11-26",
-      "time": "上午班次待訂",
-      "title": "直達巴士 Prague → Český Krumlov",
+      "time": "07:00 前後（待訂）",
+      "title": "和朋友搭直達巴士前往 CK",
       "cat": "交通",
       "place": "Praha Na Knížecí bus station, Czechia",
-      "desc": "直達巴士約需 2.5–3 小時；可考慮比原先 08:00 目標更晚出發，但此處不代表真有 08:45 或 09:00 班次。買票前務必確認當天車次與 Praha／Český Krumlov 的上下車站。",
-      "duration": "2.5–3 小時（估）",
+      "desc": "朋友版本規劃約 07:00 出發，單程約 2.5–3.25 小時。實際班次、票價、上下車站與同行總人數都仍待確認，不能視為已訂票。",
+      "duration": "約 2.5–3.25 小時",
       "state": "pending",
-      "status": "往返車票未買",
-      "warn": "目前未購票，無法確認發車或到達時間；若晚到，請先逛老城，再視時間參觀博物館。",
-      "trans": "從實際車票指定的 Praha Na Knížecí／Florenc 等站上車 → Český Krumlov Špičák 或 Autobusové nádraží；去程車次、時間、巴士站均待購票確認。",
+      "status": "規劃時間／往返未購票",
+      "warn": "尚未購票。請先核對 11/26 直達班次及上下車站。",
+      "trans": "預計 Praha Na Knížecí／Anděl → Český Krumlov（Špičák 或汽車總站）；實際依票面。",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "布拉格巴士出發（未訂）"
+      "routeLabel": "Na Knížecí 巴士站",
+      "geo": [
+        50.0707,
+        14.4033
+      ]
     },
     {
       "id": "d8-walk",
       "date": "2026-11-26",
-      "time": "抵達後",
-      "title": "Latrán 老街／前往城堡庭院",
+      "time": "09:45–10:15（預估）",
+      "title": "抵達 CK、步行進城",
       "cat": "交通",
-      "place": "Český Krumlov Castle, Český Krumlov, Czechia",
-      "desc": "從實際下車站導航步行，注意石板路與冬季濕滑。",
+      "place": "Český Krumlov Špičák, Český Krumlov, Czechia",
+      "desc": "若在 Špičák 下車，可較方便先接城堡側的徒步路線。下車地點與抵達時間仍取決於實際購票班次。",
       "duration": "30 分（規劃）",
       "state": "planned",
-      "status": "下車站待確認",
+      "status": "抵達時間待確認",
       "warn": "",
       "trans": "依購買的巴士票於 Český Krumlov Špičák／AN 站下車，步行至城堡入口；不預設固定路線。",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "抵達 CK · Latrán 老街"
+      "routeLabel": "CK Špičák 下車點",
+      "geo": [
+        48.814,
+        14.312
+      ]
     },
     {
       "id": "d8-castle",
       "date": "2026-11-26",
-      "time": "中午前後（彈性）",
-      "title": "城堡庭院與斗篷橋、博物館／塔樓（可選）",
+      "time": "10:15–11:20",
+      "title": "CK 城堡庭院、紅屋頂與 Vltava 河灣觀景",
       "cat": "景點",
       "place": "Státní hrad a zámek Český Krumlov, Czechia",
-      "desc": "依城堡官方 2026 開放時間，Castle Museum & Castle Tower 在 11/1–12/20 週二至週日 09:00–15:30 開放；11/26 星期四原則上可參觀，現場仍可能有臨時變動。博物館與塔樓入場需要門票，無需預約。宮殿內部導覽與正式城堡花園在 11 月未安排常規開放，這天以庭院、Cloak Bridge、博物館及老城為主。",
-      "duration": "90 分",
+      "desc": "朋友版重點為全年可走的城堡庭院、多處觀景點、紅屋頂及 S 型河灣。11 月不把宮殿內部導覽或登塔設為必要活動；若天氣與時間許可，城堡博物館／塔樓只是選項。",
+      "duration": "65 分",
       "state": "planned",
-      "status": "博物館／塔樓冬季有開放，視當日安排",
-      "warn": "天候結冰或巴士晚到時可略過塔樓；建議優先保留老城與餐廳時間。",
+      "status": "同行規劃／庭院散步",
+      "warn": "若河谷起霧，遠景可能受影響；以城堡庭院與古城街景為主。",
       "trans": "",
       "eta": "",
       "sub": [
-        "全年可走的城堡庭院與斗篷橋",
-        "博物館與塔樓：09:00–15:30（購票入場，可選）",
-        "宮殿內部導覽：11 月無公告常規時段，不列為必去",
-        "正式城堡花園：11 月不安排"
+        "城堡庭院與斗篷橋",
+        "多角度紅屋頂與河灣照片",
+        "塔樓／博物館可選，不影響主線"
       ],
       "weather": "如石階結冰或天候不佳，改以室內 Castle Museum 為優先，塔樓可略過。",
       "infoLinks": [
@@ -1585,35 +1738,65 @@
         "license": "CC BY 4.0",
         "alt": "從城堡眺望 Český Krumlov 老城"
       },
-      "routeLabel": "CK 城堡庭院"
+      "routeLabel": "CK 城堡庭院",
+      "geo": [
+        48.8127,
+        14.3151
+      ]
     },
     {
-      "id": "d8-lunch",
+      "id": "d8-latran",
       "date": "2026-11-26",
-      "time": "中午～下午",
-      "title": "Latrán、Svornosti Square 午餐",
-      "cat": "餐飲",
-      "place": "Svornosti Square, Český Krumlov, Czechia",
-      "desc": "在 Latrán、Svornosti Square 挑有暖氣的捷克餐廳；這天不需為了已停開的宮殿常規導覽而趕行程。",
-      "duration": "60 分",
+      "time": "11:20–12:10",
+      "title": "Latrán 老街與 Lazebnický Bridge",
+      "cat": "景點",
+      "place": "Lazebnický most, Český Krumlov, Czechia",
+      "desc": "沿 Latrán 老街欣賞古建築，經 Lazebnický 木橋拍攝城堡塔樓與河景。雨雪時注意石板路防滑。",
+      "duration": "50 分",
       "state": "planned",
-      "status": "自由安排",
+      "status": "與朋友同行／規劃",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "Svornosti 廣場午餐"
+      "routeLabel": "Latrán／Lazebnický 橋",
+      "geo": [
+        48.8122,
+        14.3151
+      ]
+    },
+    {
+      "id": "d8-lunch",
+      "date": "2026-11-26",
+      "time": "12:10–13:15",
+      "title": "CK 舊城捷克餐廳午餐",
+      "cat": "餐飲",
+      "place": "Svornosti Square, Český Krumlov, Czechia",
+      "desc": "與朋友在 CK 舊城或 Latrán 找捷克餐廳，烤肉、燉菜、熱湯為主。特定餐廳尚未訂位，依當天營業調整。",
+      "duration": "65 分",
+      "state": "planned",
+      "status": "餐廳未訂位",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "routeLabel": "CK 午餐",
+      "geo": [
+        48.8106,
+        14.315
+      ]
     },
     {
       "id": "d8-oldtown",
       "date": "2026-11-26",
-      "time": "下午（彈性）",
-      "title": "CK 老城、聖維特教堂與伏爾塔瓦河景",
+      "time": "13:15–14:35",
+      "title": "Svornosti 廣場、CK 舊城巷弄與聖維特教堂",
       "cat": "景點",
-      "place": "Church of St. Vitus, Český Krumlov, Czechia",
-      "desc": "以中世紀街巷、聖維特教堂外觀、河灣與橋梁風景為主，冬季天黑較早，優先把散步與拍照排在白天。",
-      "duration": "90 分",
+      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
+      "desc": "慢走中世紀舊城巷弄、Svornosti 廣場與聖維特教堂周邊，尋找不同河灣與紅屋頂角度。",
+      "duration": "80 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
@@ -1628,54 +1811,95 @@
         "license": "CC BY 4.0",
         "alt": "Český Krumlov 老城、聖維特教堂及河上的 Jelení 步橋"
       },
-      "routeLabel": "CK 老城／聖維特教堂"
+      "routeLabel": "Svornosti 舊城廣場",
+      "geo": [
+        48.8105,
+        14.315
+      ]
     },
     {
-      "id": "d8-coffee",
+      "id": "d8-river",
       "date": "2026-11-26",
-      "time": "依返程車票",
-      "title": "咖啡、回程巴士站",
-      "cat": "餐飲",
-      "place": "Český Krumlov, Czechia",
-      "desc": "返程巴士尚未購買。先確定實際回程班次，再保留至少 15 分鐘到站時間。",
-      "duration": "45 分",
-      "state": "pending",
-      "status": "返程班次待訂",
+      "time": "14:35–15:40",
+      "title": "Vltava 河岸散步、第二輪觀景",
+      "cat": "景點",
+      "place": "Vltava River, Český Krumlov, Czechia",
+      "desc": "11 月下旬約 16 時開始變暗，將河灣觀景安排在日落前；天候濃霧時改在老城街景拍照。",
+      "duration": "65 分",
+      "state": "planned",
+      "status": "與朋友同行／規劃",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "伏爾塔瓦河灣觀景",
+      "geo": [
+        48.8105,
+        14.3134
+      ]
+    },
+    {
+      "id": "d8-market",
+      "date": "2026-11-26",
+      "time": "15:40–16:40",
+      "title": "CK 聖誕市集、熱飲與小點",
+      "cat": "節慶",
+      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
+      "desc": "依朋友說明書，前往 Svornosti Square 的 CK 冬季聖誕市集，喝熱飲、買點心。文件記載 11/26（四）市集營業 11:00–18:00；不代表當天有正式點燈儀式，建議出發前再核對官方公告。",
+      "duration": "60 分",
+      "state": "planned",
+      "status": "市集規劃／營業時間待再確認",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "routeLabel": "CK 聖誕市集",
+      "infoLinks": [
+        {
+          "label": "Český Krumlov 官方旅遊資訊",
+          "url": "https://www.ckrumlov.info/en/"
+        }
+      ],
+      "geo": [
+        48.8105,
+        14.315
+      ]
     },
     {
       "id": "d8-busback",
       "date": "2026-11-26",
-      "time": "目標 16:00–19:00",
-      "title": "直達巴士 Český Krumlov → Prague",
+      "time": "17:00–18:00 前後（待訂）",
+      "title": "和朋友搭巴士返回布拉格",
       "cat": "交通",
       "place": "Český Krumlov bus station, Czechia",
-      "desc": "返程直達巴士尚未買；16:00–19:00 只是目標時段，避免隔天搭早班機太晚睡。",
-      "duration": "2.5–3 小時（估）",
+      "desc": "朋友版規劃 17:00–18:00 前後搭直達巴士返回布拉格，實際預售班次與上下車站仍待核對；預估 20:00–21:00 返回飯店。",
+      "duration": "2.5–3.25 小時（估）",
       "state": "pending",
-      "status": "返程車票未買",
-      "warn": "返程班次尚未購票",
+      "status": "回程車票未買",
+      "warn": "回程班次尚未購票；以最後票面時間為準。",
       "trans": "從實際票券指定 CK 站牌搭車返回布拉格；下車站及 Metro 返飯店以正式車票確認。",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "CK 巴士返程（未訂）"
+      "routeLabel": "CK 回程巴士站",
+      "geo": [
+        48.813,
+        14.3136
+      ]
     },
     {
       "id": "d8-hotel",
       "date": "2026-11-26",
-      "time": "19:00 後",
-      "title": "晚餐、返回 Hotel Royal、整理返美行李",
+      "time": "20:00–21:00（預估）",
+      "title": "與朋友返回 Hotel Royal、整理返美行李",
       "cat": "休息",
       "place": "Thámova 36, Praha 8, Czechia",
-      "desc": "確認四人護照、SWISS 機票、行李重量；隔天 06:30 Blacklane 接人。",
-      "duration": "彈性",
+      "desc": "回到 Hotel Royal 後休息，核對四人護照、SWISS 電子登機證和行李；隔天清晨 06:30 已預訂 Blacklane 前往 PRG。返抵時間僅估計。",
+      "duration": "依巴士實際到達時間",
       "state": "planned",
-      "status": "建議行程",
+      "status": "返抵時間預估",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1735,7 +1959,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "布拉格 PRG 機場"
+      "routeLabel": "布拉格 PRG 機場",
+      "geo": [
+        50.1008,
+        14.2632
+      ]
     },
     {
       "id": "d9-pp-prg",
@@ -1775,7 +2003,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "LX1485 飛往蘇黎世"
+      "routeLabel": "LX1485 飛往蘇黎世",
+      "geo": [
+        47.4582,
+        8.5555
+      ]
     },
     {
       "id": "d9-transfer",
@@ -1793,7 +2025,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "蘇黎世轉機"
+      "routeLabel": "蘇黎世轉機",
+      "geo": [
+        47.4582,
+        8.5555
+      ]
     },
     {
       "id": "d9-pp-zrh",
@@ -1833,7 +2069,11 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "LX38 飛往 SFO"
+      "routeLabel": "LX38 飛往 SFO",
+      "geo": [
+        37.6213,
+        -122.379
+      ]
     },
     {
       "id": "d9-uber",
@@ -1854,7 +2094,11 @@
       "originLabel": "SFO 機場",
       "destinationLabel": "住家",
       "leaveAt": "16:30",
-      "routeLabel": "SFO Uber 接送"
+      "routeLabel": "SFO Uber 接送",
+      "geo": [
+        37.6213,
+        -122.379
+      ]
     }
   ],
   "flights": [
@@ -1896,7 +2140,11 @@
       "station": "Rosenheimer Platz (S-Bahn)",
       "status": "已收到多筆訂房確認；各晚房間分配待核對",
       "nights": 3,
-      "id": "holiday"
+      "id": "holiday",
+      "geo": [
+        48.1292,
+        11.5962
+      ]
     },
     {
       "name": "The Grand Mark Prague",
@@ -1907,7 +2155,11 @@
       "station": "Náměstí Republiky／Hlavní nádraží（依路線）",
       "status": "較新 Amex 確認存在；各晚有效房數與分房仍待核對",
       "nights": 2,
-      "id": "grand"
+      "id": "grand",
+      "geo": [
+        50.0881,
+        14.4311
+      ]
     },
     {
       "name": "Hotel Royal Prague",
@@ -1918,7 +2170,11 @@
       "station": "Křižíkova（Metro B）",
       "status": "Bilt Travel 訂房確認已收到；訂房編號待補",
       "nights": 2,
-      "id": "royal"
+      "id": "royal",
+      "geo": [
+        50.0926,
+        14.4556
+      ]
     }
   ],
   "train": {
