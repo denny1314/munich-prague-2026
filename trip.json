@@ -9,13 +9,21 @@
       "highlight": "21:40 Lufthansa LH459 直飛慕尼黑",
       "hotel": "機上過夜",
       "route": {
-        "note": "前往 SFO 使用目前位置導航；不公開住家地址。Jerry 私人接送仍以預訂為準。",
+        "note": "18:35 Jerry 私人接送至 SFO；公開頁面不顯示住家地址。",
         "groups": [
           {
             "title": "前往 SFO 機場",
             "mode": "driving",
             "stops": [
               "d1-airport"
+            ]
+          },
+          {
+            "title": "搭機過夜",
+            "mode": "flight",
+            "stops": [
+              "d1-airport",
+              "d1-flight"
             ]
           }
         ]
@@ -30,7 +38,7 @@
       "highlight": "17:55 抵達 MUC；S8 → Rosenheimer Platz",
       "hotel": "holiday",
       "route": {
-        "note": "S8 到 Rosenheimer Platz，再步行至飯店；地圖列車資訊依當日為準。",
+        "note": "搭 S8 到 Rosenheimer Platz，再步行至 Holiday Inn；以當日實際班次為準。",
         "groups": [
           {
             "title": "S8 車站 → Rosenheimer Platz",
@@ -60,7 +68,7 @@
       "highlight": "10:45 Walkative 已預訂；17:30 音樂候選",
       "hotel": "holiday",
       "route": {
-        "note": "依實際老城徒步活動順序排列；集合點已確認，導覽實際解散點由導遊決定。",
+        "note": "按預定景點順序呈現；老城徒步導覽的實際結束位置依導遊指示。",
         "groups": [
           {
             "title": "慕尼黑老城步行",
@@ -89,7 +97,7 @@
       "highlight": "09:15 Mentor Reisen 英語團已預訂",
       "hotel": "holiday",
       "route": {
-        "note": "已預訂 Mentor Reisen 遊覽車；山區景點順序不保證，瑪麗安橋視天候開放。僅將地圖作集合與步行參考。",
+        "note": "Mentor Reisen 遊覽車集合點已確認；城堡區參觀順序及瑪麗安橋開放情況依導遊與天候而定。",
         "groups": [
           {
             "title": "飯店 → 遊覽車集合點",
@@ -121,7 +129,7 @@
       "highlight": "05:40 Blacklane；06:44 EC 353 已購票",
       "hotel": "grand",
       "route": {
-        "note": "清晨 Blacklane 送站，跨國搭 EC353 火車；路線分成慕尼黑接送和布拉格當地步行。",
+        "note": "Blacklane 送站、EC353 搭火車前往布拉格，再開始布拉格市區行程。",
         "groups": [
           {
             "title": "飯店 → 慕尼黑中央車站",
@@ -129,6 +137,14 @@
             "stops": [
               "hotel:holiday",
               "d5-platform"
+            ]
+          },
+          {
+            "title": "EC353 慕尼黑 → 布拉格",
+            "mode": "train",
+            "stops": [
+              "d5-platform",
+              "d5-prague"
             ]
           },
           {
@@ -155,7 +171,7 @@
       "highlight": "20:00 古典音樂會（待購票）",
       "hotel": "grand",
       "route": {
-        "note": "城堡區使用大眾運輸及步行；Petřín 纜車營運需核實，晚間音樂會尚未購票。",
+        "note": "布拉格城堡與小城區步行；Petřín 纜車營運待確認，音樂會仍未購票。",
         "groups": [
           {
             "title": "Grand Mark → 布拉格城堡",
@@ -205,7 +221,7 @@
       "highlight": "重要：今日從 The Grand Mark 更換至 Hotel Royal",
       "hotel": "royal",
       "route": {
-        "note": "返回 Grand Mark 取寄放行李，再換 Hotel Royal；搬飯店時可使用 Metro B。",
+        "note": "老城散步後返回 Grand Mark 取行李，再搬至 Hotel Royal。",
         "groups": [
           {
             "title": "布拉格老城步行",
@@ -241,7 +257,7 @@
       "highlight": "老城散步、城堡庭院與博物館／塔樓（可選）；巴士尚未訂票，早上出發可彈性調整",
       "hotel": "royal",
       "route": {
-        "note": "Český Krumlov 往返巴士未購票；實際車站可能變動。以老城散步與城堡庭院為主。",
+        "note": "CK 巴士往返尚未購票，出發／上下車站需依確認的車票調整。",
         "groups": [
           {
             "title": "Hotel Royal → 布拉格巴士站",
@@ -252,12 +268,28 @@
             ]
           },
           {
+            "title": "前往 CK 小鎮（巴士未購票）",
+            "mode": "bus",
+            "stops": [
+              "d8-busout",
+              "d8-walk"
+            ]
+          },
+          {
             "title": "CK 城堡庭院 → 老城 → 聖維特教堂",
             "mode": "walking",
             "stops": [
               "d8-castle",
               "d8-lunch",
               "d8-oldtown"
+            ]
+          },
+          {
+            "title": "返回布拉格（巴士未購票）",
+            "mode": "bus",
+            "stops": [
+              "d8-oldtown",
+              "d8-busback"
             ]
           }
         ]
@@ -272,7 +304,7 @@
       "highlight": "06:30 Blacklane 已訂；PRG → ZRH → SFO",
       "hotel": null,
       "route": {
-        "note": "06:30 Blacklane 前往 PRG 機場。返美 Uber 已預訂；公開網站不儲存住家地址。",
+        "note": "Blacklane 送機，經蘇黎世轉機返回 SFO；住家地址不公開。",
         "groups": [
           {
             "title": "Hotel Royal → PRG 機場",
@@ -280,6 +312,17 @@
             "stops": [
               "hotel:royal",
               "d9-airport"
+            ]
+          },
+          {
+            "title": "經蘇黎世轉機返美",
+            "mode": "flight",
+            "stops": [
+              "d9-airport",
+              "d9-lx1485",
+              "d9-transfer",
+              "d9-lx38",
+              "d9-uber"
             ]
           }
         ]
@@ -305,7 +348,8 @@
       "weather": "",
       "originLabel": "住家",
       "destinationLabel": "SFO 機場",
-      "leaveAt": "18:35"
+      "leaveAt": "18:35",
+      "routeLabel": "前往 SFO 機場"
     },
     {
       "id": "d1-checkin",
@@ -365,7 +409,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "LH459 飛往慕尼黑"
     },
     {
       "id": "d1-overnight",
@@ -416,7 +461,8 @@
       "trans": "依 München Flughafen Terminal／S-Bahn 指示步行；先確認票券可使用，再上車。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "慕尼黑機場 S-Bahn"
     },
     {
       "id": "d2-s8",
@@ -433,7 +479,8 @@
       "trans": "機場 München Flughafen Terminal → 搭 S8 往市區 → Rosenheimer Platz，不需轉乘；確認看板方向及當日交通公告。",
       "eta": "約 33 分鐘（參考）",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "Rosenheimer Platz"
     },
     {
       "id": "d2-hotel",
@@ -491,7 +538,8 @@
         "author": "AuHaidhausen",
         "license": "CC BY 4.0",
         "alt": "慕尼黑 Frauenkirche 聖母教堂內部拱頂與走道"
-      }
+      },
+      "routeLabel": "聖母教堂"
     },
     {
       "id": "d3-stpeter",
@@ -508,7 +556,8 @@
       "trans": "從 Frauenkirche 沿老城街道步行至 St. Peter Church 正門；導航確認路線與時間。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "St. Peter 教堂集合點"
     },
     {
       "id": "d3-tour",
@@ -549,7 +598,8 @@
         "author": "Shootzurich",
         "license": "CC BY-SA 4.0",
         "alt": "慕尼黑 Viktualienmarkt 傳統市場水果攤"
-      }
+      },
+      "routeLabel": "Viktualienmarkt 市場"
     },
     {
       "id": "d3-kustermann",
@@ -566,7 +616,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "可作為雨雪時的室內購物替代。"
+      "weather": "可作為雨雪時的室內購物替代。",
+      "routeLabel": "Kustermann 廚具店"
     },
     {
       "id": "d3-residenz",
@@ -590,7 +641,8 @@
         "author": "Avi1111",
         "license": "CC BY-SA 4.0",
         "alt": "慕尼黑 Residenz 王宮外觀"
-      }
+      },
+      "routeLabel": "慕尼黑王宮"
     },
     {
       "id": "d3-max",
@@ -607,7 +659,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "縮短室外逛街，改到可進入的室內商店。"
+      "weather": "縮短室外逛街，改到可進入的室內商店。",
+      "routeLabel": "Maximilianstraße"
     },
     {
       "id": "d3-music",
@@ -641,7 +694,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "雨雪較大時縮短市集戶外時間，改在周邊有室內座位的餐廳用餐。"
+      "weather": "雨雪較大時縮短市集戶外時間，改在周邊有室內座位的餐廳用餐。",
+      "routeLabel": "Marienplatz 聖誕市集"
     },
     {
       "id": "d4-breakfast",
@@ -676,7 +730,8 @@
       "eta": "",
       "sub": [],
       "weather": "已預訂活動必須保留；若遭雪況影響，依旅行社公布調整。",
-      "leaveAt": "建議 08:40–08:45 到集合點"
+      "leaveAt": "建議 08:40–08:45 到集合點",
+      "routeLabel": "Mentor Reisen 集合點"
     },
     {
       "id": "d4-hohen",
@@ -700,7 +755,8 @@
         "author": "Yathishnaik",
         "license": "CC BY-SA 3.0",
         "alt": "山林中的高天鵝堡 Hohenschwangau"
-      }
+      },
+      "routeLabel": "高天鵝堡"
     },
     {
       "id": "d4-neusch",
@@ -724,7 +780,8 @@
         "author": "Helene-J.S.",
         "license": "CC BY-SA 3.0",
         "alt": "巴伐利亞新天鵝堡 Neuschwanstein"
-      }
+      },
+      "routeLabel": "新天鵝堡"
     },
     {
       "id": "d4-alpsee",
@@ -741,7 +798,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "大雪、風雨或結冰時不走湖岸小徑。"
+      "weather": "大雪、風雨或結冰時不走湖岸小徑。",
+      "routeLabel": "Alpsee 湖"
     },
     {
       "id": "d4-bridge",
@@ -758,7 +816,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "關閉時直接略過，不影響兩座城堡的內部參觀。"
+      "weather": "關閉時直接略過，不影響兩座城堡的內部參觀。",
+      "routeLabel": "瑪麗安橋（視天候）"
     },
     {
       "id": "d4-return",
@@ -829,7 +888,8 @@
       "trans": "Blacklane 下車處 → München Hbf 國際列車月台。月台依當天電子看板，考慮車站施工與行李。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "慕尼黑中央車站"
     },
     {
       "id": "d5-train",
@@ -863,7 +923,8 @@
       "trans": "到站後從列車下車，依出口指示前往市區。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "布拉格中央車站"
     },
     {
       "id": "d5-grand",
@@ -904,7 +965,8 @@
         "author": "Estec GmbH",
         "license": "CC BY 3.0",
         "alt": "布拉格老城廣場全景"
-      }
+      },
+      "routeLabel": "布拉格老城廣場"
     },
     {
       "id": "d5-bridge",
@@ -928,7 +990,8 @@
         "author": "Tiia Monto",
         "license": "CC BY-SA 4.0",
         "alt": "布拉格查理大橋"
-      }
+      },
+      "routeLabel": "查理大橋"
     },
     {
       "id": "d5-miru",
@@ -945,7 +1008,8 @@
       "trans": "查理大橋附近 → Náměstí Míru；可由附近站搭 Metro／電車，實際路線、轉乘站與班次請以 PID 當日導航為準。",
       "eta": "",
       "sub": [],
-      "weather": "雨雪較大時縮短市集時間，提早進室內用餐。"
+      "weather": "雨雪較大時縮短市集時間，提早進室內用餐。",
+      "routeLabel": "和平廣場聖誕市集"
     },
     {
       "id": "d5-evening",
@@ -1010,7 +1074,8 @@
         "author": "P. Hughes",
         "license": "CC BY-SA 4.0",
         "alt": "從查理大橋眺望布拉格城堡"
-      }
+      },
+      "routeLabel": "布拉格城堡"
     },
     {
       "id": "d6-starbucks",
@@ -1027,7 +1092,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "城堡 Starbucks"
     },
     {
       "id": "d6-porks",
@@ -1044,7 +1110,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "雨雪可延長室內用餐；留意後續纜車及晚間音樂會。"
+      "weather": "雨雪可延長室內用餐；留意後續纜車及晚間音樂會。",
+      "routeLabel": "Pork’s 午餐"
     },
     {
       "id": "d6-river",
@@ -1063,12 +1130,13 @@
       "sub": [],
       "weather": "大風或降雪時略過戶外停留，將時間留給纜車。",
       "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Charles_Bridge_-_panorama.jpg/960px-Charles_Bridge_-_panorama.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Charles_Bridge_-_panorama.jpg",
-        "author": "Tiia Monto",
-        "license": "CC BY-SA 4.0",
-        "alt": "布拉格查理大橋"
-      }
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg/960px-Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg",
+        "source": "https://commons.wikimedia.org/wiki/File:Vltava_River_and_the_Charles_Bridge,_Prague_-_8181.jpg",
+        "author": "Jorge Royan",
+        "license": "CC BY-SA 3.0",
+        "alt": "伏爾塔瓦河與布拉格查理大橋景色"
+      },
+      "routeLabel": "伏爾塔瓦河畔"
     },
     {
       "id": "d6-ujezd",
@@ -1085,7 +1153,8 @@
       "trans": "小城區橋頭 → Újezd；可以步行或搭適合的電車，現場路線與時間以 PID 導航為準。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "Újezd 纜車站"
     },
     {
       "id": "d6-up",
@@ -1119,7 +1188,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "若風大或冰雪，避開登塔與濕滑步道，可縮短停留。"
+      "weather": "若風大或冰雪，避開登塔與濕滑步道，可縮短停留。",
+      "routeLabel": "Petřín 山"
     },
     {
       "id": "d6-down",
@@ -1187,7 +1257,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "市民會館 Smetana Hall"
     },
     {
       "id": "d6-concert",
@@ -1274,12 +1345,13 @@
       "sub": [],
       "weather": "雨雪天縮短廣場攝影，優先室內教堂（若開放）。",
       "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Prague_old_town_square_panorama.jpg/960px-Prague_old_town_square_panorama.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Prague_old_town_square_panorama.jpg",
-        "author": "Estec GmbH",
-        "license": "CC BY 3.0",
-        "alt": "布拉格老城廣場全景"
-      }
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Prague_Old_Town_Square_Church_of_Our_Lady.jpg/960px-Prague_Old_Town_Square_Church_of_Our_Lady.jpg",
+        "source": "https://commons.wikimedia.org/wiki/File:Prague_Old_Town_Square_Church_of_Our_Lady.jpg",
+        "author": "Kyle Robinson",
+        "license": "CC BY-SA 3.0",
+        "alt": "入夜後的布拉格老城廣場與泰恩教堂"
+      },
+      "routeLabel": "老城廣場／泰恩教堂"
     },
     {
       "id": "d7-lunch",
@@ -1313,7 +1385,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。"
+      "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。",
+      "routeLabel": "猶太區 Josefov"
     },
     {
       "id": "d7-celetna",
@@ -1330,7 +1403,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "Celetná 街"
     },
     {
       "id": "d7-manuf",
@@ -1347,7 +1421,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "雨雪天可延長室內購物。"
+      "weather": "雨雪天可延長室內購物。",
+      "routeLabel": "MANUFAKTURA"
     },
     {
       "id": "d7-powder",
@@ -1364,7 +1439,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "火藥塔"
     },
     {
       "id": "d7-republiky",
@@ -1381,7 +1457,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "天候不佳可改到附近 Palladium 室內購物。"
+      "weather": "天候不佳可改到附近 Palladium 室內購物。",
+      "routeLabel": "共和國廣場聖誕市集"
     },
     {
       "id": "d7-move",
@@ -1449,7 +1526,8 @@
       "trans": "從實際車票指定的 Praha Na Knížecí／Florenc 等站上車 → Český Krumlov Špičák 或 Autobusové nádraží；去程車次、時間、巴士站均待購票確認。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "布拉格巴士出發（未訂）"
     },
     {
       "id": "d8-walk",
@@ -1466,7 +1544,8 @@
       "trans": "依購買的巴士票於 Český Krumlov Špičák／AN 站下車，步行至城堡入口；不預設固定路線。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "抵達 CK · Latrán 老街"
     },
     {
       "id": "d8-castle",
@@ -1505,7 +1584,8 @@
         "author": "Jakub Hałun",
         "license": "CC BY 4.0",
         "alt": "從城堡眺望 Český Krumlov 老城"
-      }
+      },
+      "routeLabel": "CK 城堡庭院"
     },
     {
       "id": "d8-lunch",
@@ -1522,7 +1602,8 @@
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "Svornosti 廣場午餐"
     },
     {
       "id": "d8-oldtown",
@@ -1541,12 +1622,13 @@
       "sub": [],
       "weather": "雨雪時縮短河岸石板路，改老城室內咖啡店或博物館。",
       "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg/960px-View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka%2C_20250504_1251_8862.jpg/960px-Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka%2C_20250504_1251_8862.jpg",
+        "source": "https://commons.wikimedia.org/wiki/File:Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka,_20250504_1251_8862.jpg",
         "author": "Jakub Hałun",
         "license": "CC BY 4.0",
-        "alt": "從城堡眺望 Český Krumlov 老城"
-      }
+        "alt": "Český Krumlov 老城、聖維特教堂及河上的 Jelení 步橋"
+      },
+      "routeLabel": "CK 老城／聖維特教堂"
     },
     {
       "id": "d8-coffee",
@@ -1580,7 +1662,8 @@
       "trans": "從實際票券指定 CK 站牌搭車返回布拉格；下車站及 Metro 返飯店以正式車票確認。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "CK 巴士返程（未訂）"
     },
     {
       "id": "d8-hotel",
@@ -1651,7 +1734,8 @@
       "trans": "下車後循當日航空公司航廈及櫃檯指示報到。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "布拉格 PRG 機場"
     },
     {
       "id": "d9-pp-prg",
@@ -1690,7 +1774,8 @@
       "trans": "PRG → ZRH；轉機須留意抵達與下一航班登機門。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "LX1485 飛往蘇黎世"
     },
     {
       "id": "d9-transfer",
@@ -1707,7 +1792,8 @@
       "trans": "在 ZRH 依 SWISS LX38 轉機／安檢／美國航班方向指標前往實際登機門；以機場當日公告為準。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "蘇黎世轉機"
     },
     {
       "id": "d9-pp-zrh",
@@ -1746,7 +1832,8 @@
       "trans": "ZRH → SFO；抵達日仍是 2026/11/27，SFO 為美西冬令時間。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "routeLabel": "LX38 飛往 SFO"
     },
     {
       "id": "d9-uber",
@@ -1766,7 +1853,8 @@
       "weather": "",
       "originLabel": "SFO 機場",
       "destinationLabel": "住家",
-      "leaveAt": "16:30"
+      "leaveAt": "16:30",
+      "routeLabel": "SFO Uber 接送"
     }
   ],
   "flights": [
