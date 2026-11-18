@@ -465,3 +465,7 @@ body.page-sub .next-stop{display:none}
 .lang-toggle:focus-visible{outline:3px solid #9cc9af;outline-offset:2px}
 @media(max-width:699px){.mast-meta{display:none}.lang-toggle{margin-left:auto;min-width:43px;min-height:36px;padding:5px 8px}.wordmark{min-width:0;font-size:13px}.wordmark small{display:none}}
 @media(prefers-color-scheme:dark){.lang-toggle{background:#294232;color:#e4f4e9;border-color:#638a70}}
+
+/* A concise wayfinding warning when a station-to-hotel link is indoors. */
+.geo-group-note{margin:0;padding:10px 13px 13px;border-top:1px dashed #e2ddcf;background:#f8f4e9;font-size:11px;line-height:1.7;color:#665f50}
+@media(prefers-color-scheme:dark){.geo-group-note{background:#2d382c;border-color:#485747;color:#e2d7c3}}

@@ -48,11 +48,15 @@ if(shouldShowMap(e))body+='<div class="actionrow"><a class="action primary" targ
    No Google Maps, no collapse, no bulk prefetching. */
 function routeLocation(key){
  var hotel=key.indexOf('hotel:')===0;
- var p=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):D.events.find(function(e){return e.id===key});
+ var via=key.indexOf('via:')===0;
+ var p=hotel?D.hotels.find(function(h){return h.id===key.slice(6)}):
+   via?(D.waypoints||[]).find(function(w){return w.id===key.slice(4)}):
+   D.events.find(function(e){return e.id===key});
  if(!p||!p.geo)return null;
  var en=typeof lang!=='undefined'&&lang==='en'&&typeof EN!=='undefined'&&EN;
- return {label:hotel?p.name:en&&EN.events[p.id]?EN.events[p.id].title:p.routeLabel||p.title,
-   lat:Number(p.geo[0]),lon:Number(p.geo[1])};
+ var title=hotel?p.name:via?(en?p.enTitle:p.title):
+   en&&EN.events[p.id]?EN.events[p.id].title:p.routeLabel||p.title;
+ return {label:title,lat:Number(p.geo[0]),lon:Number(p.geo[1])};
 }
 function isEnglishMap(){return typeof lang!=='undefined'&&lang==='en'}
 function renderDayRoutes(day){
@@ -66,7 +70,8 @@ function renderDayRoutes(day){
     '<div class="geo-map" data-geogroup="'+i+'" role="img" aria-label="'+E(name)+'">'+
     '<div class="geo-tiles" aria-hidden="true"></div><svg class="geo-lines" aria-hidden="true"></svg>'+
     '<div class="geo-pins" aria-hidden="true"></div><div class="geo-credit">© <a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a></div></div>'+
-    '<div class="geo-legend">'+pts.map(function(p,n){return '<span><b>'+(n+1)+'</b>'+E(p.label)+'</span>'}).join('')+'</div></article>';
+    '<div class="geo-legend">'+pts.map(function(p,n){return '<span><b>'+(n+1)+'</b>'+E(p.label)+'</span>'}).join('')+'</div>'+
+    (g.note?'<p class="geo-group-note">'+E(isEnglishMap()?(g.enNote||g.note):g.note)+'</p>':'')+'</article>';
  }).filter(Boolean);
  if(!blocks.length)return '';
  var en=isEnglishMap()&&typeof EN!=='undefined'&&EN&&EN.days[day.date];
@@ -327,7 +332,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v10',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v11',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;

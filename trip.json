@@ -38,7 +38,7 @@
       "highlight": "17:55 抵達 MUC；S8 → Rosenheimer Platz",
       "hotel": "holiday",
       "route": {
-        "note": "搭 S8 到 Rosenheimer Platz，再步行至 Holiday Inn；以當日實際班次為準。",
+        "note": "從 MUC 搭 S8 到 Rosenheimer Platz；下車後往 Gasteig／Muffatwerk 方向，經 Motorama 室內通道步行到 Holiday Inn。地圖連線只標示位置與順序，不代表地下通道的精確走法。",
         "groups": [
           {
             "title": "S8 車站 → Rosenheimer Platz",
@@ -49,12 +49,15 @@
             ]
           },
           {
-            "title": "車站 → Holiday Inn",
+            "title": "Rosenheimer Platz → Motorama 室內通道 → Holiday Inn",
             "mode": "walking",
             "stops": [
               "d2-s8",
+              "via:motorama",
               "hotel:holiday"
-            ]
+            ],
+            "note": "注意：這段主要走車站內與 Motorama 地下／室內通道，不是沿地圖的地面直線走。請看 Gasteig／Muffatwerk 出口及 Holiday Inn 指標；通道不開放時改走地面 Hochstraße 3。",
+            "enNote": "This is primarily an indoor passage, not a surface street route. Follow signs for Gasteig / Muffatwerk and Holiday Inn through Motorama. If the passage is closed, use the street entrance at Hochstraße 3."
           }
         ]
       }
@@ -488,7 +491,7 @@
       "title": "搭乘 S8 → Rosenheimer Platz",
       "cat": "交通",
       "place": "Rosenheimer Platz S-Bahn, München, Germany",
-      "desc": "S8 往市中心，確認列車途經 Rosenheimer Platz；路程參考約 33 分，依班次與施工調整。",
+      "desc": "S8 往市中心，確認列車有停 Rosenheimer Platz；由機場搭約 33 分（視班次與施工而定）。下車後依 Gasteig／Muffatwerk 方向及 Holiday Inn 指標接 Motorama 室內通道，勿只看地面直線路線。",
       "duration": "約 33 分車程（參考）",
       "state": "planned",
       "status": "當日購票",
@@ -499,8 +502,8 @@
       "weather": "",
       "routeLabel": "Rosenheimer Platz",
       "geo": [
-        48.1286,
-        11.5938
+        48.12918,
+        11.59308
       ]
     },
     {
@@ -510,7 +513,7 @@
       "title": "Holiday Inn Munich Check-in",
       "cat": "住宿",
       "place": "Hochstraße 3, 81669 München, Germany",
-      "desc": "Rosenheimer Platz 出站後，沿 Gasteig／Holiday Inn 指標，經 Motorama 地下通道至飯店入口；晚間若通道關閉，改從地面 Hochstraße 3 進入。",
+      "desc": "Rosenheimer Platz 下車後，往 Gasteig／Muffatwerk 出口方向（不要走 Rosenheimer Platz 地面出口）；抵達站廳後循 Holiday Inn 指標進入 Motorama 玻璃門。進入後右轉，保持同一樓層經過 ALDI、HIT，最後依綠色 Holiday Inn 指標上樓到櫃台。若晚間通道不開放，改由地面 Hochstraße 3 進入。",
       "duration": "約 30 分（時間彈性）",
       "state": "reserved",
       "status": "已訂房／房間分配待核對",
@@ -2142,8 +2145,8 @@
       "nights": 3,
       "id": "holiday",
       "geo": [
-        48.1292,
-        11.5962
+        48.13066,
+        11.58999
       ]
     },
     {
@@ -2433,6 +2436,17 @@
       "address": "Náměstí Republiky, Praha 1, Czechia",
       "tip": "11/25 開幕，聖誕手工藝、裝飾與熱飲。",
       "website": "https://prague.eu/en/akce/republiky-square-christmas-market"
+    }
+  ],
+  "waypoints": [
+    {
+      "id": "motorama",
+      "title": "Motorama 室內購物通道",
+      "enTitle": "Motorama indoor passage",
+      "geo": [
+        48.13041,
+        11.59059
+      ]
     }
   ]
 }

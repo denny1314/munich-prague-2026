@@ -30,11 +30,11 @@
     },
     "d2-s8": {
       "title": "S8 train to Rosenheimer Platz",
-      "note": "Take S8 into the city and get off at Rosenheimer Platz. Check the live platform and service."
+      "note": "Take S8 from Munich Airport toward the city, about 33 minutes to Rosenheimer Platz (subject to service). Follow signs for Gasteig / Muffatwerk and Holiday Inn to reach the indoor Motorama passage."
     },
     "d2-hotel": {
       "title": "Check in at Holiday Inn Munich",
-      "note": "Follow the Motorama passage from Rosenheimer Platz to Holiday Inn City Centre; use the street entrance if the passage is closed."
+      "note": "At Rosenheimer Platz, follow signs for Gasteig / Muffatwerk rather than the Rosenheimer Platz street exit. Turn left in the station hall, pass the glass doors to Motorama and turn right. Stay on the same level past ALDI and HIT, then follow Holiday Inn signs up to reception. If the passage is closed, use the street entrance at Hochstraße 3."
     },
     "d2-dinner": {
       "title": "Dinner and rest",
@@ -338,10 +338,10 @@
     "2026-11-20": {
       "title": "Arrive in Munich",
       "highlight": "Arrive at MUC 5:55 PM and travel via S8 to Rosenheimer Platz",
-      "routeNote": "Take S8 from Munich Airport to Rosenheimer Platz and walk to Holiday Inn. Check actual transit service.",
+      "routeNote": "Take S8 from MUC to Rosenheimer Platz. Follow the Gasteig / Muffatwerk exit and Holiday Inn signs through the Motorama indoor passage. Map lines only connect approximate locations; they do not trace the actual indoor route.",
       "routeGroups": [
         "Airport S-Bahn to Rosenheimer Platz",
-        "Walk to Holiday Inn"
+        "Rosenheimer Platz → Motorama indoor passage → Holiday Inn"
       ]
     },
     "2026-11-21": {
