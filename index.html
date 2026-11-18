@@ -57,6 +57,16 @@ button{border:0}small{font-size:12px}.serif{font-family:Georgia,"Times New Roman
 .shop{padding:13px 0;border-bottom:1px solid var(--line)}.shop:last-child{border:0}.shop strong{font-size:14px}.shop small{display:block;color:var(--muted)}.shop p{margin:5px 0 7px}.shop a{font-size:12px;font-weight:800}.site-foot{text-align:center;font-size:11px;color:#8b968e;padding:33px 0 0;line-height:1.7}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,1fr);background:#ffffffee;border-top:1px solid #e1e5dc;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:8px 7px calc(8px + env(safe-area-inset-bottom));z-index:25;box-shadow:0 -8px 30px #173b3509}.navitem{height:53px;background:transparent;border-radius:11px;color:#74847b;font-size:11px;font-weight:850;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:0}.navitem i{font:24px Georgia,serif;line-height:27px;font-style:normal}.navitem[aria-current=page]{background:#e8eee8;color:var(--forest)}.desktopnav{display:none}.empty{color:var(--muted);font-size:13px;text-align:center;padding:18px}
 .toast{position:fixed;bottom:85px;left:50%;transform:translate(-50%,12px);background:var(--forest);color:white;font-weight:750;padding:10px 15px;border-radius:12px;opacity:0;pointer-events:none;transition:.18s;z-index:60;font-size:13px;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Weather forecast + dressing guide */
+.wx-panel{background:linear-gradient(145deg,#eef3ed 0%,#ffffff 85%);border:1px solid #d7e4d8;border-radius:17px;padding:17px 17px 15px;margin:0 0 23px;box-shadow:var(--shadow)}
+.wx-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.wx-caption{font-size:10px;font-weight:850;letter-spacing:1.3px;color:#507c67;text-transform:uppercase}.wx-place{font-size:16px;line-height:1.4;margin:4px 0 0;font-weight:850;color:var(--forest)}
+.wx-refresh{background:#fff;border:1px solid #c6d9ca;border-radius:9px;padding:6px 10px;min-height:34px;color:#35674e;font-size:12px;font-weight:750;white-space:nowrap}.wx-refresh:disabled{opacity:.5}
+.wx-main{display:flex;gap:13px;align-items:center;margin:15px 0 9px}.wx-symbol{font-size:43px;line-height:1;width:47px;text-align:center;flex:0 0 47px}.wx-temperature{font-size:25px;font-weight:850;color:#173b35;letter-spacing:-.9px;font-variant-numeric:tabular-nums;line-height:1.2}.wx-temperature small{font-size:15px;letter-spacing:0;font-weight:700}.wx-condition{font-size:12px;color:#5b7265;margin:6px 0 0}.wx-current{font-size:12px;color:#365f50;font-weight:750;margin-top:8px}
+.wx-wear{background:#fff;border:1px solid #e2eae0;border-radius:12px;padding:13px 14px;margin-top:12px}.wx-wear-label{color:#866038;font-size:11px;font-weight:850;letter-spacing:.4px;margin-bottom:5px}.wx-wear p{font-size:13px;line-height:1.7;color:#3b5549}.wx-specific{margin-top:7px!important;color:#64776c!important;font-size:12px!important}
+.wx-meta{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:5px 12px;color:#74857b;font-size:10px;margin-top:12px;line-height:1.5}.wx-meta a{font-size:10px;color:#557667}.wx-message{font-size:13px;line-height:1.7;color:#5d7266;margin:12px 0}.wx-note{font-size:11px;color:#936f40;margin-top:10px}
+.daywx{font-size:10px!important;font-weight:850;color:#6b8575;min-height:16px;line-height:1.1;margin-top:2px}.daybtn[aria-selected=true] .daywx{color:#e5cfac}
+@media(min-width:700px){.wx-panel{padding:22px 24px}.wx-main{margin-top:15px}.wx-temperature{font-size:31px}.wx-symbol{font-size:48px}.wx-wear p{font-size:14px}}
 @media(min-width:700px){.site{padding:0 34px 55px}.mast{height:83px}.hero{padding:40px 45px;min-height:268px}.hero-route{display:block;position:absolute;right:50px;top:73px;font:24px Georgia,serif;opacity:.72}.hero-bottom{margin-top:23px}.underhero{grid-template-columns:1fr 1fr;margin-top:15px;margin-bottom:34px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid>.block{margin:0}.daystrip{margin:0 0 23px;padding:3px 0 10px}.event{grid-template-columns:106px minmax(0,1fr);gap:17px}.event:before{left:121px}.event-time{font-size:13px}.event-card{padding:19px 21px}.event-card:before{left:-9px}.event-title{font-size:18px}.day-summary h2{font-size:26px}.section-top h2{font-size:27px}.desktopnav{display:flex;gap:5px}.desktopnav .navitem{height:40px;font-size:13px;min-width:85px;flex-direction:row;gap:7px}.desktopnav .navitem i{font-size:18px}.bottom-nav{display:none}.site-foot{padding:40px 0 0}.expense-form{grid-template-columns:2fr 1fr 1fr auto}.expense-form .field.full{grid-column:auto}.expense-form button{grid-column:auto;align-self:end}.block{padding:22px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 </style>
@@ -120,9 +130,145 @@ function navMarkup(){return navs.map(function(n){return '<button type="button" c
 function updateNav(){document.body.classList.toggle('page-sub',screen!=='itinerary');var html=navMarkup();$('desktopnav').innerHTML=html;$('bottomnav').innerHTML=html;document.querySelectorAll('.section').forEach(function(s){s.classList.toggle('active',s.id==='s-'+screen)})}
 function showScreen(to,doHash){screen=to;updateNav();if(to==='ready')renderTasks();if(to==='more')renderExpenses();if(to==='itinerary')renderDay();if(doHash!==false)history.replaceState(null,'',to==='itinerary'?'#day='+D.days[dayIndex].date:'#'+to);window.scrollTo({top:0,behavior:'auto'})}
 function statusClass(v){return v==='paid'||v==='confirmed'||v==='reserved'?'ok':v==='pending'?'pending':v==='tentative'?'uncertain':''}
-function dayButtons(){return D.days.map(function(d,i){return '<button type="button" class="daybtn" role="tab" aria-selected="'+(i===dayIndex)+'" data-day="'+i+'"><small>NOV · '+d.weekday+'</small><b>'+d.date.slice(-2)+'</b><small>'+({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'SFO'}[d.city]||d.city)+'</small></button>'}).join('')}
+function dayButtons(){return D.days.map(function(d,i){return '<button type="button" class="daybtn" role="tab" aria-selected="'+(i===dayIndex)+'" data-day="'+i+'"><small>NOV · '+d.weekday+'</small><b>'+d.date.slice(-2)+'</b><small>'+({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'SFO'}[d.city]||d.city)+'</small><span class="daywx" data-weather-day="'+i+'">—</span></button>'}).join('')}
 function showMore(e){var body='';if(e.desc)body+='<p>'+E(e.desc)+'</p>';if(e.trans)body+='<p><b>交通：</b>'+E(e.trans)+'</p>';if(e.sub.length)body+='<ul class="subs subitems">'+e.sub.map(function(s){return '<li>'+E(s)+'</li>'}).join('')+'</ul>';if(e.weather)body+='<p><b>天氣備案：</b>'+E(e.weather)+'</p>';if(e.warn)body+='<p class="notice">'+E(e.warn)+'</p>';if(e.place&&e.place.length>4)body+='<div class="actionrow"><a class="action primary" target="_blank" rel="noopener noreferrer" href="'+mapurl(e.place)+'">Google Maps 導航 ↗</a></div>';return body}
-function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+(body?'<details><summary>詳細資訊／地圖</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<div class="day-summary"><h2>'+E(md(d.date)+'（'+d.weekday+'）｜'+d.title)+'</h2><span class="citypill">'+E(d.city)+'</span></div><div class="highlight">'+E(d.highlight)+'</div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'})}
+function renderDay(){var d=D.days[dayIndex];$('daystrip').innerHTML=dayButtons();var selected=$('daystrip').querySelector('[aria-selected=true]');if(selected)selected.scrollIntoView({inline:'center',block:'nearest'});var events=D.events.filter(function(x){return x.date===d.date});var cards=events.map(function(e){var body=showMore(e);return '<div class="event"><div class="event-time">'+E(e.time)+'</div><article class="event-card"><div class="event-category"><span class="minilabel">'+E(e.cat)+'</span><span class="status '+statusClass(e.state)+'">'+E(e.status)+'</span></div><div class="event-title">'+E(e.title)+'</div>'+(body?'<details><summary>詳細資訊／地圖</summary>'+body+'</details>':'')+'</article></div>'}).join('');$('daycontent').innerHTML='<div class="day-summary"><h2>'+E(md(d.date)+'（'+d.weekday+'）｜'+d.title)+'</h2><span class="citypill">'+E(d.city)+'</span></div><div class="highlight">'+E(d.highlight)+'</div><div id="weatherSlot" aria-live="polite"></div><div class="timeline">'+cards+'</div>';var date=$('daystrip').querySelector('[aria-selected=true]');if(date)date.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});refreshWeatherUI()}
+
+/* Weather data: Open-Meteo non-commercial forecast; live current conditions only for the selected local date */
+var WEATHER_CACHE='winter-notes-forecast-2026-v2';
+var weatherPlaces={
+sfo:{name:'舊金山機場 SFO',lat:37.6213,lon:-122.3790,zone:'America/Los_Angeles'},
+munich:{name:'慕尼黑 Munich',lat:48.1374,lon:11.5755,zone:'Europe/Berlin'},
+schwangau:{name:'天鵝堡區 Schwangau',lat:47.5562,lon:10.7498,zone:'Europe/Berlin'},
+prague:{name:'布拉格 Prague',lat:50.0755,lon:14.4378,zone:'Europe/Prague'},
+krumlov:{name:'庫倫洛夫 Český Krumlov',lat:48.8127,lon:14.3175,zone:'Europe/Prague'}
+};
+var weatherDays={
+'2026-11-19':'sfo','2026-11-20':'munich','2026-11-21':'munich',
+'2026-11-22':'schwangau','2026-11-23':'prague',
+'2026-11-24':'prague','2026-11-25':'prague',
+'2026-11-26':'krumlov','2026-11-27':'prague'
+};
+var weatherStore={},weatherErrors={},weatherLoading=false,weatherLastRequest=0;
+try{var oldWeather=JSON.parse(localStorage.getItem(WEATHER_CACHE)||'{}');if(oldWeather&&typeof oldWeather==='object')weatherStore=oldWeather}catch(e){}
+function localDateFor(zone){
+var pieces=new Intl.DateTimeFormat('en-US',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+var p={};pieces.forEach(function(x){p[x.type]=x.value});return p.year+'-'+p.month+'-'+p.day
+}
+function weatherLabel(code){
+if(code===0)return {icon:'☀️',name:'晴朗'};
+if(code===1||code===2)return {icon:'🌤️',name:'晴時多雲'};
+if(code===3)return {icon:'☁️',name:'陰天'};
+if(code===45||code===48)return {icon:'🌫️',name:'有霧'};
+if([51,53,55,56,57].includes(code))return {icon:'🌦️',name:'毛毛雨'};
+if([61,63,65,66,67,80,81,82].includes(code))return {icon:'🌧️',name:'有雨'};
+if([71,73,75,77,85,86].includes(code))return {icon:'❄️',name:'有雪'};
+if([95,96,99].includes(code))return {icon:'⛈️',name:'雷雨'};
+return {icon:'🌡️',name:'天氣變化'}
+}
+function forecastFor(day){
+var key=weatherDays[day.date],saved=weatherStore[key],daily=saved&&saved.data&&saved.data.daily;
+if(!daily||!Array.isArray(daily.time))return null;
+var i=daily.time.indexOf(day.date);if(i<0)return null;
+var hi=daily.temperature_2m_max&&daily.temperature_2m_max[i],lo=daily.temperature_2m_min&&daily.temperature_2m_min[i];
+if(hi===null||lo===null||!Number.isFinite(Number(hi))||!Number.isFinite(Number(lo)))return null;
+function num(v){return v===null||v===undefined||!Number.isFinite(Number(v))?null:Number(v)}
+return {hi:Number(hi),lo:Number(lo),rain:num(daily.precipitation_probability_max&&daily.precipitation_probability_max[i]),wind:num(daily.wind_speed_10m_max&&daily.wind_speed_10m_max[i]),code:num(daily.weather_code&&daily.weather_code[i]),current:saved.data.current||null,updated:saved.updated}
+}
+function clothingGuide(day,forecast,nowData){
+if(!forecast)return '一般冬季準備：保暖外套、長袖中層、長褲、防水防滑的鞋；實際厚度請在預報開放後再確認。';
+var low=Math.min(forecast.lo,forecast.hi),high=Math.max(forecast.lo,forecast.hi);
+var apparent=nowData&&nowData.apparent_temperature;
+if(apparent!=null&&Number.isFinite(Number(apparent)))low=Math.min(low,Number(apparent));
+var lead;
+if(low<=-3||high<=2)lead='寒冷：發熱保暖內搭＋毛衣或刷毛中層＋厚羽絨／保暖防風外套；穿厚襪、手套、圍巾與帽子。';
+else if(low<=3||high<=7)lead='偏冷：保暖內搭＋毛衣或刷毛中層＋羽絨或厚冬外套；建議帶手套與圍巾。';
+else if(low<=8||high<=12)lead='涼冷：長袖上衣＋薄毛衣或刷毛中層＋防風保暖外套；怕冷可加薄保暖內搭。';
+else lead='氣溫較溫和：長袖上衣＋可穿脫的保暖外套，早晚另外加一層。';
+var extra=[];
+if([71,73,75,77,85,86].includes(forecast.code))extra.push('有降雪訊號：穿防水、防滑鞋，留意結冰路面');
+else if([51,53,55,56,57,61,63,65,66,67,80,81,82,95,96,99].includes(forecast.code)||(forecast.rain!=null&&forecast.rain>=50))extra.push('帶防水外層或雨傘，鞋子以防水為佳');
+if(forecast.wind!=null&&forecast.wind>=30)extra.push('風較大：加強防風並遮住頸部');
+if(extra.length)lead+=' '+extra.join('；')+'。';
+return lead
+}
+function dayClothingNote(day){
+if(day.date==='2026-11-19')return '晚上搭長途班機，隨身包可放薄外套；到慕尼黑再換冬季外套。';
+if(day.date==='2026-11-20')return '17:55 才抵達慕尼黑，晚間搭 S8 與步行時請以接近低溫的穿法準備。';
+if(day.date==='2026-11-22')return '城堡位於山區，可能比慕尼黑市區更冷；四人都建議穿保暖分層與止滑鞋。';
+if(day.date==='2026-11-23')return '此卡顯示抵達後的布拉格天氣；05:40 慕尼黑清晨接送也請準備保暖手套與厚外套。';
+if(day.date==='2026-11-24')return '城堡與佩特任山戶外時間較長，孩子可多帶一件好穿脫的保暖中層。';
+if(day.date==='2026-11-26')return '庫倫洛夫老城石板路、河畔容易濕滑；防水止滑鞋與手套優先。';
+if(day.date==='2026-11-27')return '06:30 飯店出發送機；清晨可能接近當日低溫，外套不要先放入托運行李。';
+return '兩位孩子也建議採分層穿法，進入室內後可方便脫下外套。'
+}
+function weatherMeta(key,updated){
+var place=weatherPlaces[key],out=[];
+if(updated){out.push('預報取得：'+new Date(updated).toLocaleString('zh-TW',{timeZone:place.zone,month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+'（當地）')}
+if(weatherErrors[key])out.push('目前連線更新失敗，顯示上次取得資料');
+else if(updated&&Date.now()-updated>2*3600000)out.push('快取資料，請點更新');
+return out.join(' · ')
+}
+function weatherCard(){
+var node=$('weatherSlot');if(!node)return;
+var day=D.days[dayIndex],key=weatherDays[day.date],place=weatherPlaces[key],result=forecastFor(day);
+var top='<div class="wx-head"><div><div class="wx-caption">Daily weather · 每日天氣</div><h3 class="wx-place">'+E(place.name)+'</h3></div><button class="wx-refresh" type="button" data-weather-refresh="1" '+(weatherLoading?'disabled':'')+'>'+(weatherLoading?'更新中…':'↻ 更新天氣')+'</button></div>';
+var credit='<div class="wx-meta"><span>'+(result?E(weatherMeta(key,result.updated)):'天氣由氣象預報服務提供；不等於確定天氣')+'</span><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather by Open-Meteo ↗</a></div>';
+var note='<p class="wx-specific">'+E(dayClothingNote(day))+'</p>';
+var main='';
+if(!result){
+var localDay=localDateFor(place.zone),msg=day.date<localDay?'這個日期已過，網站未保存歷史實況。':weatherLoading?'正在取得當地最新預報…':weatherErrors[key]?'目前無法連上氣象服務，請稍後點選「更新天氣」。':'目前尚無這一天的可用預報，請在日期接近時再查看。';
+main='<p class="wx-message">'+E(msg)+'</p><div class="wx-wear"><div class="wx-wear-label">🧥 穿衣建議（一般冬季準備）</div><p>'+E(clothingGuide(day,null,null))+'</p>'+note+'</div>';
+}else{
+var desc=weatherLabel(result.code),hi=Math.round(result.hi),lo=Math.round(result.lo);
+var isCurrent=day.date===localDateFor(place.zone),nowData=isCurrent?result.current:null;
+var nowTemp=nowData&&nowData.temperature_2m!=null&&Number.isFinite(Number(nowData.temperature_2m))?Math.round(Number(nowData.temperature_2m)):null;
+var apparent=nowData&&nowData.apparent_temperature!=null&&Number.isFinite(Number(nowData.apparent_temperature))?Math.round(Number(nowData.apparent_temperature)):null;
+var rainTxt=result.rain===null?'降雨機率暫缺':('降雨機率 '+Math.round(result.rain)+'%');
+var windTxt=result.wind===null?'風速暫缺':('最大風速 '+Math.round(result.wind)+' km/h');
+main='<div class="wx-main"><span class="wx-symbol" aria-hidden="true">'+desc.icon+'</span><div><div class="wx-temperature">'+lo+'° — '+hi+'° <small>C</small></div><p class="wx-condition">'+E(desc.name)+' · '+E(rainTxt)+' · '+E(windTxt)+'</p>'+(nowTemp===null?'':'<p class="wx-current">目前 '+nowTemp+'°C'+(apparent===null?'':' · 體感 '+apparent+'°C')+'（當地即時觀測／模型資料）</p>')+'</div></div>';
+main+='<div class="wx-wear"><div class="wx-wear-label">🧥 今天怎麼穿</div><p>'+E(clothingGuide(day,result,nowData))+'</p>'+note+'</div>';
+if(day.date>localDateFor(place.zone))main+='<p class="wx-note">這是未來日期的預報，不是當日即時觀測；接近出發日再確認一次。</p>';
+}
+node.innerHTML='<section class="wx-panel" aria-label="當日天氣及穿衣建議">'+top+main+credit+'</section>'
+}
+function updateWeatherPills(){
+var buttons=$('daystrip');if(!buttons)return;
+buttons.querySelectorAll('[data-weather-day]').forEach(function(el){
+var d=D.days[Number(el.dataset.weatherDay)],fc=forecastFor(d);
+if(fc){var info=weatherLabel(fc.code);el.textContent=info.icon+' '+Math.round(fc.hi)+'°'}
+else el.textContent='—'
+})
+}
+function refreshWeatherUI(){weatherCard();updateWeatherPills()}
+function loadWeatherAll(force){
+if(weatherLoading)return;
+if(!force&&weatherLastRequest&&Date.now()-weatherLastRequest<30*60000)return;
+weatherLoading=true;weatherLastRequest=Date.now();refreshWeatherUI();
+var entries=Object.keys(weatherPlaces);
+Promise.all(entries.map(function(key){
+var w=weatherPlaces[key];
+var qs=new URLSearchParams({
+latitude:String(w.lat),longitude:String(w.lon),timezone:w.zone,
+forecast_days:'16',
+current:'temperature_2m,apparent_temperature,weather_code,wind_speed_10m',
+daily:'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max',
+temperature_unit:'celsius',wind_speed_unit:'kmh'
+});
+return fetch('https://api.open-meteo.com/v1/forecast?'+qs.toString(),{cache:'no-store'})
+.then(function(resp){if(!resp.ok)throw Error('HTTP '+resp.status);return resp.json()})
+.then(function(json){if(json.error||!json.daily||!Array.isArray(json.daily.time))throw Error('Invalid weather response');weatherStore[key]={data:json,updated:Date.now()};delete weatherErrors[key]})
+.catch(function(err){weatherErrors[key]=true})
+})).then(function(){
+try{localStorage.setItem(WEATHER_CACHE,JSON.stringify(weatherStore))}catch(e){}
+weatherLoading=false;refreshWeatherUI()
+}).catch(function(){weatherLoading=false;refreshWeatherUI()})
+}
+document.addEventListener('click',function(ev){if(ev.target.closest('[data-weather-refresh]')){loadWeatherAll(true)}});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)loadWeatherAll(false)});
+window.addEventListener('online',function(){loadWeatherAll(true)});
+setInterval(function(){if(!document.hidden)loadWeatherAll(false)},30*60000);
+
 function statBox(id,label,body){return '<div class="block"><div class="tinycaps">'+label+'</div><h3 style="margin:6px 0 10px">'+id+'</h3>'+body+'</div>'}
 function renderTravel(){var fs=D.flights.map(function(f){return statBox(E(f.flight),E(fmt(f.date))+' · '+E(f.carrier),'<div class="kv"><span>航線</span><span>'+E(f.from)+' → '+E(f.to)+'</span></div><div class="kv"><span>起飛</span><span>'+E(f.departure.replace('T',' '))+'</span></div><div class="kv"><span>抵達</span><span>'+E(f.arrival.replace('T',' '))+'</span></div>')}).join('');$('transportcards').innerHTML=fs;var hs=D.hotels.map(function(h){return statBox(E(h.name),E(h.city)+' · '+E(h.nights)+' 晚','<div class="kv"><span>住宿日期</span><span>'+E(fmt(h.checkin))+' → '+E(fmt(h.checkout))+'</span></div><div class="kv"><span>地址</span><span>'+E(h.address)+'</span></div><div class="kv"><span>交通</span><span>'+E(h.station)+'</span></div><div class="actionrow"><a class="action primary" target="_blank" rel="noopener noreferrer" href="'+mapurl(h.address)+'">導航至飯店 ↗</a></div>')}).join('');$('hotelcards').innerHTML=hs}
 function isChecked(x){return Object.prototype.hasOwnProperty.call(state.checked,x.id)?!!state.checked[x.id]:!!x.done}
@@ -137,7 +283,7 @@ document.addEventListener('change',function(ev){if(ev.target.matches('[data-chec
 $('expenseForm').addEventListener('submit',function(e){e.preventDefault();addExpense(e.currentTarget)});
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 window.addEventListener('hashchange',fromHash);
-renderTravel();renderShopping();renderTasks();renderExpenses();updateHero();fromHash();
+renderTravel();renderShopping();renderTasks();renderExpenses();updateHero();fromHash();loadWeatherAll(true);
 if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){})});
 })();
 </script>
