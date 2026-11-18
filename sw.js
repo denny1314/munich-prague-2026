@@ -1,10 +1,10 @@
 /* Munich & Prague family itinerary offline shell.
    HTML contains all CSS, JS and travel JSON; external maps/weather still need a connection. */
-const CACHE_NAME='mp26-core-20261117-v2';
+const CACHE_NAME='mp26-core-20261117-v3';
 const CACHE_PREFIX='mp26-core-';
 const BASE=new URL(self.registration.scope);
 const INDEX_URL=new URL('./index.html',BASE).href;
-const CORE_URLS=[INDEX_URL,new URL('./manifest.webmanifest',BASE).href,new URL('./icon.svg',BASE).href];
+const CORE_URLS=[INDEX_URL,...['styles.css','app.js','trip.json','manifest.webmanifest','icon.svg'].map(p=>new URL('./'+p,BASE).href)];
 const CORE_SET=new Set(CORE_URLS);
 
 async function notifyTabs(type){
@@ -25,6 +25,7 @@ self.addEventListener('activate',event=>{
     await Promise.all(keys.filter(name=>(name.startsWith(CACHE_PREFIX)&&name!==CACHE_NAME)||name==='winter-notes-2026-v1').map(name=>caches.delete(name)));
     await self.clients.claim();
     await notifyTabs('TRIP_CACHE_READY');
+    await notifyTabs('TRIP_UPDATE_READY');
   })());
 });
 async function cacheFirst(request,key,isDocument){
@@ -49,7 +50,7 @@ async function refreshCore(key){
     const previousText=await old.clone().text(),nextText=await fresh.clone().text();
     if(previousText===nextText)return;
     await cache.put(key,fresh.clone());
-    if(key===INDEX_URL)await notifyTabs('TRIP_UPDATE_READY');
+    await notifyTabs('TRIP_UPDATE_READY');
   }catch(error){
     // Offline network failures do not invalidate previously saved itinerary data.
   }
