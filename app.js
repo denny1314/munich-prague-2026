@@ -241,7 +241,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v3',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v4',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -254,7 +254,7 @@ else{zh='此瀏覽器不支援離線快取';en='Offline caching unsupported';sta
 text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程'
 }
 async function checkOfflineCache(){if(!('caches' in window)){offlineReady=false;renderOfflineStatus();return}
-try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','app.js','trip.json','manifest.webmanifest','icon.svg'].map(function(p){return new URL('./'+p,location.href).href});
+try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','app.js','trip.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
 var found=await Promise.all(urls.map(function(url){return cache.match(url)}));offlineReady=found.every(Boolean)}
 catch(e){offlineReady=false}
 renderOfflineStatus()

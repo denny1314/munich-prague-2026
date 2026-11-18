@@ -1,10 +1,10 @@
 /* Munich & Prague family itinerary offline shell.
    HTML contains all CSS, JS and travel JSON; external maps/weather still need a connection. */
-const CACHE_NAME='mp26-core-20261117-v3';
+const CACHE_NAME='mp26-core-20261117-v4';
 const CACHE_PREFIX='mp26-core-';
 const BASE=new URL(self.registration.scope);
 const INDEX_URL=new URL('./index.html',BASE).href;
-const CORE_URLS=[INDEX_URL,...['styles.css','app.js','trip.json','manifest.webmanifest','icon.svg'].map(p=>new URL('./'+p,BASE).href)];
+const CORE_URLS=[INDEX_URL,...['styles.css','app.js','trip.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(p=>new URL('./'+p,BASE).href)];
 const CORE_SET=new Set(CORE_URLS);
 
 async function notifyTabs(type){
