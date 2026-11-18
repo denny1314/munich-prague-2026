@@ -1,11 +1,14 @@
 (async function(){
 'use strict';
-var D;
+var D,EN=null,lang='zh',LANG_KEY='mp26-preferred-language';
+try{if(localStorage.getItem(LANG_KEY)==='en')lang='en'}catch(e){}
 try{
   const response=await fetch('./trip.json');
   if(!response.ok)throw Error('Cannot read trip.json: '+response.status);
   D=await response.json();
   if(!D||!Array.isArray(D.days)||!Array.isArray(D.events))throw Error('Invalid trip data');
+  try{var eResponse=await fetch('./trip-en.json');if(eResponse.ok)EN=await eResponse.json()}catch(e){console.warn('English data unavailable',e)}
+  if(lang==='en'&&!EN)lang='zh';
 }catch(err){
   var heading=document.getElementById('todayLabel');
   var hint=document.getElementById('todayDesc');
@@ -14,7 +17,7 @@ try{
   console.error('Trip data unavailable',err);
   return;
 }
-try{localStorage.removeItem('munich-prague-lang-v1')}catch(e){}
+/* Language preference is retained on this browser. */
 var KEY='winter-notes-2026-v1', navs=[{id:'itinerary',name:'行程',icon:'◷'},{id:'travel',name:'交通',icon:'↗'},{id:'ready',name:'待辦',icon:'✓'},{id:'more',name:'筆記',icon:'≡'}];
 var state={checked:{},expenses:[],rates:{EUR:35,CZK:1.4},usdRates:{EUR:null,CZK:null}};try{var saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(saved&&typeof saved==='object'){state.checked=saved.checked||{};state.expenses=Array.isArray(saved.expenses)?saved.expenses:[];if(saved.rates&&typeof saved.rates==='object'){['EUR','CZK'].forEach(function(k){var v=saved.rates[k];state.rates[k]=v!==null&&v!==''&&Number.isFinite(Number(v))&&Number(v)>0?Number(v):null})}if(saved.usdRates&&typeof saved.usdRates==='object'){['EUR','CZK'].forEach(function(k){var r=saved.usdRates[k];state.usdRates[k]=r!==null&&r!==''&&Number.isFinite(Number(r))&&Number(r)>0?Number(r):null})}}}catch(e){}
 var dayIndex=pickToday(),screen='itinerary',toastTimer;
@@ -267,7 +270,7 @@ function isChecked(x){var a=taskDerived(x);return a?a.done:Object.prototype.hasO
 function renderTasks(){var all=D.todos.concat(D.packing),n=all.filter(isChecked).length,pct=Math.round(100*n/all.length);$('taskCount').textContent='已完成 '+n+' / '+all.length+' 項 · 訂票狀態從行程自動更新，其餘在此裝置儲存';$('taskFill').style.width=pct+'%';var groups=[['行前待辦',D.todos],['行李打包',D.packing]];$('tasks').innerHTML=groups.map(function(g){return '<h3 class="task-group">'+g[0]+'</h3><div class="block" style="padding:4px 14px">'+g[1].map(function(x){var derived=taskDerived(x),done=isChecked(x);return '<label class="task '+(derived?'task-derived':'')+'"><input type="checkbox" '+(derived?'disabled title="依行程狀態自動更新"':'data-check="'+E(x.id)+'"')+' '+(done?'checked':'')+'><span>'+E(x.text)+'</span>'+(derived?'<small class="'+(done?'':'pending')+'">'+E(derived.label)+'</small>':'')+'</label>'}).join('')+'</div>'}).join('')}
 function renderShopping(){$('shopping').innerHTML=D.shopping.map(function(s){return '<div class="shop"><strong>'+E(s.name)+'</strong><small>'+E(s.city)+'</small><p>'+E(s.tip)+'</p><a target="_blank" rel="noopener noreferrer" href="'+mapurl(s.address)+'">地圖導航 ↗</a>'+(s.website?'　<a target="_blank" rel="noopener noreferrer" href="'+E(s.website)+'">官方資訊 ↗</a>':'')+'</div>'}).join('')}
 function usdRate(currency){var r=state.usdRates[currency];return typeof r==='number'&&Number.isFinite(r)&&r>0?r:null}
-function L(zh,en){return zh}
+function L(zh,en){return lang==='en'?en:zh}
 function formatUSD(value){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(value)}
 function initializeRates(){['EUR','CZK'].forEach(function(k){var input=$('rate'+k);if(input)input.value=usdRate(k)===null?'':String(usdRate(k))})}
 function renderExpenses(){var totals={};state.expenses.forEach(function(x){var v=Number(x.amount);if(Number.isFinite(v)&&v>=0)totals[x.currency]=(totals[x.currency]||0)+v});
@@ -324,7 +327,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v8',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v9',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -363,6 +366,165 @@ reg.update().catch(function(){})
 }
 renderOfflineStatus();
 // Register offline support before starting the UI, so a future UI error cannot stall caching.
+
+/* Bilingual presentation: all bookings remain in the same trip.json. */
+var UI_EN={"家庭旅行":"Family Trip","家庭旅行行程表":"Family itinerary","2026 慕尼黑・布拉格":"Munich & Prague 2026","從巴伐利亞的聖誕市集，到波希米亞的冬日老城。":"From Bavarian Christmas markets to the historic streets of Bohemia.","一家四口的九天旅行手帳。":"A nine-day travel journal for our family of four.","2 位大人 · 2 位孩子":"2 adults · 2 kids","每日行程 · 交通 · 住宿":"Itinerary · Transport · Hotels","COMING UP · 下一站":"COMING UP · NEXT STOP","尋找下一站…":"Finding the next stop…","行程時間":"Event time","出門／集合":"Leave / Meet","依當地時間":"All times are local","查看行程":"View day","Google Maps 導航 ↗":"Google Maps directions ↗","旅程準備中":"Getting ready","選擇日期查看完整行程":"Choose a date to see your plans","行前重要提醒":"Pre-trip reminders","正在檢查行程狀態…":"Checking booking status…","每日行程":"Daily itinerary","點選日期，展開活動詳情與導航":"Pick a date to explore activities and directions","回到今天":"Go to today","交通與住宿":"Transport and hotels","一鍵查地址、車次與重要時間":"Flights, transfers, trains and hotel details","機場接送 · 四段":"Four airport and station transfers","已購票":"Tickets purchased","二等艙 · 259 車廂 · 54 / 56 / 65 / 67 座位":"Second class · Coach 259 · Seats 54 / 56 / 65 / 67","ČD 官方列車資訊 ↗":"ČD train information ↗","住宿資訊":"Hotels","當地交通小抄":"Local transit tips","11/20 慕尼黑機場":"Nov 20: Munich Airport","11/26 CK 小鎮":"Nov 26: Český Krumlov","S8 → Rosenheimer Platz → Motorama 通道 → Holiday Inn；抵達時確認通道是否開放":"S8 to Rosenheimer Platz, then the Motorama passage to Holiday Inn. Check whether it is open.","RegioJet／FlixBus 往返尚未購票，務必核對正確車站":"RegioJet/FlixBus tickets not booked yet. Confirm the exact bus station.","行前準備":"Trip checklist","勾選進度儲存在這支手機或目前瀏覽器":"Progress is saved in this browser.","勾選狀態只存在此瀏覽器，不會自動同步到另一支手機。":"Checkmarks stay on this device and do not sync.","旅行筆記":"Travel notes","簡單記帳、購物地點與實用連結":"Expenses, shopping and useful links","旅費記帳":"Travel expenses","保留原幣金額，並用自訂匯率估算美元（USD）總額；資料只存在此裝置。":"Keep original amounts and estimate USD totals with custom exchange rates. Data stays on this device.","用途":"Description","金額":"Amount","幣別":"Currency","＋ 新增":"+ Add","自訂匯率 · 美元估算":"Custom exchange rates · USD estimates","請手動輸入 1 EUR 和 1 CZK 約合多少 USD。舊台幣匯率不會沿用；未設定時不估算該幣別。":"Enter your estimated USD per EUR and CZK. Old TWD rates are not reused; missing rates are excluded.","購物與想逛的地方":"Shopping ideas","實用工具":"Useful links","慕尼黑 MVV ↗":"Munich MVV ↗","布拉格 PID ↗":"Prague PID ↗","捷克鐵路 ČD ↗":"Czech Railways ↗","布拉格機場 ↗":"Prague Airport ↗","布拉格城堡 ↗":"Prague Castle ↗","CK 官方旅遊 ↗":"Český Krumlov Tourism ↗","此網站可公開瀏覽，因此不存放私人訂房編號、完整電子票、乘客資料或專屬改訂連結。驗票請使用自行離線保存的原始 PDF／航空公司 App。":"This public website does not store private booking numbers, full tickets or traveler details. Keep private PDFs and airline apps for check-in.","時間為當地時間；票券、交通、場館開放與實際集合位置以當日官方資訊為準。":"All times are local. Verify schedules, tickets and meeting points with providers.","行程資料整理於 2026/11/16 · 個人記帳與勾選不跨裝置同步。":"Itinerary prepared Nov 16, 2026; personal checkmarks and expenses do not sync.","正在準備離線行程…":"Preparing offline itinerary…","更新行程":"Reload itinerary","已備妥離線行程 · 無網路也能看":"Offline itinerary saved · Available without internet","慕尼黑":"Munich","布拉格":"Prague","今晚住宿 · Tonight’s hotel":"TONIGHT'S HOTEL","地圖導航 ↗":"Map directions ↗","官方資訊 ↗":"Official info ↗","目前沒有支出紀錄":"No expenses recorded","11/23 請核對 EC 353 的實際月台；接送資訊請看上方機場接送。":"Check the EC353 platform on Nov 23. Transfers are listed above."},STATUS_EN={"已確認":"Confirmed","門票待購":"Tickets not purchased","自由安排":"Flexible","建議行程":"Suggested","已購票／已付款":"Purchased and paid","已訂房／房晚待核對":"Booked; verify room count","巴士尚未購票":"Bus not booked","回程車票未買":"Return ticket not bought","往返車票未買":"Round trip not booked","共同規劃／集合時間待確認":"Plan with friends; time unconfirmed","規劃時間／往返未購票":"Tentative; tickets not booked","同行規劃／庭院散步":"Planned walk with friends","與朋友同行／規劃":"Planning with friends","餐廳未訂位":"Restaurant not reserved","市集規劃／營業時間待再確認":"Market planned; hours to verify","返抵時間預估":"Estimated hotel arrival","抵達時間待確認":"Arrival time unconfirmed","條件適用／先核對登機門":"Gate-dependent","可選／需確認入場":"Optional; check access","可選／非保證入場":"Optional; entry not guaranteed"},CAT_EN={"機場接送":"Airport transfer","交通":"Transport","航班":"Flight","休息":"Rest","住宿":"Hotel","餐飲":"Food","景點":"Sightseeing","活動":"Guided tour","購物":"Shopping","節慶":"Christmas market","火車":"Train","貴賓室":"Airport lounge"},DAY_EN={"一":"Mon","二":"Tue","三":"Wed","四":"Thu","五":"Fri","六":"Sat","日":"Sun"};
+var originals=new WeakMap();
+function localTime(v){
+ if(lang!=='en')return v;
+ var x=String(v||'');
+ var fixed={'起飛前':'Before takeoff','夜間':'Overnight','早餐後':'After breakfast','午餐後彈性':'Flexible after lunch','上午至下午':'Morning–afternoon','行程期間':'During the tour','晚間':'Evening','抵達後':'After arrival','Check-in 後':'After check-in','報到後／登機前':'After check-in / before boarding','安檢後／09:40 起飛前':'After security / before 9:40 flight','轉機候機／登機前':'During connection'};
+ if(fixed[x])return fixed[x];
+ return x.replace(/（可調）/g,'(flexible)').replace(/（待訂）/g,'(not booked)').replace(/（預估）/g,'(estimated)').replace(/（規劃）/g,'(planned)').replace(/（彈性）/g,'(flexible)').replace(/前後/g,'around').replace(/約 /g,'about ').replace(/ 後$/g,' onward');
+}
+function dayEnglish(day){return EN&&EN.days&&EN.days[day.date]||{}}
+function eventEnglish(e){return EN&&EN.events&&EN.events[e.id]||{}}
+function statusEnglish(e){return STATUS_EN[e.status]||({'paid':'Paid','confirmed':'Confirmed','reserved':'Reserved','pending':'Not booked','planned':'Planned','tentative':'Tentative'}[e.state]||'Planned')}
+function staticText(){
+ var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
+ while((node=walker.nextNode())){
+  if(node.parentElement&&node.parentElement.closest('script,style,#daycontent,#daystrip,#rideCards,#transportcards,#hotelcards,#shopping,#tasks,#expenseTotals,#expenseRows,#nextStopCard,#criticalSignal,#todayLabel,#todayDesc,#offlineStatus'))continue;
+  var orig=originals.has(node)?originals.get(node):node.nodeValue;
+  if(!originals.has(node))originals.set(node,orig);
+  var key=orig.trim(),replacement=lang==='en'?(UI_EN[key]||key):orig;
+  if(lang==='en'&&key){var i=orig.indexOf(key);replacement=orig.slice(0,i)+replacement+orig.slice(i+key.length)}
+  if(node.nodeValue!==replacement)node.nodeValue=replacement;
+ }
+ document.documentElement.lang=lang==='en'?'en':'zh-Hant';
+ document.title=lang==='en'?'Munich & Prague 2026 | Family Travel Itinerary':'2026 慕尼黑・布拉格家庭旅行｜每日行程與交通';
+ var toggle=$('languageToggle');if(toggle){toggle.textContent=lang==='en'?'中文':'EN';toggle.setAttribute('aria-label',lang==='en'?'切換繁體中文':'Switch to English')}
+ var field=document.querySelector('input[name="name"]');if(field)field.placeholder=lang==='en'?'e.g. Lunch or metro tickets':'例：午餐／地鐵票';
+}
+function localizeWeather(){
+ if(lang!=='en')return;
+ var day=D.days[dayIndex],pane=$('weatherSlot');if(!pane)return;
+ var translations={
+  'Daily weather · 每日天氣':'DAILY WEATHER','↻ 更新天氣':'↻ Refresh weather','更新中…':'Updating…',
+  '🧥 今天怎麼穿':'🧥 What to wear','🧥 穿衣建議（一般冬季準備）':'🧥 Winter clothing tips',
+  '舊金山機場 SFO':'San Francisco Airport SFO','慕尼黑 Munich':'Munich','天鵝堡區 Schwangau':'Schwangau castles',
+  '布拉格 Prague':'Prague','庫倫洛夫 Český Krumlov':'Český Krumlov',
+  '目前尚無這一天的可用預報，請在日期接近時再查看。':'No forecast available yet. Check closer to your trip.',
+  '這個日期已過，網站未保存歷史實況。':'Historical weather was not saved.',
+  '目前無法連上氣象服務，請稍後點選「更新天氣」。':'Weather unavailable. Try Refresh.',
+  '正在取得當地最新預報…':'Fetching forecast…',
+  '這是未來日期的預報，不是當日即時觀測；接近出發日再確認一次。':'This is a forecast; check again closer to travel.'
+ };
+ pane.querySelectorAll('.wx-head h3,.wx-head button,.wx-caption,.wx-wear-label,.wx-message,.wx-note').forEach(function(el){el.textContent=translations[el.textContent]||el.textContent});
+ var f=forecastFor(day),w=pane.querySelector('.wx-wear p:not(.wx-specific)'),specific=pane.querySelector('.wx-specific');
+ if(w){w.textContent=f&&f.lo<=2?'Wear thermals, a sweater, a heavy jacket, gloves, a scarf and warm socks.':'Wear warm layers and waterproof shoes with good grip.';if(f&&f.rain>=50)w.textContent+=' Pack a waterproof outer layer.'}
+ if(specific)specific.textContent=({ '2026-11-19':'Bring a light jacket for the overnight flight.','2026-11-20':'Wear warm layers when arriving in Munich in the evening.','2026-11-21':'Gloves and a scarf will help during the Old Town walk.','2026-11-22':'The castles are colder than Munich. Wear non-slip shoes.','2026-11-23':'The Munich transfer starts at 5:40 AM; keep a warm coat handy.','2026-11-24':'Prague Castle and Petřín involve outdoor walking.','2026-11-25':'Wear comfortable shoes for Old Town cobblestones.','2026-11-26':'CK cobblestones and river paths can be slippery.','2026-11-27':'Keep your coat available for the 6:30 AM airport pickup.'})[day.date]||'Dress in layers.';
+ var condition=pane.querySelector('.wx-condition');
+ if(condition)condition.textContent=condition.textContent.replace(/晴朗/g,'Sunny').replace(/晴時多雲/g,'Partly cloudy').replace(/陰天/g,'Cloudy').replace(/有雨/g,'Rain').replace(/有雪/g,'Snow').replace(/有霧/g,'Fog').replace(/毛毛雨/g,'Drizzle').replace(/最高降雨機率/g,'Max rain chance').replace(/最大風速/g,'Max wind').replace(/降雨機率暫缺/g,'Rain chance unavailable').replace(/風速暫缺/g,'Wind unavailable');
+ var current=pane.querySelector('.wx-current');if(current)current.textContent=current.textContent.replace(/目前/g,'Now').replace(/體感/g,'Feels like').replace(/（當地即時觀測／模型資料）/g,'(local conditions)');
+}
+function localizeDay(){
+ if(lang!=='en')return;
+ var day=D.days[dayIndex],translation=dayEnglish(day),root=$('daycontent');
+ if(!root)return;
+ var heading=root.querySelector('.day-intro h2');if(heading)heading.textContent=translation.title||day.title;
+ var high=root.querySelector('.day-intro .highlight');if(high)high.textContent=translation.highlight||day.highlight;
+ var place=root.querySelector('.citypill');if(place)place.textContent=day.city;
+ var subtitle=root.querySelector('.day-overline span:last-child');if(subtitle)subtitle.textContent='2026.11.'+day.date.slice(-2)+' · '+DAY_EN[day.weekday];
+ $('daystrip').querySelectorAll('.daybtn').forEach(function(btn,i){
+  var s=btn.querySelectorAll('small'),d=D.days[i];if(s[0])s[0].textContent='NOV · '+DAY_EN[d.weekday];if(s[1])s[1].textContent=d.city==='San Francisco'?'SFO':d.city
+ });
+ var events=D.events.filter(e=>e.date===day.date);
+ root.querySelectorAll('.event').forEach(function(card,i){
+  var e=events[i],en=eventEnglish(e);if(!e)return;
+  var title=card.querySelector('.event-title'),time=card.querySelector('.event-time'),cat=card.querySelector('.minilabel'),status=card.querySelector('.status');
+  if(title)title.textContent=en.title||e.title;if(time)time.textContent=localTime(e.time);
+  if(cat)cat.textContent=CAT_EN[e.cat]||e.cat;if(status)status.textContent=statusEnglish(e);
+  var details=card.querySelector('details');
+  if(details){
+   var summary=details.querySelector('summary');if(summary)summary.textContent=shouldShowMap(e)?'Details / Directions':'Details';
+   var ps=details.querySelectorAll(':scope > p');
+   ps.forEach(function(p,j){if(j===0)p.textContent=en.note||'';else p.remove()});
+   details.querySelectorAll('.subitems,.notice').forEach(function(x){x.remove()});
+   details.querySelectorAll('a').forEach(function(link){if(link.href.includes('google.com/maps'))link.textContent='Google Maps directions ↗';else if(link.href.includes('prioritypass.com'))link.textContent=link.textContent.replace('（備選）','(alternative)')});
+  }
+  var caption=card.querySelector('.place-figure figcaption a');if(caption)caption.textContent=caption.textContent.replace(/^照片：/,'Photo: ');
+ });
+ var tonight=root.querySelector('.stay-tonight .stay-kicker');if(tonight)tonight.textContent="TONIGHT'S HOTEL";
+ var link=root.querySelector('.stay-tonight a.action');if(link)link.textContent='Hotel directions ↗';
+ localizeWeather();
+}
+function localizeTravel(){
+ if(lang!=='en')return;
+ var ids=['d1-airport','d5-black','d9-black','d9-uber'];
+ $('rideCards').querySelectorAll('.block').forEach(function(b,i){
+  var e=D.events.find(x=>x.id===ids[i]);if(!e)return;
+  var en=eventEnglish(e),h=b.querySelector('h3');if(h)h.textContent=en.title||e.title;
+  var kv=b.querySelectorAll('.kv');if(kv[0]){var l=kv[0].querySelector('span');if(l)l.textContent='Pickup time'}
+  if(kv[1]){var l2=kv[1].querySelector('span');if(l2)l2.textContent='Booking'}
+  var warn=b.querySelector('.ride-warn');if(warn)warn.textContent=en.note||'Check booking details.';
+ });
+ $('hotelcards').querySelectorAll('.block').forEach(function(b){b.querySelectorAll('.kv span:first-child').forEach(x=>x.textContent='Stay dates');var l=b.querySelector('a.action');if(l)l.textContent='Hotel directions ↗'});
+ $('transportcards').querySelectorAll('.block').forEach(function(b){var labels=['Route','Departure','Arrival'];b.querySelectorAll('.kv span:first-child').forEach(function(el,i){el.textContent=labels[i]||el.textContent})});
+}
+function localizeTasks(){
+ if(lang!=='en')return;
+ var items=D.todos.concat(D.packing);
+ $('tasks').querySelectorAll('.task').forEach(function(el,i){var x=items[i];if(!x)return;
+  var txt=el.querySelector('span');if(txt)txt.textContent=EN.todos[x.id]||EN.packing[x.id]||x.text;
+  var hint=el.querySelector('small');if(hint)hint.textContent=el.querySelector('input').checked?'Confirmed in itinerary':'Pending in itinerary';
+ });
+ $('tasks').querySelectorAll('.task-group').forEach(function(el,i){el.textContent=i===0?'Before you go':'Packing'});
+ var count=$('taskCount');if(count)count.textContent=$('tasks').querySelectorAll('input:checked').length+' / '+items.length+' completed · Booking statuses follow itinerary';
+}
+function localizeShopping(){
+ if(lang!=='en')return;
+ $('shopping').querySelectorAll('.shop').forEach(function(b,i){var s=D.shopping[i];if(!s)return;var p=b.querySelector('p');if(p)p.textContent=EN.shopping[s.name]||s.tip;
+ var a=b.querySelectorAll('a');if(a[0])a[0].textContent='Map directions ↗';if(a[1])a[1].textContent='Official information ↗'});
+}
+function localizeNext(){
+ if(lang!=='en')return;
+ var date=$('nextView').dataset.nextDay,e=D.events.find(x=>x.date===date&&x.title===$('nextTitle').textContent);
+ // Find matching next event by title or, if already localized, by translated title.
+ if(!e)e=D.events.find(x=>x.title===$('nextTitle').textContent||(EN.events[x.id]&&EN.events[x.id].title===$('nextTitle').textContent));
+ if(e){$('nextTitle').textContent=eventEnglish(e).title||e.title;$('nextTime').textContent=localTime(e.time);$('nextHint').textContent=eventEnglish(e).note||statusEnglish(e)}
+ var label=$('nextDate');label.textContent=label.textContent.replace('美西時間','Pacific time').replace('歐洲時間','Central European time');
+ var leave=$('nextLeave');leave.textContent=leave.textContent.replace('依路程安排','Check travel time').replace('前抵達','arrive by').replace('送站','station pickup').replace('送機','airport ride');
+}
+function localizeCritical(){
+ if(lang!=='en')return;
+ var day=new Date(),inTrip=day>=new Date('2026-11-19T00:00:00-08:00')&&day<new Date('2026-11-28T00:00:00-08:00');
+ if(inTrip){$('criticalTitle').textContent="Today's highlights";var d=D.days.find(x=>x.date===new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit'}).format(day));if(d)$('criticalDesc').textContent=dayEnglish(d).highlight||d.highlight}
+ else{
+  var pending=['todos-7','todos-13','todos-12'].map(id=>D.todos.find(x=>x.id===id)).filter(x=>x&&!isChecked(x));
+  $('criticalTitle').textContent=pending.length?'Before you go · '+pending.length+' to confirm':'Key pre-trip items confirmed ✓';
+  $('criticalDesc').textContent=pending.length?pending.map(x=>({'todos-7':'Castle tickets/payment','todos-13':'CK round-trip bus','todos-12':'Prague concert'}[x.id])).join(' · '):'Castles, CK coach and concert are confirmed.';
+ }
+}
+function localizeHero(){
+ if(lang!=='en')return;
+ var x=$('todayLabel');if(x){var m=x.textContent.match(/距離出發還有 (\d+) 天/);if(m)x.textContent=m[1]+' days to departure';else x.textContent=x.textContent.replace('今晚出發！','Departing tonight!').replace('旅行進行中','Trip in progress').replace('2026 冬日旅行手帳','2026 Winter Travel Journal')}
+ var y=$('todayDesc');if(y)y.textContent=y.textContent.replace('查看每天的時間表與導航','See daily schedules and directions').replace('回顧這段慕尼黑與布拉格的旅程','Remember our family trip');
+}
+function localizeOffline(){if(lang!=='en')return;
+ var map={'已備妥離線行程 · 無網路也能看':'Offline itinerary saved · Ready to use','正在準備離線行程…':'Preparing offline itinerary…','新版行程已下載 · 點擊更新':'Updated itinerary ready · Reload','目前離線 · 行程可離線閱讀':'Offline · Itinerary available','目前離線 · 尚未備妥離線資料':'Offline · Cache not ready','此瀏覽器不支援離線快取':'Offline caching unsupported'};
+ $('offlineStatus').textContent=map[$('offlineStatus').textContent]||$('offlineStatus').textContent;
+ $('offlineReload').textContent='Reload';
+}
+function wrapLocale(fn,after){return function(){var v=fn.apply(this,arguments);after();staticText();return v}}
+updateNav=wrapLocale(updateNav,function(){});
+renderDay=wrapLocale(renderDay,localizeDay);
+renderTravel=wrapLocale(renderTravel,localizeTravel);
+renderTasks=wrapLocale(renderTasks,localizeTasks);
+renderShopping=wrapLocale(renderShopping,localizeShopping);
+renderExpenses=wrapLocale(renderExpenses,function(){});
+weatherCard=wrapLocale(weatherCard,localizeWeather);
+renderNextStop=wrapLocale(renderNextStop,localizeNext);
+renderCriticalAlert=wrapLocale(renderCriticalAlert,localizeCritical);
+updateHero=wrapLocale(updateHero,localizeHero);
+renderOfflineStatus=wrapLocale(renderOfflineStatus,localizeOffline);
+function changeLanguage(){
+ lang=lang==='en'?'zh':'en';if(lang==='en'&&!EN)lang='zh';
+ try{localStorage.setItem(LANG_KEY,lang)}catch(e){}
+ updateNav();renderDay();renderTravel();renderTasks();renderShopping();renderExpenses();renderNextStop();renderCriticalAlert();updateHero();renderOfflineStatus();
+ staticText();
+}
+$('languageToggle').addEventListener('click',changeLanguage);
+
 window.addEventListener('hashchange',fromHash);
 initializeRates();
 renderTravel();renderShopping();renderTasks();renderExpenses();renderCriticalAlert();

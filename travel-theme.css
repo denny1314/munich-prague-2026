@@ -459,3 +459,9 @@ body.page-sub .next-stop{display:none}
 @media(min-width:900px){.geo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:699px){.geo-map{height:235px}}
 @media(prefers-color-scheme:dark){.geo-group{background:#24372d;border-color:#3d5946}.geo-map{background-color:#2b4034}.geo-legend span{color:#d5e4d7}}
+
+/* Locale switch, kept compact in mobile headers */
+.lang-toggle{margin-left:12px;flex:0 0 auto;min-width:48px;min-height:40px;padding:7px 11px;border:1px solid #bdd2c2;border-radius:999px;background:#fffdf7;color:#285344;font-weight:850;font-size:12px;cursor:pointer}
+.lang-toggle:focus-visible{outline:3px solid #9cc9af;outline-offset:2px}
+@media(max-width:699px){.mast-meta{display:none}.lang-toggle{margin-left:auto;min-width:43px;min-height:36px;padding:5px 8px}.wordmark{min-width:0;font-size:13px}.wordmark small{display:none}}
+@media(prefers-color-scheme:dark){.lang-toggle{background:#294232;color:#e4f4e9;border-color:#638a70}}
