@@ -327,7 +327,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v9',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v10',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -416,6 +416,9 @@ function localizeWeather(){
  var condition=pane.querySelector('.wx-condition');
  if(condition)condition.textContent=condition.textContent.replace(/晴朗/g,'Sunny').replace(/晴時多雲/g,'Partly cloudy').replace(/陰天/g,'Cloudy').replace(/有雨/g,'Rain').replace(/有雪/g,'Snow').replace(/有霧/g,'Fog').replace(/毛毛雨/g,'Drizzle').replace(/最高降雨機率/g,'Max rain chance').replace(/最大風速/g,'Max wind').replace(/降雨機率暫缺/g,'Rain chance unavailable').replace(/風速暫缺/g,'Wind unavailable');
  var current=pane.querySelector('.wx-current');if(current)current.textContent=current.textContent.replace(/目前/g,'Now').replace(/體感/g,'Feels like').replace(/（當地即時觀測／模型資料）/g,'(local conditions)');
+ var meta=pane.querySelector('.wx-meta span');
+ if(meta){var m=meta.textContent.match(/\d{2}\/\d{2}.*?[0-9]{2}:[0-9]{2}/);meta.textContent=m?'Forecast checked: '+m[0]+' (local time)':'Weather forecast information may need internet.'}
+
 }
 function localizeDay(){
  if(lang!=='en')return;
@@ -426,7 +429,7 @@ function localizeDay(){
  var place=root.querySelector('.citypill');if(place)place.textContent=day.city;
  var subtitle=root.querySelector('.day-overline span:last-child');if(subtitle)subtitle.textContent='2026.11.'+day.date.slice(-2)+' · '+DAY_EN[day.weekday];
  $('daystrip').querySelectorAll('.daybtn').forEach(function(btn,i){
-  var s=btn.querySelectorAll('small'),d=D.days[i];if(s[0])s[0].textContent='NOV · '+DAY_EN[d.weekday];if(s[1])s[1].textContent=d.city==='San Francisco'?'SFO':d.city
+  var s=btn.querySelectorAll('small'),d=D.days[i];if(s[0])s[0].textContent='NOV · '+DAY_EN[d.weekday];if(s[1])s[1].textContent=d.city==='San Francisco'?'SFO':d.city==='Český Krumlov'?'CK Town':d.city
  });
  var events=D.events.filter(e=>e.date===day.date);
  root.querySelectorAll('.event').forEach(function(card,i){
@@ -451,15 +454,25 @@ function localizeDay(){
 function localizeTravel(){
  if(lang!=='en')return;
  var ids=['d1-airport','d5-black','d9-black','d9-uber'];
- $('rideCards').querySelectorAll('.block').forEach(function(b,i){
+ $('rideCards').querySelectorAll('.block').forEach(function(block,i){
   var e=D.events.find(x=>x.id===ids[i]);if(!e)return;
-  var en=eventEnglish(e),h=b.querySelector('h3');if(h)h.textContent=en.title||e.title;
-  var kv=b.querySelectorAll('.kv');if(kv[0]){var l=kv[0].querySelector('span');if(l)l.textContent='Pickup time'}
-  if(kv[1]){var l2=kv[1].querySelector('span');if(l2)l2.textContent='Booking'}
-  var warn=b.querySelector('.ride-warn');if(warn)warn.textContent=en.note||'Check booking details.';
+  var en=eventEnglish(e),title=block.querySelector('h3');if(title)title.textContent=en.title||e.title;
+  var line=block.querySelector('.ride-line');
+  if(line)line.textContent=line.textContent.replace('住家','Home').replace('SFO 機場','SFO Airport').replace('PRG 機場','Prague Airport').replace('慕尼黑中央車站','Munich Central Station');
+  var kv=block.querySelectorAll('.kv');
+  if(kv[0]){var spans=kv[0].querySelectorAll('span');if(spans[0])spans[0].textContent='Pickup time';if(spans[1])spans[1].textContent=spans[1].textContent.replace('美西當地時間','Pacific time').replace('歐洲當地時間','Central European time')}
+  if(kv[1]){var spans2=kv[1].querySelectorAll('span');if(spans2[0])spans2[0].textContent='Booking';if(spans2[1])spans2[1].textContent=statusEnglish(e)}
+  var warn=block.querySelector('.ride-warn');if(warn)warn.textContent=en.note||'Confirm booking details.';
  });
- $('hotelcards').querySelectorAll('.block').forEach(function(b){b.querySelectorAll('.kv span:first-child').forEach(x=>x.textContent='Stay dates');var l=b.querySelector('a.action');if(l)l.textContent='Hotel directions ↗'});
- $('transportcards').querySelectorAll('.block').forEach(function(b){var labels=['Route','Departure','Arrival'];b.querySelectorAll('.kv span:first-child').forEach(function(el,i){el.textContent=labels[i]||el.textContent})});
+ $('hotelcards').querySelectorAll('.block').forEach(function(block){
+  var meta=block.querySelector('.tinycaps');if(meta)meta.textContent=meta.textContent.replace(' 晚',' nights');
+  block.querySelectorAll('.kv span:first-child').forEach(x=>x.textContent='Stay dates');
+  var link=block.querySelector('a.action');if(link)link.textContent='Hotel directions ↗'
+ });
+ $('transportcards').querySelectorAll('.block').forEach(function(block){
+  var fields=['Route','Departure','Arrival'];
+  block.querySelectorAll('.kv span:first-child').forEach(function(el,i){el.textContent=fields[i]||el.textContent})
+ });
 }
 function localizeTasks(){
  if(lang!=='en')return;
@@ -478,12 +491,22 @@ function localizeShopping(){
 }
 function localizeNext(){
  if(lang!=='en')return;
- var date=$('nextView').dataset.nextDay,e=D.events.find(x=>x.date===date&&x.title===$('nextTitle').textContent);
- // Find matching next event by title or, if already localized, by translated title.
- if(!e)e=D.events.find(x=>x.title===$('nextTitle').textContent||(EN.events[x.id]&&EN.events[x.id].title===$('nextTitle').textContent));
- if(e){$('nextTitle').textContent=eventEnglish(e).title||e.title;$('nextTime').textContent=localTime(e.time);$('nextHint').textContent=eventEnglish(e).note||statusEnglish(e)}
- var label=$('nextDate');label.textContent=label.textContent.replace('美西時間','Pacific time').replace('歐洲時間','Central European time');
- var leave=$('nextLeave');leave.textContent=leave.textContent.replace('依路程安排','Check travel time').replace('前抵達','arrive by').replace('送站','station pickup').replace('送機','airport ride');
+ var title=$('nextTitle'),current=title&&title.textContent||'';
+ var e=D.events.find(function(v){return v.title===current||(EN.events[v.id]&&EN.events[v.id].title===current)});
+ if(e){
+  title.textContent=eventEnglish(e).title||e.title;
+  $('nextTime').textContent=localTime(e.time);
+  $('nextHint').textContent=eventEnglish(e).note||statusEnglish(e);
+ }else{
+  if(current==='旅程已結束')title.textContent='Trip complete';
+  if($('nextHint').textContent==='可以回顧每日行程')$('nextHint').textContent='Review the itinerary';
+ }
+ var date=$('nextDate');if(date)date.textContent=date.textContent.replace('美西時間','Pacific time').replace('歐洲時間','Central European time');
+ var leave=$('nextLeave');if(leave)leave.textContent=leave.textContent.replace('依路程安排','Allow travel time').replace('前抵達','arrive by').replace('送站','station pickup').replace('送機','airport transfer');
+ var label=document.querySelector('.next-label');if(label)label.textContent='COMING UP · NEXT STOP';
+ var small=document.querySelectorAll('.next-info small');if(small[0])small[0].textContent='Event time';if(small[1])small[1].textContent='Leave / Meet';
+ var view=$('nextView');if(view)view.textContent='View day';
+ var map=$('nextMap');if(map)map.textContent='Google Maps directions ↗';
 }
 function localizeCritical(){
  if(lang!=='en')return;
