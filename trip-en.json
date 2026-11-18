@@ -77,12 +77,12 @@
       "note": "Browse Christmas stalls, food and warm drinks."
     },
     "d4-breakfast": {
-      "title": "Breakfast and travel to castle tour meeting point",
-      "note": "Go to Sonnenstraße 1, at the bus stop outside Fielmann, and allow extra time."
+      "title": "Breakfast and early transfer to castle tour meeting point",
+      "note": "Allow time from Holiday Inn Munich City Centre to Sonnenstraße 1 (bus stop outside Fielmann). Mentor Reisen's winter update requests check-in around 8:40 AM; the coach leaves by 8:50 AM at the latest. Do not follow the old 9:15 AM departure."
     },
     "d4-tour": {
-      "title": "Mentor Reisen: Two Castles coach tour",
-      "note": "Your Viator booking starts at 9:15 AM. Meet at the bus stop outside Fielmann, Sonnenstraße 1. Coach expected from about 8:45 AM. Confirm admission and payment."
+      "title": "Mentor Reisen: Two Castles tour (EARLIER departure)",
+      "note": "Nov 18 update from Susanne, Team Mentor Reisen: winter castle guided tours start earlier. Please arrive at Sonnenstraße 1, 80331 Munich, at about 8:40 AM to check in. Everyone MUST depart by 8:50 AM at the latest—not 9:15 AM. The operator asks guests to acknowledge receipt. Confirm castle admission and payment separately."
     },
     "d4-hohen": {
       "title": "Hohenschwangau Castle",
@@ -101,8 +101,8 @@
       "note": "Optional bridge view; it may close in winter due to ice or snow."
     },
     "d4-return": {
-      "title": "Return to Munich and pack",
-      "note": "Return time is an estimate. Prepare luggage and the EC353 train tickets for an early pickup."
+      "title": "Return to Munich and prepare for tomorrow",
+      "note": "The Nov 18 operator message does not give a revised return time. The old 7:15 PM estimate was based on 9:15 AM departure; do not treat it as confirmed. Pack luggage and EC353 train QR tickets for the 5:40 AM pickup tomorrow."
     },
     "d5-checkout": {
       "title": "Early checkout at Holiday Inn",
@@ -354,8 +354,8 @@
     },
     "2026-11-22": {
       "title": "Neuschwanstein and Hohenschwangau Castles",
-      "highlight": "Mentor Reisen English coach tour begins at 9:15 AM",
-      "routeNote": "Mentor Reisen tour is booked. Castle stop order and Marienbrücke access depend on operator and weather.",
+      "highlight": "Arrive at Sonnenstraße 1 around 8:40 AM to check in; Mentor Reisen coach departs no later than 8:50 AM (NOT 9:15 AM).",
+      "routeNote": "Mentor Reisen's Nov 18 update: check in at Sonnenstraße 1 by about 8:40 AM. The tour MUST depart no later than 8:50 AM; 9:15 AM is no longer valid. Castle order and return time depend on the operator.",
       "routeGroups": [
         "Holiday Inn to Mentor Reisen meeting point",
         "Castle-area sightseeing"
