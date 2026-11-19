@@ -1,11 +1,28 @@
 /* Munich & Prague family itinerary offline shell.
-   HTML contains all CSS, JS and travel JSON; external maps/weather still need a connection. */
-const CACHE_NAME='mp26-core-20261117-v13';
+   Core assets are versioned, installed together and served cache-first.
+   External maps and weather still require a connection. */
+const CACHE_NAME='mp26-core-20261117-v14';
 const CACHE_PREFIX='mp26-core-';
 const BASE=new URL(self.registration.scope);
 const INDEX_URL=new URL('./index.html',BASE).href;
 const CORE_URLS=[INDEX_URL,...['styles.css','travel-theme.css','app.js','trip.json','trip-en.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(p=>new URL('./'+p,BASE).href)];
 const CORE_SET=new Set(CORE_URLS);
+
+const NETWORK_TIMEOUT_MS=3000;
+/* Wait for the response body, not only headers, so a stalled download also
+   hits the deadline. Returning the original Response preserves its headers. */
+async function fetchWithinDeadline(request,options){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),NETWORK_TIMEOUT_MS);
+  try{
+    const response=await fetch(request,{...(options||{cache:'no-store'}),signal:controller.signal});
+    await response.clone().arrayBuffer();
+    return response;
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
 
 async function notifyTabs(type){
   const tabs=await self.clients.matchAll({type:'window',includeUncontrolled:true});
@@ -15,7 +32,12 @@ self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
     const cache=await caches.open(CACHE_NAME);
     // Installation only succeeds if every essential offline asset has been saved.
-    await cache.addAll(CORE_URLS.map(url=>new Request(url,{cache:'reload'})));
+    const assets=await Promise.all(CORE_URLS.map(async url=>{
+      const response=await fetchWithinDeadline(new Request(url,{cache:'reload'}),{cache:'reload'});
+      if(!response.ok||response.type==='opaque')throw Error('Core asset unavailable: '+url);
+      return {url,response};
+    }));
+    await Promise.all(assets.map(asset=>cache.put(asset.url,asset.response)));
     await self.skipWaiting();
   })());
 });
@@ -33,11 +55,17 @@ async function cacheFirst(request,key,isDocument){
   const existing=await cache.match(key);
   if(existing)return existing;
   try{
-    const fresh=await fetch(request,{cache:'no-store'});
+    const fresh=await fetchWithinDeadline(request,{cache:'no-store'});
     if(fresh.ok&&fresh.type!=='opaque')await cache.put(key,fresh.clone());
     return fresh;
   }catch(error){
-    if(isDocument){const fallback=await cache.match(INDEX_URL);if(fallback)return fallback}
+    // An older complete installation is better than a browser error on weak 4G.
+    const previous=await caches.match(key);
+    if(previous)return previous;
+    if(isDocument){
+      const fallback=await caches.match(INDEX_URL);
+      if(fallback)return fallback;
+    }
     return Response.error();
   }
 }
@@ -45,7 +73,7 @@ async function refreshCore(key){
   const cache=await caches.open(CACHE_NAME),old=await cache.match(key);
   if(!old)return; // Never substitute a partial offline installation for the full shell.
   try{
-    const fresh=await fetch(key,{cache:'no-store'});
+    const fresh=await fetchWithinDeadline(key,{cache:'no-store'});
     if(!fresh.ok||fresh.type==='opaque')return;
     const previousText=await old.clone().text(),nextText=await fresh.clone().text();
     if(previousText===nextText)return;
@@ -83,6 +111,6 @@ self.addEventListener('fetch',event=>{
 });
 self.addEventListener('message',event=>{
   if(event.data&&event.data.type==='CHECK_TRIP_UPDATES'){
-    event.waitUntil(refreshCore(INDEX_URL));
+    event.waitUntil(Promise.all([INDEX_URL,new URL('./trip.json',BASE).href,new URL('./trip-en.json',BASE).href].map(refreshCore)));
   }
 });

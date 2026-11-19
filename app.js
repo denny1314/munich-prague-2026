@@ -2,12 +2,46 @@
 'use strict';
 var D,EN=null,lang='zh',LANG_KEY='mp26-preferred-language';
 try{if(localStorage.getItem(LANG_KEY)==='en')lang='en'}catch(e){}
+/* The itinerary must not block indefinitely on a weak mobile connection.
+   Cache Storage is preferred when available; a cache miss gets up to 3 seconds
+   of network time before another cache lookup and a clear error. */
+const DATA_TIMEOUT_MS=3000;
+async function readTripJSON(path){
+  const url=new URL(path,location.href).href;
+  async function cached(){
+    if(!('caches' in window))return null;
+    try{
+      const response=await caches.match(url);
+      if(response&&response.ok)return await response.json();
+    }catch(err){console.warn('Cached trip JSON unreadable',path,err)}
+    return null;
+  }
+  const stored=await cached();
+  if(stored!==null)return stored;
+  const controller=new AbortController();
+  const timer=setTimeout(function(){controller.abort()},DATA_TIMEOUT_MS);
+  try{
+    const response=await fetch(url,{signal:controller.signal,cache:'no-store'});
+    if(!response.ok)throw Error(path+' HTTP '+response.status);
+    return await response.json();
+  }catch(err){
+    const fallback=await cached();
+    if(fallback!==null)return fallback;
+    throw err;
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
 try{
-  const response=await fetch('./trip.json');
-  if(!response.ok)throw Error('Cannot read trip.json: '+response.status);
-  D=await response.json();
+  // Both translations request their cached data at the same time. On a cold
+  // load, the slowest network path is bounded by the same 3-second deadline.
+  const englishData=readTripJSON('./trip-en.json').catch(function(err){
+    console.warn('English data unavailable',err);return null;
+  });
+  D=await readTripJSON('./trip.json');
   if(!D||!Array.isArray(D.days)||!Array.isArray(D.events))throw Error('Invalid trip data');
-  try{var eResponse=await fetch('./trip-en.json');if(eResponse.ok)EN=await eResponse.json()}catch(e){console.warn('English data unavailable',e)}
+  EN=await englishData;
   if(lang==='en'&&!EN)lang='zh';
 }catch(err){
   var heading=document.getElementById('todayLabel');
@@ -302,6 +336,18 @@ else el.textContent='—'
 })
 }
 function refreshWeatherUI(){weatherCard();updateWeatherPills()}
+/* Forecasts share the three-second deadline; prior weather data is retained. */
+async function fetchWeatherJSON(url){
+  const controller=new AbortController();
+  const timer=setTimeout(function(){controller.abort()},DATA_TIMEOUT_MS);
+  try{
+    const resp=await fetch(url,{cache:'no-store',signal:controller.signal});
+    if(!resp.ok)throw Error('HTTP '+resp.status);
+    return await resp.json();
+  }finally{
+    clearTimeout(timer);
+  }
+}
 function loadWeatherAll(force){
 if(weatherLoading)return;
 if(!force&&weatherLastRequest&&Date.now()-weatherLastRequest<30*60000)return;
@@ -316,8 +362,7 @@ current:'temperature_2m,apparent_temperature,weather_code,wind_speed_10m',
 daily:'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max',
 temperature_unit:'celsius',wind_speed_unit:'kmh'
 });
-return fetch('https://api.open-meteo.com/v1/forecast?'+qs.toString(),{cache:'no-store'})
-.then(function(resp){if(!resp.ok)throw Error('HTTP '+resp.status);return resp.json()})
+return fetchWeatherJSON('https://api.open-meteo.com/v1/forecast?'+qs.toString())
 .then(function(json){if(json.error||!json.daily||!Array.isArray(json.daily.time))throw Error('Invalid weather response');weatherStore[key]={data:json,updated:Date.now()};delete weatherErrors[key]})
 .catch(function(err){weatherErrors[key]=true})
 })).then(function(){
@@ -395,7 +440,19 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v13',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261117-v14',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+function renderDataVersion(){
+ var label=$('offlineVersion'),footer=$('footerDataVersion');
+ if(!label&&!footer)return;
+ var v=D&&D.dataVersion||{},updated=String(v.updatedAt||''),revision=String(v.revision||'');
+ var valid=/^\d{4}-\d{2}-\d{2}$/.test(updated),date=valid?Number(updated.slice(5,7))+'/'+Number(updated.slice(8,10)):'';
+ var zhPrefix=offlineReady?'離線版本':'資料版本',enPrefix=offlineReady?'Offline version':'Data version';
+ var zh=date?zhPrefix+' · 資料更新於 '+date:zhPrefix+' · 更新日期未標示';
+ var en=date?enPrefix+' · Updated '+new Date(updated+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'}):enPrefix+' · Date unavailable';
+ if(revision){zh+=' · '+revision;en+=' · '+revision}
+ if(label){label.textContent=lang==='en'?en:zh;label.title=lang==='en'?'Version of the itinerary loaded on this device':'目前裝置所載入的行程資料版本'}
+ if(footer)footer.textContent=lang==='en'?(date?'Itinerary updated '+en.split('Updated ')[1]:'Itinerary date unavailable'):(date?'行程資料更新於 '+date:'行程資料更新日期未標示');
+}
 function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
 var online=navigator.onLine;
 var zh,en,status;
@@ -405,7 +462,7 @@ else if(!online){zh='目前離線 · 尚未備妥離線資料';en='Offline · Ca
 else if(offlineReady){zh='已備妥離線行程 · 無網路也能看';en='Offline itinerary saved · Ready to use';status='ready'}
 else if('serviceWorker' in navigator&&'caches' in window){zh='正在準備離線行程…';en='Preparing offline itinerary…';status='pending'}
 else{zh='此瀏覽器不支援離線快取';en='Offline caching unsupported';status='error'}
-text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程'
+text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程';renderDataVersion()
 }
 async function checkOfflineCache(){if(!('caches' in window)){offlineReady=false;renderOfflineStatus();return}
 try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','travel-theme.css','app.js','trip.json','trip-en.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
@@ -451,7 +508,7 @@ function statusEnglish(e){return STATUS_EN[e.status]||({'paid':'Paid','confirmed
 function staticText(){
  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
  while((node=walker.nextNode())){
-  if(node.parentElement&&node.parentElement.closest('script,style,#daycontent,#daystrip,#rideCards,#transportcards,#hotelcards,#shopping,#tasks,#expenseTotals,#expenseRows,#nextStopCard,#criticalSignal,#todayLabel,#todayDesc,#offlineStatus'))continue;
+  if(node.parentElement&&node.parentElement.closest('script,style,#daycontent,#daystrip,#rideCards,#transportcards,#hotelcards,#shopping,#tasks,#expenseTotals,#expenseRows,#nextStopCard,#criticalSignal,#todayLabel,#todayDesc,#offlineStatus,#offlineVersion,#footerDataVersion'))continue;
   var orig=originals.has(node)?originals.get(node):node.nodeValue;
   if(!originals.has(node))originals.set(node,orig);
   var key=orig.trim(),replacement=lang==='en'?(UI_EN[key]||key):orig;
