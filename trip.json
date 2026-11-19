@@ -813,6 +813,7 @@
       "title": "早餐、提早前往雙城堡旅行團集合點",
       "cat": "交通",
       "place": "Holiday Inn Munich – City Centre, Germany",
+      "meetingMapUrl": "https://goo.gl/maps/jF6oQk8wDCEZJtfp9?g_st=ac",
       "desc": "11/18 收到 Mentor Reisen 提前出發通知：務必預留飯店到 Sonnenstraße 1（Fielmann 眼鏡店前公車站）的交通時間，約 08:40 到場辦理報到；遊覽車最晚 08:50 出發，不再是 09:15。",
       "duration": "依票券",
       "state": "confirmed",
@@ -830,6 +831,7 @@
       "title": "Mentor Reisen 雙天鵝堡英語團（已提前出發）",
       "cat": "活動",
       "place": "Sonnenstraße 1, 80331 München, Germany",
+      "meetingMapUrl": "https://goo.gl/maps/jF6oQk8wDCEZJtfp9?g_st=ac",
       "desc": "11/18 Mentor Reisen／Susanne 透過 Viator 通知：因冬季兩座城堡的室內導覽時間提前，整團最晚必須於 08:50 出發（NOT 09:15）。請約 08:40 抵達 Sonnenstraße 1, 80331 München（Fielmann 眼鏡店前公車站）報到。業者要求回覆確認收到通知。行程約 10 小時為原參考值；雙城堡門票及付款狀態仍待核對。",
       "duration": "約 10 小時",
       "state": "reserved",
@@ -2682,7 +2684,7 @@
     }
   ],
   "dataVersion": {
-    "updatedAt": "2026-11-18",
-    "revision": "2026.11.18-7"
+    "updatedAt": "2026-11-19",
+    "revision": "2026.11.19-1"
   }
 }
