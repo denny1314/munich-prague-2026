@@ -304,8 +304,7 @@ if(weatherErrors[key])out.push('目前連線更新失敗，顯示上次取得資
 else if(updated&&Date.now()-updated>2*3600000)out.push('快取資料，請點更新');
 return out.join(' · ')
 }
-/* Keep Open-Meteo forecast/cache values in Celsius; display temperatures in Fahrenheit. */
-function toFahrenheit(celsius){return Math.round(Number(celsius)*9/5+32)}
+/* Open-Meteo forecast/cache values and visible temperatures are in Celsius. */
 function weatherCard(){
 var node=$('weatherSlot');if(!node)return;
 var day=D.days[dayIndex],key=weatherDays[day.date],place=weatherPlaces[key],result=forecastFor(day);
@@ -317,13 +316,13 @@ if(!result){
 var localDay=localDateFor(place.zone),msg=day.date<localDay?'這個日期已過，網站未保存歷史實況。':weatherLoading?'正在取得當地最新預報…':weatherErrors[key]?'目前無法連上氣象服務，請稍後點選「更新天氣」。':'目前尚無這一天的可用預報，請在日期接近時再查看。';
 main='<p class="wx-message">'+E(msg)+'</p><div class="wx-wear"><div class="wx-wear-label">🧥 穿衣建議（一般冬季準備）</div><p>'+E(clothingGuide(day,null,null))+'</p>'+note+'</div>';
 }else{
-var desc=weatherLabel(result.code),hi=toFahrenheit(result.hi),lo=toFahrenheit(result.lo);
+var desc=weatherLabel(result.code),hi=Math.round(result.hi),lo=Math.round(result.lo);
 var isCurrent=day.date===localDateFor(place.zone),nowFresh=Date.now()-result.updated<60*60000&&!weatherErrors[key],nowData=isCurrent&&nowFresh?result.current:null;
-var nowTemp=nowData&&nowData.temperature_2m!=null&&Number.isFinite(Number(nowData.temperature_2m))?toFahrenheit(nowData.temperature_2m):null;
-var apparent=nowData&&nowData.apparent_temperature!=null&&Number.isFinite(Number(nowData.apparent_temperature))?toFahrenheit(nowData.apparent_temperature):null;
+var nowTemp=nowData&&nowData.temperature_2m!=null&&Number.isFinite(Number(nowData.temperature_2m))?Math.round(Number(nowData.temperature_2m)):null;
+var apparent=nowData&&nowData.apparent_temperature!=null&&Number.isFinite(Number(nowData.apparent_temperature))?Math.round(Number(nowData.apparent_temperature)):null;
 var rainTxt=result.rain===null?'降雨機率暫缺':('最高降雨機率 '+Math.round(result.rain)+'%');
 var windTxt=result.wind===null?'風速暫缺':('最大風速 '+Math.round(result.wind)+' km/h');
-main='<div class="wx-main"><span class="wx-symbol" aria-hidden="true">'+desc.icon+'</span><div><div class="wx-temperature">'+lo+'°F — '+hi+'°F</div><p class="wx-condition">'+E(desc.name)+' · '+E(rainTxt)+' · '+E(windTxt)+'</p>'+(nowTemp===null?'':'<p class="wx-current">目前 '+nowTemp+'°F'+(apparent===null?'':' · 體感 '+apparent+'°F')+'（當地即時觀測／模型資料）</p>')+'</div></div>';
+main='<div class="wx-main"><span class="wx-symbol" aria-hidden="true">'+desc.icon+'</span><div><div class="wx-temperature">'+lo+'°C — '+hi+'°C</div><p class="wx-condition">'+E(desc.name)+' · '+E(rainTxt)+' · '+E(windTxt)+'</p>'+(nowTemp===null?'':'<p class="wx-current">目前 '+nowTemp+'°C'+(apparent===null?'':' · 體感 '+apparent+'°C')+'（當地即時觀測／模型資料）</p>')+'</div></div>';
 main+='<div class="wx-wear"><div class="wx-wear-label">🧥 今天怎麼穿</div><p>'+E(clothingGuide(day,result,nowData))+'</p>'+note+'</div>';
 if(day.date>localDateFor(place.zone))main+='<p class="wx-note">這是未來日期的預報，不是當日即時觀測；接近出發日再確認一次。</p>';
 }
@@ -333,7 +332,7 @@ function updateWeatherPills(){
 var buttons=$('daystrip');if(!buttons)return;
 buttons.querySelectorAll('[data-weather-day]').forEach(function(el){
 var d=D.days[Number(el.dataset.weatherDay)],fc=forecastFor(d);
-if(fc){var info=weatherLabel(fc.code);el.textContent=info.icon+' '+toFahrenheit(fc.hi)+'°F'}
+if(fc){var info=weatherLabel(fc.code);el.textContent=info.icon+' '+Math.round(fc.hi)+'°C'}
 else el.textContent='—'
 })
 }
@@ -442,7 +441,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v18',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v19',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
