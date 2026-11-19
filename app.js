@@ -450,13 +450,15 @@ function nextDistanceText(km){return km<1?Math.round(km*1000)+' '+L('公尺','m'
 function paintNextGeo(){
  var on=$('nextGeoToggle'),off=$('nextGeoDisable'),label=$('nextGeoStatus');
  if(!on||!off||!label)return;
- on.disabled=(!navigator.geolocation||nextGeo.mode==='locating');
- on.textContent=nextGeo.mode==='locating'?L('正在定位…','Locating…'):nextGeo.mode==='on'?L('更新我的位置','Refresh location'):L('啟用我的位置','Use my location');
+ /* The enable button is only needed before consent or to retry an error. */
+ on.hidden=nextGeo.mode==='on'||nextGeo.mode==='locating';
+ on.disabled=!navigator.geolocation;
+ on.textContent=L('啟用我的位置','Use my location');
  off.textContent=L('關閉定位','Turn off location');
  off.hidden=nextGeo.mode!=='on'&&nextGeo.mode!=='locating'&&!nextGeoPreference;
  label.textContent=nextGeo.mode==='locating'?L('請允許瀏覽器存取位置。','Please allow browser location access.'):
  nextGeo.mode==='error'?(nextGeo.message||L('無法取得位置；依時間排序。','Location unavailable; using schedule order.')):
- nextGeo.mode==='on'?(nextGeoValid(Date.now())?L('只在此裝置使用 GPS，不儲存或上傳座標。','GPS stays on this device; coordinates are not saved or uploaded.'):L('位置太舊或精度不足，請更新。','Location is stale or inaccurate; refresh it.')):
+ nextGeo.mode==='on'?(nextGeoValid(Date.now())?L('已啟用自動定位 · GPS 只在此裝置使用，不儲存或上傳座標。','Automatic location is on · GPS stays on your device; coordinates are not saved or uploaded.'):L('已啟用自動定位 · 等待較準確的位置更新，目前依時間排序。','Automatic location is on · Waiting for a more accurate fix; using schedule order for now.')):
  !navigator.geolocation?L('此瀏覽器不支援定位；依時間排序。','Location is unsupported; using schedule order.'):
  L('尚未啟用定位 · 依時間排序。','Location off · Using schedule order.');
 }
@@ -575,7 +577,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v22',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v23',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
