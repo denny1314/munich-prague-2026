@@ -456,40 +456,67 @@ function paintNextGeo(){
  on.textContent=L('啟用我的位置','Use my location');
  off.textContent=L('關閉定位','Turn off location');
  off.hidden=nextGeo.mode!=='on'&&nextGeo.mode!=='locating'&&!nextGeoPreference;
- label.textContent=nextGeo.mode==='locating'?L('請允許瀏覽器存取位置。','Please allow browser location access.'):
+ label.textContent=nextGeo.mode==='locating'?L('正在取得 iPhone 位置；若 Safari 已記住權限，可能不會再跳出提醒。','Getting iPhone location. Safari may not prompt again if your choice is remembered.'):
  nextGeo.mode==='error'?(nextGeo.message||L('無法取得位置；依時間排序。','Location unavailable; using schedule order.')):
  nextGeo.mode==='on'?(nextGeoValid(Date.now())?L('已啟用自動定位 · GPS 只在此裝置使用，不儲存或上傳座標。','Automatic location is on · GPS stays on your device; coordinates are not saved or uploaded.'):L('已啟用自動定位 · 等待較準確的位置更新，目前依時間排序。','Automatic location is on · Waiting for a more accurate fix; using schedule order for now.')):
  !navigator.geolocation?L('此瀏覽器不支援定位；依時間排序。','Location is unsupported; using schedule order.'):
  L('尚未啟用定位 · 依時間排序。','Location off · Using schedule order.');
 }
 function stopNextGeo(){
+ nextGeo.requestSeq=(nextGeo.requestSeq||0)+1;
  if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);
  rememberNextGeo(false);
  nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null;nextGeo.message='';
  renderNextStop();
 }
+function nextGeoFailure(error,request){
+ if(request!==nextGeo.requestSeq||nextGeo.mode==='off')return;
+ if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);
+ nextGeo.watchId=null;nextGeo.mode='error';nextGeo.position=null;
+ var code=error&&error.code;
+ if(code===1){
+  rememberNextGeo(false);
+  nextGeo.message=L('Safari 未授權定位。請在網址列的網站設定 → 位置改成「詢問」或「允許」，再點「啟用我的位置」。','Location denied. Open Safari Website Settings → Location, choose Ask or Allow, then tap Use my location.');
+ }else if(code===3){
+  nextGeo.message=L('定位逾時。請確認 iPhone 的定位服務已開啟，然後再試一次。','Location timed out. Check iPhone Location Services and try again.');
+ }else{
+  nextGeo.message=L('無法取得位置。請確認 iPhone「設定 → 隱私權與安全性 → 定位服務」已開啟。','Location unavailable. Check iPhone Settings → Privacy & Security → Location Services.');
+ }
+ renderNextStop();
+}
+function nextGeoSuccess(loc,request){
+ if(request!==nextGeo.requestSeq||nextGeo.mode==='off')return;
+ if(!loc||!loc.coords||!Number.isFinite(loc.coords.latitude)||!Number.isFinite(loc.coords.longitude)){
+  nextGeoFailure({code:2},request);return;
+ }
+ var now=Date.now(),old=nextGeo.position;
+ var pos={lat:loc.coords.latitude,lon:loc.coords.longitude,accuracy:loc.coords.accuracy,timestamp:loc.timestamp||now};
+ nextGeo.position=pos;nextGeo.mode='on';nextGeo.message='';rememberNextGeo(true);
+ if(!old||now-nextGeo.lastRender>15000||nextDistance(old,[pos.lat,pos.lon])>0.1){
+  nextGeo.lastRender=now;renderNextStop();
+ }
+}
 function startNextGeo(){
+ if(nextGeo.mode==='locating'||nextGeo.mode==='on')return; // Avoid duplicate Safari prompts on page load.
  if(!navigator.geolocation){nextGeo.mode='error';nextGeo.message=L('此瀏覽器不支援定位。','Location is unsupported.');renderNextStop();return}
  if(nextGeo.watchId!==null)navigator.geolocation.clearWatch(nextGeo.watchId);
  nextGeo.watchId=null;nextGeo.position=null;nextGeo.mode='locating';nextGeo.message='';
+ var request=nextGeo.requestSeq=(nextGeo.requestSeq||0)+1;
  paintNextGeo();
+ var opts={enableHighAccuracy:false,maximumAge:60000,timeout:15000};
  try{
-  nextGeo.watchId=navigator.geolocation.watchPosition(function(loc){
-   if(nextGeo.mode==='off')return;
-   if(!Number.isFinite(loc.coords.latitude)||!Number.isFinite(loc.coords.longitude))return;
-   var now=Date.now(),old=nextGeo.position;
-   var pos={lat:loc.coords.latitude,lon:loc.coords.longitude,accuracy:loc.coords.accuracy,timestamp:loc.timestamp||now};
-   nextGeo.position=pos;nextGeo.mode='on';nextGeo.message='';rememberNextGeo(true);
-   if(!old||now-nextGeo.lastRender>15000||nextDistance(old,[pos.lat,pos.lon])>0.1){nextGeo.lastRender=now;renderNextStop()}
-  },function(error){
-   if(nextGeo.mode==='off')return;
-   nextGeo.mode='error';nextGeo.position=null;
-   if(error&&error.code===1)rememberNextGeo(false);
-   nextGeo.message=error&&error.code===1?L('沒有定位權限，請點選啟用定位並重新授權。','Location permission denied. Tap to enable again.'):L('定位失敗，請稍後重試。','Location unavailable; try again.');
-   if(nextGeo.watchId!==null)navigator.geolocation.clearWatch(nextGeo.watchId);
-   nextGeo.watchId=null;renderNextStop();
-  },{enableHighAccuracy:false,maximumAge:60000,timeout:15000});
- }catch(error){nextGeo.mode='error';nextGeo.position=null;nextGeo.message=L('無法啟動定位；依時間排序。','Could not start location; using schedule order.');renderNextStop()}
+  /* The first call is made directly from a tap when permission is needed.
+     This makes the iPhone Safari permission result explicit before tracking. */
+  navigator.geolocation.getCurrentPosition(function(loc){
+   if(request!==nextGeo.requestSeq||nextGeo.mode==='off')return;
+   nextGeoSuccess(loc,request);
+   if(nextGeo.mode!=='on')return;
+   try{
+    nextGeo.watchId=navigator.geolocation.watchPosition(function(next){nextGeoSuccess(next,request)},
+      function(error){nextGeoFailure(error,request)},opts);
+   }catch(error){nextGeoFailure({code:2},request)}
+  },function(error){nextGeoFailure(error,request)},opts);
+ }catch(error){nextGeoFailure({code:2},request)}
 }
 function nextSuggestion(now){
  var future=D.events.filter(function(e){return nextStopIds.has(e.id)&&Number.isFinite(nextStart(e))&&nextStart(e)>=now-5*60000}).sort(function(a,b){return nextStart(a)-nextStart(b)});
@@ -537,7 +564,7 @@ function renderNextStop(){
 }
 $('nextGeoToggle').addEventListener('click',startNextGeo);
 $('nextGeoDisable').addEventListener('click',stopNextGeo);
-window.addEventListener('pagehide',function(){if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null});
+window.addEventListener('pagehide',function(){nextGeo.requestSeq=(nextGeo.requestSeq||0)+1;if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null});
 window.addEventListener('pageshow',function(){if(nextGeoPreference&&nextGeo.mode==='off')startNextGeo();else renderNextStop()});
 
 /* Home reminder is driven by the same booking states used by Checklist. */
@@ -577,7 +604,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v23',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v24',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
