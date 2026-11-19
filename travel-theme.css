@@ -495,3 +495,12 @@ body{background:radial-gradient(ellipse 520px 400px at 4% 2%,rgba(161,215,232,.1
 /* Short, visible sights summary on itinerary cards. */
 .event-card .event-brief{margin:5px 0 10px;color:#53685d;font-size:13px;line-height:1.55;font-weight:450;overflow-wrap:anywhere}
 @media(max-width:480px){.event-card .event-brief{font-size:12.5px;line-height:1.5;margin:5px 0 9px}}
+
+/* Optional, on-device location controls for the next-stop boarding pass. */
+.next-geo{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px solid #deebec}
+.next-geo-buttons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.next-geo-buttons .action{min-height:39px;min-width:0;padding:8px 13px;font-size:12px}
+.next-geo-main{background:#e9f7f5;border-color:#aed6d3;color:#1c6871;font-weight:750}
+.next-geo-status{flex:1 1 190px;margin:0;color:#647d7d;font-size:11px;line-height:1.5}
+.next-geo [hidden]{display:none!important}
+@media(max-width:480px){.next-geo{align-items:stretch;gap:8px}.next-geo-buttons{width:100%}.next-geo-buttons .action{flex:1 1 auto}.next-geo-status{flex:1 1 100%}}
