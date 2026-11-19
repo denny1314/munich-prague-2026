@@ -491,3 +491,7 @@ body{background:radial-gradient(ellipse 520px 400px at 4% 2%,rgba(161,215,232,.1
 .offline-bar{flex-wrap:wrap;row-gap:5px}
 .offline-version{font-size:10px;font-weight:650;letter-spacing:.02em;color:#607e88;padding-left:9px;border-left:1px solid #c5dfe4;white-space:normal}
 @media(max-width:520px){.offline-version{flex-basis:100%;margin-left:16px;padding-left:0;border-left:0;font-size:10px}}
+
+/* Short, visible sights summary on itinerary cards. */
+.event-card .event-brief{margin:5px 0 10px;color:#53685d;font-size:13px;line-height:1.55;font-weight:450;overflow-wrap:anywhere}
+@media(max-width:480px){.event-card .event-brief{font-size:12.5px;line-height:1.5;margin:5px 0 9px}}

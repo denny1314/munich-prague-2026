@@ -42,7 +42,8 @@
     },
     "d3-frauen": {
       "title": "Frauenkirche Cathedral",
-      "note": "See Munich's famous twin towers and explore the cathedral if it is open."
+      "note": "See Munich's famous twin towers and explore the cathedral if it is open.",
+      "brief": "See Munich's famous twin towers and explore the cathedral if it is open."
     },
     "d3-stpeter": {
       "title": "Meet near St. Peter's Church",
@@ -50,31 +51,38 @@
     },
     "d3-tour": {
       "title": "Walkative! Old Town guided tour",
-      "note": "An English-language walking tour is confirmed. Be at the meeting point early."
+      "note": "An English-language walking tour is confirmed. Be at the meeting point early.",
+      "brief": "An English-language walking tour is confirmed. Be at the meeting point early."
     },
     "d3-lunch": {
       "title": "Lunch at Viktualienmarkt",
-      "note": "Try Bavarian foods at the traditional outdoor food market."
+      "note": "Try Bavarian foods at the traditional outdoor food market.",
+      "brief": "Try Bavarian foods at the traditional outdoor food market."
     },
     "d3-kustermann": {
       "title": "Kustermann: WÜSTHOF and RIEDEL shopping",
-      "note": "Optional shopping for German kitchen knives, glassware and cookware."
+      "note": "Optional shopping for German kitchen knives, glassware and cookware.",
+      "brief": "Optional shopping for German kitchen knives, glassware and cookware."
     },
     "d3-residenz": {
       "title": "Munich Residenz Palace",
-      "note": "Explore historic palace rooms. Admission has not been purchased yet."
+      "note": "Explore historic palace rooms. Admission has not been purchased yet.",
+      "brief": "Explore historic palace rooms. Admission has not been purchased yet."
     },
     "d3-max": {
       "title": "Walk along Maximilianstraße",
-      "note": "Enjoy historic buildings and shops before returning to Marienplatz."
+      "note": "Enjoy historic buildings and shops before returning to Marienplatz.",
+      "brief": "Enjoy historic buildings and shops before returning to Marienplatz."
     },
     "d3-music": {
       "title": "Possible Christmas music at Marienplatz",
-      "note": "A musical performance around 5:30 PM is not yet confirmed; visit the market if there is no performance."
+      "note": "A musical performance around 5:30 PM is not yet confirmed; visit the market if there is no performance.",
+      "brief": "A musical performance around 5:30 PM is not yet confirmed; visit the market if there is no performance."
     },
     "d3-market": {
       "title": "Marienplatz Christmas market and dinner",
-      "note": "Browse Christmas stalls, food and warm drinks."
+      "note": "Browse Christmas stalls, food and warm drinks.",
+      "brief": "Browse Christmas stalls, food and warm drinks."
     },
     "d4-breakfast": {
       "title": "Breakfast and early transfer to castle tour meeting point",
@@ -86,19 +94,23 @@
     },
     "d4-hohen": {
       "title": "Hohenschwangau Castle",
-      "note": "Castle entrance tickets were held by the operator; confirm payment and admission time."
+      "note": "Castle entrance tickets were held by the operator; confirm payment and admission time.",
+      "brief": "Ludwig II's yellow childhood castle; tour takes about 45 minutes. Capture Alpsee and Neuschwanstein views; watch icy paths."
     },
     "d4-neusch": {
       "title": "Neuschwanstein Castle",
-      "note": "Ask the operator for the confirmed entry time and take care on icy slopes."
+      "note": "Ask the operator for the confirmed entry time and take care on icy slopes.",
+      "brief": "Ludwig II's fairy-tale castle inspired Disney's imagery. See the Throne and Singers' halls; Mary's Bridge offers the classic photo angle."
     },
     "d4-alpsee": {
       "title": "Lake Alpsee scenery",
-      "note": "Optional lakeside photo stop, depending on your tour and the weather."
+      "note": "Optional lakeside photo stop, depending on your tour and the weather.",
+      "brief": "Alpine lake for mountain reflections in clear weather. Avoid lakeside paths during snow, strong wind or ice."
     },
     "d4-bridge": {
       "title": "Marienbrücke viewpoint",
-      "note": "Optional bridge view; it may close in winter due to ice or snow."
+      "note": "Optional bridge view; it may close in winter due to ice or snow.",
+      "brief": "Iconic side-on Neuschwanstein photo spot over a deep gorge. Closed in icy weather? Skip it safely."
     },
     "d4-return": {
       "title": "Return to Munich and prepare for tomorrow",
@@ -130,11 +142,13 @@
     },
     "d5-bridge": {
       "title": "Charles Bridge at dusk",
-      "note": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24."
+      "note": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24.",
+      "brief": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24."
     },
     "d5-miru": {
       "title": "Náměstí Míru Christmas market",
-      "note": "Browse Christmas stalls in Peace Square and enjoy warm treats."
+      "note": "Browse Christmas stalls in Peace Square and enjoy warm treats.",
+      "brief": "Browse Christmas stalls in Peace Square and enjoy warm treats."
     },
     "d5-evening": {
       "title": "Dinner and back to The Grand Mark",
@@ -146,23 +160,28 @@
     },
     "d6-castle": {
       "title": "Prague Castle and St. Vitus Cathedral",
-      "note": "Prioritize castle interiors and St. Vitus; other ticketed rooms depend on queues within the 9:00–11:35 shared schedule."
+      "note": "Prioritize castle interiors and St. Vitus; other ticketed rooms depend on queues within the 9:00–11:35 shared schedule.",
+      "brief": "See St. Vitus Cathedral, the Old Royal Palace and Golden Lane. Castle interiors close earlier in winter."
     },
     "d6-starbucks": {
       "title": "Starbucks with castle viewpoint",
-      "note": "Photo and coffee stop before walking toward Strahov."
+      "note": "Photo and coffee stop before walking toward Strahov.",
+      "brief": "Photo and coffee stop before walking toward Strahov."
     },
     "d6-river": {
       "title": "Sunset walk across Charles Bridge",
-      "note": "Walk across with friends from 4:00 to 4:40 PM for dusk views."
+      "note": "Walk across with friends from 4:00 to 4:40 PM for dusk views.",
+      "brief": "Photograph the castle and river from Charles Bridge around blue hour. Dress for the wind."
     },
     "d6-petrin": {
       "title": "Walk from Strahov up to Petřín Hill",
-      "note": "Follow the hill path for views; observation tower entry is optional. No uphill funicular."
+      "note": "Follow the hill path for views; observation tower entry is optional. No uphill funicular.",
+      "brief": "Walk uphill from Strahov for views of Prague's rooftops. Hill paths may be icy."
     },
     "d6-down": {
       "title": "Petřín funicular downhill to Újezd",
-      "note": "Allow time for queues; check service on the day and use a safe alternative if closed."
+      "note": "Allow time for queues; check service on the day and use a safe alternative if closed.",
+      "brief": "Allow time for queues; check service on the day and use a safe alternative if closed."
     },
     "d6-rest": {
       "title": "Return to The Grand Mark for a break",
@@ -178,7 +197,8 @@
     },
     "d6-concert": {
       "title": "Classical music at Smetana Hall (not booked)",
-      "note": "An 8 PM concert is under consideration; tickets have not been purchased."
+      "note": "An 8 PM concert is under consideration; tickets have not been purchased.",
+      "brief": "An 8 PM concert is under consideration; tickets have not been purchased."
     },
     "d6-back": {
       "title": "Return to The Grand Mark",
@@ -194,7 +214,8 @@
     },
     "d7-square": {
       "title": "Old Town Square, clock and Týn Church exterior",
-      "note": "See the Astronomical Clock and Gothic spires together after the Jewish Quarter."
+      "note": "See the Astronomical Clock and Gothic spires together after the Jewish Quarter.",
+      "brief": "See the Astronomical Clock, Týn Church spires and colorful townhouses before early winter dusk."
     },
     "d7-lunch": {
       "title": "Lunch at Mincovna (suggested)",
@@ -202,19 +223,23 @@
     },
     "d7-josefov": {
       "title": "Josefov: Pinkas Synagogue, Old Jewish Cemetery, Spanish Synagogue",
-      "note": "Visit the indoor sites with friends. Tickets and security checks need confirmation."
+      "note": "Visit the indoor sites with friends. Tickets and security checks need confirmation.",
+      "brief": "Pinkas Synagogue, the old Jewish cemetery and Spanish Synagogue. Respect on-site photo restrictions."
     },
     "d7-manuf": {
       "title": "Manufaktura gifts at Na Příkopě 16",
-      "note": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova."
+      "note": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova.",
+      "brief": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova."
     },
     "d7-powder": {
       "title": "Municipal House and Powder Tower exterior",
-      "note": "Quick architecture and photo stop; no tower climb required."
+      "note": "Quick architecture and photo stop; no tower climb required.",
+      "brief": "Photograph the Gothic Powder Tower beside the ornate Art Nouveau Municipal House."
     },
     "d7-republiky": {
       "title": "Republic Square Christmas stalls (optional)",
-      "note": "Enjoy seasonal stalls if time permits before collecting luggage."
+      "note": "Enjoy seasonal stalls if time permits before collecting luggage.",
+      "brief": "Enjoy seasonal stalls if time permits before collecting luggage."
     },
     "d7-move": {
       "title": "Collect luggage and move to Hotel Royal",
@@ -238,11 +263,13 @@
     },
     "d8-castle": {
       "title": "Castle courtyards and Vltava viewpoints",
-      "note": "Enjoy castle courtyards, red rooftops and the S-shaped river bend. Tower and indoor museum are optional, not required."
+      "note": "Enjoy castle courtyards, red rooftops and the S-shaped river bend. Tower and indoor museum are optional, not required.",
+      "brief": "Classic red-roof and S-bend river panoramas from the castle grounds. Some interiors close in winter."
     },
     "d8-latran": {
       "title": "Latrán Street and Lazebnický Bridge",
-      "note": "Walk among historic buildings and take photos of the castle tower from the wooden bridge."
+      "note": "Walk among historic buildings and take photos of the castle tower from the wooden bridge.",
+      "brief": "Colorful Latrán houses, Castle Tower and river views from Lazebnický Bridge. Watch slippery stones."
     },
     "d8-lunch": {
       "title": "Czech lunch with friends",
@@ -250,15 +277,18 @@
     },
     "d8-oldtown": {
       "title": "Svornosti Square and medieval Old Town",
-      "note": "Explore cobblestone lanes, St. Vitus Church surroundings and historic views."
+      "note": "Explore cobblestone lanes, St. Vitus Church surroundings and historic views.",
+      "brief": "Storybook alleyways and Svornosti Square; photograph rooftops before early dusk."
     },
     "d8-river": {
       "title": "Vltava river walk and second photo stop",
-      "note": "Enjoy more riverside viewpoints before sunset. Fog may hide distant castle views."
+      "note": "Enjoy more riverside viewpoints before sunset. Fog may hide distant castle views.",
+      "brief": "Photograph the Vltava bend and old-town reflections; fog favors close-up street scenes."
     },
     "d8-market": {
       "title": "Český Krumlov Christmas market",
-      "note": "Browse the market and enjoy warm drinks and snacks. The friend's guide lists Thursday hours of 11 AM–6 PM; reconfirm locally."
+      "note": "Browse the market and enjoy warm drinks and snacks. The friend's guide lists Thursday hours of 11 AM–6 PM; reconfirm locally.",
+      "brief": "Browse festive stalls and warm drinks in Svornosti Square. Bundle up for the evening."
     },
     "d8-busback": {
       "title": "Return bus to Prague with friends (unbooked)",
@@ -310,15 +340,18 @@
     },
     "d6-strahov": {
       "title": "Strahov Monastery and Library",
-      "note": "Library access depends on tickets; enjoy the exterior and viewpoints if time is short."
+      "note": "Library access depends on tickets; enjoy the exterior and viewpoints if time is short.",
+      "brief": "Ornate Baroque library and panoramic viewpoints. Confirm entry tickets and access restrictions."
     },
     "d6-mala": {
       "title": "Walk through Malá Strana (Lesser Town)",
-      "note": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional."
+      "note": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional.",
+      "brief": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional."
     },
     "d5-celetna": {
       "title": "Browse Celetná Street",
-      "note": "Explore Czech glass shops and historic streets; save Old Town Square and the clock for Nov 25."
+      "note": "Explore Czech glass shops and historic streets; save Old Town Square and the clock for Nov 25.",
+      "brief": "Historic shopping lane for Czech glass and colorful façades. Watch slippery cobblestones."
     },
     "d6-meet": {
       "title": "Meet friends at Pražský hrad Tram 22 stop",
@@ -330,15 +363,18 @@
     },
     "d7-klementinum": {
       "title": "Klementinum guided tour",
-      "note": "Aim for a 2 PM English guided tour, subject to tickets; view the Baroque library and expect stairs."
+      "note": "Aim for a 2 PM English guided tour, subject to tickets; view the Baroque library and expect stairs.",
+      "brief": "See the Baroque library and tower on a timed guided tour. Expect stair climbing."
     },
     "d7-na-prikope": {
       "title": "Shopping on Na Příkopě",
-      "note": "Browse shops with friends before Manufaktura and Palladium."
+      "note": "Browse shops with friends before Manufaktura and Palladium.",
+      "brief": "Browse shops with friends before Manufaktura and Palladium."
     },
     "d7-palladium": {
       "title": "Palladium shopping mall",
-      "note": "Shops, stationery and Czech souvenirs with friends."
+      "note": "Shops, stationery and Czech souvenirs with friends.",
+      "brief": "Shops, stationery and Czech souvenirs with friends."
     }
   },
   "days": {
