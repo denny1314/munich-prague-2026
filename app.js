@@ -405,6 +405,12 @@ function nextLeave(e){if(e.leaveAt)return e.leaveAt;if(e.id==='d3-tour')return '
 
 /* Optional GPS recommendations: coordinates are used in memory only, never saved. */
 var nextGeo={mode:'off',watchId:null,position:null,message:'',lastRender:0},nextReasonGeo=false;
+var NEXT_GEO_PREF='mp26-location-enabled-v1',nextGeoPreference=false;
+try{nextGeoPreference=localStorage.getItem(NEXT_GEO_PREF)==='yes'}catch(err){}
+function rememberNextGeo(enabled){
+ nextGeoPreference=!!enabled;
+ try{if(enabled)localStorage.setItem(NEXT_GEO_PREF,'yes');else localStorage.removeItem(NEXT_GEO_PREF)}catch(err){}
+}
 var fixedNextIds=new Set(['d1-airport','d1-flight','d3-stpeter','d3-tour','d4-tour','d5-black','d5-platform','d5-train','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
 function nextEnd(e){
  var st=nextStart(e);if(!Number.isFinite(st))return NaN;
@@ -456,6 +462,7 @@ function paintNextGeo(){
 }
 function stopNextGeo(){
  if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);
+ rememberNextGeo(false);
  nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null;nextGeo.message='';
  renderNextStop();
 }
@@ -470,12 +477,13 @@ function startNextGeo(){
    if(!Number.isFinite(loc.coords.latitude)||!Number.isFinite(loc.coords.longitude))return;
    var now=Date.now(),old=nextGeo.position;
    var pos={lat:loc.coords.latitude,lon:loc.coords.longitude,accuracy:loc.coords.accuracy,timestamp:loc.timestamp||now};
-   nextGeo.position=pos;nextGeo.mode='on';nextGeo.message='';
+   nextGeo.position=pos;nextGeo.mode='on';nextGeo.message='';rememberNextGeo(true);
    if(!old||now-nextGeo.lastRender>15000||nextDistance(old,[pos.lat,pos.lon])>0.1){nextGeo.lastRender=now;renderNextStop()}
   },function(error){
    if(nextGeo.mode==='off')return;
    nextGeo.mode='error';nextGeo.position=null;
-   nextGeo.message=error&&error.code===1?L('沒有定位權限；依時間排序。','Location permission denied; using schedule order.'):L('定位失敗，請稍後重試。','Location unavailable; try again.');
+   if(error&&error.code===1)rememberNextGeo(false);
+   nextGeo.message=error&&error.code===1?L('沒有定位權限，請點選啟用定位並重新授權。','Location permission denied. Tap to enable again.'):L('定位失敗，請稍後重試。','Location unavailable; try again.');
    if(nextGeo.watchId!==null)navigator.geolocation.clearWatch(nextGeo.watchId);
    nextGeo.watchId=null;renderNextStop();
   },{enableHighAccuracy:false,maximumAge:60000,timeout:15000});
@@ -528,7 +536,7 @@ function renderNextStop(){
 $('nextGeoToggle').addEventListener('click',startNextGeo);
 $('nextGeoDisable').addEventListener('click',stopNextGeo);
 window.addEventListener('pagehide',function(){if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null});
-window.addEventListener('pageshow',function(){renderNextStop()});
+window.addEventListener('pageshow',function(){if(nextGeoPreference&&nextGeo.mode==='off')startNextGeo();else renderNextStop()});
 
 /* Home reminder is driven by the same booking states used by Checklist. */
 function renderCriticalAlert(){
@@ -567,7 +575,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v20',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v21',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
@@ -803,7 +811,7 @@ $('languageToggle').addEventListener('click',changeLanguage);
 window.addEventListener('hashchange',fromHash);
 initializeRates();
 renderTravel();renderShopping();renderTasks();renderExpenses();renderCriticalAlert();
-updateHero();fromHash();renderNextStop();loadWeatherAll(true);
+updateHero();fromHash();renderNextStop();if(nextGeoPreference)startNextGeo();loadWeatherAll(true);
 setInterval(renderNextStop,60000);setInterval(renderCriticalAlert,60000);window.addEventListener('focus',renderNextStop);
 
 })();
