@@ -262,7 +262,8 @@ var weatherDays={
 '2026-11-26':'krumlov','2026-11-27':'prague'
 };
 var weatherStore={},weatherErrors={},weatherLoading=false,weatherLastRequest=0;
-try{var oldWeather=JSON.parse(localStorage.getItem(WEATHER_CACHE)||'{}');if(oldWeather&&typeof oldWeather==='object')weatherStore=oldWeather}catch(e){}
+/* No persistent weather cache: each visit requests a fresh forecast. */
+try{localStorage.removeItem(WEATHER_CACHE)}catch(e){}
 function localDateFor(zone){
 var pieces=new Intl.DateTimeFormat('en-US',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
 var p={};pieces.forEach(function(x){p[x.type]=x.value});return p.year+'-'+p.month+'-'+p.day
@@ -384,7 +385,7 @@ return fetchWeatherJSON('https://api.open-meteo.com/v1/forecast?'+qs.toString())
 .then(function(json){if(json.error||!json.daily||!Array.isArray(json.daily.time))throw Error('Invalid weather response');weatherStore[key]={data:json,updated:Date.now()};delete weatherErrors[key]})
 .catch(function(err){weatherErrors[key]=true})
 })).then(function(){
-try{localStorage.setItem(WEATHER_CACHE,JSON.stringify(weatherStore))}catch(e){}
+/* Forecasts stay in memory for this page session only. */
 weatherLoading=false;refreshWeatherUI()
 }).catch(function(){weatherLoading=false;refreshWeatherUI()})
 }
@@ -625,7 +626,7 @@ function renderDataVersion(){
   var footer=$('footerDataVersion');
   if(!footer)return;
   var v=D&&D.dataVersion||{},updated=String(v.updatedAt||'');
-  var date=/^\\d{4}-\\d{2}-\\d{2}$/.test(updated)?updated.slice(5,7)+'/'+updated.slice(8,10):'';
+  var date=/^\d{4}-\d{2}-\d{2}$/.test(updated)?updated.slice(5,7)+'/'+updated.slice(8,10):'';
   footer.textContent=lang==='en'?(date?'Itinerary updated '+date:'Itinerary date unavailable'):(date?'行程資料更新於 '+date:'行程資料更新日期未標示');
 }
 renderDataVersion();
