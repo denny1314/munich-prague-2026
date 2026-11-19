@@ -145,48 +145,36 @@
       "note": "Relax before a full sightseeing day."
     },
     "d6-transit": {
-      "title": "Travel to Prague Castle",
-      "note": "Take Prague transit toward the castle and allow time for walking uphill."
+      "title": "Travel to Prague Castle and meet friends",
+      "note": "Leave The Grand Mark and meet friends around the castle entrance at 9 AM."
     },
     "d6-castle": {
-      "title": "Prague Castle highlights",
-      "note": "Visit courtyards, St. Vitus Cathedral and other historic sites. Admission must be confirmed."
+      "title": "Prague Castle and St. Vitus Cathedral",
+      "note": "Prioritize castle interiors and St. Vitus; other ticketed rooms depend on queues within the 9:00–11:35 shared schedule."
     },
     "d6-starbucks": {
-      "title": "Coffee break at Prague Castle",
-      "note": "Warm up with a drink and enjoy the view."
-    },
-    "d6-porks": {
-      "title": "Malá Strana and pork-knuckle lunch",
-      "note": "Explore Lesser Town and consider lunch at Pork's. No reservation has been made."
+      "title": "Starbucks with castle viewpoint",
+      "note": "Photo and coffee stop before walking toward Strahov."
     },
     "d6-river": {
-      "title": "Vltava river and Charles Bridge photos",
-      "note": "Take a short riverside photo stop, weather permitting."
-    },
-    "d6-ujezd": {
-      "title": "Walk to Újezd funicular stop",
-      "note": "Reach the lower funicular stop and check whether it is operating."
-    },
-    "d6-up": {
-      "title": "Petřín funicular uphill",
-      "note": "Planned ride only if service is operating; confirm tickets and any closure."
+      "title": "Sunset walk across Charles Bridge",
+      "note": "Walk across with friends from 4:00 to 4:40 PM for dusk views."
     },
     "d6-petrin": {
-      "title": "Petřín Hill lookout",
-      "note": "Enjoy views of Prague; the observation tower is optional and ticketed."
+      "title": "Walk from Strahov up to Petřín Hill",
+      "note": "Follow the hill path for views; observation tower entry is optional. No uphill funicular."
     },
     "d6-down": {
-      "title": "Petřín funicular downhill",
-      "note": "Return toward Újezd if service is running."
+      "title": "Petřín funicular downhill to Újezd",
+      "note": "Allow time for queues; check service on the day and use a safe alternative if closed."
     },
     "d6-rest": {
       "title": "Return to The Grand Mark for a break",
-      "note": "Rest before the potential evening concert."
+      "note": "The shared daytime route ends; the evening concert is an optional separate plan."
     },
     "d6-dinner": {
       "title": "Dinner near Municipal House",
-      "note": "Have dinner early if you plan to attend the concert."
+      "note": "Leave a buffer before the optional 8 PM concert if attending."
     },
     "d6-entry": {
       "title": "Go to Smetana Hall",
@@ -323,6 +311,18 @@
     "d9-uber": {
       "title": "Uber Comfort pickup from SFO",
       "note": "Pickup is booked for 4:30 PM, the same as scheduled landing. Verify or adjust to allow for baggage and immigration."
+    },
+    "d6-lunch": {
+      "title": "Quick lunch near the castle; walk toward Strahov",
+      "note": "Keep lunch short to reach Strahov at 1 PM. Pork's is no longer on the fixed lunch route."
+    },
+    "d6-strahov": {
+      "title": "Strahov Monastery and Library",
+      "note": "Library access depends on tickets; enjoy the exterior and viewpoints if time is short."
+    },
+    "d6-mala": {
+      "title": "Walk through Malá Strana (Lesser Town)",
+      "note": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional."
     }
   },
   "days": {
@@ -372,14 +372,16 @@
       ]
     },
     "2026-11-24": {
-      "title": "Prague Castle and Petřín Hill",
-      "highlight": "Optional 8 PM classical concert; tickets not yet purchased",
-      "routeNote": "Castle, Lesser Town and Petřín. Funicular service requires checking; the concert is not booked.",
+      "title": "Prague Castle, Strahov, Petřín and Charles Bridge",
+      "highlight": "Following friends' walking route; optional 8 PM concert not booked",
+      "routeNote": "Castle → Starbucks → Strahov → walk to Petřín → funicular downhill → Lesser Town → Charles Bridge. Depart from The Grand Mark; concert remains optional and unbooked.",
       "routeGroups": [
-        "Grand Mark to Prague Castle",
-        "Prague Castle, Lesser Town and Petřín",
-        "Petřín to Municipal House",
-        "Municipal House to Grand Mark"
+        "The Grand Mark to Prague Castle meeting point",
+        "Castle, Starbucks, Strahov and Petřín",
+        "Petřín funicular downhill to Újezd",
+        "Újezd, Lesser Town and Charles Bridge",
+        "Charles Bridge back to The Grand Mark",
+        "Optional evening: hotel, Municipal House and return"
       ]
     },
     "2026-11-25": {
@@ -430,7 +432,8 @@
     "todos-15": "Verify Christmas-market opening dates and times",
     "todos-16": "Download offline maps, flight and train QR codes",
     "todos-17": "Check roaming or an eSIM",
-    "todos-18": "Review travel insurance and emergency contacts"
+    "todos-18": "Review travel insurance and emergency contacts",
+    "todos-20261124-strahov": "Confirm Strahov Monastery Library admission for November 24"
   },
   "packing": {
     "packing-1": "Passports and ID",

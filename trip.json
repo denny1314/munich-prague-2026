@@ -171,15 +171,15 @@
       "date": "2026-11-24",
       "weekday": "二",
       "day": 6,
-      "title": "布拉格城堡區",
+      "title": "城堡・Strahov・Petřín・小城・查理大橋",
       "city": "Prague",
-      "highlight": "20:00 古典音樂會（待購票）",
+      "highlight": "與朋友同行城堡至查理大橋；20:00 音樂會（待購票）",
       "hotel": "grand",
       "route": {
-        "note": "布拉格城堡與小城區步行；Petřín 纜車營運待確認，音樂會仍未購票。",
+        "note": "依朋友 11/24 行程：城堡 → Starbucks → Strahov → Petřín 步行上山 → 纜車下山 → 小城區 → 查理大橋。你從 The Grand Mark 出發，晚間音樂會仍為未購票的個人選項；連線僅示意順序。",
         "groups": [
           {
-            "title": "Grand Mark → 布拉格城堡",
+            "title": "The Grand Mark → 城堡區集合",
             "mode": "transit",
             "stops": [
               "hotel:grand",
@@ -187,32 +187,50 @@
             ]
           },
           {
-            "title": "布拉格城堡、小城區與 Petřín",
+            "title": "城堡 → Starbucks → Strahov → Petřín",
             "mode": "walking",
             "stops": [
               "d6-castle",
               "d6-starbucks",
-              "d6-porks",
-              "d6-river",
-              "d6-ujezd",
+              "d6-strahov",
               "d6-petrin"
             ]
           },
           {
-            "title": "Petřín → 市民會館",
+            "title": "Petřín 纜車下山至 Újezd",
             "mode": "transit",
             "stops": [
               "d6-petrin",
-              "d6-entry"
+              "via:prague-ujezd"
+            ],
+            "note": "此段乘坐纜車，不是步行；當日營運待確認。"
+          },
+          {
+            "title": "Újezd → 小城 → 查理大橋",
+            "mode": "walking",
+            "stops": [
+              "via:prague-ujezd",
+              "d6-mala",
+              "d6-river"
             ]
           },
           {
-            "title": "市民會館 → Grand Mark",
-            "mode": "walking",
+            "title": "查理大橋 → The Grand Mark",
+            "mode": "transit",
             "stops": [
-              "d6-entry",
+              "d6-river",
               "hotel:grand"
             ]
+          },
+          {
+            "title": "晚間自選：飯店 → 市民會館 → 飯店",
+            "mode": "walking",
+            "stops": [
+              "hotel:grand",
+              "d6-entry",
+              "hotel:grand"
+            ],
+            "note": "20:00 音樂會尚未購票，可自行決定是否參加。"
           }
         ]
       }
@@ -1129,16 +1147,16 @@
     {
       "id": "d6-transit",
       "date": "2026-11-24",
-      "time": "08:15–09:00",
-      "title": "前往 Prague Castle 布拉格城堡",
+      "time": "08:05–09:00",
+      "title": "前往布拉格城堡區／與朋友集合",
       "cat": "交通",
       "place": "Pražský hrad, Praha, Czechia",
-      "desc": "從 The Grand Mark 出發，搭 Metro／電車再步行，實際班次與下車站以 PID 當日路線為準。",
-      "duration": "45 分",
+      "desc": "從 The Grand Mark 出發，預計 09:00 在城堡區入口附近與朋友碰面；朋友由老城區自行前往。",
+      "duration": "55 分",
       "state": "planned",
       "status": "交通規劃",
       "warn": "",
-      "trans": "The Grand Mark → Prague Castle；以 PID 查詢當日適合的 Metro／電車路線，預留上坡與入場時間。",
+      "trans": "The Grand Mark → 布拉格城堡；依 PID 當天 Metro／Tram 22 實際路線預留轉乘、上坡與集合時間。",
       "eta": "",
       "sub": [],
       "weather": ""
@@ -1146,26 +1164,25 @@
     {
       "id": "d6-castle",
       "date": "2026-11-24",
-      "time": "09:00–12:30",
-      "title": "Prague Castle 布拉格城堡經典路線",
+      "time": "09:00–11:35",
+      "title": "Prague Castle 布拉格城堡＋聖維特大教堂",
       "cat": "景點",
       "place": "Prague Castle, Hradčany, Praha, Czechia",
-      "desc": "第一庭院／Matthias Gate → 第二庭院 → 聖維特大教堂 → 舊皇宮 Vladislav Hall → 聖喬治大殿 → 黃金巷。票價、開放與室內參觀權限待官方核對。",
-      "duration": "3 小時 30 分",
+      "desc": "依朋友路線上午先參觀城堡與聖維特大教堂；保留室內參觀優先權。舊皇宮、聖喬治大殿、黃金巷視排隊與門票擇重點，不保證全部深入參觀。",
+      "duration": "2 小時 35 分",
       "state": "pending",
       "status": "入場門票待購",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [
-        "第一庭院與 Matthias Gate 馬蒂亞斯門",
-        "第二庭院",
-        "St. Vitus Cathedral 聖維特大教堂",
-        "Old Royal Palace 舊皇宮／Vladislav Hall",
-        "St. George’s Basilica 聖喬治大殿",
-        "Golden Lane 黃金巷"
+        "城堡庭院／Matthias Gate 馬蒂亞斯門",
+        "St. Vitus Cathedral 聖維特大教堂（優先）",
+        "Old Royal Palace 舊皇宮／Vladislav Hall（視時間）",
+        "St. George’s Basilica 聖喬治大殿（視時間）",
+        "Golden Lane 黃金巷（視時間）"
       ],
-      "weather": "室內景點優先，但需遵守各館當日開放與時間。",
+      "weather": "雨雪優先保留城堡室內景點。若希望全部完整參觀，須另與朋友協調延長時間。",
       "photo": {
         "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Prague_-_Prague_Castle.jpg/960px-Prague_-_Prague_Castle.jpg",
         "source": "https://commons.wikimedia.org/wiki/File:Prague_-_Prague_Castle.jpg",
@@ -1182,11 +1199,11 @@
     {
       "id": "d6-starbucks",
       "date": "2026-11-24",
-      "time": "12:30–13:00",
+      "time": "11:35–12:05",
       "title": "Starbucks Prague Castle",
       "cat": "餐飲",
       "place": "Starbucks Prague Castle, Hradčany, Praha, Czechia",
-      "desc": "休息、喝熱飲並欣賞城堡周邊視野；營業狀態需現場核對。",
+      "desc": "城堡 Starbucks 景觀咖啡、拍照與短暫休息；營業情況仍需出發前確認。",
       "duration": "30 分",
       "state": "planned",
       "status": "建議行程",
@@ -1202,111 +1219,60 @@
       ]
     },
     {
-      "id": "d6-porks",
+      "id": "d6-lunch",
       "date": "2026-11-24",
-      "time": "13:00–14:15",
-      "title": "Malá Strana 小城區＋Pork’s 豬腳午餐",
+      "time": "12:05–12:55",
+      "title": "城堡周邊簡餐／步行往 Strahov",
       "cat": "餐飲",
-      "place": "Pork’s, Mostecká, Malá Strana, Praha, Czechia",
-      "desc": "沿小城區街道下坡；Pork’s 可能候位，餐廳尚未訂位。",
-      "duration": "75 分",
+      "place": "Hradčany, Praha, Czechia",
+      "desc": "與朋友一同在城堡或 Strahov 周邊快速用午餐，避免正式套餐延誤 13:00 修道院行程；原 Pork’s 午餐不再列為固定安排。",
+      "duration": "50 分",
       "state": "planned",
-      "status": "餐廳未訂位",
+      "status": "午餐尚未預訂",
       "warn": "",
-      "trans": "",
+      "trans": "布拉格城堡周邊 → Strahov 修道院，步行前往。",
       "eta": "",
       "sub": [],
-      "weather": "雨雪可延長室內用餐；留意後續纜車及晚間音樂會。",
-      "routeLabel": "Pork’s 午餐",
-      "geo": [
-        50.0875,
-        14.4049
-      ]
+      "weather": "天氣寒冷時優先選可快速入座的室內餐廳。"
     },
     {
-      "id": "d6-river",
+      "id": "d6-strahov",
       "date": "2026-11-24",
-      "time": "14:15–14:40",
-      "title": "伏爾塔瓦河與查理大橋橋頭攝影",
+      "time": "13:00–13:40",
+      "title": "Strahov Monastery 修道院／圖書館",
       "cat": "景點",
-      "place": "Karlův most, Malá Strana, Praha, Czechia",
-      "desc": "小城區河岸或橋頭拍攝點短暫停留。",
-      "duration": "25 分",
-      "state": "planned",
-      "status": "建議行程",
-      "warn": "",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "大風或降雪時略過戶外停留，將時間留給纜車。",
-      "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg/960px-Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Vltava_River_and_the_Charles_Bridge,_Prague_-_8181.jpg",
-        "author": "Jorge Royan",
-        "license": "CC BY-SA 3.0",
-        "alt": "伏爾塔瓦河與布拉格查理大橋景色"
-      },
-      "routeLabel": "伏爾塔瓦河畔",
-      "geo": [
-        50.0857,
-        14.409
-      ]
-    },
-    {
-      "id": "d6-ujezd",
-      "date": "2026-11-24",
-      "time": "14:40–15:10",
-      "title": "前往 Újezd 纜車山下站",
-      "cat": "交通",
-      "place": "Újezd funicular station, Praha, Czechia",
-      "desc": "可步行或搭電車到 Újezd；請核對 11/24 當日營運資訊。",
-      "duration": "30 分",
-      "state": "planned",
-      "status": "交通規劃",
-      "warn": "",
-      "trans": "小城區橋頭 → Újezd；可以步行或搭適合的電車，現場路線與時間以 PID 導航為準。",
-      "eta": "",
-      "sub": [],
-      "weather": "",
-      "routeLabel": "Újezd 纜車站",
-      "geo": [
-        50.083,
-        14.4035
-      ]
-    },
-    {
-      "id": "d6-up",
-      "date": "2026-11-24",
-      "time": "15:10–15:30",
-      "title": "Petřín Funicular 佩特任纜車上山",
-      "cat": "交通",
-      "place": "Újezd, Praha, Czechia",
-      "desc": "Újezd → Petřín；實際行車約 3.2 分，時段包含候車。PID 官方表示 2026/9/22 起恢復，11/24 仍需核對臨時停駛。",
-      "duration": "20 分（含候車）",
+      "place": "Strahov Monastery, Strahovské nádvoří, Praha, Czechia",
+      "desc": "跟朋友參觀 Strahov 修道院；如購得合適票券，安排圖書館參觀動線（通常由指定參觀區觀看歷史書庫），否則保留建築外觀與觀景處。",
+      "duration": "40 分",
       "state": "pending",
-      "status": "依當日營運／尚未購票",
+      "status": "圖書館票務待確認",
       "warn": "",
-      "trans": "Újezd 下站 → Petřín 上站；約每 10 分鐘一班（官網資訊），候車及停駛依當日狀況。",
-      "eta": "行車約 3.2 分鐘；時段含候車",
+      "trans": "由城堡區步行前往修道院。",
+      "eta": "",
       "sub": [],
-      "weather": "遇停駛改為市中心室內活動或安全的地面路線，保留晚間音樂會。"
+      "weather": "時間落後或人潮過多時縮短圖書館參觀，優先保留城堡、小城與查理大橋。",
+      "geo": [
+        50.0865,
+        14.3895
+      ],
+      "routeLabel": "Strahov 修道院"
     },
     {
       "id": "d6-petrin",
       "date": "2026-11-24",
-      "time": "15:30–16:15",
-      "title": "Petřín 山觀景、瞭望塔（彈性）",
+      "time": "13:40–14:25",
+      "title": "Strahov → Petřín 山丘（步行＋觀景）",
       "cat": "景點",
       "place": "Petřín Lookout Tower, Praha, Czechia",
-      "desc": "欣賞布拉格紅屋頂與城市全景；瞭望塔另購票、依天候及開放決定。",
+      "desc": "依朋友路線由 Strahov 沿山丘步道步行至 Petřín 山頂，在觀景處看布拉格紅屋頂。瞭望塔登塔非固定行程，不安排纜車上山。",
       "duration": "45 分",
       "state": "planned",
-      "status": "登塔未購票",
+      "status": "步行觀景／登塔非必要",
       "warn": "",
-      "trans": "",
+      "trans": "Strahov → Petřín 山頂，步行有坡度；若天雨、結冰或走得慢，縮短山丘停留。",
       "eta": "",
       "sub": [],
-      "weather": "若風大或冰雪，避開登塔與濕滑步道，可縮短停留。",
+      "weather": "雨雪、結冰時避開濕滑步道，現場改選安全替代路徑。",
       "routeLabel": "Petřín 山",
       "geo": [
         50.0836,
@@ -1316,33 +1282,84 @@
     {
       "id": "d6-down",
       "date": "2026-11-24",
-      "time": "16:15–16:45",
-      "title": "Petřín Funicular 纜車下山",
+      "time": "14:25–15:05",
+      "title": "Petřín 纜車下山至 Újezd",
       "cat": "交通",
       "place": "Petřín funicular station, Praha, Czechia",
-      "desc": "Petřín → Újezd，下山時段含候車與步行。",
-      "duration": "30 分（含候車）",
+      "desc": "朋友規劃在 Petřín 山頂搭纜車下山到 Újezd；40 分鐘含排隊與前後步行，行車僅數分鐘。",
+      "duration": "40 分（含步行與候車）",
       "state": "pending",
       "status": "依營運狀況",
       "warn": "",
-      "trans": "Petřín 上站 → Újezd 下站；若因天候停駛，需依 PID 官方交通建議調整。",
+      "trans": "Petřín 上站 → Újezd 下站，僅單程下山；11/24 當日班次、票種與臨時停駛仍須核對。",
       "eta": "",
       "sub": [],
-      "weather": "纜車停駛時選擇安全下山路線或當日公共交通替代。"
+      "weather": "若纜車停駛，與朋友改採安全步行下山或公共交通替代，不強求登塔。"
+    },
+    {
+      "id": "d6-mala",
+      "date": "2026-11-24",
+      "time": "15:05–15:55",
+      "title": "Malá Strana 小城區散步",
+      "cat": "景點",
+      "place": "Malostranské náměstí, Praha, Czechia",
+      "desc": "從 Újezd 一帶進入小城區，漫步 Malostranské náměstí、聖尼古拉教堂外觀；Kampa／Lennon Wall 視時間選配。Pork’s 可作與朋友分開用餐時的備案，不排固定午餐。",
+      "duration": "50 分",
+      "state": "planned",
+      "status": "朋友同行",
+      "warn": "",
+      "trans": "Újezd → Malá Strana → 查理大橋，主要步行。",
+      "eta": "",
+      "sub": [],
+      "weather": "若有延誤，先省略 Kampa 與額外咖啡時間。",
+      "routeLabel": "小城區 Malá Strana",
+      "geo": [
+        50.0878,
+        14.4033
+      ]
+    },
+    {
+      "id": "d6-river",
+      "date": "2026-11-24",
+      "time": "16:00–16:40",
+      "title": "Charles Bridge 查理大橋黃昏散步",
+      "cat": "景點",
+      "place": "Karlův most, Praha, Czechia",
+      "desc": "跟朋友步行橫越查理大橋，欣賞城堡、橋塔與伏爾塔瓦河景。接近日落與藍調時刻，適合拍照；11/23 已走過也可以再訪。",
+      "duration": "40 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "天冷或風大時縮短拍照時間，但保留過橋作為今日主要景點。",
+      "photo": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg/960px-Vltava_River_and_the_Charles_Bridge%2C_Prague_-_8181.jpg",
+        "source": "https://commons.wikimedia.org/wiki/File:Vltava_River_and_the_Charles_Bridge,_Prague_-_8181.jpg",
+        "author": "Jorge Royan",
+        "license": "CC BY-SA 3.0",
+        "alt": "伏爾塔瓦河與布拉格查理大橋景色"
+      },
+      "routeLabel": "查理大橋",
+      "geo": [
+        50.0857,
+        14.409
+      ]
     },
     {
       "id": "d6-rest",
       "date": "2026-11-24",
       "time": "17:00–18:00",
-      "title": "返回 The Grand Mark 休息",
+      "title": "回 The Grand Mark 休息（音樂會彈性）",
       "cat": "休息",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "休息與整理晚間音樂會物品。",
+      "desc": "與朋友完成白天路線後，回飯店休息；晚間音樂會尚未購票，如不參加可直接自由晚餐。",
       "duration": "60 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
-      "trans": "Újezd 周邊 → The Grand Mark；交通以 PID 當日查詢為準。",
+      "trans": "查理大橋 → The Grand Mark；按體力選擇步行或大眾運輸。",
       "eta": "",
       "sub": [],
       "weather": ""
@@ -1354,7 +1371,7 @@
       "title": "市民會館附近晚餐",
       "cat": "餐飲",
       "place": "Municipal House, Náměstí Republiky, Praha, Czechia",
-      "desc": "預留 19:15–19:45 進場緩衝；餐廳尚未訂位。",
+      "desc": "晚餐可在 Municipal House／共和國廣場附近自由安排；如要參加 20:00 音樂會，請保留進場緩衝。餐廳尚未預訂。",
       "duration": "75 分",
       "state": "planned",
       "status": "自由安排",
@@ -2277,6 +2294,14 @@
       "requireTicket": true
     },
     {
+      "id": "todos-20261124-strahov",
+      "text": "11/24 Strahov 修道院圖書館票務確認",
+      "activityIds": [
+        "d6-strahov"
+      ],
+      "requireTicket": true
+    },
+    {
       "id": "todos-11",
       "text": "11/24 Petřín 纜車營運確認",
       "done": false
@@ -2459,10 +2484,19 @@
         48.13041,
         11.59059
       ]
+    },
+    {
+      "id": "prague-ujezd",
+      "title": "Újezd 纜車下站",
+      "enTitle": "Újezd lower funicular station",
+      "geo": [
+        50.083,
+        14.4035
+      ]
     }
   ],
   "dataVersion": {
     "updatedAt": "2026-11-18",
-    "revision": "2026.11.18-1"
+    "revision": "2026.11.18-2"
   }
 }

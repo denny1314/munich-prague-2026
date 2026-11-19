@@ -70,7 +70,7 @@ function showScreen(to,doHash){screen=to;updateNav();if(to==='ready')renderTasks
 function statusClass(v){return v==='paid'||v==='confirmed'||v==='reserved'?'ok':v==='pending'?'pending':v==='tentative'?'uncertain':''}
 function dayButtons(){return D.days.map(function(d,i){return '<button type="button" class="daybtn" role="tab" aria-selected="'+(i===dayIndex)+'" data-day="'+i+'"><small>NOV · '+d.weekday+'</small><b>'+d.date.slice(-2)+'</b><small>'+({Munich:'慕尼黑',Prague:'布拉格','Český Krumlov':'CK 小鎮','San Francisco':'SFO'}[d.city]||d.city)+'</small><span class="daywx" data-weather-day="'+i+'">—</span></button>'}).join('')}
 /* Only purposeful destinations receive a map link; skip flights, immigration, baggage, in-transit steps and unconfirmed meeting points. */
-var mapEventIds=new Set(["d1-airport","d2-hotel","d3-frauen","d3-stpeter","d3-lunch","d3-kustermann","d3-residenz","d3-max","d3-market","d4-tour","d4-hohen","d4-neusch","d4-alpsee","d4-bridge","d5-platform","d5-grand","d5-oldtown","d5-bridge","d5-miru","d6-castle","d6-starbucks","d6-porks","d6-river","d6-ujezd","d6-petrin","d6-entry","d7-square","d7-josefov","d7-celetna","d7-manuf","d7-powder","d7-republiky","d7-move","d8-castle","d8-lunch","d8-oldtown"]);
+var mapEventIds=new Set(["d1-airport","d2-hotel","d3-frauen","d3-stpeter","d3-lunch","d3-kustermann","d3-residenz","d3-max","d3-market","d4-tour","d4-hohen","d4-neusch","d4-alpsee","d4-bridge","d5-platform","d5-grand","d5-oldtown","d5-bridge","d5-miru","d6-castle","d6-starbucks","d6-strahov","d6-mala","d6-river","d6-petrin","d6-entry","d7-square","d7-josefov","d7-celetna","d7-manuf","d7-powder","d7-republiky","d7-move","d8-castle","d8-lunch","d8-oldtown"]);
 function shouldShowMap(e){return !!(e.place&&mapEventIds.has(e.id))}
 function showMore(e){var body='';if(e.desc)body+='<p>'+E(e.desc)+'</p>';if(e.trans)body+='<p><b>交通：</b>'+E(e.trans)+'</p>';if(e.sub.length)body+='<ul class="subs subitems">'+e.sub.map(function(s){return '<li>'+E(s)+'</li>'}).join('')+'</ul>';if(e.weather)body+='<p><b>天氣備案：</b>'+E(e.weather)+'</p>';if(e.warn)body+='<p class="notice">'+E(e.warn)+'</p>';if(e.infoLinks&&e.infoLinks.length)body+='<div class="actionrow">'+e.infoLinks.map(function(l){return '<a class="action" href="'+E(l.url)+'" target="_blank" rel="noopener noreferrer">'+E(l.label)+' ↗</a>'}).join('')+'</div>';
 if(e.loungeLinks&&e.loungeLinks.length)body+='<div class="actionrow">'+e.loungeLinks.map(function(l){return '<a class="action primary" href="'+E(l.url)+'" target="_blank" rel="noopener noreferrer">'+E((typeof L==='function'?L(l.label,l.en||l.label):l.label))+' · Priority Pass ↗</a>'}).join('')+'</div>';
@@ -440,7 +440,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261117-v14',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v15',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
