@@ -400,9 +400,135 @@ $('expenseRows').innerHTML=state.expenses.length?state.expenses.slice().reverse(
 }
 function addExpense(form){var fd=new FormData(form),name=String(fd.get('name')||'').trim(),amount=Number(fd.get('amount')),currency=String(fd.get('currency')||'EUR');if(!name||!Number.isFinite(amount)||amount<=0||!['EUR','CZK','USD'].includes(currency))return;state.expenses.push({id:String(Date.now())+Math.random().toString(36).slice(2,6),name:name.slice(0,70),amount:Math.round(amount*100)/100,currency:currency,date:new Date().toLocaleDateString('zh-TW')});save();form.reset();renderExpenses();notify('已加入支出')}
 var nextStopIds=new Set(['d1-airport','d1-flight','d2-arrive','d2-ticket','d2-hotel','d3-frauen','d3-stpeter','d3-tour','d3-residenz','d3-market','d4-tour','d4-hohen','d4-neusch','d5-black','d5-platform','d5-train','d5-grand','d5-celetna','d5-miru','d6-castle','d6-concert','d7-josefov','d7-move','d8-busout','d8-castle','d8-busback','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
-function nextStart(e){var m=/^(\d\d):(\d\d)/.exec(e.time||'');if(!m)return NaN;var offset=e.date==='2026-11-19'||e.id==='d9-uber'?'-08:00':'+01:00';return Date.parse(e.date+'T'+m[1]+':'+m[2]+':00'+offset)}
+function nextStart(e){var m=/(\d{1,2}):(\d{2})/.exec(e.time||'');if(!m)return NaN;var offset=e.date==='2026-11-19'||e.id==='d9-uber'?'-08:00':'+01:00';return Date.parse(e.date+'T'+m[1]+':'+m[2]+':00'+offset)}
 function nextLeave(e){if(e.leaveAt)return e.leaveAt;if(e.id==='d3-tour')return '10:30 前抵達';if(e.id==='d5-train')return '05:40 送站';if(e.id==='d9-lx1485')return '06:30 送機';return '依路程安排'}
-function renderNextStop(){var all=D.events.filter(function(e){return nextStopIds.has(e.id)&&Number.isFinite(nextStart(e))&&nextStart(e)>=Date.now()-300000}).sort(function(a,b){return nextStart(a)-nextStart(b)}),e=all[0],map=$('nextMap'),view=$('nextView');if(!e){$('nextTitle').textContent='旅程已結束';$('nextDate').textContent='';$('nextTime').textContent='—';$('nextLeave').textContent='—';$('nextHint').textContent='可以回顧每日行程';map.hidden=true;view.hidden=true;return}$('nextTitle').textContent=e.title;$('nextDate').textContent=fmt(e.date)+' · '+(e.date==='2026-11-19'||e.id==='d9-uber'?'美西時間':'歐洲時間');$('nextTime').textContent=e.time;$('nextLeave').textContent=nextLeave(e);$('nextHint').textContent=e.warn||e.status||'以實際預約為準';if(shouldShowMap(e)){map.href=mapurl(e.place);map.hidden=false}else{map.hidden=true;map.removeAttribute('href')}view.hidden=false;view.dataset.nextDay=e.date}
+
+/* Optional GPS recommendations: coordinates are used in memory only, never saved. */
+var nextGeo={mode:'off',watchId:null,position:null,message:'',lastRender:0},nextReasonGeo=false;
+var fixedNextIds=new Set(['d1-airport','d1-flight','d3-stpeter','d3-tour','d4-tour','d5-black','d5-platform','d5-train','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
+function nextEnd(e){
+ var st=nextStart(e);if(!Number.isFinite(st))return NaN;
+ var range=/\d{1,2}:\d{2}\s*[–—-]\s*(\d{1,2}):(\d{2})/.exec(e.time||'');
+ if(range&&e.cat!=='航班'){
+  var offset=e.date==='2026-11-19'||e.id==='d9-uber'?'-08:00':'+01:00';
+  var end=Date.parse(e.date+'T'+range[1].padStart(2,'0')+':'+range[2]+':00'+offset);
+  if(end>st)return end;
+ }
+ var hour=/(\d+(?:\.\d+)?)\s*小時/.exec(e.duration||''),min=/(\d+)\s*分/.exec(e.duration||'');
+ var total=(hour?Number(hour[1])*60:0)+(min?Number(min[1]):0);
+ return st+(total>0?Math.min(total,900):20)*60000;
+}
+function nextCoordinates(e){
+ /* Only rank walkable mapped destinations, never a flight's arrival coordinates. */
+ if(!mapEventIds.has(e.id)||!Array.isArray(e.geo)||e.geo.length!==2)return null;
+ var lat=Number(e.geo[0]),lon=Number(e.geo[1]);
+ return Number.isFinite(lat)&&Number.isFinite(lon)&&Math.abs(lat)<=90&&Math.abs(lon)<=180?[lat,lon]:null;
+}
+function nextDistance(p,geo){
+ var r=Math.PI/180,dlat=(geo[0]-p.lat)*r,dlon=(geo[1]-p.lon)*r;
+ var h=Math.sin(dlat/2)**2+Math.cos(p.lat*r)*Math.cos(geo[0]*r)*Math.sin(dlon/2)**2;
+ return 12742*Math.asin(Math.min(1,Math.sqrt(h)));
+}
+function nextTripZone(p){return p.lon< -60?'America/Los_Angeles':'Europe/Prague'}
+function nextDateAt(p,ms){
+ var v={};new Intl.DateTimeFormat('en-US',{timeZone:nextTripZone(p),year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(ms)).forEach(function(x){v[x.type]=x.value});
+ return v.year+'-'+v.month+'-'+v.day;
+}
+function nextHourAt(p,ms){
+ return Number(new Intl.DateTimeFormat('en-GB',{timeZone:nextTripZone(p),hour:'2-digit',hourCycle:'h23'}).format(new Date(ms)));
+}
+function nextGeoValid(now){
+ return nextGeo.mode==='on'&&nextGeo.position&&now-nextGeo.position.timestamp<10*60000&&nextGeo.position.accuracy<=1200;
+}
+function nextDistanceText(km){return km<1?Math.round(km*1000)+' '+L('公尺','m'):km.toFixed(1)+' '+L('公里','km')}
+function paintNextGeo(){
+ var on=$('nextGeoToggle'),off=$('nextGeoDisable'),label=$('nextGeoStatus');
+ if(!on||!off||!label)return;
+ on.disabled=(!navigator.geolocation||nextGeo.mode==='locating');
+ on.textContent=nextGeo.mode==='locating'?L('正在定位…','Locating…'):nextGeo.mode==='on'?L('更新我的位置','Refresh location'):L('啟用我的位置','Use my location');
+ off.textContent=L('關閉定位','Turn off location');
+ off.hidden=nextGeo.mode!=='on'&&nextGeo.mode!=='locating';
+ label.textContent=nextGeo.mode==='locating'?L('請允許瀏覽器存取位置。','Please allow browser location access.'):
+ nextGeo.mode==='error'?(nextGeo.message||L('無法取得位置；依時間排序。','Location unavailable; using schedule order.')):
+ nextGeo.mode==='on'?(nextGeoValid(Date.now())?L('只在此裝置使用 GPS，不儲存或上傳座標。','GPS stays on this device; coordinates are not saved or uploaded.'):L('位置太舊或精度不足，請更新。','Location is stale or inaccurate; refresh it.')):
+ !navigator.geolocation?L('此瀏覽器不支援定位；依時間排序。','Location is unsupported; using schedule order.'):
+ L('尚未啟用定位 · 依時間排序。','Location off · Using schedule order.');
+}
+function stopNextGeo(){
+ if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);
+ nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null;nextGeo.message='';
+ renderNextStop();
+}
+function startNextGeo(){
+ if(!navigator.geolocation){nextGeo.mode='error';nextGeo.message=L('此瀏覽器不支援定位。','Location is unsupported.');renderNextStop();return}
+ if(nextGeo.watchId!==null)navigator.geolocation.clearWatch(nextGeo.watchId);
+ nextGeo.watchId=null;nextGeo.position=null;nextGeo.mode='locating';nextGeo.message='';
+ paintNextGeo();
+ try{
+  nextGeo.watchId=navigator.geolocation.watchPosition(function(loc){
+   if(nextGeo.mode==='off')return;
+   if(!Number.isFinite(loc.coords.latitude)||!Number.isFinite(loc.coords.longitude))return;
+   var now=Date.now(),old=nextGeo.position;
+   var pos={lat:loc.coords.latitude,lon:loc.coords.longitude,accuracy:loc.coords.accuracy,timestamp:loc.timestamp||now};
+   nextGeo.position=pos;nextGeo.mode='on';nextGeo.message='';
+   if(!old||now-nextGeo.lastRender>15000||nextDistance(old,[pos.lat,pos.lon])>0.1){nextGeo.lastRender=now;renderNextStop()}
+  },function(error){
+   if(nextGeo.mode==='off')return;
+   nextGeo.mode='error';nextGeo.position=null;
+   nextGeo.message=error&&error.code===1?L('沒有定位權限；依時間排序。','Location permission denied; using schedule order.'):L('定位失敗，請稍後重試。','Location unavailable; try again.');
+   if(nextGeo.watchId!==null)navigator.geolocation.clearWatch(nextGeo.watchId);
+   nextGeo.watchId=null;renderNextStop();
+  },{enableHighAccuracy:false,maximumAge:60000,timeout:15000});
+ }catch(error){nextGeo.mode='error';nextGeo.position=null;nextGeo.message=L('無法啟動定位；依時間排序。','Could not start location; using schedule order.');renderNextStop()}
+}
+function nextSuggestion(now){
+ var future=D.events.filter(function(e){return nextStopIds.has(e.id)&&Number.isFinite(nextStart(e))&&nextStart(e)>=now-5*60000}).sort(function(a,b){return nextStart(a)-nextStart(b)});
+ var activeFixed=D.events.filter(function(e){return fixedNextIds.has(e.id)&&Number.isFinite(nextStart(e))&&now>=nextStart(e)&&now<nextEnd(e)}).sort(function(a,b){return nextStart(b)-nextStart(a)})[0];
+ if(activeFixed)return {event:activeFixed,reason:null,distance:null};
+ var defaultChoice=future[0];
+ if(!nextGeoValid(now))return {event:defaultChoice,reason:null,distance:null};
+ var soonFixed=future.find(function(e){return fixedNextIds.has(e.id)&&nextStart(e)-now<=90*60000});
+ if(soonFixed)return {event:soonFixed,reason:null,distance:null};
+ var p=nextGeo.position,date=nextDateAt(p,now),hour=nextHourAt(p,now);
+ var nextFixed=future.find(function(e){return fixedNextIds.has(e.id)});
+ var local=D.events.filter(function(e){return nextStopIds.has(e.id)&&e.date===date&&!fixedNextIds.has(e.id)&&nextCoordinates(e)}).map(function(e){
+  var km=nextDistance(p,nextCoordinates(e)),start=nextStart(e),end=nextEnd(e);
+  if(km>3)return null;
+  if(Number.isFinite(start)){
+   if(start-now>120*60000||now-end>10*60000)return null;
+   /* Near a stop after its start time: likely already there. Suggest the next one. */
+   if(km<0.13&&now-start>30*60000)return null;
+  }else if(hour<9||hour>17||km>1.5)return null;
+  if(nextFixed&&nextStart(nextFixed)-now<120*60000&&nextStart(nextFixed)-now<(45+km*18)*60000)return null;
+  var lead=Number.isFinite(start)?Math.max(0,(start-now)/60000):40;
+  return {event:e,km:km,score:km*22+lead/4};
+ }).filter(Boolean).sort(function(a,b){return a.score-b.score});
+ if(!local.length)return {event:defaultChoice,reason:null,distance:null};
+ var choice=local[0],hint=choice.km<0.15?L('已在景點附近，符合今日行程。','Nearby · On today’s itinerary.'):
+  L('距離約 ','About ')+nextDistanceText(choice.km)+L('（直線），符合今日行程；實際路程請看地圖。',' away (straight line) · On today’s itinerary. Check Maps for routes.');
+ return {event:choice.event,reason:hint,distance:choice.km};
+}
+function renderNextStop(){
+ var now=Date.now(),pick=nextSuggestion(now),e=pick.event,map=$('nextMap'),view=$('nextView');
+ nextReasonGeo=!!pick.reason;paintNextGeo();
+ if(!e){
+  $('nextTitle').textContent='旅程已結束';$('nextDate').textContent='';$('nextTime').textContent='—';$('nextLeave').textContent='—';
+  $('nextHint').textContent='可以回顧每日行程';map.hidden=true;view.hidden=true;return;
+ }
+ $('nextTitle').textContent=e.title;
+ $('nextDate').textContent=fmt(e.date)+' · '+(e.date==='2026-11-19'||e.id==='d9-uber'?'美西時間':'歐洲時間');
+ $('nextTime').textContent=e.time;$('nextLeave').textContent=nextLeave(e);
+ $('nextHint').textContent=pick.reason||(e.warn||e.status||'以實際預約為準');
+ if(shouldShowMap(e)){
+  map.href=nextGeoValid(now)?'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(e.place)+'&travelmode='+(pick.distance!==null&&pick.distance<=2?'walking':'transit'):mapurl(e.place);
+  map.hidden=false;
+ }else{map.hidden=true;map.removeAttribute('href')}
+ view.hidden=false;view.dataset.nextDay=e.date;
+}
+$('nextGeoToggle').addEventListener('click',startNextGeo);
+$('nextGeoDisable').addEventListener('click',stopNextGeo);
+window.addEventListener('pagehide',function(){if(nextGeo.watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(nextGeo.watchId);nextGeo.watchId=null;nextGeo.mode='off';nextGeo.position=null});
+window.addEventListener('pageshow',function(){renderNextStop()});
 
 /* Home reminder is driven by the same booking states used by Checklist. */
 function renderCriticalAlert(){
@@ -441,7 +567,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v19',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v20',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;
@@ -622,7 +748,7 @@ function localizeNext(){
  if(e){
   title.textContent=eventEnglish(e).title||e.title;
   $('nextTime').textContent=localTime(e.time);
-  $('nextHint').textContent=eventEnglish(e).note||statusEnglish(e);
+  if(!nextReasonGeo)$('nextHint').textContent=eventEnglish(e).note||statusEnglish(e);
  }else{
   if(current==='旅程已結束')title.textContent='Trip complete';
   if($('nextHint').textContent==='可以回顧每日行程')$('nextHint').textContent='Review the itinerary';
