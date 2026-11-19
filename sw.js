@@ -1,7 +1,7 @@
 /* Munich & Prague family itinerary offline shell.
    Core assets are versioned, installed together and served cache-first.
    External maps and weather still require a connection. */
-const CACHE_NAME='mp26-core-20261118-v19';
+const CACHE_NAME='mp26-core-20261118-v20';
 const CACHE_PREFIX='mp26-core-';
 const BASE=new URL(self.registration.scope);
 const INDEX_URL=new URL('./index.html',BASE).href;
