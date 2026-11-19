@@ -134,7 +134,7 @@
       "highlight": "05:40 Blacklane；06:44 EC 353 已購票",
       "hotel": "grand",
       "route": {
-        "note": "Blacklane 送站、EC353 搭火車前往布拉格，再開始布拉格市區行程。",
+        "note": "11/23 抵達布拉格後逛 Celetná、查理大橋與和平廣場聖誕市集；老城廣場及天文鐘留給 11/25 朋友同行。",
         "groups": [
           {
             "title": "飯店 → 慕尼黑中央車站",
@@ -153,12 +153,12 @@
             ]
           },
           {
-            "title": "布拉格抵達後景點",
+            "title": "Celetná → 查理大橋 → 和平廣場",
             "mode": "walking",
             "stops": [
               "d5-prague",
               "hotel:grand",
-              "d5-oldtown",
+              "d5-celetna",
               "d5-bridge",
               "d5-miru",
               "hotel:grand"
@@ -176,20 +176,29 @@
       "highlight": "與朋友同行城堡至查理大橋；20:00 音樂會（待購票）",
       "hotel": "grand",
       "route": {
-        "note": "依朋友 11/24 行程：城堡 → Starbucks → Strahov → Petřín 步行上山 → 纜車下山 → 小城區 → 查理大橋。你從 The Grand Mark 出發，晚間音樂會仍為未購票的個人選項；連線僅示意順序。",
+        "note": "08:45 與朋友在 Pražský hrad 22 號電車站集合（待朋友確認）。09:00 城堡 → Starbucks → Strahov → Petřín 上山步行／纜車下山 → 小城區 → 查理大橋；晚間音樂會未購票。",
         "groups": [
           {
-            "title": "The Grand Mark → 城堡區集合",
+            "title": "我方：The Grand Mark → 城堡電車站",
             "mode": "transit",
             "stops": [
               "hotel:grand",
-              "d6-castle"
+              "d6-meet"
             ]
           },
           {
-            "title": "城堡 → Starbucks → Strahov → Petřín",
+            "title": "朋友：Hotel Royal → 同一集合站",
+            "mode": "transit",
+            "stops": [
+              "hotel:royal",
+              "d6-meet"
+            ]
+          },
+          {
+            "title": "集合站 → 城堡 → Starbucks → Strahov → Petřín",
             "mode": "walking",
             "stops": [
+              "d6-meet",
               "d6-castle",
               "d6-starbucks",
               "d6-strahov",
@@ -239,31 +248,47 @@
       "date": "2026-11-25",
       "weekday": "三",
       "day": 7,
-      "title": "布拉格老城區、購物與換飯店",
+      "title": "朋友同行｜猶太區・舊城・Klementinum・購物",
       "city": "Prague",
-      "highlight": "重要：今日從 The Grand Mark 更換至 Hotel Royal",
+      "highlight": "07:00 提早早餐／退房；09:00 猶太區與朋友同行；傍晚搬 Hotel Royal",
       "hotel": "royal",
       "route": {
-        "note": "老城散步後返回 Grand Mark 取行李，再搬至 Hotel Royal。",
+        "note": "09:00 猶太區 → 11:45 舊城廣場 → 14:00 Klementinum 英文導覽（待訂）→ 市民會館與火藥塔 → Na Příkopě、Manufaktura、Palladium → 取行李換飯店。位置連線非街道導航。",
         "groups": [
           {
-            "title": "布拉格老城步行",
+            "title": "The Grand Mark → Josefov 集合",
             "mode": "walking",
             "stops": [
               "hotel:grand",
-              "d7-square",
-              "d7-josefov",
-              "d7-celetna",
-              "d7-manuf",
-              "d7-powder",
-              "d7-republiky",
-              "hotel:grand"
+              "d7-josefov"
             ]
           },
           {
-            "title": "Grand Mark → Hotel Royal",
+            "title": "猶太區 → 舊城廣場 → Klementinum → 火藥塔",
+            "mode": "walking",
+            "stops": [
+              "d7-josefov",
+              "d7-square",
+              "d7-klementinum",
+              "d7-powder"
+            ]
+          },
+          {
+            "title": "Na Příkopě → Manufaktura → Palladium → 市集",
+            "mode": "walking",
+            "stops": [
+              "d7-powder",
+              "d7-na-prikope",
+              "d7-manuf",
+              "d7-palladium",
+              "d7-republiky"
+            ]
+          },
+          {
+            "title": "回飯店取行李 → Hotel Royal",
             "mode": "transit",
             "stops": [
+              "d7-republiky",
               "hotel:grand",
               "hotel:royal"
             ]
@@ -1037,7 +1062,7 @@
       "title": "The Grand Mark 寄行李、午餐、15:00 後入住",
       "cat": "住宿",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "先寄放行李與午餐，入住從 15:00 起；如房間未好，可先出門。可查 PID Lítačka 72 小時票，尚未購買。",
+      "desc": "12:21 抵達後寄行李、午餐並於 15:00 後入住。下午先逛 Celetná，不另停留老城廣場／天文鐘，留給 11/25 與朋友同行。",
       "duration": "彈性",
       "state": "reserved",
       "status": "已訂房／房晚待核對",
@@ -1048,42 +1073,35 @@
       "weather": ""
     },
     {
-      "id": "d5-oldtown",
+      "id": "d5-celetna",
       "date": "2026-11-23",
       "time": "15:40–16:10",
-      "title": "Old Town Square 老城廣場＋天文鐘",
-      "cat": "景點",
-      "place": "Staroměstské náměstí, Praha 1, Czechia",
-      "desc": "11/23 先短暫看老城與 Pražský orloj；11/25 再深度參觀。",
+      "title": "Celetná 街特色商店",
+      "cat": "購物",
+      "place": "Celetná, Praha 1, Czechia",
+      "desc": "從 The Grand Mark 逛 Celetná 老城石板街、捷克玻璃及特色手工藝店；老城廣場、天文鐘、泰恩教堂留待 11/25。",
       "duration": "30 分",
       "state": "planned",
-      "status": "建議行程",
+      "status": "由 11/25 移至今日",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "雨雪天保留短暫廣場拍照，或直接到附近室內休息。",
-      "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Prague_old_town_square_panorama.jpg/960px-Prague_old_town_square_panorama.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Prague_old_town_square_panorama.jpg",
-        "author": "Estec GmbH",
-        "license": "CC BY 3.0",
-        "alt": "布拉格老城廣場全景"
-      },
-      "routeLabel": "布拉格老城廣場",
+      "weather": "",
+      "routeLabel": "Celetná 街",
       "geo": [
-        50.0878,
-        14.4205
+        50.0869,
+        14.4242
       ]
     },
     {
       "id": "d5-bridge",
       "date": "2026-11-23",
-      "time": "16:10–16:50",
+      "time": "16:20–17:00",
       "title": "Charles Bridge 查理大橋黃昏散步",
       "cat": "景點",
       "place": "Karlův most, Praha 1, Czechia",
-      "desc": "冬季黃昏拍伏爾塔瓦河與城堡；時間以當天天色及體力調整。",
+      "desc": "從 Celetná 經舊城巷弄步行至查理大橋，欣賞伏爾塔瓦河與城堡黃昏風景；11/24 會與朋友再走一次。",
       "duration": "40 分",
       "state": "planned",
       "status": "建議行程",
@@ -1108,12 +1126,12 @@
     {
       "id": "d5-miru",
       "date": "2026-11-23",
-      "time": "17:15–18:30",
+      "time": "17:20–18:30",
       "title": "Náměstí Míru 和平廣場聖誕市集",
       "cat": "節慶",
       "place": "Náměstí Míru, Praha 2, Czechia",
       "desc": "Prague City Tourism 公告 11/20–12/24 開市，10:00–20:00；可逛在地手工藝及熱飲攤位。",
-      "duration": "75 分",
+      "duration": "70 分",
       "state": "confirmed",
       "status": "官方已公布開市",
       "warn": "",
@@ -1147,19 +1165,47 @@
     {
       "id": "d6-transit",
       "date": "2026-11-24",
-      "time": "08:05–09:00",
-      "title": "前往布拉格城堡區／與朋友集合",
+      "time": "08:05–08:45",
+      "title": "The Grand Mark → Pražský hrad 電車站",
       "cat": "交通",
       "place": "Pražský hrad, Praha, Czechia",
-      "desc": "從 The Grand Mark 出發，預計 09:00 在城堡區入口附近與朋友碰面；朋友由老城區自行前往。",
-      "duration": "55 分",
+      "desc": "搭乘公共交通前往 Pražský hrad 22 號電車站，08:45 與住 Hotel Royal Prague 的朋友集合。",
+      "duration": "40 分",
       "state": "planned",
       "status": "交通規劃",
       "warn": "",
-      "trans": "The Grand Mark → 布拉格城堡；依 PID 當天 Metro／Tram 22 實際路線預留轉乘、上坡與集合時間。",
+      "trans": "The Grand Mark → 地鐵 B（Náměstí Republiky）→ Můstek 換 A → Malostranská → 22 號電車到 Pražský hrad；出發前以 PID 班次為準。",
       "eta": "",
       "sub": [],
       "weather": ""
+    },
+    {
+      "id": "d6-meet",
+      "date": "2026-11-24",
+      "time": "08:45–09:00",
+      "title": "與朋友集合｜Pražský hrad 22 號電車站",
+      "cat": "集合",
+      "place": "Pražský hrad tram stop, Prague, Czechia",
+      "desc": "08:45 在往 Pohořelec 方向的 22 號電車 Pražský hrad 站牌集合。你從 The Grand Mark 出發，朋友從 Hotel Royal Prague 出發；從站牌約走 5 分鐘到城堡第二庭院。",
+      "duration": "15 分",
+      "state": "planned",
+      "status": "集合點建議／待朋友確認",
+      "warn": "",
+      "trans": "你：The Grand Mark → Metro B／A（Můstek 換乘）→ Malostranská → Tram 22；朋友：Hotel Royal（Křižíkova B）→ Můstek A → Malostranská → Tram 22。實際班次依 PID Lítačka。",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "geo": [
+        50.0934,
+        14.3985
+      ],
+      "routeLabel": "Pražský hrad 集合站",
+      "infoLinks": [
+        {
+          "label": "布拉格城堡官方交通",
+          "url": "https://www.hrad.cz/en/prague-castle-for-visitors/how-to-get-to-castle"
+        }
+      ]
     },
     {
       "id": "d6-castle",
@@ -1427,7 +1473,7 @@
       "title": "返回 The Grand Mark",
       "cat": "住宿",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "隔天 09:30 慢慢吃早餐，11/25 傍晚換飯店。",
+      "desc": "回 The Grand Mark 休息；11/25 為配合 09:00 朋友同行，請預先整理行李並提早早餐。",
       "duration": "彈性",
       "state": "planned",
       "status": "建議行程",
@@ -1440,12 +1486,12 @@
     {
       "id": "d7-breakfast",
       "date": "2026-11-25",
-      "time": "09:30–10:30",
-      "title": "早餐、整理行李",
+      "time": "07:00–07:35",
+      "title": "提前早餐、整理行李",
       "cat": "休息",
       "place": "The Grand Mark Prague, Czechia",
-      "desc": "11/24 晚音樂會後，今日保留充裕早晨休息。",
-      "duration": "60 分",
+      "desc": "配合 09:00 猶太區會合，早餐改為 07:00。前一晚先打包，今日要從 The Grand Mark 換到 Hotel Royal。",
+      "duration": "35 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
@@ -1457,12 +1503,12 @@
     {
       "id": "d7-checkout",
       "date": "2026-11-25",
-      "time": "10:30–11:00",
-      "title": "The Grand Mark 退房、寄放行李",
+      "time": "07:35–08:00",
+      "title": "The Grand Mark 提早退房、寄放行李",
       "cat": "住宿",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "今天更換飯店：先寄行李，不攜行李逛老城；傍晚回來拿。",
-      "duration": "30 分",
+      "desc": "早餐後先完成退房，把行李寄放櫃檯，約 17:30 回來拿；先跟飯店確認寄放安排。",
+      "duration": "25 分",
       "state": "confirmed",
       "status": "更換飯店",
       "warn": "今日更換飯店",
@@ -1472,16 +1518,65 @@
       "weather": ""
     },
     {
+      "id": "d7-transit",
+      "date": "2026-11-25",
+      "time": "08:00–08:50",
+      "title": "前往 Josefov，與朋友會合",
+      "cat": "交通",
+      "place": "Pinkas Synagogue, Široká 3, Prague, Czechia",
+      "desc": "從 The Grand Mark 步行／搭車至 Josefov；建議 08:50 在 Pinkas Synagogue 外附近集合，09:00 開始與朋友參觀（集合入口需雙方確認）。",
+      "duration": "50 分",
+      "state": "planned",
+      "status": "建議集合點／待確認",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": ""
+    },
+    {
+      "id": "d7-josefov",
+      "date": "2026-11-25",
+      "time": "09:00–11:35",
+      "title": "Josefov 猶太區｜會堂與舊墓園",
+      "cat": "景點",
+      "place": "Josefov, Praha 1, Czechia",
+      "desc": "與朋友參觀 Pinkas Synagogue、舊猶太墓園、Spanish Synagogue；原本的戶外散步改為較完整的室內參觀，門票、安檢與開放時間待核對。",
+      "duration": "2 小時 35 分",
+      "state": "pending",
+      "status": "朋友同行／門票待確認",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [
+        "Pinkas Synagogue 皮卡斯會堂",
+        "Old Jewish Cemetery 舊猶太墓園",
+        "Spanish Synagogue 西班牙會堂"
+      ],
+      "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。",
+      "routeLabel": "猶太區 Josefov",
+      "geo": [
+        50.0909,
+        14.4188
+      ],
+      "infoLinks": [
+        {
+          "label": "猶太博物館開放時間",
+          "url": "https://www.jewishmuseum.cz/en/info/visit/opening-hours/"
+        }
+      ]
+    },
+    {
       "id": "d7-square",
       "date": "2026-11-25",
-      "time": "11:00–12:15",
-      "title": "老城廣場、天文鐘、泰恩教堂",
+      "time": "11:45–12:30",
+      "title": "舊城廣場＋天文鐘＋泰恩教堂（外觀）",
       "cat": "景點",
       "place": "Staroměstské náměstí, Praha 1, Czechia",
-      "desc": "Staroměstské náměstí、Pražský orloj、Týn Church；教堂室內開放依現場。",
-      "duration": "75 分",
+      "desc": "今天和朋友一起欣賞舊城廣場、天文鐘整點報時與泰恩教堂哥德式尖塔；11/23 已把這裡的獨立停留取消。",
+      "duration": "45 分",
       "state": "planned",
-      "status": "建議行程",
+      "status": "朋友同行",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1503,14 +1598,14 @@
     {
       "id": "d7-lunch",
       "date": "2026-11-25",
-      "time": "12:15–13:15",
-      "title": "布拉格老城午餐",
+      "time": "12:30–13:35",
+      "title": "Mincovna 午餐（候選）",
       "cat": "餐飲",
-      "place": "Staré Město, Praha 1, Czechia",
-      "desc": "以附近餐廳為主，不跨區移動。",
-      "duration": "60 分",
+      "place": "Mincovna, Staroměstské náměstí, Prague, Czechia",
+      "desc": "朋友行程列 Mincovna 為午餐候選；尚未訂位。請留出走到 Klementinum 並參加約 14:00 導覽的時間。",
+      "duration": "65 分",
       "state": "planned",
-      "status": "自由安排",
+      "status": "候選餐廳／未訂位",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1518,82 +1613,44 @@
       "weather": ""
     },
     {
-      "id": "d7-josefov",
+      "id": "d7-klementinum",
       "date": "2026-11-25",
-      "time": "13:15–14:15",
-      "title": "Josefov 猶太區歷史散步",
+      "time": "14:00–14:45",
+      "title": "Klementinum 克萊門特學院導覽",
       "cat": "景點",
-      "place": "Josefov, Praha 1, Czechia",
-      "desc": "以街道與歷史建築外觀為主；室內猶太教堂與墓園若入內需另購票及核對開放。",
-      "duration": "60 分",
-      "state": "planned",
-      "status": "外觀散步",
-      "warn": "",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。",
-      "routeLabel": "猶太區 Josefov",
-      "geo": [
-        50.0909,
-        14.4188
-      ]
-    },
-    {
-      "id": "d7-celetna",
-      "date": "2026-11-25",
-      "time": "14:15–15:00",
-      "title": "Celetná 街特色商店",
-      "cat": "購物",
-      "place": "Celetná, Praha 1, Czechia",
-      "desc": "逛古城街道、捷克玻璃與傳統手工藝品。",
+      "place": "Klementinum, Prague, Czechia",
+      "desc": "隨朋友參加預計 14:00 的英文導覽，觀看巴洛克圖書館入口景觀等；需預約時段，參觀有樓梯。",
       "duration": "45 分",
-      "state": "planned",
-      "status": "建議行程",
+      "state": "pending",
+      "status": "導覽未購票",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "Celetná 街",
       "geo": [
-        50.0869,
-        14.4242
-      ]
-    },
-    {
-      "id": "d7-manuf",
-      "date": "2026-11-25",
-      "time": "15:00–15:45",
-      "title": "MANUFAKTURA 紀念品購物",
-      "cat": "購物",
-      "place": "Melantrichova 17, Praha 1, Czechia",
-      "desc": "優先挑捷克特色保養品、肥皂及伴手禮；店家實際營業時間待確認。",
-      "duration": "45 分",
-      "state": "planned",
-      "status": "建議行程",
-      "warn": "",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "雨雪天可延長室內購物。",
-      "routeLabel": "MANUFAKTURA",
-      "geo": [
-        50.0867,
-        14.4234
+        50.0863,
+        14.4169
+      ],
+      "routeLabel": "Klementinum",
+      "infoLinks": [
+        {
+          "label": "官方導覽資訊",
+          "url": "https://prague.eu/en/objevujte/the-clementinum-astronomical-tower-and-baroque-library/"
+        }
       ]
     },
     {
       "id": "d7-powder",
       "date": "2026-11-25",
-      "time": "15:45–16:30",
-      "title": "Powder Tower 火藥塔＋Municipal House 外觀",
+      "time": "15:00–15:25",
+      "title": "市民會館＋火藥塔外觀",
       "cat": "景點",
       "place": "Prašná brána, Praha 1, Czechia",
-      "desc": "外觀欣賞火藥塔及新藝術風格市民會館；入塔門票另計。",
-      "duration": "45 分",
+      "desc": "與朋友在市民會館及火藥塔前拍照，欣賞新藝術與哥德式建築；不排登塔，若導覽延誤可縮短。",
+      "duration": "25 分",
       "state": "planned",
-      "status": "建議行程",
+      "status": "朋友同行／彈性",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1606,16 +1663,88 @@
       ]
     },
     {
+      "id": "d7-na-prikope",
+      "date": "2026-11-25",
+      "time": "15:30–16:10",
+      "title": "Na Příkopě 購物街",
+      "cat": "購物",
+      "place": "Na Příkopě, Praha, Czechia",
+      "desc": "跟朋友逛布拉格市中心商店與文具、伴手禮；冬天可穿插室內店家取暖。",
+      "duration": "40 分",
+      "state": "planned",
+      "status": "朋友同行",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "geo": [
+        50.086,
+        14.43
+      ],
+      "routeLabel": "Na Příkopě"
+    },
+    {
+      "id": "d7-manuf",
+      "date": "2026-11-25",
+      "time": "16:10–16:35",
+      "title": "Manufaktura 伴手禮（Na Příkopě 16）",
+      "cat": "購物",
+      "place": "Manufaktura, Na Příkopě 16, Prague, Czechia",
+      "desc": "購買捷克香皂、保養品和特色伴手禮；改去 Na Příkopě 16 分店，不需繞回 Melantrichova。",
+      "duration": "25 分",
+      "state": "planned",
+      "status": "朋友同行",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "雨雪天可延長室內購物。",
+      "routeLabel": "Manufaktura",
+      "geo": [
+        50.0861,
+        14.429
+      ],
+      "infoLinks": [
+        {
+          "label": "Manufaktura 官方門市",
+          "url": "https://manufakturashop.com/stores/45/na-prikope-16"
+        }
+      ]
+    },
+    {
+      "id": "d7-palladium",
+      "date": "2026-11-25",
+      "time": "16:35–17:05",
+      "title": "Palladium 購物中心",
+      "cat": "購物",
+      "place": "Palladium, Náměstí Republiky 1, Prague, Czechia",
+      "desc": "跟朋友在百貨中心逛文具、零食與捷克禮品；購物時間可依體力調整。",
+      "duration": "30 分",
+      "state": "planned",
+      "status": "朋友同行",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "geo": [
+        50.0891,
+        14.4295
+      ],
+      "routeLabel": "Palladium"
+    },
+    {
       "id": "d7-republiky",
       "date": "2026-11-25",
-      "time": "16:30–17:15",
-      "title": "Náměstí Republiky 共和國廣場聖誕市集",
+      "time": "17:05–17:25",
+      "title": "共和國廣場小型聖誕市集（順路）",
       "cat": "節慶",
       "place": "Náměstí Republiky, Praha 1, Czechia",
-      "desc": "Prague City Tourism 公告 2026/11/25 開市；有聖誕裝飾、手工藝、糖果與熱飲。",
-      "duration": "45 分",
+      "desc": "逛 Palladium 周邊的小型聖誕攤位，喝熱飲、看看燈飾；若時間不夠可略過以便取行李。",
+      "duration": "20 分",
       "state": "confirmed",
-      "status": "官方已公布開市",
+      "status": "順路彈性",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1630,16 +1759,16 @@
     {
       "id": "d7-move",
       "date": "2026-11-25",
-      "time": "17:15–18:30",
-      "title": "取行李、搬至 Hotel Royal Prague",
+      "time": "17:30–18:30",
+      "title": "取行李 → 搬至 Hotel Royal Prague",
       "cat": "住宿",
       "place": "Thámova 36, Praha 8, Czechia",
-      "desc": "回 The Grand Mark 取行李，再搭 Metro B 往 Křižíkova；Hotel Royal 從 15:00 起可入住。",
-      "duration": "75 分",
+      "desc": "回 The Grand Mark 拿寄放行李，搭地鐵 B 線到 Křižíkova 後步行入住 Hotel Royal。朋友同日也搬到 Hotel Royal，實際會合時間待協調。",
+      "duration": "60 分",
       "state": "reserved",
       "status": "兩間飯店已訂／需核對房數",
       "warn": "更換飯店",
-      "trans": "The Grand Mark（Hybernská 12）先取行李 → 到 Náměstí Republiky 搭 Metro B 往 Černý Most 方向 → Křižíkova 下車 → 步行至 Thámova 36；實際站口、班次與步行時間以 PID 導航為準。",
+      "trans": "共和國廣場 → The Grand Mark → Náměstí Republiky B 線 → Křižíkova → Hotel Royal。",
       "eta": "",
       "sub": [],
       "weather": ""
@@ -1651,7 +1780,7 @@
       "title": "Karlín 區晚餐",
       "cat": "餐飲",
       "place": "Karlín, Praha 8, Czechia",
-      "desc": "11/26 是 CK 長途一日遊，建議早點休息。",
+      "desc": "到 Karlín 區吃晚餐，與朋友協調隔天 CK 巴士集合時間，提早休息。",
       "duration": "彈性",
       "state": "planned",
       "status": "自由安排",
@@ -2350,6 +2479,27 @@
       "id": "todos-18",
       "text": "確認旅遊保險與緊急聯絡方式",
       "done": false
+    },
+    {
+      "id": "todos-20261124-meet",
+      "text": "11/24 確認 08:45 在 Pražský hrad 22 號電車站與 Hotel Royal 的朋友集合",
+      "done": false
+    },
+    {
+      "id": "todos-20261125-josefov",
+      "text": "11/25 猶太區（Pinkas／舊墓園／Spanish）入場票",
+      "activityIds": [
+        "d7-josefov"
+      ],
+      "requireTicket": true
+    },
+    {
+      "id": "todos-20261125-klementinum",
+      "text": "11/25 Klementinum 約 14:00 英文導覽票",
+      "activityIds": [
+        "d7-klementinum"
+      ],
+      "requireTicket": true
     }
   ],
   "packing": [
@@ -2497,6 +2647,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-18",
-    "revision": "2026.11.18-2"
+    "revision": "2026.11.18-3"
   }
 }

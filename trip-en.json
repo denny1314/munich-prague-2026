@@ -125,16 +125,12 @@
       "note": "Scheduled arrival at Praha hlavní nádraží: 12:21 PM."
     },
     "d5-grand": {
-      "title": "Bag drop at The Grand Mark",
-      "note": "Leave luggage at the hotel; standard check-in begins at 3 PM."
-    },
-    "d5-oldtown": {
-      "title": "Old Town Square and Astronomical Clock",
-      "note": "Enjoy your first look at Prague's historic center."
+      "title": "Bag drop and check-in at The Grand Mark",
+      "note": "Drop luggage, eat lunch, check in after 3 PM, then explore Celetná."
     },
     "d5-bridge": {
-      "title": "Charles Bridge at sunset",
-      "note": "Take photos of Charles Bridge and the Vltava river at dusk."
+      "title": "Charles Bridge at dusk",
+      "note": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24."
     },
     "d5-miru": {
       "title": "Náměstí Míru Christmas market",
@@ -145,8 +141,8 @@
       "note": "Relax before a full sightseeing day."
     },
     "d6-transit": {
-      "title": "Travel to Prague Castle and meet friends",
-      "note": "Leave The Grand Mark and meet friends around the castle entrance at 9 AM."
+      "title": "The Grand Mark to Pražský hrad tram stop",
+      "note": "Take Metro B to Můstek, change to A, then tram 22 from Malostranská. Arrive by 8:45 AM."
     },
     "d6-castle": {
       "title": "Prague Castle and St. Vitus Cathedral",
@@ -186,51 +182,47 @@
     },
     "d6-back": {
       "title": "Return to The Grand Mark",
-      "note": "Head back and rest."
+      "note": "Pack ahead for early breakfast and checkout on Nov 25."
     },
     "d7-breakfast": {
-      "title": "Breakfast and pack luggage",
-      "note": "Relaxed morning before exploring Old Town and changing hotels."
+      "title": "Early breakfast and packing",
+      "note": "Have breakfast at 7 AM to join the shared 9 AM Jewish Quarter visit."
     },
     "d7-checkout": {
-      "title": "Check out and leave bags at The Grand Mark",
-      "note": "Leave luggage at the front desk for collection later."
+      "title": "Early checkout and luggage storage at The Grand Mark",
+      "note": "Leave luggage at the front desk before sightseeing; collect it around 5:30 PM."
     },
     "d7-square": {
-      "title": "Old Town Square, clock and Týn Church",
-      "note": "Explore the square, Astronomical Clock and church surroundings."
+      "title": "Old Town Square, clock and Týn Church exterior",
+      "note": "See the Astronomical Clock and Gothic spires together after the Jewish Quarter."
     },
     "d7-lunch": {
-      "title": "Lunch in Old Town",
-      "note": "Choose a restaurant in the historic center."
+      "title": "Lunch at Mincovna (suggested)",
+      "note": "Restaurant not yet booked; leave time for a potential 2 PM Klementinum tour."
     },
     "d7-josefov": {
-      "title": "Walk through the Jewish Quarter",
-      "note": "See the historic neighborhood. Indoor admissions need separate tickets."
-    },
-    "d7-celetna": {
-      "title": "Browse shops along Celetná Street",
-      "note": "Visit local craft, glass and souvenir shops."
+      "title": "Josefov: Pinkas Synagogue, Old Jewish Cemetery, Spanish Synagogue",
+      "note": "Visit the indoor sites with friends. Tickets and security checks need confirmation."
     },
     "d7-manuf": {
-      "title": "MANUFAKTURA souvenir shopping",
-      "note": "Find Czech soaps, skincare and gifts."
+      "title": "Manufaktura gifts at Na Příkopě 16",
+      "note": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova."
     },
     "d7-powder": {
-      "title": "Powder Tower and Municipal House",
-      "note": "Explore the architectural highlights near Republic Square."
+      "title": "Municipal House and Powder Tower exterior",
+      "note": "Quick architecture and photo stop; no tower climb required."
     },
     "d7-republiky": {
-      "title": "Republic Square Christmas market",
-      "note": "Visit the market scheduled to open November 25."
+      "title": "Republic Square Christmas stalls (optional)",
+      "note": "Enjoy seasonal stalls if time permits before collecting luggage."
     },
     "d7-move": {
       "title": "Collect luggage and move to Hotel Royal",
-      "note": "Take Metro B toward Křižíkova and walk to Hotel Royal."
+      "note": "Return to The Grand Mark, then take Metro B to Křižíkova and walk to Hotel Royal."
     },
     "d7-dinner": {
-      "title": "Dinner in Karlín",
-      "note": "Dinner near Hotel Royal and rest for tomorrow's early CK trip."
+      "title": "Dinner near Hotel Royal",
+      "note": "Rest before the early Český Krumlov bus day."
     },
     "d8-breakfast": {
       "title": "Meet friends at Hotel Royal and head to bus station",
@@ -323,6 +315,30 @@
     "d6-mala": {
       "title": "Walk through Malá Strana (Lesser Town)",
       "note": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional."
+    },
+    "d5-celetna": {
+      "title": "Browse Celetná Street",
+      "note": "Explore Czech glass shops and historic streets; save Old Town Square and the clock for Nov 25."
+    },
+    "d6-meet": {
+      "title": "Meet friends at Pražský hrad Tram 22 stop",
+      "note": "Friends depart Hotel Royal via Křižíkova Metro B. Meet at 8:45 AM and walk about 5 minutes to the castle; confirm meeting point together."
+    },
+    "d7-transit": {
+      "title": "Head to Josefov and meet friends",
+      "note": "Suggested 8:50 AM rendezvous near Pinkas Synagogue; confirm entrance with friends."
+    },
+    "d7-klementinum": {
+      "title": "Klementinum guided tour",
+      "note": "Aim for a 2 PM English guided tour, subject to tickets; view the Baroque library and expect stairs."
+    },
+    "d7-na-prikope": {
+      "title": "Shopping on Na Příkopě",
+      "note": "Browse shops with friends before Manufaktura and Palladium."
+    },
+    "d7-palladium": {
+      "title": "Palladium shopping mall",
+      "note": "Shops, stationery and Czech souvenirs with friends."
     }
   },
   "days": {
@@ -362,35 +378,38 @@
       ]
     },
     "2026-11-23": {
-      "title": "Train to Prague",
+      "title": "Train to Prague; Celetná and Charles Bridge",
       "highlight": "5:40 AM Blacklane pickup and 6:44 AM EC353 train, tickets purchased",
-      "routeNote": "Blacklane to Munich Central Station, then EC353 train to Prague and local sightseeing.",
+      "routeNote": "After arrival, browse Celetná Street, walk Charles Bridge at dusk, then visit Náměstí Míru market. Old Town Square and clock move to Nov 25.",
       "routeGroups": [
-        "Holiday Inn to Munich Central Station",
-        "EC353 train Munich to Prague",
-        "Prague arrival and sightseeing"
+        "Hotel to Munich Central Station",
+        "EC353 Munich to Prague",
+        "Celetná, Charles Bridge and Peace Square"
       ]
     },
     "2026-11-24": {
       "title": "Prague Castle, Strahov, Petřín and Charles Bridge",
-      "highlight": "Following friends' walking route; optional 8 PM concert not booked",
-      "routeNote": "Castle → Starbucks → Strahov → walk to Petřín → funicular downhill → Lesser Town → Charles Bridge. Depart from The Grand Mark; concert remains optional and unbooked.",
+      "highlight": "Meet friends from Hotel Royal at Pražský hrad tram 22 stop at 8:45 AM; optional 8 PM concert unbooked",
+      "routeNote": "Meet 8:45 AM at Pražský hrad tram stop (confirmation pending); Castle, Starbucks, Strahov, Petřín, funicular downhill, Lesser Town, Charles Bridge.",
       "routeGroups": [
-        "The Grand Mark to Prague Castle meeting point",
-        "Castle, Starbucks, Strahov and Petřín",
+        "The Grand Mark to the meeting stop",
+        "Hotel Royal to the same meeting stop",
+        "Meeting stop, Castle, Starbucks, Strahov and Petřín",
         "Petřín funicular downhill to Újezd",
         "Újezd, Lesser Town and Charles Bridge",
-        "Charles Bridge back to The Grand Mark",
-        "Optional evening: hotel, Municipal House and return"
+        "Bridge to The Grand Mark",
+        "Optional evening at Municipal House"
       ]
     },
     "2026-11-25": {
-      "title": "Prague Old Town and hotel change",
-      "highlight": "Collect luggage at The Grand Mark and move to Hotel Royal",
-      "routeNote": "Old Town sightseeing, pick up bags from Grand Mark, then move to Hotel Royal.",
+      "title": "With friends: Josefov, Old Town, Klementinum and shopping",
+      "highlight": "7 AM breakfast, early checkout; meet friends at Josefov by 9 AM; move to Hotel Royal in evening",
+      "routeNote": "Jewish Quarter at 9, Old Town Square at 11:45, Klementinum around 2 PM (unbooked), Na Příkopě and Palladium shopping; collect bags and move to Hotel Royal.",
       "routeGroups": [
-        "Prague Old Town walk",
-        "Grand Mark to Hotel Royal"
+        "The Grand Mark to Josefov",
+        "Jewish Quarter, Old Town, Klementinum and Powder Tower",
+        "Na Příkopě, Manufaktura, Palladium and market",
+        "Collect luggage and move to Hotel Royal"
       ]
     },
     "2026-11-26": {
@@ -433,7 +452,10 @@
     "todos-16": "Download offline maps, flight and train QR codes",
     "todos-17": "Check roaming or an eSIM",
     "todos-18": "Review travel insurance and emergency contacts",
-    "todos-20261124-strahov": "Confirm Strahov Monastery Library admission for November 24"
+    "todos-20261124-strahov": "Confirm Strahov Monastery Library admission for November 24",
+    "todos-20261124-meet": "Confirm 8:45 AM Nov 24 meeting at Pražský hrad tram 22 stop",
+    "todos-20261125-josefov": "Book Nov 25 Jewish Museum admission",
+    "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM"
   },
   "packing": {
     "packing-1": "Passports and ID",
