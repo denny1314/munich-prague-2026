@@ -577,7 +577,7 @@ function renderCriticalAlert(){
   if(travelling){
     var date=now<Date.parse('2026-11-20T00:00:00+01:00')?'2026-11-19':new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(now));
     var day=D.days.find(function(x){return x.date===date});
-    var special={'2026-11-19':'18:35 Jerry 私人接送至 SFO；21:40 LH459 起飛',
+    var special={'2026-11-19':'17:45 Jerry 私人接送至 SFO；21:40 LH459 起飛',
       '2026-11-23':'05:40 Blacklane 送至 München Hbf；06:44 搭 EC353 前往布拉格',
       '2026-11-27':'06:30 布拉格 Blacklane 送機；9:40 SWISS LX1485 起飛'};
     heading.textContent='今日行程重點';
@@ -604,7 +604,7 @@ document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventL
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
 /* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v24',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+var TRIP_CACHE='mp26-core-20261118-v25',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
 function renderDataVersion(){
  var label=$('offlineVersion'),footer=$('footerDataVersion');
  if(!label&&!footer)return;

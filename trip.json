@@ -9,7 +9,7 @@
       "highlight": "21:40 Lufthansa LH459 直飛慕尼黑",
       "hotel": "機上過夜",
       "route": {
-        "note": "18:35 Jerry 私人接送至 SFO；公開頁面不顯示住家地址。",
+        "note": "17:45 Jerry 私人接送至 SFO；公開頁面不顯示住家地址。",
         "groups": [
           {
             "title": "前往 SFO 機場",
@@ -386,11 +386,11 @@
     {
       "id": "d1-airport",
       "date": "2026-11-19",
-      "time": "18:35",
+      "time": "17:45",
       "title": "Jerry 私人接送 → SFO",
       "cat": "機場接送",
       "place": "San Francisco International Airport, CA, USA",
-      "desc": "18:35 從住家出發，四人及四件大行李。私人接送已確認，車資 US$50 已以 Venmo 付款。",
+      "desc": "17:45 從住家出發，四人與四件大行李。依 Google Calendar 最新接送活動調整；Jerry 私人接送已確認，US$50 已以 Venmo 付款。",
       "duration": "依實際交通",
       "state": "confirmed",
       "status": "已確認／已付款",
@@ -401,7 +401,7 @@
       "weather": "",
       "originLabel": "住家",
       "destinationLabel": "SFO 機場",
-      "leaveAt": "18:35",
+      "leaveAt": "17:45",
       "routeLabel": "前往 SFO 機場",
       "geo": [
         37.6213,
@@ -2683,6 +2683,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-18",
-    "revision": "2026.11.18-6"
+    "revision": "2026.11.18-7"
   }
 }

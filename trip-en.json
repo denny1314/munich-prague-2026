@@ -2,7 +2,7 @@
   "events": {
     "d1-airport": {
       "title": "Private ride with Jerry to SFO",
-      "note": "Pickup at 6:35 PM for four travelers and four large suitcases. The $50 fare has been paid through Venmo."
+      "note": "Confirmed pickup at 5:45 PM (moved earlier from 6:35 PM) for four travelers and four large suitcases. The $50 fare has been paid via Venmo."
     },
     "d1-checkin": {
       "title": "Airport check-in and luggage drop",
@@ -381,7 +381,7 @@
     "2026-11-19": {
       "title": "Depart San Francisco",
       "highlight": "Lufthansa LH459 overnight flight to Munich at 9:40 PM",
-      "routeNote": "Private ride to SFO at 6:35 PM. The public site never displays your home address.",
+      "routeNote": "Private ride to SFO at 5:45 PM. The public site never displays your home address.",
       "routeGroups": [
         "Private transfer to SFO",
         "Overnight flight"
