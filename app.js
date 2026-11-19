@@ -2,40 +2,57 @@
 'use strict';
 var D,EN=null,lang='zh',LANG_KEY='mp26-preferred-language';
 try{if(localStorage.getItem(LANG_KEY)==='en')lang='en'}catch(e){}
-/* The itinerary must not block indefinitely on a weak mobile connection.
-   Cache Storage is preferred when available; a cache miss gets up to 3 seconds
-   of network time before another cache lookup and a clear error. */
-const DATA_TIMEOUT_MS=3000;
+/* Online-only mode: fetch the latest itinerary instead of reading a stale cache. */
+const DATA_TIMEOUT_MS=15000;
 async function readTripJSON(path){
-  const url=new URL(path,location.href).href;
-  async function cached(){
-    if(!('caches' in window))return null;
-    try{
-      const response=await caches.match(url);
-      if(response&&response.ok)return await response.json();
-    }catch(err){console.warn('Cached trip JSON unreadable',path,err)}
-    return null;
-  }
-  const stored=await cached();
-  if(stored!==null)return stored;
   const controller=new AbortController();
   const timer=setTimeout(function(){controller.abort()},DATA_TIMEOUT_MS);
   try{
-    const response=await fetch(url,{signal:controller.signal,cache:'no-store'});
+    const response=await fetch(new URL(path,location.href),{signal:controller.signal,cache:'no-store'});
     if(!response.ok)throw Error(path+' HTTP '+response.status);
     return await response.json();
-  }catch(err){
-    const fallback=await cached();
-    if(fallback!==null)return fallback;
-    throw err;
   }finally{
     clearTimeout(timer);
   }
 }
+/* Migrate existing visitors out of the previous offline-first service worker.
+   Delete only app-managed Cache Storage; preserve localStorage travel notes/checklists. */
+async function retireOfflineCache(){
+  let removedWorker=false;
+  if('serviceWorker' in navigator){
+    try{
+      const root=new URL('./',location.href);
+      const registrations=await navigator.serviceWorker.getRegistrations();
+      for(const reg of registrations){
+        const scope=new URL(reg.scope);
+        if(scope.origin===root.origin&&scope.pathname===root.pathname){
+          removedWorker=(await reg.unregister())||removedWorker;
+        }
+      }
+    }catch(err){console.warn('Old service worker cleanup failed',err)}
+  }
+  if('caches' in window){
+    try{
+      const keys=await caches.keys();
+      await Promise.all(keys.filter(key=>key.startsWith('mp26-core-')||key==='mp26-photo-cache-v1').map(key=>caches.delete(key)));
+    }catch(err){console.warn('Old offline cache cleanup failed',err)}
+  }
+  if(removedWorker&&navigator.serviceWorker.controller){
+    try{
+      const key='mp26-online-mode-reloaded-v1';
+      if(sessionStorage.getItem(key)!=='1'){
+        sessionStorage.setItem(key,'1');
+        location.reload();
+        return true;
+      }
+    }catch(err){console.warn('Reload after service worker cleanup failed',err)}
+  }
+  return false;
+}
+if(await retireOfflineCache())return;
 
 try{
-  // Both translations request their cached data at the same time. On a cold
-  // load, the slowest network path is bounded by the same 3-second deadline.
+  // Fetch both languages from the network; trip.json is always current on a new load.
   const englishData=readTripJSON('./trip-en.json').catch(function(err){
     console.warn('English data unavailable',err);return null;
   });
@@ -47,7 +64,7 @@ try{
   var heading=document.getElementById('todayLabel');
   var hint=document.getElementById('todayDesc');
   if(heading)heading.textContent='行程資料無法載入';
-  if(hint)hint.textContent='請先連網重新整理，確認離線資料已下載。';
+  if(hint)hint.textContent='請確認網路連線後重新整理網站。';
   console.error('Trip data unavailable',err);
   return;
 }
@@ -603,58 +620,15 @@ $('expenseForm').addEventListener('submit',function(e){e.preventDefault();addExp
 document.querySelectorAll('[data-rate]').forEach(function(input){input.addEventListener('input',function(){var code=input.dataset.rate,raw=input.value.trim(),val=Number(raw);state.usdRates[code]=raw!==''&&Number.isFinite(val)&&val>0?val:null;input.setAttribute('aria-invalid',raw!==''&&(!Number.isFinite(val)||val<=0)?'true':'false');save();renderExpenses()})});
 function fromHash(){var h=decodeURIComponent(location.hash.slice(1));if(h.indexOf('day=')===0){var i=D.days.findIndex(function(d){return d.date===h.slice(4)});if(i>=0)dayIndex=i;showScreen('itinerary',false)}else if(navs.some(function(n){return n.id===h}))showScreen(h,false);else showScreen('itinerary',false)}
 
-/* Offline-first shell. HTML contains the complete itinerary, styles and scripts. External maps and weather require internet. */
-var TRIP_CACHE='mp26-core-20261118-v25',offlineReady=false,offlineUpdateAvailable=false,lastOfflinePoll=0;
+/* The footer continues to show the itinerary data version. */
 function renderDataVersion(){
- var label=$('offlineVersion'),footer=$('footerDataVersion');
- if(!label&&!footer)return;
- var v=D&&D.dataVersion||{},updated=String(v.updatedAt||''),revision=String(v.revision||'');
- var valid=/^\d{4}-\d{2}-\d{2}$/.test(updated),date=valid?Number(updated.slice(5,7))+'/'+Number(updated.slice(8,10)):'';
- var zhPrefix=offlineReady?'離線版本':'資料版本',enPrefix=offlineReady?'Offline version':'Data version';
- var zh=date?zhPrefix+' · 資料更新於 '+date:zhPrefix+' · 更新日期未標示';
- var en=date?enPrefix+' · Updated '+new Date(updated+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'}):enPrefix+' · Date unavailable';
- if(revision){zh+=' · '+revision;en+=' · '+revision}
- if(label){label.textContent=lang==='en'?en:zh;label.title=lang==='en'?'Version of the itinerary loaded on this device':'目前裝置所載入的行程資料版本'}
- if(footer)footer.textContent=lang==='en'?(date?'Itinerary updated '+en.split('Updated ')[1]:'Itinerary date unavailable'):(date?'行程資料更新於 '+date:'行程資料更新日期未標示');
+  var footer=$('footerDataVersion');
+  if(!footer)return;
+  var v=D&&D.dataVersion||{},updated=String(v.updatedAt||'');
+  var date=/^\\d{4}-\\d{2}-\\d{2}$/.test(updated)?updated.slice(5,7)+'/'+updated.slice(8,10):'';
+  footer.textContent=lang==='en'?(date?'Itinerary updated '+date:'Itinerary date unavailable'):(date?'行程資料更新於 '+date:'行程資料更新日期未標示');
 }
-function renderOfflineStatus(){var text=$('offlineStatus'),dot=$('offlineDot'),btn=$('offlineReload');if(!text||!dot)return;
-var online=navigator.onLine;
-var zh,en,status;
-if(offlineUpdateAvailable){zh='新版行程已下載 · 點擊更新';en='Updated itinerary ready · Reload';status='ready'}
-else if(!online&&offlineReady){zh='目前離線 · 行程可離線閱讀';en='Offline · Itinerary available';status='offline'}
-else if(!online){zh='目前離線 · 尚未備妥離線資料';en='Offline · Cache not ready';status='error'}
-else if(offlineReady){zh='已備妥離線行程 · 無網路也能看';en='Offline itinerary saved · Ready to use';status='ready'}
-else if('serviceWorker' in navigator&&'caches' in window){zh='正在準備離線行程…';en='Preparing offline itinerary…';status='pending'}
-else{zh='此瀏覽器不支援離線快取';en='Offline caching unsupported';status='error'}
-text.textContent=zh;dot.dataset.state=status;btn.hidden=!offlineUpdateAvailable;btn.textContent='更新行程';renderDataVersion()
-}
-async function checkOfflineCache(){if(!('caches' in window)){offlineReady=false;renderOfflineStatus();return}
-try{var cache=await caches.open(TRIP_CACHE),urls=['index.html','styles.css','travel-theme.css','app.js','trip.json','trip-en.json','manifest.webmanifest','icon.svg','apple-touch-icon.png','icon-192.png','icon-512.png'].map(function(p){return new URL('./'+p,location.href).href});
-var found=await Promise.all(urls.map(function(url){return cache.match(url)}));offlineReady=found.every(Boolean)}
-catch(e){offlineReady=false}
-renderOfflineStatus()
-}
-function askForTripUpdates(force){if(!navigator.onLine||!('serviceWorker' in navigator)||!navigator.serviceWorker.controller)return;
-if(!force&&Date.now()-lastOfflinePoll<5*60000)return;lastOfflinePoll=Date.now();
-navigator.serviceWorker.controller.postMessage({type:'CHECK_TRIP_UPDATES'})
-}
-window.addEventListener('online',function(){renderOfflineStatus();checkOfflineCache();askForTripUpdates(true)});
-window.addEventListener('offline',renderOfflineStatus);
-window.addEventListener('focus',function(){checkOfflineCache();askForTripUpdates(false)});
-document.addEventListener('visibilitychange',function(){if(!document.hidden){checkOfflineCache();askForTripUpdates(false)}});
-$('offlineReload').addEventListener('click',function(){location.reload()});
-if('serviceWorker' in navigator&&location.protocol==='https:'){
-navigator.serviceWorker.addEventListener('message',function(event){var type=event.data&&event.data.type;
-if(type==='TRIP_CACHE_READY')checkOfflineCache();
-if(type==='TRIP_UPDATE_READY'){offlineUpdateAvailable=true;renderOfflineStatus()}});
-navigator.serviceWorker.addEventListener('controllerchange',function(){checkOfflineCache();askForTripUpdates(false)});
-navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(function(reg){
-checkOfflineCache();navigator.serviceWorker.ready.then(function(){checkOfflineCache()}).catch(function(){});
-reg.update().catch(function(){})
-}).catch(function(){offlineReady=false;renderOfflineStatus()});
-}
-renderOfflineStatus();
-// Register offline support before starting the UI, so a future UI error cannot stall caching.
+renderDataVersion();
 
 /* Bilingual presentation: all bookings remain in the same trip.json. */
 var UI_EN={"家庭旅行":"Family Trip","家庭旅行行程表":"Family itinerary","2026 慕尼黑・布拉格":"Munich & Prague 2026","從巴伐利亞的聖誕市集，到波希米亞的冬日老城。":"From Bavarian Christmas markets to the historic streets of Bohemia.","一家四口的九天旅行手帳。":"A nine-day travel journal for our family of four.","2 位大人 · 2 位孩子":"2 adults · 2 kids","每日行程 · 交通 · 住宿":"Itinerary · Transport · Hotels","COMING UP · 下一站":"COMING UP · NEXT STOP","尋找下一站…":"Finding the next stop…","行程時間":"Event time","出門／集合":"Leave / Meet","依當地時間":"All times are local","查看行程":"View day","Google Maps 導航 ↗":"Google Maps directions ↗","旅程準備中":"Getting ready","選擇日期查看完整行程":"Choose a date to see your plans","行前重要提醒":"Pre-trip reminders","正在檢查行程狀態…":"Checking booking status…","每日行程":"Daily itinerary","點選日期，展開活動詳情與導航":"Pick a date to explore activities and directions","回到今天":"Go to today","交通與住宿":"Transport and hotels","一鍵查地址、車次與重要時間":"Flights, transfers, trains and hotel details","機場接送 · 四段":"Four airport and station transfers","已購票":"Tickets purchased","二等艙 · 259 車廂 · 54 / 56 / 65 / 67 座位":"Second class · Coach 259 · Seats 54 / 56 / 65 / 67","ČD 官方列車資訊 ↗":"ČD train information ↗","住宿資訊":"Hotels","當地交通小抄":"Local transit tips","11/20 慕尼黑機場":"Nov 20: Munich Airport","11/26 CK 小鎮":"Nov 26: Český Krumlov","S8 → Rosenheimer Platz → Motorama 通道 → Holiday Inn；抵達時確認通道是否開放":"S8 to Rosenheimer Platz, then the Motorama passage to Holiday Inn. Check whether it is open.","RegioJet／FlixBus 往返尚未購票，務必核對正確車站":"RegioJet/FlixBus tickets not booked yet. Confirm the exact bus station.","行前準備":"Trip checklist","勾選進度儲存在這支手機或目前瀏覽器":"Progress is saved in this browser.","勾選狀態只存在此瀏覽器，不會自動同步到另一支手機。":"Checkmarks stay on this device and do not sync.","旅行筆記":"Travel notes","簡單記帳、購物地點與實用連結":"Expenses, shopping and useful links","旅費記帳":"Travel expenses","保留原幣金額，並用自訂匯率估算美元（USD）總額；資料只存在此裝置。":"Keep original amounts and estimate USD totals with custom exchange rates. Data stays on this device.","用途":"Description","金額":"Amount","幣別":"Currency","＋ 新增":"+ Add","自訂匯率 · 美元估算":"Custom exchange rates · USD estimates","請手動輸入 1 EUR 和 1 CZK 約合多少 USD。舊台幣匯率不會沿用；未設定時不估算該幣別。":"Enter your estimated USD per EUR and CZK. Old TWD rates are not reused; missing rates are excluded.","購物與想逛的地方":"Shopping ideas","實用工具":"Useful links","慕尼黑 MVV ↗":"Munich MVV ↗","布拉格 PID ↗":"Prague PID ↗","捷克鐵路 ČD ↗":"Czech Railways ↗","布拉格機場 ↗":"Prague Airport ↗","布拉格城堡 ↗":"Prague Castle ↗","CK 官方旅遊 ↗":"Český Krumlov Tourism ↗","此網站可公開瀏覽，因此不存放私人訂房編號、完整電子票、乘客資料或專屬改訂連結。驗票請使用自行離線保存的原始 PDF／航空公司 App。":"This public website does not store private booking numbers, full tickets or traveler details. Keep private PDFs and airline apps for check-in.","時間為當地時間；票券、交通、場館開放與實際集合位置以當日官方資訊為準。":"All times are local. Verify schedules, tickets and meeting points with providers.","行程資料整理於 2026/11/16 · 個人記帳與勾選不跨裝置同步。":"Itinerary prepared Nov 16, 2026; personal checkmarks and expenses do not sync.","正在準備離線行程…":"Preparing offline itinerary…","更新行程":"Reload itinerary","已備妥離線行程 · 無網路也能看":"Offline itinerary saved · Available without internet","慕尼黑":"Munich","布拉格":"Prague","今晚住宿 · Tonight’s hotel":"TONIGHT'S HOTEL","地圖導航 ↗":"Map directions ↗","官方資訊 ↗":"Official info ↗","目前沒有支出紀錄":"No expenses recorded","11/23 請核對 EC 353 的實際月台；接送資訊請看上方機場接送。":"Check the EC353 platform on Nov 23. Transfers are listed above."},STATUS_EN={"已確認":"Confirmed","門票待購":"Tickets not purchased","自由安排":"Flexible","建議行程":"Suggested","已購票／已付款":"Purchased and paid","已訂房／房晚待核對":"Booked; verify room count","巴士尚未購票":"Bus not booked","回程車票未買":"Return ticket not bought","往返車票未買":"Round trip not booked","共同規劃／集合時間待確認":"Plan with friends; time unconfirmed","規劃時間／往返未購票":"Tentative; tickets not booked","同行規劃／庭院散步":"Planned walk with friends","與朋友同行／規劃":"Planning with friends","餐廳未訂位":"Restaurant not reserved","市集規劃／營業時間待再確認":"Market planned; hours to verify","返抵時間預估":"Estimated hotel arrival","抵達時間待確認":"Arrival time unconfirmed","條件適用／先核對登機門":"Gate-dependent","可選／需確認入場":"Optional; check access","可選／非保證入場":"Optional; entry not guaranteed"},CAT_EN={"機場接送":"Airport transfer","交通":"Transport","航班":"Flight","休息":"Rest","住宿":"Hotel","餐飲":"Food","景點":"Sightseeing","活動":"Guided tour","購物":"Shopping","節慶":"Christmas market","火車":"Train","貴賓室":"Airport lounge"},DAY_EN={"一":"Mon","二":"Tue","三":"Wed","四":"Thu","五":"Fri","六":"Sat","日":"Sun"};
@@ -672,7 +646,7 @@ function statusEnglish(e){return STATUS_EN[e.status]||({'paid':'Paid','confirmed
 function staticText(){
  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),node;
  while((node=walker.nextNode())){
-  if(node.parentElement&&node.parentElement.closest('script,style,#daycontent,#daystrip,#rideCards,#transportcards,#hotelcards,#shopping,#tasks,#expenseTotals,#expenseRows,#nextStopCard,#criticalSignal,#todayLabel,#todayDesc,#offlineStatus,#offlineVersion,#footerDataVersion'))continue;
+  if(node.parentElement&&node.parentElement.closest('script,style,#daycontent,#daystrip,#rideCards,#transportcards,#hotelcards,#shopping,#tasks,#expenseTotals,#expenseRows,#nextStopCard,#criticalSignal,#todayLabel,#todayDesc,#footerDataVersion'))continue;
   var orig=originals.has(node)?originals.get(node):node.nodeValue;
   if(!originals.has(node))originals.set(node,orig);
   var key=orig.trim(),replacement=lang==='en'?(UI_EN[key]||key):orig;
@@ -812,11 +786,6 @@ function localizeHero(){
  var x=$('todayLabel');if(x){var m=x.textContent.match(/距離出發還有 (\d+) 天/);if(m)x.textContent=m[1]+' days to departure';else x.textContent=x.textContent.replace('今晚出發！','Departing tonight!').replace('旅行進行中','Trip in progress').replace('2026 冬日旅行手帳','2026 Winter Travel Journal')}
  var y=$('todayDesc');if(y)y.textContent=y.textContent.replace('查看每天的時間表與導航','See daily schedules and directions').replace('回顧這段慕尼黑與布拉格的旅程','Remember our family trip');
 }
-function localizeOffline(){if(lang!=='en')return;
- var map={'已備妥離線行程 · 無網路也能看':'Offline itinerary saved · Ready to use','正在準備離線行程…':'Preparing offline itinerary…','新版行程已下載 · 點擊更新':'Updated itinerary ready · Reload','目前離線 · 行程可離線閱讀':'Offline · Itinerary available','目前離線 · 尚未備妥離線資料':'Offline · Cache not ready','此瀏覽器不支援離線快取':'Offline caching unsupported'};
- $('offlineStatus').textContent=map[$('offlineStatus').textContent]||$('offlineStatus').textContent;
- $('offlineReload').textContent='Reload';
-}
 function wrapLocale(fn,after){return function(){var v=fn.apply(this,arguments);after();staticText();return v}}
 updateNav=wrapLocale(updateNav,function(){});
 renderDay=wrapLocale(renderDay,localizeDay);
@@ -828,11 +797,10 @@ weatherCard=wrapLocale(weatherCard,localizeWeather);
 renderNextStop=wrapLocale(renderNextStop,localizeNext);
 renderCriticalAlert=wrapLocale(renderCriticalAlert,localizeCritical);
 updateHero=wrapLocale(updateHero,localizeHero);
-renderOfflineStatus=wrapLocale(renderOfflineStatus,localizeOffline);
 function changeLanguage(){
  lang=lang==='en'?'zh':'en';if(lang==='en'&&!EN)lang='zh';
  try{localStorage.setItem(LANG_KEY,lang)}catch(e){}
- updateNav();renderDay();renderTravel();renderTasks();renderShopping();renderExpenses();renderNextStop();renderCriticalAlert();updateHero();renderOfflineStatus();
+ updateNav();renderDay();renderTravel();renderTasks();renderShopping();renderExpenses();renderNextStop();renderCriticalAlert();updateHero();renderDataVersion();
  staticText();
 }
 $('languageToggle').addEventListener('click',changeLanguage);
