@@ -504,3 +504,16 @@ body{background:radial-gradient(ellipse 520px 400px at 4% 2%,rgba(161,215,232,.1
 .next-geo-status{flex:1 1 190px;margin:0;color:#647d7d;font-size:11px;line-height:1.5}
 .next-geo [hidden]{display:none!important}
 @media(max-width:480px){.next-geo{align-items:stretch;gap:8px}.next-geo-buttons{width:100%}.next-geo-buttons .action{flex:1 1 auto}.next-geo-status{flex:1 1 100%}}
+
+/* Walkative! tour: compact, expandable six-stop list inside its existing itinerary card. */
+.event-card details.tour-stops{margin-top:12px;padding:11px 12px 9px;border:1px solid #d7e7e8;border-radius:13px;background:#f6fbfb}
+.event-card .tour-stops>summary{font-size:13px;font-weight:800;color:#285f69;min-height:28px}
+.tour-stop-list{list-style:none;counter-reset:tour-stop;margin:11px 0 0;padding:0;display:grid;gap:9px}
+.tour-stop-list>li{counter-increment:tour-stop;display:grid;grid-template-columns:24px minmax(0,1fr);gap:9px;align-items:start}
+.tour-stop-list>li:before{content:counter(tour-stop);display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#d5e9ec;color:#285f69;font-size:12px;font-weight:800}
+.tour-stop-content{min-width:0;padding-bottom:8px;border-bottom:1px solid #dfebed}
+.tour-stop-list>li:last-child .tour-stop-content{border-bottom:0;padding-bottom:0}
+.tour-stop-content>a{font-size:13px;line-height:1.45;font-weight:800;color:#236d7c;overflow-wrap:anywhere}
+.event-card details.tour-stops .tour-stop-content p{font-size:12px;line-height:1.55;margin:3px 0 0;color:#4f6567}
+.event-card details.tour-stops p.tour-stop-footnote{font-size:11px;line-height:1.5;color:#687a7e;margin:9px 0 0}
+.tour-stop-footnote a{color:#246e7b}
