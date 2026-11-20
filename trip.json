@@ -681,7 +681,40 @@
       "eta": "",
       "sub": [],
       "weather": "已訂導覽優先保留；攜帶雨衣／防水鞋，變動須詢問業者。",
-      "brief": "導覽認識慕尼黑老城、廣場與歷史故事，沿路拍建築細節。冬天戶外停留久，要穿暖。"
+      "brief": "導覽認識慕尼黑老城與歷史，官網列出六個重點景點（下方可展開查看）；10:45 場次會欣賞 11:00 的市政廳人偶鐘。",
+      "tourStops": [
+        {
+          "title": "St. Peter's Church｜聖彼得教堂",
+          "note": "慕尼黑最古老的教區教堂之一，見證老城起源；以「老彼得」鐘樓聞名。",
+          "map": "Petersplatz 1, 80331 München, Germany"
+        },
+        {
+          "title": "Marienplatz｜瑪麗恩廣場",
+          "note": "城市中心，欣賞新舊市政廳與 11:00 Glockenspiel 騎士比武人偶鐘。",
+          "map": "Marienplatz, 80331 München, Germany"
+        },
+        {
+          "title": "Old City Palace（Alter Hof）｜舊宮廷",
+          "note": "中世紀維特爾斯巴赫家族公爵的宮殿，認識巴伐利亞王室歷史。",
+          "map": "Alter Hof 1, 80331 München, Germany"
+        },
+        {
+          "title": "Hofbräuhaus｜皇家啤酒館",
+          "note": "著名的傳統啤酒館，了解巴伐利亞啤酒文化與慕尼黑歷史。",
+          "map": "Platzl 9, 80331 München, Germany"
+        },
+        {
+          "title": "Max-Joseph-Platz｜馬克斯約瑟夫廣場",
+          "note": "國王紀念雕像、慕尼黑王宮與國家劇院所在的皇室廣場。",
+          "map": "Max-Joseph-Platz, 80539 München, Germany"
+        },
+        {
+          "title": "Odeonsplatz｜音樂廳廣場",
+          "note": "義式風格建築與統帥堂；導遊會談到慕尼黑重要的近代政治史。",
+          "map": "Odeonsplatz, 80539 München, Germany"
+        }
+      ],
+      "tourSource": "https://freewalkingtour.com/munich/munich-old-town-germany/"
     },
     {
       "id": "d3-lunch",
