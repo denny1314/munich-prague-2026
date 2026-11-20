@@ -375,6 +375,16 @@
       "title": "Palladium shopping mall",
       "note": "Shops, stationery and Czech souvenirs with friends.",
       "brief": "Shops, stationery and Czech souvenirs with friends."
+    },
+    "d3-mvv-group-ticket": {
+      "title": "Buy MVV Group Day Ticket · Zone M",
+      "brief": "Before riding, buy one Group Day Ticket in the MVV App for Zone M (€19.70 for all 4).",
+      "note": "Nov 21: Select Group Day Ticket (Gruppen-Tageskarte), validity Zone M, and travel date Nov 21 in the MVV App. One ticket covers 2 adults + children ages 14 and 10 travelling together; valid until 6:00 AM Nov 22. Not purchased yet. Do not select M–5 (airport zones)."
+    },
+    "d4-mvv-group-ticket": {
+      "title": "Buy MVV Group Day Ticket · Zone M",
+      "brief": "Buy one NEW Group Day Ticket for Zone M in the MVV App (€19.70 for all 4).",
+      "note": "Nov 22: Select Group Day Ticket (Gruppen-Tageskarte), Zone M, travel date Nov 22, one ticket for 2 adults and children ages 14 and 10. Valid until 6:00 AM Nov 23. Covers local transit to the tour meeting point at Sonnenstraße 1, NOT travel to the castles, which is on the booked Mentor Reisen coach. Be at the meeting point at 8:40 AM; departure no later than 8:50 AM. Not purchased yet."
     }
   },
   "days": {
@@ -398,16 +408,16 @@
     },
     "2026-11-21": {
       "title": "Munich Old Town, Palace and Christmas market",
-      "highlight": "Confirmed 10:45 AM guided tour; Christmas music at 5:30 PM not confirmed",
-      "routeNote": "Stops are shown in the planned order. The walking tour guide decides where the tour ends.",
+      "highlight": "Buy MVV Group Day Ticket for Zone M in the app (not yet purchased). Walkative tour confirmed at 10:45 AM; 5:30 PM music unconfirmed.",
+      "routeNote": "Stops are shown in the planned order. The walking tour guide decides where the tour ends. Transit reminder: buy one Zone M MVV Group Day Ticket for Nov 21 (€19.70 for the family), not yet purchased.",
       "routeGroups": [
         "Walking through Munich Old Town"
       ]
     },
     "2026-11-22": {
       "title": "Neuschwanstein and Hohenschwangau Castles",
-      "highlight": "Arrive at Sonnenstraße 1 around 8:40 AM to check in; Mentor Reisen coach departs no later than 8:50 AM (NOT 9:15 AM).",
-      "routeNote": "Mentor Reisen's Nov 18 update: check in at Sonnenstraße 1 by about 8:40 AM. The tour MUST depart no later than 8:50 AM; 9:15 AM is no longer valid. Castle order and return time depend on the operator.",
+      "highlight": "Buy MVV Group Day Ticket for Zone M in the app (not yet purchased). Arrive at Sonnenstraße 1 by 8:40 AM; coach leaves by 8:50 AM (NOT 9:15 AM).",
+      "routeNote": "Mentor Reisen's Nov 18 update: check in at Sonnenstraße 1 by about 8:40 AM. The tour MUST depart no later than 8:50 AM; 9:15 AM is no longer valid. Castle order and return time depend on the operator. Transit reminder: buy a separate Zone M MVV Group Day Ticket for Nov 22 (€19.70 for the family), covering Munich urban transit only.",
       "routeGroups": [
         "Holiday Inn to Mentor Reisen meeting point",
         "Castle-area sightseeing"
@@ -491,7 +501,9 @@
     "todos-20261124-strahov": "Confirm Strahov Monastery Library admission for November 24",
     "todos-20261124-meet": "Confirm 8:45 AM Nov 24 meeting at Pražský hrad tram 22 stop",
     "todos-20261125-josefov": "Book Nov 25 Jewish Museum admission",
-    "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM"
+    "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM",
+    "todos-mvv-20261121-zone-m": "Buy Nov 21 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
+    "todos-mvv-20261122-zone-m": "Buy Nov 22 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70)."
   },
   "packing": {
     "packing-1": "Passports and ID",
