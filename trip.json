@@ -70,10 +70,10 @@
       "day": 3,
       "title": "慕尼黑老城、皇宮、購物、聖誕市集",
       "city": "Munich",
-      "highlight": "10:45 Walkative 已預訂；17:30 音樂候選",
+      "highlight": "MVV App：Group Day Ticket（Zone M）待購｜10:45 Walkative 已預訂；17:30 音樂候選",
       "hotel": "holiday",
       "route": {
-        "note": "按預定景點順序呈現；老城徒步導覽的實際結束位置依導遊指示。",
+        "note": "按預定景點順序呈現；老城徒步導覽的實際結束位置依導遊指示。 交通票提醒：在 MVV App 購買 11/21 Group Day Ticket，Zone M，€19.70／四人共用；尚未購票。",
         "groups": [
           {
             "title": "慕尼黑老城步行",
@@ -99,10 +99,10 @@
       "day": 4,
       "title": "新天鵝堡＋高天鵝堡",
       "city": "Munich",
-      "highlight": "08:40 Sonnenstraße 1 集合報到；Mentor Reisen 雙城堡團最晚 08:50 出發（原 09:15 已取消）",
+      "highlight": "MVV App：Group Day Ticket（Zone M）待購｜08:40 Sonnenstraße 1 集合報到；最晚 08:50 出發（09:15 已取消）",
       "hotel": "holiday",
       "route": {
-        "note": "Mentor Reisen 11/18 最新通知：請 08:40 抵達 Sonnenstraße 1（Fielmann 前公車站）辦理報到，團車最晚 08:50 出發；舊 09:15 時間不適用。兩座城堡的參觀順序、回程時間依業者安排。",
+        "note": "Mentor Reisen 11/18 最新通知：請 08:40 抵達 Sonnenstraße 1（Fielmann 前公車站）辦理報到，團車最晚 08:50 出發；舊 09:15 時間不適用。兩座城堡的參觀順序、回程時間依業者安排。 交通票提醒：在 MVV App 購買 11/22 Group Day Ticket，Zone M，€19.70／四人共用；僅涵蓋慕尼黑市區，不涵蓋雙城堡旅遊巴士。尚未購票。",
         "groups": [
           {
             "title": "飯店 → 遊覽車集合點",
@@ -590,6 +590,30 @@
       "weather": ""
     },
     {
+      "id": "d3-mvv-group-ticket",
+      "date": "2026-11-21",
+      "time": "搭車前（建議 09:00 前）",
+      "title": "MVV App 購票提醒｜Group Day Ticket · Zone M",
+      "cat": "交通",
+      "place": "",
+      "brief": "今天在 MVV App 買 1 張 Group Day Ticket，選 Zone M｜一家四口 €19.70。",
+      "desc": "11/21（六）慕尼黑舊城／皇宮／聖誕市集，都位於 MVV Zone M。出門搭 S-Bahn／U-Bahn／電車／巴士前，於 MVV App 選 Group Day Ticket（Gruppen-Tageskarte）、Zone M、11/21 生效，買 1 張讓 2 大＋14 歲與 10 歲孩子同行使用。€19.70／全家；有效至 11/22 06:00。此票尚未購買。",
+      "duration": "搭車前完成",
+      "state": "pending",
+      "status": "計畫購買／尚未購票",
+      "warn": "不要選 M–5（那是機場方向所需區間）；這張 11/21 日票不能用於 11/22 白天。",
+      "trans": "MVV App → Group Day Ticket（Gruppen-Tageskarte）→ 選擇 Zone M → 選擇當天日期 → 購買 1 張全家共用。",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "infoLinks": [
+        {
+          "label": "MVV 官方團體日票說明",
+          "url": "https://www.mvv-muenchen.de/tickets-abos-preise/gruppen-tageskarte/"
+        }
+      ]
+    },
+    {
       "id": "d3-frauen",
       "date": "2026-11-21",
       "time": "09:30–10:10",
@@ -805,6 +829,30 @@
         11.5755
       ],
       "brief": "瑪麗亞廣場聖誕市集有木屋、燈飾與新市政廳夜景。注意人潮與保暖。"
+    },
+    {
+      "id": "d4-mvv-group-ticket",
+      "date": "2026-11-22",
+      "time": "搭車前（08:40 集合前）",
+      "title": "MVV App 購票提醒｜Group Day Ticket · Zone M",
+      "cat": "交通",
+      "place": "",
+      "brief": "今天再買 1 張 Group Day Ticket，選 Zone M｜一家四口 €19.70。",
+      "desc": "11/22（日）從 Holiday Inn Munich – City Centre 前往 Sonnenstraße 1（Fielmann 前公車站）旅行團集合點，以及團體回到慕尼黑後的市區交通，使用 MVV Zone M 即可。在 MVV App 選 Group Day Ticket（Gruppen-Tageskarte）、Zone M、11/22 生效，買 1 張全家使用；€19.70，有效至 11/23 06:00。08:40 集合報到、遊覽車最晚 08:50 出發。此票尚未購買。",
+      "duration": "搭車前完成",
+      "state": "pending",
+      "status": "計畫購買／尚未購票",
+      "warn": "MVV Zone M 不涵蓋新天鵝堡地區；長途段搭已預訂的 Mentor Reisen 遊覽車，不要為此誤買 M–5 或 Bayern Ticket。",
+      "trans": "MVV App → Group Day Ticket（Gruppen-Tageskarte）→ 選擇 Zone M → 選擇當天日期 → 購買 1 張全家共用。",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "infoLinks": [
+        {
+          "label": "MVV 官方團體日票說明",
+          "url": "https://www.mvv-muenchen.de/tickets-abos-preise/gruppen-tageskarte/"
+        }
+      ]
     },
     {
       "id": "d4-breakfast",
@@ -2419,12 +2467,22 @@
       "done": false
     },
     {
+      "id": "todos-mvv-20261121-zone-m",
+      "text": "11/21 搭車前在 MVV App 買 Group Day Ticket（Zone M）1 張／全家 €19.70",
+      "done": false
+    },
+    {
       "id": "todos-6",
       "text": "11/21 慕尼黑 Walkative 導覽已預訂",
       "activityIds": [
         "d3-tour"
       ],
       "requireTicket": false
+    },
+    {
+      "id": "todos-mvv-20261122-zone-m",
+      "text": "11/22 搭車前在 MVV App 再買 Group Day Ticket（Zone M）1 張／全家 €19.70",
+      "done": false
     },
     {
       "id": "todos-7",
@@ -2685,6 +2743,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-19",
-    "revision": "2026.11.19-2"
+    "revision": "2026.11.19-3"
   }
 }
