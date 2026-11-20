@@ -52,7 +52,33 @@
     "d3-tour": {
       "title": "Walkative! Old Town guided tour",
       "note": "An English-language walking tour is confirmed. Be at the meeting point early.",
-      "brief": "An English-language walking tour is confirmed. Be at the meeting point early."
+      "brief": "An English-language guided walk through six Old Town highlights. Open the six-stop section below; the 10:45 tour includes the 11:00 Glockenspiel.",
+      "tourStops": [
+        {
+          "title": "St. Peter's Church",
+          "note": "One of Munich's oldest parish churches, called Alter Peter; a landmark of the medieval old town."
+        },
+        {
+          "title": "Marienplatz",
+          "note": "The New and Old Town Halls and the 11:00 AM Glockenspiel with its jousting figures."
+        },
+        {
+          "title": "Old City Palace (Alter Hof)",
+          "note": "The medieval palace of the Wittelsbach dukes of Bavaria."
+        },
+        {
+          "title": "Hofbräuhaus",
+          "note": "A renowned historic beer hall at the heart of Bavarian beer culture."
+        },
+        {
+          "title": "Max-Joseph-Platz",
+          "note": "The royal square by the Munich Residence and the National Theatre."
+        },
+        {
+          "title": "Odeonsplatz",
+          "note": "Italian-inspired architecture and important events in Munich's political history."
+        }
+      ]
     },
     "d3-lunch": {
       "title": "Lunch at Viktualienmarkt",
