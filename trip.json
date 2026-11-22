@@ -144,7 +144,8 @@
               "d5-sbahn",
               "d5-platform"
             ],
-            "note": "地圖僅示位置順序；05:17／05:23 是 S8 正常時刻表，實際班次與施工須核對。"
+            "note": "地圖僅示位置順序；05:17／05:23 是 S8 正常時刻表，實際班次與施工須核對。",
+            "enNote": "The map shows locations, not a street-level route. The 5:17–5:23 AM S8 is the regular timetable only; check live construction alerts and platform details."
           },
           {
             "title": "EC353 慕尼黑 → 布拉格",
@@ -2654,10 +2655,7 @@
     {
       "id": "todos-20261123-sbahn",
       "text": "11/23 清晨 S-Bahn：核對 05:17 班次、施工及 11/22 Zone M 團體日票有效期",
-      "activityIds": [
-        "d5-sbahn"
-      ],
-      "requireTicket": true
+      "done": false
     },
     {
       "id": "todos-9",
