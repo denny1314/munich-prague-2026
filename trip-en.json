@@ -140,19 +140,15 @@
     },
     "d4-return": {
       "title": "Return to Munich and prepare for tomorrow",
-      "note": "The Nov 18 operator message does not give a revised return time. The old 7:15 PM estimate was based on 9:15 AM departure; do not treat it as confirmed. Pack luggage and EC353 train QR tickets for the 5:40 AM pickup tomorrow."
+      "note": "The Nov 18 operator message does not confirm the revised return time. Pack luggage and EC353 tickets. The Nov 23 Blacklane van is canceled; use S-Bahn to München Hbf."
     },
     "d5-checkout": {
       "title": "Early checkout at Holiday Inn",
-      "note": "Pack breakfast, luggage and QR tickets for the 5:40 AM van."
-    },
-    "d5-black": {
-      "title": "Blacklane Business Van to Munich Central Station",
-      "note": "Confirmed 5:40 AM pickup at Holiday Inn. Arrival time is estimated, not guaranteed."
+      "note": "Check out around 4:50–5:05 AM with all luggage, breakfast and EC353 QR tickets; leave for Rosenheimer Platz around 5:05 AM."
     },
     "d5-platform": {
       "title": "Find EC353 platform at München Hbf",
-      "note": "Check departure screens and find coach 259 in time."
+      "note": "From the underground S-Bahn station, follow signs to the mainline train platforms. Confirm EC353 / RE25/353 departures and the actual platform. Aim to be there by 6:25 AM."
     },
     "d5-train": {
       "title": "EC353 train from Munich to Prague",
@@ -440,6 +436,10 @@
     "d8-to-station": {
       "title": "Walk from Old Town to Český Krumlov AN",
       "note": "Leave the square about 4:10 PM and aim to reach Český Krumlov AN by 4:45 PM, allowing 15 minutes before the 5:00 PM coach. Do not go to Špičák."
+    },
+    "d5-sbahn": {
+      "title": "Walk to Rosenheimer Platz; S8 to Munich Central Station",
+      "note": "Blacklane van canceled. Target the published 5:17 AM westbound S8 at Rosenheimer Platz, due at München Hbf at 5:23 AM; this is the regular timetable, not a confirmed live trip. Check construction and departures. The Motorama passage may be closed this early, so use street entrances if needed. A valid Nov 22 Zone M group day ticket generally lasts until 6:00 AM Nov 23; otherwise buy tickets before boarding."
     }
   },
   "days": {
@@ -480,10 +480,10 @@
     },
     "2026-11-23": {
       "title": "Train to Prague + confirmed Old Town walking tour",
-      "highlight": "6:44 AM EC353 train; confirmed Walkative! Prague tour at 3:00 PM",
-      "routeNote": "Arrive at 12:21 PM, drop bags and have lunch, meet at Powder Tower by 2:50 PM, then join the confirmed 3:00–5:45 PM Old Town & Jewish Quarter tour. Tour website lists Lennon Wall as the end point; Náměstí Míru market afterward is optional.",
+      "highlight": "Target 5:17 AM S8 (published timetable); 6:44 AM EC353 to Prague; confirmed 3:00 PM Walkative! tour",
+      "routeNote": "The Munich Blacklane van was canceled. Walk from Holiday Inn to Rosenheimer Platz S-Bahn; target the published S8 5:17–5:23 AM, checking live service first. In Prague, drop bags and eat lunch, meet at Powder Tower by 2:50 PM, then join the confirmed 3:00–5:45 PM walking tour. Peace Square market afterward is optional.",
       "routeGroups": [
-        "Hotel to Munich Central Station",
+        "Holiday Inn → Rosenheimer Platz → München Hbf by S-Bahn",
         "EC353 Munich to Prague",
         "Prague station, hotel and Powder Tower meeting point",
         "Tour ending area to optional Peace Square market"
@@ -543,7 +543,6 @@
     "todos-5": "Confirm the Hotel Royal Prague reservation",
     "todos-6": "Walkative Munich tour booked for Nov 21",
     "todos-7": "Verify Viator payment, final voucher and both castle admissions",
-    "todos-8": "Blacklane pickup in Munich confirmed for Nov 23",
     "todos-9": "Four EC353 train tickets purchased for Nov 23",
     "todos-10": "Confirm Prague Castle tickets and entry time",
     "todos-11": "Check Petřín funicular service for Nov 24",
@@ -560,7 +559,8 @@
     "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM",
     "todos-mvv-20261121-zone-m": "Buy Nov 21 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
     "todos-mvv-20261122-zone-m": "Buy Nov 22 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
-    "todos-20261123-walkative": "Nov 23 Prague Walkative tour confirmed; be at Powder Tower by 2:50 PM (red umbrella)"
+    "todos-20261123-walkative": "Nov 23 Prague Walkative tour confirmed; be at Powder Tower by 2:50 PM (red umbrella)",
+    "todos-20261123-sbahn": "Nov 23 early S-Bahn: check 5:17 service / disruptions and validity of the Nov 22 Zone M group day ticket through 6 AM"
   },
   "packing": {
     "packing-1": "Passports and ID",
