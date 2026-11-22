@@ -427,7 +427,7 @@ $('expenseTotals').innerHTML=keys.length?html:'<div class="empty">'+L('目前沒
 $('expenseRows').innerHTML=state.expenses.length?state.expenses.slice().reverse().map(function(x){return '<div class="expense-row"><div><strong>'+E(x.name)+'</strong><small>'+E(x.date)+'</small></div><div class="right"><b>'+E(x.currency)+' '+Number(x.amount).toFixed(2)+'</b><button class="delete" aria-label="'+L('刪除這筆支出','Delete expense')+'" type="button" data-del="'+E(x.id)+'">✕</button></div></div>'}).join(''):'';
 }
 function addExpense(form){var fd=new FormData(form),name=String(fd.get('name')||'').trim(),amount=Number(fd.get('amount')),currency=String(fd.get('currency')||'EUR');if(!name||!Number.isFinite(amount)||amount<=0||!['EUR','CZK','USD'].includes(currency))return;state.expenses.push({id:String(Date.now())+Math.random().toString(36).slice(2,6),name:name.slice(0,70),amount:Math.round(amount*100)/100,currency:currency,date:new Date().toLocaleDateString('zh-TW')});save();form.reset();renderExpenses();notify('已加入支出')}
-var nextStopIds=new Set(['d1-airport','d1-flight','d2-arrive','d2-ticket','d2-hotel','d3-frauen','d3-stpeter','d3-tour','d3-residenz','d3-market','d4-tour','d4-hohen','d4-neusch','d5-black','d5-platform','d5-train','d5-grand','d5-celetna','d5-miru','d6-castle','d6-concert','d7-josefov','d7-move','d8-busout','d8-castle','d8-busback','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
+var nextStopIds=new Set(['d1-airport','d1-flight','d2-arrive','d2-ticket','d2-hotel','d3-frauen','d3-stpeter','d3-tour','d3-residenz','d3-market','d4-tour','d4-hohen','d4-neusch','d5-black','d5-platform','d5-train','d5-grand','d5-meet-tour','d5-walkative-tour','d5-miru','d6-castle','d6-concert','d7-josefov','d7-move','d8-busout','d8-castle','d8-busback','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
 function nextStart(e){var m=/(\d{1,2}):(\d{2})/.exec(e.time||'');if(!m)return NaN;var offset=e.date==='2026-11-19'||e.id==='d9-uber'?'-08:00':'+01:00';return Date.parse(e.date+'T'+m[1]+':'+m[2]+':00'+offset)}
 function nextLeave(e){if(e.leaveAt)return e.leaveAt;if(e.id==='d3-tour')return '10:30 前抵達';if(e.id==='d5-train')return '05:40 送站';if(e.id==='d9-lx1485')return '06:30 送機';return '依路程安排'}
 
@@ -439,7 +439,7 @@ function rememberNextGeo(enabled){
  nextGeoPreference=!!enabled;
  try{if(enabled)localStorage.setItem(NEXT_GEO_PREF,'yes');else localStorage.removeItem(NEXT_GEO_PREF)}catch(err){}
 }
-var fixedNextIds=new Set(['d1-airport','d1-flight','d3-stpeter','d3-tour','d4-tour','d5-black','d5-platform','d5-train','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
+var fixedNextIds=new Set(['d1-airport','d1-flight','d3-stpeter','d3-tour','d4-tour','d5-black','d5-platform','d5-train','d5-meet-tour','d5-walkative-tour','d9-black','d9-airport','d9-lx1485','d9-lx38','d9-uber']);
 function nextEnd(e){
  var st=nextStart(e);if(!Number.isFinite(st))return NaN;
  var range=/\d{1,2}:\d{2}\s*[–—-]\s*(\d{1,2}):(\d{2})/.exec(e.time||'');
@@ -606,7 +606,7 @@ function renderCriticalAlert(){
     var date=now<Date.parse('2026-11-20T00:00:00+01:00')?'2026-11-19':new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(now));
     var day=D.days.find(function(x){return x.date===date});
     var special={'2026-11-19':'17:45 Jerry 私人接送至 SFO；21:40 LH459 起飛',
-      '2026-11-23':'05:40 Blacklane 送至 München Hbf；06:44 搭 EC353 前往布拉格',
+      '2026-11-23':'05:40 Blacklane 接送、06:44 EC353 火車；14:50 火藥塔集合、15:00 布拉格導覽',
       '2026-11-27':'06:30 布拉格 Blacklane 送機；9:40 SWISS LX1485 起飛'};
     heading.textContent='今日行程重點';
     detail.textContent=special[date]||(day?day.highlight:'請查看下一站卡片與今日行程');
