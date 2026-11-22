@@ -131,18 +131,20 @@
       "day": 5,
       "title": "搭火車前往布拉格＋老城區導覽",
       "city": "Prague",
-      "highlight": "06:44 EC 353 抵達布拉格；15:00 Walkative! 老城＋猶太區導覽已確認",
+      "highlight": "05:17（表定目標）Rosenheimer Platz 搭 S8 → 06:44 EC 353；15:00 布拉格 Walkative! 導覽已確認",
       "hotel": "grand",
       "route": {
-        "note": "11/23 抵達後先寄放行李及午餐，14:50 前到火藥塔集合，15:00–17:45 參加已訂導覽。官方預定終點為列儂牆，晚間和平廣場聖誕市集視體力安排；11/24 與朋友再走查理大橋，11/25 與朋友參觀老城和猶太區。",
+        "note": "11/23 清晨 Blacklane Business Van 已取消，改由 Holiday Inn 步行至 Rosenheimer Platz，搭往 München Hbf 的 S-Bahn。以 05:17 S8／05:23 抵站為正常時刻表目標，須於出發前再次查施工和當日即時班次；05:00 前後完成退房並準備四人行李。布拉格抵達後先寄放行李及午餐，14:50 前到火藥塔集合，15:00–17:45 參加已訂導覽。官方預定終點為列儂牆，晚間和平廣場聖誕市集視體力安排；11/24 與朋友再走查理大橋，11/25 與朋友參觀老城和猶太區。",
         "groups": [
           {
-            "title": "飯店 → 慕尼黑中央車站",
-            "mode": "driving",
+            "title": "Holiday Inn → Rosenheimer Platz → München Hbf（S-Bahn）",
+            "mode": "transit",
             "stops": [
               "hotel:holiday",
+              "d5-sbahn",
               "d5-platform"
-            ]
+            ],
+            "note": "地圖僅示位置順序；05:17／05:23 是 S8 正常時刻表，實際班次與施工須核對。"
           },
           {
             "title": "EC353 慕尼黑 → 布拉格",
@@ -1051,7 +1053,7 @@
       "title": "返回慕尼黑／整理隔日行李",
       "cat": "交通",
       "place": "Holiday Inn Munich – City Centre, Germany",
-      "desc": "旅行社已提前冬季出發時間；回到慕尼黑的確切時間尚未在 11/18 通知中說明，請勿沿用依 09:15 舊時間推估的 19:15。返回後整理四人行李與 EC353 火車 QR Code，隔天 05:40 已訂接送。",
+      "desc": "旅行社已提前冬季出發時間；回到慕尼黑的確切時間尚未在 11/18 通知中說明，請勿沿用依 09:15 舊時間推估的 19:15。返回後整理四人行李與 EC353 火車 QR Code，明早 Blacklane 已取消，改搭 S-Bahn；請備妥車票或確認 11/22 Zone M 團體日票是否仍有效。",
       "duration": "時間依實際團體",
       "state": "planned",
       "status": "回程時間尚未確認",
@@ -1064,14 +1066,14 @@
     {
       "id": "d5-checkout",
       "date": "2026-11-23",
-      "time": "05:10–05:30",
+      "time": "04:50–05:05（建議）",
       "title": "起床、Holiday Inn 退房",
       "cat": "住宿",
       "place": "Hochstraße 3, 81669 München, Germany",
-      "desc": "準備早餐、水、四人行李與火車 QR Code；05:35 前至約定接車位置。",
-      "duration": "20 分（規劃）",
+      "desc": "提早完成四人退房、備妥早餐、水、行李與 EC 353 的 QR Code；目標 05:05 從飯店出門，步行至 Rosenheimer Platz 的 S-Bahn 月台。",
+      "duration": "約 15 分（規劃）",
       "state": "planned",
-      "status": "退房安排",
+      "status": "清晨提早退房",
       "warn": "",
       "trans": "",
       "eta": "",
@@ -1079,38 +1081,62 @@
       "weather": ""
     },
     {
-      "id": "d5-black",
+      "id": "d5-sbahn",
       "date": "2026-11-23",
-      "time": "05:40",
-      "title": "Blacklane Business Van 送站",
+      "time": "05:05–05:23（目標）",
+      "title": "步行至 Rosenheimer Platz、搭 S8 到 München Hbf",
       "cat": "交通",
-      "place": "Hochstraße 3, 81669 München, Germany",
-      "desc": "05:40 從 Holiday Inn 上車，預估 05:55 抵達 München Hbf。Business Van，預訂已確認。",
-      "duration": "約 15 分（估）",
-      "state": "confirmed",
-      "status": "已確認",
-      "warn": "",
-      "trans": "Holiday Inn Hochstraße 3 → München Hbf（Bayerstraße 一帶可通行入口）；下車入口及車程依當日施工路況。",
-      "eta": "預估 15 分鐘；05:55 不保證",
-      "sub": [],
+      "place": "Rosenheimer Platz S-Bahn, München, Germany",
+      "desc": "11/23 的 Blacklane Business Van 已取消。從 Holiday Inn（Hochstraße 3）步行到 Rosenheimer Platz 地下 S-Bahn 車站，搭往市中心／Hauptbahnhof 方向的 S8；官方正常時刻表參考 05:17 開車、05:23 抵達 München Hbf。05:37→05:43 為表定後備，但不要依賴未即時確認的班次。凌晨 Motorama 地下商場通道可能未開，必要時走地面車站入口。11/22 若已購買且啟用涵蓋 Zone M、全家四人的 MVV Group Day Ticket，通常可用至 11/23 06:00；否則上車前須購買有效的 Zone M 車票。",
+      "duration": "步行＋S8 約 18 分（規劃）",
+      "state": "planned",
+      "status": "規劃搭乘／待核對車票",
+      "warn": "05:17／05:23 是正常時刻表，非 11/23 即時保證；清晨確認車次、施工及車票效期。",
+      "trans": "飯店 →（步行，清晨可能需走地面入口）Rosenheimer Platz S-Bahn → 乘往市中心／Hauptbahnhof 的 S8 → München Hbf 地下 S-Bahn 站；再上到 EC 353 長途月台。",
+      "eta": "S8 05:17 → 05:23（表定參考）",
+      "sub": [
+        "05:05 左右離開飯店，帶四人行李走至 Rosenheimer Platz",
+        "確認 11/22 MVV Zone M 團體日票是否至 11/23 06:00 有效；無票先買票",
+        "看往 Hauptbahnhof／市中心方向的列車及施工公告；目標 S8 05:17",
+        "抵達 München Hbf 後上到長途列車區，尋找 EC 353 當日月台"
+      ],
       "weather": "",
       "originLabel": "Holiday Inn Munich",
-      "destinationLabel": "München Hbf",
-      "leaveAt": "05:40"
+      "destinationLabel": "München Hbf（S-Bahn）",
+      "leaveAt": "05:05",
+      "geo": [
+        48.1285878,
+        11.5938996
+      ],
+      "routeLabel": "Rosenheimer Platz S-Bahn",
+      "infoLinks": [
+        {
+          "label": "MVV 官方班次／購票資訊",
+          "url": "https://www.mvv-muenchen.de/en/"
+        },
+        {
+          "label": "S-Bahn München 官方時刻表",
+          "url": "https://www.s-bahn-muenchen.de/en/travel/timetables"
+        },
+        {
+          "label": "MVV 團體日票規則",
+          "url": "https://www.mvv-muenchen.de/tickets-abos-preise/gruppen-tageskarte"
+        }
+      ]
     },
     {
       "id": "d5-platform",
       "date": "2026-11-23",
-      "time": "05:55–06:35",
+      "time": "05:23–06:25（目標）",
       "title": "抵達 München Hbf、找 EC 353 月台",
       "cat": "交通",
       "place": "München Hauptbahnhof, Bayerstraße, München, Germany",
-      "desc": "05:55 為接送預估抵達；查看車站看板、列車月台並準備證件。",
-      "duration": "約 40 分（估）",
+      "desc": "正常時刻表下 S8 05:23 抵達 München Hbf 地下 S-Bahn 月台；請往長途火車區移動，查看 EC 353（德國段可能顯示 RE 25／353）當日月台、延誤及取消資訊，建議 06:25 前抵達正確候車月台。",
+      "duration": "預留約 60 分鐘（含步行、月台確認）",
       "state": "pending",
       "status": "月台當天確認",
-      "warn": "",
-      "trans": "Blacklane 下車處 → München Hbf 國際列車月台。月台依當天電子看板，考慮車站施工與行李。",
+      "warn": "Gleis 25 只是先前規劃，不是明日已確認月台；請以即時看板為準。",
+      "trans": "從 München Hbf 地下 S-Bahn 月台循 Fernzüge／DB 標誌前往長途火車區。車站可能施工，請以當日看板及現場指示為準。",
       "eta": "",
       "sub": [],
       "weather": "",
@@ -2626,12 +2652,12 @@
       "requireTicket": true
     },
     {
-      "id": "todos-8",
-      "text": "11/23 慕尼黑 Blacklane 新訂單已確認",
+      "id": "todos-20261123-sbahn",
+      "text": "11/23 清晨 S-Bahn：核對 05:17 班次、施工及 11/22 Zone M 團體日票有效期",
       "activityIds": [
-        "d5-black"
+        "d5-sbahn"
       ],
-      "requireTicket": false
+      "requireTicket": true
     },
     {
       "id": "todos-9",
@@ -2891,6 +2917,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-22",
-    "revision": "2026.11.22-ck-regiojet-selected"
+    "revision": "2026.11.22-munich-sbahn-transfer"
   }
 }
