@@ -163,22 +163,17 @@
       "note": "Scheduled arrival at Praha hlavní nádraží: 12:21 PM."
     },
     "d5-grand": {
-      "title": "Bag drop and check-in at The Grand Mark",
-      "note": "Drop luggage, eat lunch, check in after 3 PM, then explore Celetná."
-    },
-    "d5-bridge": {
-      "title": "Charles Bridge at dusk",
-      "note": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24.",
-      "brief": "Take Vltava views and castle photos after Celetná, and return with friends on Nov 24."
+      "title": "Bag drop and lunch at The Grand Mark",
+      "note": "Drop bags, eat lunch and head to Powder Tower in time for a 2:50 PM check-in. If the room is not ready, check in after the tour."
     },
     "d5-miru": {
-      "title": "Náměstí Míru Christmas market",
-      "note": "Browse Christmas stalls in Peace Square and enjoy warm treats.",
-      "brief": "Browse Christmas stalls in Peace Square and enjoy warm treats."
+      "title": "Optional Náměstí Míru Christmas market",
+      "note": "After the tour, head to Peace Square only if the family has energy; otherwise return directly to the hotel.",
+      "brief": "Optional evening Christmas market, subject to energy and tour ending time."
     },
     "d5-evening": {
-      "title": "Dinner and back to The Grand Mark",
-      "note": "Relax before a full sightseeing day."
+      "title": "Dinner, The Grand Mark check-in and rest",
+      "note": "If you only dropped bags earlier, check in at the hotel after the tour or market."
     },
     "d6-transit": {
       "title": "The Grand Mark to Pražský hrad tram stop",
@@ -374,11 +369,6 @@
       "note": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional.",
       "brief": "See Malostranské Square and St. Nicholas Church exterior; Kampa and Pork's remain optional."
     },
-    "d5-celetna": {
-      "title": "Browse Celetná Street",
-      "note": "Explore Czech glass shops and historic streets; save Old Town Square and the clock for Nov 25.",
-      "brief": "Historic shopping lane for Czech glass and colorful façades. Watch slippery cobblestones."
-    },
     "d6-meet": {
       "title": "Meet friends at Pražský hrad Tram 22 stop",
       "note": "Friends depart Hotel Royal via Křižíkova Metro B. Meet at 8:45 AM and walk about 5 minutes to the castle; confirm meeting point together."
@@ -411,6 +401,41 @@
       "title": "Buy MVV Group Day Ticket · Zone M",
       "brief": "Buy one NEW Group Day Ticket for Zone M in the MVV App (€19.70 for all 4).",
       "note": "Nov 22: Select Group Day Ticket (Gruppen-Tageskarte), Zone M, travel date Nov 22, one ticket for 2 adults and children ages 14 and 10. Valid until 6:00 AM Nov 23. Covers local transit to the tour meeting point at Sonnenstraße 1, NOT travel to the castles, which is on the booked Mentor Reisen coach. Be at the meeting point at 8:40 AM; departure no later than 8:50 AM. Not purchased yet."
+    },
+    "d5-meet-tour": {
+      "title": "Walk to Powder Tower meeting point",
+      "note": "Arrive by 2:50 PM. Meet the 100 Spires Prague guide with a red umbrella marked with a large white 100."
+    },
+    "d5-walkative-tour": {
+      "title": "Confirmed Walkative! Prague Old Town & Jewish Quarter tour",
+      "note": "English tour, 2 adults + 2 children, 3:00–5:45 PM. Pay what you wish. Meet at Powder Tower under the red 100 Spires umbrella. Published end point is Lennon Wall.",
+      "brief": "Explore Old Town Square, the Astronomical Clock, Josefov and Charles Bridge. Six highlighted stops are listed below.",
+      "tourStops": [
+        {
+          "title": "Powder Tower",
+          "note": "Gothic gate and starting point of the royal coronation route; tour meeting point."
+        },
+        {
+          "title": "Old Town Square",
+          "note": "The historic main square, including Gothic and other period architecture."
+        },
+        {
+          "title": "Astronomical Clock",
+          "note": "The medieval timepiece on Old Town Hall."
+        },
+        {
+          "title": "Josefov Jewish Quarter",
+          "note": "Jewish history and landmark synagogues; indoor admission is not included."
+        },
+        {
+          "title": "Charles Bridge",
+          "note": "Historic stone bridge across the Vltava with views of the castle."
+        },
+        {
+          "title": "Lennon Wall",
+          "note": "Published end point in Malá Strana, a landmark of free expression."
+        }
+      ]
     }
   },
   "days": {
@@ -450,13 +475,14 @@
       ]
     },
     "2026-11-23": {
-      "title": "Train to Prague; Celetná and Charles Bridge",
-      "highlight": "5:40 AM Blacklane pickup and 6:44 AM EC353 train, tickets purchased",
-      "routeNote": "After arrival, browse Celetná Street, walk Charles Bridge at dusk, then visit Náměstí Míru market. Old Town Square and clock move to Nov 25.",
+      "title": "Train to Prague + confirmed Old Town walking tour",
+      "highlight": "6:44 AM EC353 train; confirmed Walkative! Prague tour at 3:00 PM",
+      "routeNote": "Arrive at 12:21 PM, drop bags and have lunch, meet at Powder Tower by 2:50 PM, then join the confirmed 3:00–5:45 PM Old Town & Jewish Quarter tour. Tour website lists Lennon Wall as the end point; Náměstí Míru market afterward is optional.",
       "routeGroups": [
         "Hotel to Munich Central Station",
         "EC353 Munich to Prague",
-        "Celetná, Charles Bridge and Peace Square"
+        "Prague station, hotel and Powder Tower meeting point",
+        "Tour ending area to optional Peace Square market"
       ]
     },
     "2026-11-24": {
@@ -529,7 +555,8 @@
     "todos-20261125-josefov": "Book Nov 25 Jewish Museum admission",
     "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM",
     "todos-mvv-20261121-zone-m": "Buy Nov 21 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
-    "todos-mvv-20261122-zone-m": "Buy Nov 22 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70)."
+    "todos-mvv-20261122-zone-m": "Buy Nov 22 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
+    "todos-20261123-walkative": "Nov 23 Prague Walkative tour confirmed; be at Powder Tower by 2:50 PM (red umbrella)"
   },
   "packing": {
     "packing-1": "Passports and ID",
