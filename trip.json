@@ -129,12 +129,12 @@
       "date": "2026-11-23",
       "weekday": "一",
       "day": 5,
-      "title": "搭火車前往布拉格",
+      "title": "搭火車前往布拉格＋老城區導覽",
       "city": "Prague",
-      "highlight": "05:40 Blacklane；06:44 EC 353 已購票",
+      "highlight": "06:44 EC 353 抵達布拉格；15:00 Walkative! 老城＋猶太區導覽已確認",
       "hotel": "grand",
       "route": {
-        "note": "11/23 抵達布拉格後逛 Celetná、查理大橋與和平廣場聖誕市集；老城廣場及天文鐘留給 11/25 朋友同行。",
+        "note": "11/23 抵達後先寄放行李及午餐，14:50 前到火藥塔集合，15:00–17:45 參加已訂導覽。官方預定終點為列儂牆，晚間和平廣場聖誕市集視體力安排；11/24 與朋友再走查理大橋，11/25 與朋友參觀老城和猶太區。",
         "groups": [
           {
             "title": "飯店 → 慕尼黑中央車站",
@@ -153,16 +153,24 @@
             ]
           },
           {
-            "title": "Celetná → 查理大橋 → 和平廣場",
+            "title": "抵達布拉格 → 飯店寄行李 → 火藥塔集合",
             "mode": "walking",
             "stops": [
               "d5-prague",
               "hotel:grand",
-              "d5-celetna",
-              "d5-bridge",
+              "d5-meet-tour"
+            ],
+            "note": "14:50 前到達火藥塔；地理連線僅示位置，不代表步行導航。"
+          },
+          {
+            "title": "導覽終點列儂牆 → 和平廣場市集（彈性）",
+            "mode": "transit",
+            "stops": [
+              "via:lennon-wall-2026",
               "d5-miru",
               "hotel:grand"
-            ]
+            ],
+            "note": "導覽預計 17:45 結束，終點依導遊安排；前往市集需依 PID 查電車／捷運，疲累可直接回飯店。"
           }
         ]
       }
@@ -1153,89 +1161,117 @@
     {
       "id": "d5-grand",
       "date": "2026-11-23",
-      "time": "12:30–15:40",
-      "title": "The Grand Mark 寄行李、午餐、15:00 後入住",
+      "time": "12:30–14:20",
+      "title": "The Grand Mark 寄放行李、午餐",
       "cat": "住宿",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "12:21 抵達後寄行李、午餐並於 15:00 後入住。下午先逛 Celetná，不另停留老城廣場／天文鐘，留給 11/25 與朋友同行。",
-      "duration": "彈性",
+      "desc": "12:21 到站後先到 The Grand Mark 寄放行李、吃午餐；若房間已好可提早入住，否則導覽後再辦 Check-in。14:30 前準備步行至火藥塔，14:50 前報到。",
+      "duration": "約 1 小時 50 分（視到站與午餐調整）",
       "state": "reserved",
       "status": "已訂房／房晚待核對",
       "warn": "",
-      "trans": "Praha hl. n. → Hybernská 12；帶行李按實際天候選步行或交通，距離以地圖確認。",
+      "trans": "Praha hl. n. → The Grand Mark（Hybernská 12）；寄放行李後步行到火藥塔集合。",
       "eta": "",
       "sub": [],
       "weather": ""
     },
     {
-      "id": "d5-celetna",
+      "id": "d5-meet-tour",
       "date": "2026-11-23",
-      "time": "15:40–16:10",
-      "title": "Celetná 街特色商店",
-      "cat": "購物",
-      "place": "Celetná, Praha 1, Czechia",
-      "desc": "從 The Grand Mark 逛 Celetná 老城石板街、捷克玻璃及特色手工藝店；老城廣場、天文鐘、泰恩教堂留待 11/25。",
-      "duration": "30 分",
-      "state": "planned",
-      "status": "由 11/25 移至今日",
-      "warn": "",
-      "trans": "",
+      "time": "14:30–14:50",
+      "title": "前往 Powder Tower 火藥塔集合",
+      "cat": "交通",
+      "place": "Prašná brána (Powder Tower), Náměstí Republiky 5, Praha 1, Czechia",
+      "desc": "從 The Grand Mark 步行至 Náměstí Republiky 的 Powder Tower（Prašná brána）。請 14:50 前到場，找紅色雨傘、上面有白色「100」字樣的 100 Spires Prague 導遊。",
+      "duration": "步行＋報到約 20 分",
+      "state": "confirmed",
+      "status": "集合點已確認",
+      "warn": "確認信要求提前至少 10 分鐘抵達；不是老城廣場集合。",
+      "trans": "The Grand Mark Prague → Prašná brána；請導航至火藥塔，不要只導航至共和國廣場中央。",
       "eta": "",
       "sub": [],
-      "weather": "",
-      "routeLabel": "Celetná 街",
+      "weather": "遇雨雪導覽通常照常，請穿保暖衣物與防滑鞋。",
+      "meetingMapUrl": "https://www.google.com/maps/search/?api=1&query=Powder+Tower%2C+N%C3%A1m%C4%9Bst%C3%AD+Republiky%2C+Prague%2C+Czechia",
+      "routeLabel": "火藥塔導覽集合",
       "geo": [
-        50.0869,
-        14.4242
+        50.087265,
+        14.427781
       ],
-      "brief": "布拉格古老商業街，逛玻璃工藝店、拍彩色立面。冬天雨雪時石板路容易滑。"
+      "leaveAt": "14:30"
     },
     {
-      "id": "d5-bridge",
+      "id": "d5-walkative-tour",
       "date": "2026-11-23",
-      "time": "16:20–17:00",
-      "title": "Charles Bridge 查理大橋黃昏散步",
-      "cat": "景點",
-      "place": "Karlův most, Praha 1, Czechia",
-      "desc": "從 Celetná 經舊城巷弄步行至查理大橋，欣賞伏爾塔瓦河與城堡黃昏風景；11/24 會與朋友再走一次。",
-      "duration": "40 分",
-      "state": "planned",
-      "status": "建議行程",
-      "warn": "",
-      "trans": "老城廣場沿 Karlova 街附近步行至查理大橋；人潮與路面可能影響速度。",
+      "time": "15:00–17:45",
+      "title": "Walkative! Welcome to Prague! 老城＋猶太區英語導覽",
+      "cat": "活動",
+      "place": "Prašná brána (Powder Tower), Náměstí Republiky 5, Praha 1, Czechia",
+      "desc": "已確認的 Welcome to Prague! Old Town & Jewish Quarter Guided Walking Tour：英文、2 位成人＋2 位兒童、2 小時 45 分。合作業者為 100 Spires Prague；火藥塔 15:00 出發，找有白色「100」標誌的紅色雨傘。自由小費制。官網列出終點為 Malá Strana 小城區的 Lennon Wall（列儂牆），實際以導遊現場安排為準。",
+      "duration": "2 小時 45 分",
+      "state": "confirmed",
+      "status": "已預訂／4 人已確認",
+      "warn": "14:50 前抵達火藥塔；本導覽已包含老城／天文鐘／猶太區與查理大橋，11/23 不需再另排重複散步。",
+      "trans": "開始：Powder Tower（Prašná brána）；官網所示終點：Lennon Wall（Velkopřevorské náměstí）；步行路線由導遊安排。",
       "eta": "",
       "sub": [],
-      "weather": "若橋面積雪或強風，縮短河邊停留。",
-      "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Charles_Bridge_-_panorama.jpg/960px-Charles_Bridge_-_panorama.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Charles_Bridge_-_panorama.jpg",
-        "author": "Tiia Monto",
-        "license": "CC BY-SA 4.0",
-        "alt": "布拉格查理大橋"
-      },
-      "routeLabel": "查理大橋",
-      "geo": [
-        50.0865,
-        14.4115
+      "weather": "雨雪及寒冷通常照常出團；穿保暖外套、防滑鞋，必要時準備雨具。",
+      "brief": "英語導覽走訪老城廣場、天文鐘、猶太區與查理大橋；官方列出六個沿途重點，展開可查看。",
+      "infoLinks": [
+        {
+          "label": "Walkative! Prague 導覽官方介紹",
+          "url": "https://freewalkingtour.com/prague/prague-old-town-jewish-quarter-charles-bridge/"
+        }
       ],
-      "brief": "查理大橋石雕與城堡天際線是經典取景，黃昏拍伏爾塔瓦河很有氣氛。橋上風大。"
+      "tourSource": "https://freewalkingtour.com/prague/prague-old-town-jewish-quarter-charles-bridge/",
+      "tourStops": [
+        {
+          "title": "Powder Tower｜火藥塔",
+          "note": "哥德式城門，波希米亞王室加冕之路的起點；也是今天的集合處。",
+          "map": "Prašná brána, Náměstí Republiky 5, Praha 1, Czechia"
+        },
+        {
+          "title": "Old Town Square｜老城廣場",
+          "note": "布拉格歷史中心，廣場周圍有泰恩教堂和不同年代的建築。",
+          "map": "Staroměstské náměstí, Praha 1, Czechia"
+        },
+        {
+          "title": "Astronomical Clock｜天文鐘",
+          "note": "老市政廳外牆上的中世紀天文鐘，可認識時間盤與鐘樓故事。",
+          "map": "Pražský orloj, Staroměstské náměstí, Praha, Czechia"
+        },
+        {
+          "title": "Josefov｜猶太區",
+          "note": "了解猶太社群歷史及舊新猶太會堂等古蹟；不代表有室內門票。",
+          "map": "Old New Synagogue, Červená, Praha 1, Czechia"
+        },
+        {
+          "title": "Charles Bridge｜查理大橋",
+          "note": "跨越伏爾塔瓦河的石橋，欣賞雕像和城堡景色。",
+          "map": "Karlův most, Praha 1, Czechia"
+        },
+        {
+          "title": "Lennon Wall｜列儂牆",
+          "note": "官網標示的導覽終點，位在小城區，塗鴉象徵自由表達。",
+          "map": "Lennon Wall, Velkopřevorské náměstí, Praha 1, Czechia"
+        }
+      ]
     },
     {
       "id": "d5-miru",
       "date": "2026-11-23",
-      "time": "17:20–18:30",
-      "title": "Náměstí Míru 和平廣場聖誕市集",
+      "time": "18:20–19:20（彈性）",
+      "title": "Náměstí Míru 和平廣場聖誕市集（視體力）",
       "cat": "節慶",
       "place": "Náměstí Míru, Praha 2, Czechia",
-      "desc": "Prague City Tourism 公告 11/20–12/24 開市，10:00–20:00；可逛在地手工藝及熱飲攤位。",
-      "duration": "70 分",
+      "desc": "導覽約 17:45 於小城區結束後，若大家還有體力，可搭電車／Metro 去和平廣場聖誕市集。市場官方已公布 11/20–12/24 開市、10:00–20:00；若天冷或疲倦，直接返回飯店辦理入住與晚餐。",
+      "duration": "最多約 60 分（彈性）",
       "state": "confirmed",
-      "status": "官方已公布開市",
+      "status": "市集已公告開市／是否前往彈性",
       "warn": "",
-      "trans": "查理大橋附近 → Náměstí Míru；可由附近站搭 Metro／電車，實際路線、轉乘站與班次請以 PID 當日導航為準。",
+      "trans": "從導覽結束地點（官網列 Lennon Wall）前往 Náměstí Míru；請用 PID 查當天可行的電車／Metro，勿假設一定有直達。",
       "eta": "",
       "sub": [],
-      "weather": "雨雪較大時縮短市集時間，提早進室內用餐。",
+      "weather": "下雨、下雪或導覽結束太晚，可直接略過市集。",
       "routeLabel": "和平廣場聖誕市集",
       "geo": [
         50.0758,
@@ -1246,11 +1282,11 @@
     {
       "id": "d5-evening",
       "date": "2026-11-23",
-      "time": "晚間",
-      "title": "晚餐、返回 The Grand Mark",
+      "time": "19:20 後",
+      "title": "晚餐、The Grand Mark Check-in、休息",
       "cat": "餐飲",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "明天是城堡區全天步行，回飯店休息。",
+      "desc": "若中午僅寄行李，回 The Grand Mark 辦理正式入住並取回行李；附近吃晚餐。隔天 08:45 與朋友在 Pražský hrad 電車站集合。",
       "duration": "彈性",
       "state": "planned",
       "status": "自由安排",
@@ -2544,6 +2580,14 @@
       "requireTicket": true
     },
     {
+      "id": "todos-20261123-walkative",
+      "text": "11/23 15:00 布拉格 Walkative 導覽已確認；14:50 前到火藥塔找紅傘",
+      "activityIds": [
+        "d5-walkative-tour"
+      ],
+      "requireTicket": false
+    },
+    {
       "id": "todos-10",
       "text": "11/24 布拉格城堡門票與參觀時間",
       "activityIds": [
@@ -2772,10 +2816,19 @@
         50.083,
         14.4035
       ]
+    },
+    {
+      "id": "lennon-wall-2026",
+      "title": "列儂牆・導覽官網終點",
+      "enTitle": "Lennon Wall (tour's published end point)",
+      "geo": [
+        50.086225,
+        14.406796
+      ]
     }
   ],
   "dataVersion": {
-    "updatedAt": "2026-11-19",
-    "revision": "2026.11.19-3"
+    "updatedAt": "2026-11-22",
+    "revision": "2026.11.22-prague-walkative"
   }
 }
