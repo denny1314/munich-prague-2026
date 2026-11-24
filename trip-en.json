@@ -272,7 +272,7 @@
     },
     "d8-busout": {
       "title": "RegioJet outbound: Prague → Český Krumlov",
-      "note": "Thu Nov 26, depart Praha Na Knížecí at 7:00 AM and arrive at Český Krumlov AN bus terminal at 9:40 AM. Four selected seats: 13, 14, 16, 15; fare CZK 746 total for four. Screenshot still shows Add to cart: payment/ticket issuance not confirmed."
+      "note": "Thu Nov 26, Prague 7:00 AM → Český Krumlov 9:40 AM. Four seats: 13, 14, 15, 16; fare €31.40 for four, Fun&Relax self service. Booked per traveler; the screenshot shows a timed reservation, so confirm issued tickets and exact stops (previous plan: Praha Na Knížecí → CK AN)."
     },
     "d8-walk": {
       "title": "Arrive at Český Krumlov AN and walk toward the castle",
@@ -303,17 +303,17 @@
       "brief": "Photograph the Vltava bend and old-town reflections; fog favors close-up street scenes."
     },
     "d8-market": {
-      "title": "Český Krumlov Christmas market",
-      "note": "Browse Svornosti Square market until approximately 4:10 PM, then walk to the AN bus terminal for the 5:00 PM return coach. Verify the market opening locally.",
-      "brief": "Browse festive stalls and warm drinks in Svornosti Square. Bundle up for the evening."
+      "title": "Christmas market (if open) or coffee",
+      "note": "If the market is open, browse briefly; otherwise enjoy coffee, snacks or shops. Leave Old Town by 3:10 PM for the 4:00 PM return coach.",
+      "brief": "Optional market or warm drinks; leave Old Town by 3:10 PM."
     },
     "d8-busback": {
       "title": "RegioJet return: Český Krumlov → Prague",
-      "note": "Thu Nov 26, depart Český Krumlov AN at 5:00 PM and arrive Praha Na Knížecí at 7:45 PM. Four selected seats: 17, 18, 20, 19; fare CZK 836. Round trip CZK 1,582 for four. Screenshot shows Add to cart, not a completed payment."
+      "note": "Thu Nov 26, Český Krumlov 4:00 PM → Prague 6:45 PM. Four seats: 5, 6, 7, 8; fare €35.10, round trip €66.50 for four. Fun&Relax self service. Booked per traveler; confirm issued tickets and exact stops (previous plan: CK AN → Praha Na Knížecí). Arrive at the stop by 3:45 PM."
     },
     "d8-hotel": {
       "title": "Return to Hotel Royal and pack for home",
-      "note": "After the 7:45 PM arrival at Praha Na Knížecí, take Metro B from Anděl back toward Hotel Royal. Estimated arrival 8:15–8:45 PM. Prepare passports and SWISS boarding passes; Blacklane pickup tomorrow is at 6:30 AM."
+      "note": "After the scheduled 6:45 PM arrival in Prague, return to Hotel Royal (estimated 7:15–7:45 PM). If arriving at Na Knížecí, take Metro B from Anděl to Křižíkova. Have dinner and pack for tomorrow's 6:30 AM Blacklane pickup."
     },
     "d9-checkout": {
       "title": "Check out of Hotel Royal",
@@ -435,7 +435,7 @@
     },
     "d8-to-station": {
       "title": "Walk from Old Town to Český Krumlov AN",
-      "note": "Leave the square about 4:10 PM and aim to reach Český Krumlov AN by 4:45 PM, allowing 15 minutes before the 5:00 PM coach. Do not go to Špičák."
+      "note": "Leave Old Town by 3:10 PM and aim to reach the ticketed bus stop by 3:45 PM. Previous plan uses CK AN; verify exact stop on issued tickets."
     },
     "d5-sbahn": {
       "title": "Walk to Rosenheimer Platz; S8 to Munich Central Station",
@@ -516,13 +516,13 @@
     },
     "2026-11-26": {
       "title": "Český Krumlov winter day trip with friends",
-      "highlight": "Meet friends early at Hotel Royal; RegioJet 7:00–9:40 AM outbound, 5:00–7:45 PM return. Selected seats; checkout still pending.",
-      "routeNote": "RegioJet has selected departure and return times and four seats in each direction, but the screenshot shows Add to cart, not a paid booking. Outbound Praha Na Knížecí 7:00 AM → Český Krumlov AN 9:40 AM; return CK AN 5:00 PM → Praha Na Knížecí 7:45 PM. Leave Hotel Royal early enough for boarding; meet-up around 5:50–6:00 AM is a suggestion, not a confirmed agreement with friends. Blacklane airport pickup tomorrow is 6:30 AM.",
+      "highlight": "Meet friends around 5:50 AM (suggested); RegioJet 7:00–9:40 AM outbound, 4:00–6:45 PM return; booked per traveler.",
+      "routeNote": "Four round-trip RegioJet seats booked per traveler on Nov 24. Outbound 7:00–9:40 AM, return 4:00–6:45 PM. Previous plan uses Praha Na Knížecí and Český Krumlov AN; the new screenshot does not show exact stops, so verify the issued tickets. Meet friends around 5:50–6:00 AM (suggested), leave Old Town by 3:10 PM and reach the return stop by 3:45 PM. Blacklane pickup tomorrow at 6:30 AM.",
       "routeGroups": [
         "Meet friends at Hotel Royal → Na Knížecí bus stop",
         "RegioJet 7:00–9:40 AM to Český Krumlov AN",
         "Castle, Latrán, Old Town, river and market",
-        "Walk to CK AN → RegioJet 5:00–7:45 PM back to Prague"
+        "Walk to CK AN → RegioJet 4:00–6:45 PM back to Prague"
       ]
     },
     "2026-11-27": {
@@ -547,7 +547,7 @@
     "todos-10": "Confirm Prague Castle tickets and entry time",
     "todos-11": "Check Petřín funicular service for Nov 24",
     "todos-12": "Buy four tickets for the classical concert on Nov 24",
-    "todos-13": "Finish checkout for Nov 26 RegioJet coaches: 7:00 AM outbound / 5:00 PM return, four travelers, CZK 1,582 total",
+    "todos-13": "Nov 26 RegioJet round trip booked for four: 7 AM outbound / 4 PM return (€66.50). Save issued tickets and verify stops.",
     "todos-14": "Prague Blacklane airport ride confirmed for Nov 27",
     "todos-15": "Verify Christmas-market opening dates and times",
     "todos-16": "Download offline maps, flight and train QR codes",
