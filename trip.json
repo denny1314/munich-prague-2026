@@ -313,10 +313,10 @@
       "day": 8,
       "title": "Český Krumlov｜與朋友同行的冬日小鎮",
       "city": "Český Krumlov",
-      "highlight": "05:50 與朋友集合；RegioJet 去程 07:00–09:40、回程 17:00–19:45（已選班次／待付款）；CK 城堡、老城與河岸",
+      "highlight": "05:50 與朋友集合（建議）；RegioJet 去程 07:00–09:40、回程 16:00–18:45（已訂）；CK 城堡、老城與河岸",
       "hotel": "royal",
       "route": {
-        "note": "11/26 與朋友同行；RegioJet 四人往返已選班次與座位，但截圖仍在 Add to cart，付款／出票尚未確認。去程 Praha Na Knížecí 07:00 → Český Krumlov AN 09:40，回程 CK AN 17:00 → Praha Na Knížecí 19:45。應比原先計畫更早從 Hotel Royal 出發，06:00 前後出門僅供建議，與朋友確認集合時間。11/27 06:30 Blacklane 送機。地圖點位是地理方位，連線非道路導航。",
+        "note": "11/26 與朋友同行；依使用者 11/24 告知，RegioJet 四人往返已訂。去程 07:00–09:40，回程 16:00–18:45。依原規劃使用 Praha Na Knížecí ↔ Český Krumlov AN；新截圖未顯示站名，須以正式電子票核對。05:50–06:00 集合為建議，與朋友確認。15:10 前離開老城、15:45 前到站。11/27 06:30 Blacklane 送機。地圖點位是地理方位，連線非道路導航。",
         "groups": [
           {
             "title": "飯店會合 → Na Knížecí 巴士站",
@@ -348,7 +348,7 @@
             ]
           },
           {
-            "title": "步行至 CK AN → RegioJet 17:00–19:45 返回布拉格",
+            "title": "步行至 CK AN → RegioJet 16:00–18:45 返回布拉格",
             "mode": "bus",
             "stops": [
               "d8-market",
@@ -1998,16 +1998,17 @@
       "title": "RegioJet 去程：布拉格 → CK 小鎮",
       "cat": "交通",
       "place": "Praha Na Knížecí, Praha, Czechia",
-      "desc": "11/26（四）07:00 Praha Na Knížecí 出發，09:40 抵達 Český Krumlov AN（汽車總站）。四人：2 位成人、1 位 6–12 歲兒童、1 位 13–17 歲青少年。截圖為 Add to cart，並非付款完成。",
+      "desc": "11/26（四）07:00 布拉格出發，09:40 抵達 CK 小鎮；全家四人，Fun&Relax self service。原規劃 Praha Na Knížecí → Český Krumlov AN，請核對正式票券的站名。",
       "duration": "2 小時 40 分",
-      "state": "pending",
-      "status": "班次及座位已選／待付款",
-      "warn": "尚未有付款／出票確認；請完成結帳後核對正式電子票。截圖顯示離出發超過 15 分鐘取消費 0%，不足 15 分鐘不能取消。",
-      "trans": "Praha Na Knížecí → Český Krumlov AN（不是 Špičák）。",
+      "state": "confirmed",
+      "status": "已訂（使用者確認）",
+      "warn": "使用者已告知訂好；截圖仍為限時保留畫面，請確認付款完成並離線保存正式電子票。上下車站以電子票為準。",
+      "trans": "原規劃 Praha Na Knížecí → Český Krumlov AN（請核對電子票）。",
       "eta": "",
       "sub": [
-        "四人座位：13、14、16、15",
-        "去程四人票價：746 CZK"
+        "四人座位：13、14、15、16",
+        "去程四人票價：€31.40",
+        "票種：Fun&Relax self service"
       ],
       "weather": "",
       "routeLabel": "布拉格 Na Knížecí",
@@ -2025,11 +2026,12 @@
         "seats": [
           13,
           14,
-          16,
-          15
+          15,
+          16
         ],
-        "priceCZK": 746,
-        "checkout": "selected"
+        "checkout": "confirmed",
+        "priceEUR": 31.4,
+        "tariff": "Fun&Relax self service"
       }
     },
     {
@@ -2042,7 +2044,7 @@
       "desc": "09:40 抵達 Český Krumlov AN 汽車總站，位在老城東側，不是 Špičák 站；沿道路與古城巷弄步行前往城堡，預留約 30–35 分鐘。",
       "duration": "約 30–35 分（規劃）",
       "state": "planned",
-      "status": "依已選去程到站時間安排",
+      "status": "依已訂去程到站時間安排",
       "warn": "",
       "trans": "從 Český Krumlov AN → 老城區 → 城堡，現場以步行導航為準。",
       "eta": "",
@@ -2146,12 +2148,12 @@
     {
       "id": "d8-oldtown",
       "date": "2026-11-26",
-      "time": "13:15–14:35",
+      "time": "13:15–14:15",
       "title": "Svornosti 廣場、CK 舊城巷弄與聖維特教堂",
       "cat": "景點",
       "place": "Náměstí Svornosti, Český Krumlov, Czechia",
       "desc": "慢走中世紀舊城巷弄、Svornosti 廣場與聖維特教堂周邊，尋找不同河灣與紅屋頂角度。",
-      "duration": "80 分",
+      "duration": "60 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
@@ -2176,12 +2178,12 @@
     {
       "id": "d8-river",
       "date": "2026-11-26",
-      "time": "14:35–15:30",
+      "time": "14:15–14:40",
       "title": "Vltava 河岸散步、第二輪觀景",
       "cat": "景點",
       "place": "Vltava River, Český Krumlov, Czechia",
       "desc": "11 月下旬約 16 時開始變暗，將河灣觀景安排在日落前；天候濃霧時改在老城街景拍照。",
-      "duration": "65 分",
+      "duration": "25 分",
       "state": "planned",
       "status": "與朋友同行／規劃",
       "warn": "",
@@ -2199,15 +2201,15 @@
     {
       "id": "d8-market",
       "date": "2026-11-26",
-      "time": "15:30–16:10",
-      "title": "CK 聖誕市集、熱飲與小點",
+      "time": "14:40–15:10",
+      "title": "CK 聖誕市集（若開放）或咖啡熱飲",
       "cat": "節慶",
       "place": "Náměstí Svornosti, Český Krumlov, Czechia",
-      "desc": "在 Svornosti Square 逛 CK 冬季聖誕市集、買熱飲點心；16:10 左右離開，以預留步行至 Český Krumlov AN 汽車總站及 17:00 回程巴士的時間。市集是否已開與營業時間以當日官方公告為準。",
-      "duration": "40 分",
+      "desc": "若市集已開放，在 Svornosti Square 短逛；否則改喝熱飲、吃小點或短逛店家。最晚 15:10 離開，前往回程巴士站。",
+      "duration": "30 分",
       "state": "planned",
       "status": "市集規劃／營業時間待再確認",
-      "warn": "為趕 17:00 回程巴士，建議最晚 16:10 離開市集。",
+      "warn": "為趕 16:00 回程巴士，最晚 15:10 離開老城。",
       "trans": "",
       "eta": "",
       "sub": [],
@@ -2223,20 +2225,20 @@
         48.8105,
         14.315
       ],
-      "brief": "CK 聖誕市集有木屋、熱飲與燈飾。傍晚冷，記得留回程巴士的時間。"
+      "brief": "市集若開放可短逛；否則喝咖啡或熱飲。15:10 前離開老城。"
     },
     {
       "id": "d8-to-station",
       "date": "2026-11-26",
-      "time": "16:10–16:45（建議）",
+      "time": "15:10–15:45（建議）",
       "title": "從 CK 老城步行至 Český Krumlov AN 候車",
       "cat": "交通",
       "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "從 Svornosti 廣場步行回 Český Krumlov AN 汽車總站，建議 16:45 前到站，留出 15 分鐘候車緩衝。不是 Špičák 車站。",
+      "desc": "從 Svornosti 廣場步行回原規劃的 Český Krumlov AN 汽車總站，15:45 前到站，預留至少 15 分鐘候車。請以電子票指定站名為準。",
       "duration": "約 20–35 分（含緩衝）",
       "state": "planned",
       "status": "建議提前抵達",
-      "warn": "回程 17:00 準時發車，切勿走錯至 Špičák 站。",
+      "warn": "16:00 回程發車，務必核對電子票站名，勿走錯車站。",
       "trans": "Svornosti Square → Český Krumlov AN；以現場導航為準。",
       "eta": "",
       "sub": [],
@@ -2250,21 +2252,22 @@
     {
       "id": "d8-busback",
       "date": "2026-11-26",
-      "time": "17:00–19:45",
+      "time": "16:00–18:45",
       "title": "RegioJet 回程：CK 小鎮 → 布拉格",
       "cat": "交通",
       "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "11/26（四）17:00 從 Český Krumlov AN 汽車總站出發，19:45 到 Praha Na Knížecí。四位乘客座位已選；截圖仍顯示 Add to cart，尚未證實付款與出票。",
+      "desc": "11/26（四）16:00 CK 小鎮出發，18:45 抵達布拉格。全家四人，Fun&Relax self service；原規劃 CK AN → Praha Na Knížecí，請核對正式票券站名。",
       "duration": "2 小時 45 分",
-      "state": "pending",
-      "status": "班次及座位已選／待付款",
-      "warn": "請先完成結帳，當天 16:45 前到 CK AN 候車。出發超過 15 分鐘前取消費 0%；不足 15 分鐘則不可取消。",
-      "trans": "Český Krumlov AN → Praha Na Knížecí，再由 Anděl 搭 Metro B 回 Křižíkova／Hotel Royal。",
+      "state": "confirmed",
+      "status": "已訂（使用者確認）",
+      "warn": "使用者已告知訂好；截圖仍為限時保留畫面，請確認付款完成並離線保存正式電子票。上下車站以電子票為準。 15:45 前到站候車。",
+      "trans": "原規劃 CK AN → Praha Na Knížecí，再由 Anděl 搭 Metro B 回 Křižíkova／Hotel Royal；以電子票站名為準。",
       "eta": "",
       "sub": [
-        "四人座位：17、18、20、19",
-        "回程四人票價：836 CZK",
-        "往返四人合計：1,582 CZK"
+        "四人座位：5、6、7、8",
+        "回程四人票價：€35.10",
+        "往返四人合計：€66.50",
+        "票種：Fun&Relax self service"
       ],
       "weather": "",
       "routeLabel": "CK 汽車總站 AN",
@@ -2277,26 +2280,27 @@
         "direction": "return",
         "origin": "Český Krumlov AN",
         "destination": "Praha Na Knížecí",
-        "departure": "17:00",
-        "arrival": "19:45",
+        "departure": "16:00",
+        "arrival": "18:45",
         "seats": [
-          17,
-          18,
-          20,
-          19
+          5,
+          6,
+          7,
+          8
         ],
-        "priceCZK": 836,
-        "checkout": "selected"
+        "checkout": "confirmed",
+        "priceEUR": 35.1,
+        "tariff": "Fun&Relax self service"
       }
     },
     {
       "id": "d8-hotel",
       "date": "2026-11-26",
-      "time": "20:15–20:45（預估）",
+      "time": "19:15–19:45（預估）",
       "title": "與朋友返回 Hotel Royal、整理返美行李",
       "cat": "休息",
       "place": "Thámova 36, Praha 8, Czechia",
-      "desc": "RegioJet 回程預定 19:45 抵達 Praha Na Knížecí，從 Anděl 搭 Metro B 回 Křižíkova，再走回 Hotel Royal；實際到飯店時間視交通而定。晚上整理護照、登機證與四人行李，隔天 06:30 Blacklane 送機。",
+      "desc": "RegioJet 回程預定 18:45 抵達布拉格；若抵達原規劃的 Na Knížecí，從 Anděl 搭 Metro B 回 Křižíkova，步行回 Hotel Royal。晚餐後整理護照、登機證與四人行李，隔天 06:30 Blacklane 送機。實際時間視交通而定。",
       "duration": "依巴士實際到達時間",
       "state": "planned",
       "status": "回飯店時間預估",
@@ -2705,7 +2709,7 @@
     },
     {
       "id": "todos-13",
-      "text": "11/26 RegioJet 四人往返已選 07:00 去／17:00 回（CZK 1,582），仍須完成結帳並收到票券",
+      "text": "11/26 RegioJet 四人往返已訂：07:00 去／16:00 回（€66.50）；保存正式電子票並核對車站",
       "activityIds": [
         "d8-busout",
         "d8-busback"
@@ -2915,7 +2919,7 @@
     }
   ],
   "dataVersion": {
-    "updatedAt": "2026-11-22",
-    "revision": "2026.11.22-munich-sbahn-transfer"
+    "updatedAt": "2026-11-24",
+    "revision": "2026.11.24-ck-regiojet-booked"
   }
 }
