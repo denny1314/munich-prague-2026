@@ -223,35 +223,20 @@
     },
     "d7-breakfast": {
       "title": "Early breakfast and packing",
-      "note": "Have breakfast at 7 AM to join the shared 9 AM Jewish Quarter visit."
+      "note": "Have breakfast at 7 AM, check out and leave luggage before visiting Vyšehrad. Meet friends at lunch."
     },
     "d7-checkout": {
       "title": "Early checkout and luggage storage at The Grand Mark",
       "note": "Leave luggage at the front desk before sightseeing; collect it around 5:30 PM."
     },
-    "d7-square": {
-      "title": "Old Town Square, clock and Týn Church exterior",
-      "note": "See the Astronomical Clock and Gothic spires together after the Jewish Quarter.",
-      "brief": "See the Astronomical Clock, Týn Church spires and colorful townhouses before early winter dusk."
-    },
     "d7-lunch": {
-      "title": "Lunch at Mincovna (suggested)",
-      "note": "Restaurant not yet booked; leave time for a potential 2 PM Klementinum tour."
-    },
-    "d7-josefov": {
-      "title": "Josefov: Pinkas Synagogue, Old Jewish Cemetery, Spanish Synagogue",
-      "note": "Visit the indoor sites with friends. Tickets and security checks need confirmation.",
-      "brief": "Pinkas Synagogue, the old Jewish cemetery and Spanish Synagogue. Respect on-site photo restrictions."
+      "title": "Meet friends for lunch at Mincovna (suggested)",
+      "note": "Confirm the Old Town restaurant and meeting point with friends. No reservation yet; allow time for the 2 PM Klementinum tour."
     },
     "d7-manuf": {
       "title": "Manufaktura gifts at Na Příkopě 16",
       "note": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova.",
       "brief": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova."
-    },
-    "d7-powder": {
-      "title": "Municipal House and Powder Tower exterior",
-      "note": "Quick architecture and photo stop; no tower climb required.",
-      "brief": "Photograph the Gothic Powder Tower beside the ornate Art Nouveau Municipal House."
     },
     "d7-republiky": {
       "title": "Republic Square Christmas stalls (optional)",
@@ -263,8 +248,8 @@
       "note": "Return to The Grand Mark, then take Metro B to Křižíkova and walk to Hotel Royal."
     },
     "d7-dinner": {
-      "title": "Dinner near Hotel Royal",
-      "note": "Rest before the early Český Krumlov bus day."
+      "title": "Dinner with friends in Karlín",
+      "note": "Coordinate the next morning's CK bus meetup and rest early."
     },
     "d8-breakfast": {
       "title": "Meet friends early at Hotel Royal for the 7 AM coach",
@@ -369,10 +354,6 @@
       "title": "Meet friends at Pražský hrad Tram 22 stop",
       "note": "Friends depart Hotel Royal via Křižíkova Metro B. Meet at 8:45 AM and walk about 5 minutes to the castle; confirm meeting point together."
     },
-    "d7-transit": {
-      "title": "Head to Josefov and meet friends",
-      "note": "Suggested 8:50 AM rendezvous near Pinkas Synagogue; confirm entrance with friends."
-    },
     "d7-klementinum": {
       "title": "Klementinum guided tour",
       "note": "Aim for a 2 PM English guided tour, subject to tickets; view the Baroque library and expect stairs.",
@@ -380,7 +361,7 @@
     },
     "d7-na-prikope": {
       "title": "Shopping on Na Příkopě",
-      "note": "Browse shops with friends before Manufaktura and Palladium.",
+      "note": "Browse shops with friends. Skip dedicated stops at the already-seen Powder Tower and Municipal House.",
       "brief": "Browse shops with friends before Manufaktura and Palladium."
     },
     "d7-palladium": {
@@ -440,6 +421,30 @@
     "d5-sbahn": {
       "title": "Walk to Rosenheimer Platz; S8 to Munich Central Station",
       "note": "Blacklane van canceled. Target the published 5:17 AM westbound S8 at Rosenheimer Platz, due at München Hbf at 5:23 AM; this is the regular timetable, not a confirmed live trip. Check construction and departures. The Motorama passage may be closed this early, so use street entrances if needed. A valid Nov 22 Zone M group day ticket generally lasts until 6:00 AM Nov 23; otherwise buy tickets before boarding."
+    },
+    "d7-vysehrad-transit": {
+      "title": "Travel to Vyšehrad",
+      "note": "Walk to Hlavní nádraží, take Metro C toward Háje to Vyšehrad and walk to the fortress."
+    },
+    "d7-vysehrad": {
+      "title": "Vyšehrad fortress",
+      "note": "Visit the ramparts, river viewpoints, St Martin's Rotunda and the cemetery. Basilica interior is optional, subject to opening hours and time.",
+      "brief": "Historic fortress, river views and cemetery; optional basilica interior."
+    },
+    "d7-naplavka": {
+      "title": "Náplavka riverside walk",
+      "note": "Descend toward Výtoň and follow the east bank north. Use a tram or safer roads if icy or too cold.",
+      "brief": "Walk north along the Vltava; take a tram if needed."
+    },
+    "d7-dancing": {
+      "title": "Dancing House",
+      "note": "Photograph the exterior from a safe location. Optional rooftop Glass Bar coffee, subject to opening and time.",
+      "brief": "Architecture photos and optional rooftop coffee."
+    },
+    "d7-wenceslas": {
+      "title": "Wenceslas Square (optional)",
+      "note": "Only if not already visited and time permits; see the National Museum exterior or go straight to lunch.",
+      "brief": "New Town and National Museum exterior if time allows."
     }
   },
   "days": {
@@ -504,13 +509,14 @@
       ]
     },
     "2026-11-25": {
-      "title": "With friends: Josefov, Old Town, Klementinum and shopping",
-      "highlight": "7 AM breakfast, early checkout; meet friends at Josefov by 9 AM; move to Hotel Royal in evening",
-      "routeNote": "Jewish Quarter at 9, Old Town Square at 11:45, Klementinum around 2 PM (unbooked), Na Příkopě and Palladium shopping; collect bags and move to Hotel Royal.",
+      "title": "Vyšehrad and Dancing House; afternoon with friends",
+      "highlight": "7 AM breakfast and checkout; Vyšehrad and Dancing House; meet for lunch at 12:30; move to Hotel Royal",
+      "routeNote": "Vyšehrad → Výtoň riverside → Dancing House → optional Wenceslas Square → lunch with friends at 12:30 (venue to confirm) → Klementinum at 2 PM (unbooked) → shopping, market and hotel move. Skip repeated Walkative sights. Lines are not street navigation.",
       "routeGroups": [
-        "The Grand Mark to Josefov",
-        "Jewish Quarter, Old Town, Klementinum and Powder Tower",
-        "Na Příkopě, Manufaktura, Palladium and market",
+        "The Grand Mark to Vyšehrad via Metro C",
+        "Vyšehrad, riverside, Dancing House and Old Town lunch",
+        "Optional detour via Wenceslas Square",
+        "Lunch, Klementinum, Na Příkopě, Manufaktura, Palladium and market",
         "Collect luggage and move to Hotel Royal"
       ]
     },
@@ -555,7 +561,6 @@
     "todos-18": "Review travel insurance and emergency contacts",
     "todos-20261124-strahov": "Confirm Strahov Monastery Library admission for November 24",
     "todos-20261124-meet": "Confirm 8:45 AM Nov 24 meeting at Pražský hrad tram 22 stop",
-    "todos-20261125-josefov": "Book Nov 25 Jewish Museum admission",
     "todos-20261125-klementinum": "Book Nov 25 Klementinum English tour near 2 PM",
     "todos-mvv-20261121-zone-m": "Buy Nov 21 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",
     "todos-mvv-20261122-zone-m": "Buy Nov 22 MVV Group Day Ticket, Zone M, 1 family ticket (€19.70).",

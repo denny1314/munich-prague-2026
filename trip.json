@@ -259,36 +259,46 @@
       "date": "2026-11-25",
       "weekday": "三",
       "day": 7,
-      "title": "朋友同行｜猶太區・舊城・Klementinum・購物",
+      "title": "高堡・跳舞的房子｜午餐後與朋友同行",
       "city": "Prague",
-      "highlight": "07:00 提早早餐／退房；09:00 猶太區與朋友同行；傍晚搬 Hotel Royal",
+      "highlight": "07:00 早餐／退房；上午高堡、跳舞的房子；12:30 老城區與朋友午餐；傍晚搬 Hotel Royal",
       "hotel": "royal",
       "route": {
-        "note": "09:00 猶太區 → 11:45 舊城廣場 → 14:00 Klementinum 英文導覽（待訂）→ 市民會館與火藥塔 → Na Příkopě、Manufaktura、Palladium → 取行李換飯店。位置連線非街道導航。",
+        "note": "高堡 → Výtoň 河岸 → Dancing House → 瓦茨拉夫廣場（選擇性）→ 12:30 老城區午餐會合（地點待確認）→ 14:00 Klementinum（待訂）→ 購物、市集、換飯店。已參加 Walkative!，不再重複參觀老城與猶太區。位置連線非街道導航。",
         "groups": [
           {
-            "title": "The Grand Mark → Josefov 集合",
-            "mode": "walking",
+            "title": "The Grand Mark → Metro C → 高堡",
+            "mode": "transit",
             "stops": [
               "hotel:grand",
-              "d7-josefov"
+              "d7-vysehrad"
             ]
           },
           {
-            "title": "猶太區 → 舊城廣場 → Klementinum → 火藥塔",
+            "title": "高堡 → 河岸 → 跳舞的房子 → 老城區午餐",
             "mode": "walking",
             "stops": [
-              "d7-josefov",
-              "d7-square",
+              "d7-vysehrad",
+              "d7-naplavka",
+              "d7-dancing",
+              "d7-lunch"
+            ]
+          },
+          {
+            "title": "彈性繞行：瓦茨拉夫廣場（未去過才去）",
+            "mode": "walking",
+            "stops": [
+              "d7-dancing",
+              "d7-wenceslas",
+              "d7-lunch"
+            ]
+          },
+          {
+            "title": "午餐 → Klementinum → Na Příkopě → Manufaktura → Palladium → 市集",
+            "mode": "walking",
+            "stops": [
+              "d7-lunch",
               "d7-klementinum",
-              "d7-powder"
-            ]
-          },
-          {
-            "title": "Na Příkopě → Manufaktura → Palladium → 市集",
-            "mode": "walking",
-            "stops": [
-              "d7-powder",
               "d7-na-prikope",
               "d7-manuf",
               "d7-palladium",
@@ -1661,7 +1671,7 @@
       "title": "提前早餐、整理行李",
       "cat": "休息",
       "place": "The Grand Mark Prague, Czechia",
-      "desc": "配合 09:00 猶太區會合，早餐改為 07:00。前一晚先打包，今日要從 The Grand Mark 換到 Hotel Royal。",
+      "desc": "07:00 早餐，前一晚先打包；今日先退房寄放行李，再前往高堡，午餐時與朋友會合。",
       "duration": "35 分",
       "state": "planned",
       "status": "建議行程",
@@ -1689,101 +1699,148 @@
       "weather": ""
     },
     {
-      "id": "d7-transit",
+      "id": "d7-vysehrad-transit",
       "date": "2026-11-25",
-      "time": "08:00–08:50",
-      "title": "前往 Josefov，與朋友會合",
+      "time": "08:00–08:40",
+      "title": "前往 Vyšehrad 高堡",
       "cat": "交通",
-      "place": "Pinkas Synagogue, Široká 3, Prague, Czechia",
-      "desc": "從 The Grand Mark 步行／搭車至 Josefov；建議 08:50 在 Pinkas Synagogue 外附近集合，09:00 開始與朋友參觀（集合入口需雙方確認）。",
-      "duration": "50 分",
+      "place": "Vyšehrad metro station, Prague, Czechia",
+      "desc": "飯店步行至 Hlavní nádraží 中央車站，搭 Metro C 紅線往 Háje 方向，到 Vyšehrad 下車，再步行進入高堡。",
+      "duration": "40 分",
       "state": "planned",
-      "status": "建議集合點／待確認",
+      "status": "建議行程",
       "warn": "",
-      "trans": "",
+      "trans": "The Grand Mark → Hlavní nádraží → Metro C（往 Háje）→ Vyšehrad → 高堡。",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "出發前確認 PID Lítačka 當日班次。"
     },
     {
-      "id": "d7-josefov",
+      "id": "d7-vysehrad",
       "date": "2026-11-25",
-      "time": "09:00–11:35",
-      "title": "Josefov 猶太區｜會堂與舊墓園",
+      "time": "08:40–10:15",
+      "title": "Vyšehrad 高堡",
       "cat": "景點",
-      "place": "Josefov, Praha 1, Czechia",
-      "desc": "與朋友參觀 Pinkas Synagogue、舊猶太墓園、Spanish Synagogue；原本的戶外散步改為較完整的室內參觀，門票、安檢與開放時間待核對。",
-      "duration": "2 小時 35 分",
-      "state": "pending",
-      "status": "朋友同行／門票待確認",
+      "place": "Vyšehrad, V Pevnosti, Prague 2, Czechia",
+      "desc": "從高堡城牆俯瞰伏爾塔瓦河，欣賞聖馬丁圓形教堂、捷克名人墓園與聖彼得及聖保羅大教堂。戶外園區免費；教堂內部視開放時間及餘裕，不必為入內而延誤。",
+      "duration": "95 分",
+      "state": "planned",
+      "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [
-        "Pinkas Synagogue 皮卡斯會堂",
-        "Old Jewish Cemetery 舊猶太墓園",
-        "Spanish Synagogue 西班牙會堂"
+        "Táborská brána 塔博爾城門",
+        "Leopold Gate 利奧波德城門",
+        "Rotunda of St. Martin 聖馬丁圓形教堂",
+        "城牆與伏爾塔瓦河觀景",
+        "Vyšehrad Cemetery 名人墓園",
+        "Basilica of St. Peter and St. Paul（內部彈性）"
       ],
-      "weather": "天氣差時縮短室外路線，改鄰近有開放的室內展館（門票另計）。",
-      "routeLabel": "猶太區 Josefov",
+      "weather": "高堡風大；雨雪或結冰時避開濕滑石階並縮短城牆步行。",
+      "routeLabel": "Vyšehrad",
       "geo": [
-        50.0909,
-        14.4188
+        50.0648,
+        14.4176
       ],
+      "brief": "歷史堡壘、城牆河景與名人墓園；教堂內部視開放與時間彈性參觀。",
       "infoLinks": [
         {
-          "label": "猶太博物館開放時間",
-          "url": "https://www.jewishmuseum.cz/en/info/visit/opening-hours/"
+          "label": "高堡官方網站",
+          "url": "https://www.praha-vysehrad.cz/"
         }
-      ],
-      "brief": "參觀 Pinkas 會堂、舊猶太墓園與西班牙會堂，了解當地歷史。室內攝影限制依場館。"
+      ]
     },
     {
-      "id": "d7-square",
+      "id": "d7-naplavka",
       "date": "2026-11-25",
-      "time": "11:45–12:30",
-      "title": "舊城廣場＋天文鐘＋泰恩教堂（外觀）",
+      "time": "10:15–10:45",
+      "title": "Náplavka 伏爾塔瓦河岸散步",
       "cat": "景點",
-      "place": "Staroměstské náměstí, Praha 1, Czechia",
-      "desc": "今天和朋友一起欣賞舊城廣場、天文鐘整點報時與泰恩教堂哥德式尖塔；11/23 已把這裡的獨立停留取消。",
+      "place": "Výtoň, Rašínovo nábřeží, Prague 2, Czechia",
+      "desc": "從高堡往 Výtoň 方向下山，再沿伏爾塔瓦河東岸向北走到跳舞的房子。",
+      "duration": "30 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "步行下山至 Výtoň，再沿河岸北行。",
+      "eta": "",
+      "sub": [],
+      "weather": "若石階結冰或河風太大，改走安全道路並搭河岸電車。",
+      "routeLabel": "Náplavka／Výtoň",
+      "geo": [
+        50.0668,
+        14.4145
+      ],
+      "brief": "沿河向北散步；太冷或路滑可改搭電車。"
+    },
+    {
+      "id": "d7-dancing",
+      "date": "2026-11-25",
+      "time": "10:45–11:30",
+      "title": "Dancing House 跳舞的房子",
+      "cat": "景點",
+      "place": "Dancing House, Jiráskovo náměstí 6, Prague, Czechia",
+      "desc": "從對面街道安全位置拍攝建築外觀；有時間可到頂樓 Glass Bar 喝咖啡、欣賞河景（視營業與候位）。",
       "duration": "45 分",
       "state": "planned",
-      "status": "朋友同行",
+      "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": "雨雪天縮短廣場攝影，優先室內教堂（若開放）。",
-      "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Prague_Old_Town_Square_Church_of_Our_Lady.jpg/960px-Prague_Old_Town_Square_Church_of_Our_Lady.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Prague_Old_Town_Square_Church_of_Our_Lady.jpg",
-        "author": "Kyle Robinson",
-        "license": "CC BY-SA 3.0",
-        "alt": "入夜後的布拉格老城廣場與泰恩教堂"
-      },
-      "routeLabel": "老城廣場／泰恩教堂",
+      "weather": "天候不佳可進室內取暖，視時間及營業狀況。",
+      "routeLabel": "Dancing House",
       "geo": [
-        50.0878,
-        14.4205
+        50.0755,
+        14.4142
       ],
-      "brief": "看天文鐘整點報時、泰恩教堂尖塔與彩色街屋。冬天早暗，白天先拍建築。"
+      "brief": "現代建築外觀拍照；頂樓 Glass Bar 為彈性停留。"
+    },
+    {
+      "id": "d7-wenceslas",
+      "date": "2026-11-25",
+      "time": "11:30–12:15",
+      "title": "瓦茨拉夫廣場（彈性）",
+      "cat": "景點",
+      "place": "Václavské náměstí, Prague, Czechia",
+      "desc": "如果先前沒有去過且時間充足，可順路欣賞新城區、國家博物館外觀；否則直接到老城區與朋友會合。",
+      "duration": "45 分",
+      "state": "tentative",
+      "status": "彈性／未參觀才去",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "routeLabel": "瓦茨拉夫廣場（選擇性）",
+      "geo": [
+        50.081,
+        14.4267
+      ],
+      "brief": "新城區與國家博物館外觀；若已看過或時間不足就略過。"
     },
     {
       "id": "d7-lunch",
       "date": "2026-11-25",
       "time": "12:30–13:35",
-      "title": "Mincovna 午餐（候選）",
+      "title": "Mincovna 與朋友會合、午餐（候選）",
       "cat": "餐飲",
       "place": "Mincovna, Staroměstské náměstí, Prague, Czechia",
-      "desc": "朋友行程列 Mincovna 為午餐候選；尚未訂位。請留出走到 Klementinum 並參加約 14:00 導覽的時間。",
+      "desc": "12:30 與朋友在 Mincovna 或雙方確認的老城區餐廳會合，尚未訂位。已參加 Walkative!，不再另排老城廣場與天文鐘參觀。保留前往 14:00 Klementinum 導覽的時間。",
       "duration": "65 分",
       "state": "planned",
       "status": "候選餐廳／未訂位",
-      "warn": "",
+      "warn": "與朋友確認午餐集合地點；餐廳未訂位。",
       "trans": "",
       "eta": "",
       "sub": [],
-      "weather": ""
+      "weather": "",
+      "geo": [
+        50.0881,
+        14.4209
+      ],
+      "routeLabel": "Mincovna（候選）"
     },
     {
       "id": "d7-klementinum",
@@ -1815,37 +1872,14 @@
       "brief": "巴洛克圖書館與天文塔是亮點，導覽欣賞華麗內部。需訂時段票，也有階梯。"
     },
     {
-      "id": "d7-powder",
-      "date": "2026-11-25",
-      "time": "15:00–15:25",
-      "title": "市民會館＋火藥塔外觀",
-      "cat": "景點",
-      "place": "Prašná brána, Praha 1, Czechia",
-      "desc": "與朋友在市民會館及火藥塔前拍照，欣賞新藝術與哥德式建築；不排登塔，若導覽延誤可縮短。",
-      "duration": "25 分",
-      "state": "planned",
-      "status": "朋友同行／彈性",
-      "warn": "",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "",
-      "routeLabel": "火藥塔",
-      "geo": [
-        50.0879,
-        14.4277
-      ],
-      "brief": "火藥塔是哥德式城門，旁邊市民會館有新藝術立面。兩棟同框適合拍照。"
-    },
-    {
       "id": "d7-na-prikope",
       "date": "2026-11-25",
-      "time": "15:30–16:10",
+      "time": "15:00–16:10",
       "title": "Na Příkopě 購物街",
       "cat": "購物",
       "place": "Na Příkopě, Praha, Czechia",
-      "desc": "跟朋友逛布拉格市中心商店與文具、伴手禮；冬天可穿插室內店家取暖。",
-      "duration": "40 分",
+      "desc": "跟朋友逛布拉格市中心商店與文具、伴手禮；市民會館及火藥塔已由 Walking Tour 涵蓋，不另安排停留，順路經過即可。",
+      "duration": "70 分",
       "state": "planned",
       "status": "朋友同行",
       "warn": "",
@@ -1956,10 +1990,10 @@
       "id": "d7-dinner",
       "date": "2026-11-25",
       "time": "18:30 後",
-      "title": "Karlín 區晚餐",
+      "title": "Karlín 區與朋友晚餐",
       "cat": "餐飲",
       "place": "Karlín, Praha 8, Czechia",
-      "desc": "到 Karlín 區吃晚餐，與朋友協調隔天 CK 巴士集合時間，提早休息。",
+      "desc": "與朋友在 Karlín 區共進晚餐，協調隔天 CK 巴士集合時間，提早休息。",
       "duration": "彈性",
       "state": "planned",
       "status": "自由安排",
@@ -2750,14 +2784,6 @@
       "done": false
     },
     {
-      "id": "todos-20261125-josefov",
-      "text": "11/25 猶太區（Pinkas／舊墓園／Spanish）入場票",
-      "activityIds": [
-        "d7-josefov"
-      ],
-      "requireTicket": true
-    },
-    {
       "id": "todos-20261125-klementinum",
       "text": "11/25 Klementinum 約 14:00 英文導覽票",
       "activityIds": [
@@ -2920,6 +2946,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-24",
-    "revision": "2026.11.24-ck-regiojet-booked"
+    "revision": "2026.11.24-vysehrad-dancing-house"
   }
 }
