@@ -227,7 +227,7 @@
     },
     "d7-checkout": {
       "title": "Early checkout and luggage storage at The Grand Mark",
-      "note": "Leave luggage at the front desk before sightseeing; collect it around 5:30 PM."
+      "note": "Check out early and leave luggage with reception. Return around 5:10 PM to collect it."
     },
     "d7-lunch": {
       "title": "Meet friends for lunch at Mincovna (suggested)",
@@ -238,18 +238,13 @@
       "note": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova.",
       "brief": "Czech soaps, skincare and souvenirs without backtracking to Melantrichova."
     },
-    "d7-republiky": {
-      "title": "Republic Square Christmas stalls (optional)",
-      "note": "Enjoy seasonal stalls if time permits before collecting luggage.",
-      "brief": "Enjoy seasonal stalls if time permits before collecting luggage."
-    },
     "d7-move": {
-      "title": "Collect luggage and move to Hotel Royal",
-      "note": "Return to The Grand Mark, then take Metro B to Křižíkova and walk to Hotel Royal."
+      "title": "Collect luggage and check in at Hotel Royal",
+      "note": "After Palladium, collect luggage at The Grand Mark and take Metro B to Křižíkova. Leave luggage at Hotel Royal before visiting Peace Square."
     },
     "d7-dinner": {
-      "title": "Dinner with friends in Karlín",
-      "note": "Coordinate the next morning's CK bus meetup and rest early."
+      "title": "Dinner with friends and return to Hotel Royal",
+      "note": "Eat near Peace Square or in Karlín. Coordinate tomorrow's CK bus meetup and rest early."
     },
     "d8-breakfast": {
       "title": "Meet friends early at Hotel Royal for the 7 AM coach",
@@ -445,6 +440,15 @@
       "title": "Wenceslas Square (optional)",
       "note": "Only if not already visited and time permits; see the National Museum exterior or go straight to lunch.",
       "brief": "New Town and National Museum exterior if time allows."
+    },
+    "d7-miru": {
+      "title": "Náměstí Míru Peace Square Christmas market",
+      "note": "Visit with friends after hotel check-in. Official hours 10 AM–8 PM, Nov 20–Dec 24. Skip Republic Square market.",
+      "brief": "Christmas lights, local crafts and hot drinks in front of St Ludmila Church; closes at 8 PM."
+    },
+    "d7-miru-transit": {
+      "title": "Travel to Peace Square Christmas market",
+      "note": "From Křižíkova take Metro B toward Zličín, change at Můstek to Metro A toward Depo Hostivař or Skalka and get off at Náměstí Míru."
     }
   },
   "days": {
@@ -510,14 +514,15 @@
     },
     "2026-11-25": {
       "title": "Vyšehrad and Dancing House; afternoon with friends",
-      "highlight": "7 AM breakfast and checkout; Vyšehrad and Dancing House; meet for lunch at 12:30; move to Hotel Royal",
-      "routeNote": "Vyšehrad → Výtoň riverside → Dancing House → optional Wenceslas Square → lunch with friends at 12:30 (venue to confirm) → Klementinum at 2 PM (unbooked) → shopping, market and hotel move. Skip repeated Walkative sights. Lines are not street navigation.",
+      "highlight": "7 AM breakfast and checkout; Vyšehrad and Dancing House; lunch with friends at 12:30; check in at Hotel Royal, then Peace Square Christmas market",
+      "routeNote": "Vyšehrad → Výtoň riverside → Dancing House → optional Wenceslas Square → lunch with friends at 12:30 (venue to confirm) → Klementinum at 2 PM (unbooked) → shopping → collect luggage and check in at Hotel Royal → Peace Square Christmas market. Skip Republic Square market and repeated Walkative sights. Lines are not street navigation.",
       "routeGroups": [
         "The Grand Mark to Vyšehrad via Metro C",
         "Vyšehrad, riverside, Dancing House and Old Town lunch",
         "Optional detour via Wenceslas Square",
-        "Lunch, Klementinum, Na Příkopě, Manufaktura, Palladium and market",
-        "Collect luggage and move to Hotel Royal"
+        "Lunch, Klementinum, Na Příkopě, Manufaktura and Palladium",
+        "Palladium, luggage collection and Hotel Royal",
+        "Hotel Royal to Peace Square Christmas market"
       ]
     },
     "2026-11-26": {
