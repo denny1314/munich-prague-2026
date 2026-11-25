@@ -261,10 +261,10 @@
       "day": 7,
       "title": "高堡・跳舞的房子｜午餐後與朋友同行",
       "city": "Prague",
-      "highlight": "07:00 早餐／退房；上午高堡、跳舞的房子；12:30 老城區與朋友午餐；傍晚搬 Hotel Royal",
+      "highlight": "07:00 早餐／退房；上午高堡、跳舞的房子；12:30 與朋友午餐；傍晚入住 Hotel Royal 後前往和平廣場聖誕市集",
       "hotel": "royal",
       "route": {
-        "note": "高堡 → Výtoň 河岸 → Dancing House → 瓦茨拉夫廣場（選擇性）→ 12:30 老城區午餐會合（地點待確認）→ 14:00 Klementinum（待訂）→ 購物、市集、換飯店。已參加 Walkative!，不再重複參觀老城與猶太區。位置連線非街道導航。",
+        "note": "高堡 → Výtoň 河岸 → Dancing House → 瓦茨拉夫廣場（選擇性）→ 12:30 老城區午餐會合（地點待確認）→ 14:00 Klementinum（待訂）→ 購物 → 取行李、入住 Hotel Royal → 和平廣場聖誕市集。取消共和國廣場市集；不再重複參觀老城與猶太區。位置連線非街道導航。",
         "groups": [
           {
             "title": "The Grand Mark → Metro C → 高堡",
@@ -294,24 +294,31 @@
             ]
           },
           {
-            "title": "午餐 → Klementinum → Na Příkopě → Manufaktura → Palladium → 市集",
+            "title": "午餐 → Klementinum → Na Příkopě → Manufaktura → Palladium",
             "mode": "walking",
             "stops": [
               "d7-lunch",
               "d7-klementinum",
               "d7-na-prikope",
               "d7-manuf",
-              "d7-palladium",
-              "d7-republiky"
+              "d7-palladium"
             ]
           },
           {
-            "title": "回飯店取行李 → Hotel Royal",
+            "title": "Palladium → 回飯店取行李 → Hotel Royal",
             "mode": "transit",
             "stops": [
-              "d7-republiky",
+              "d7-palladium",
               "hotel:grand",
               "hotel:royal"
+            ]
+          },
+          {
+            "title": "Hotel Royal → 和平廣場聖誕市集",
+            "mode": "transit",
+            "stops": [
+              "hotel:royal",
+              "d7-miru"
             ]
           }
         ]
@@ -1688,7 +1695,7 @@
       "title": "The Grand Mark 提早退房、寄放行李",
       "cat": "住宿",
       "place": "Hybernská 12, Praha 1, Czechia",
-      "desc": "早餐後先完成退房，把行李寄放櫃檯，約 17:30 回來拿；先跟飯店確認寄放安排。",
+      "desc": "早餐後先完成退房，把行李寄放櫃檯，約 17:10 回來拿；先跟飯店確認寄放安排。",
       "duration": "25 分",
       "state": "confirmed",
       "status": "更換飯店",
@@ -1947,53 +1954,76 @@
       "brief": "共和國廣場旁的大型購物中心，伴手禮與零食選擇多。室內可避寒。"
     },
     {
-      "id": "d7-republiky",
-      "date": "2026-11-25",
-      "time": "17:05–17:25",
-      "title": "共和國廣場小型聖誕市集（順路）",
-      "cat": "節慶",
-      "place": "Náměstí Republiky, Praha 1, Czechia",
-      "desc": "逛 Palladium 周邊的小型聖誕攤位，喝熱飲、看看燈飾；若時間不夠可略過以便取行李。",
-      "duration": "20 分",
-      "state": "confirmed",
-      "status": "順路彈性",
-      "warn": "",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "天候不佳可改到附近 Palladium 室內購物。",
-      "routeLabel": "共和國廣場聖誕市集",
-      "geo": [
-        50.088,
-        14.4298
-      ],
-      "brief": "共和國廣場小型聖誕市集，可拍燈飾與節慶攤位。若時間緊就縮短。"
-    },
-    {
       "id": "d7-move",
       "date": "2026-11-25",
-      "time": "17:30–18:30",
+      "time": "17:05–18:05",
       "title": "取行李 → 搬至 Hotel Royal Prague",
       "cat": "住宿",
       "place": "Thámova 36, Praha 8, Czechia",
-      "desc": "回 The Grand Mark 拿寄放行李，搭地鐵 B 線到 Křižíkova 後步行入住 Hotel Royal。朋友同日也搬到 Hotel Royal，實際會合時間待協調。",
+      "desc": "Palladium 逛完回 The Grand Mark 拿寄放行李，搭地鐵 B 線到 Křižíkova 後步行入住 Hotel Royal。朋友同日也搬到 Hotel Royal，實際會合時間待協調。先放行李再去和平廣場。",
       "duration": "60 分",
       "state": "reserved",
       "status": "兩間飯店已訂／需核對房數",
       "warn": "更換飯店",
-      "trans": "共和國廣場 → The Grand Mark → Náměstí Republiky B 線 → Křižíkova → Hotel Royal。",
+      "trans": "Palladium → The Grand Mark → Náměstí Republiky B 線 → Křižíkova → Hotel Royal。",
       "eta": "",
       "sub": [],
       "weather": ""
     },
     {
+      "id": "d7-miru-transit",
+      "date": "2026-11-25",
+      "time": "18:05–18:40",
+      "title": "前往和平廣場聖誕市集",
+      "cat": "交通",
+      "place": "Náměstí Míru, Praha 2, Czechia",
+      "desc": "入住 Hotel Royal、放妥行李後，搭地鐵 B 線至 Můstek，轉 A 線前往 Náměstí Míru。",
+      "duration": "35 分（規劃）",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "Hotel Royal → Křižíkova 搭 B 線往 Zličín → Můstek 轉 A 線往 Depo Hostivař（或 Skalka）→ Náměstí Míru。",
+      "eta": "",
+      "sub": [],
+      "weather": "依當日 PID 班次調整。"
+    },
+    {
+      "id": "d7-miru",
+      "date": "2026-11-25",
+      "time": "18:40–19:40",
+      "title": "Náměstí Míru 和平廣場聖誕市集",
+      "cat": "節慶",
+      "place": "Náměstí Míru, Praha 2, Czechia",
+      "desc": "與朋友逛和平廣場聖誕市集，欣賞聖路德米拉教堂前的燈飾、在地手工藝與熱飲小吃。官方公告 11/20–12/24、10:00–20:00；取消共和國廣場市集。",
+      "duration": "60 分",
+      "state": "confirmed",
+      "status": "官方已公告開市",
+      "warn": "",
+      "trans": "Hotel Royal → Křižíkova 搭 B 線往 Zličín → Můstek 轉 A 線往 Depo Hostivař（或 Skalka）→ Náměstí Míru。",
+      "eta": "",
+      "sub": [],
+      "weather": "若天氣不佳或入住延誤，可縮短停留；市集 20:00 結束。",
+      "routeLabel": "和平廣場聖誕市集",
+      "geo": [
+        50.0758,
+        14.4374
+      ],
+      "brief": "聖路德米拉教堂前的聖誕市集，欣賞夜景、熱飲及手工藝；20:00 結束。",
+      "infoLinks": [
+        {
+          "label": "布拉格官方聖誕市集資訊",
+          "url": "https://prague.eu/en/christmas-markets/"
+        }
+      ]
+    },
+    {
       "id": "d7-dinner",
       "date": "2026-11-25",
-      "time": "18:30 後",
-      "title": "Karlín 區與朋友晚餐",
+      "time": "19:40 後",
+      "title": "與朋友晚餐、返回 Hotel Royal",
       "cat": "餐飲",
-      "place": "Karlín, Praha 8, Czechia",
-      "desc": "與朋友在 Karlín 區共進晚餐，協調隔天 CK 巴士集合時間，提早休息。",
+      "place": "Náměstí Míru 或 Karlín, Prague, Czechia",
+      "desc": "可在和平廣場附近用餐或返回 Karlín 用餐；協調隔天 CK 巴士集合時間，提早休息。",
       "duration": "彈性",
       "state": "planned",
       "status": "自由安排",
@@ -2945,7 +2975,7 @@
     }
   ],
   "dataVersion": {
-    "updatedAt": "2026-11-24",
-    "revision": "2026.11.24-vysehrad-dancing-house"
+    "updatedAt": "2026-11-25",
+    "revision": "2026.11.25-peace-square-market"
   }
 }
