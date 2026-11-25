@@ -425,6 +425,7 @@ function renderTravel(){renderRides();var fs=D.flights.map(function(f){return st
     '<div class="kv"><span>'+L('路線','Route')+'</span><span>'+E(b.origin)+' → '+E(b.destination)+'</span></div>'+
     '<div class="kv"><span>'+L('四人座位','Seats for four')+'</span><span>'+E(b.seats.join(', '))+'</span></div>'+
     '<div class="kv"><span>'+L('四人票價','Fare for four')+'</span><span>'+E(b.priceEUR!=null?'€'+Number(b.priceEUR).toFixed(2):'CZK '+b.priceCZK)+'</span></div>'+
+    (e.place?'<div class="actionrow"><a class="action primary" target="_blank" rel="noopener noreferrer" href="'+mapurl(e.place)+'">'+L('Google Maps 出發地點','Google Maps departure point')+' ↗</a></div>':'')+
     (b.tariff?'<div class="kv"><span>'+L('票種','Tariff')+'</span><span>'+E(b.tariff)+'</span></div>':'')+
     '<div class="kv"><span>'+L('購票狀態','Ticket status')+'</span><span>'+(b.checkout==='confirmed'?L('已訂（使用者確認）','Booked per traveler'):L('已選班次，待付款／出票','Selected; checkout and ticket issuance pending'))+'</span></div>'+
     '<p class="ride-warn">'+(b.checkout==='confirmed'?L('請確認正式電子票及上下車站；原截圖為限時保留畫面。','Confirm issued tickets and exact stops; screenshot shows a timed reservation.'):L('截圖顯示 Add to cart，尚不能視為購票成功。','Screenshot shows Add to cart, so tickets are not yet confirmed.'))+'</p>'
