@@ -257,37 +257,37 @@
     },
     "d8-walk": {
       "title": "Get off at Špičák",
-      "note": "Confirm with staff, then walk from the northern bus stop through Budějovická Gate to Latrán and the castle. This avoids backtracking.",
+      "note": "Confirm with staff, then walk from the northern bus stop through Budějovická Gate to Latrán and the castle. This avoids backtracking. The northern gateway to the historic town, within walking distance of Latrán and the castle. Photo tip: Continue toward the old gate; the photo shows the Špičák district, not the bus stop.",
       "brief": "Enter from the north; depart from AN on the east side."
     },
     "d8-castle": {
       "title": "Castle courtyards and Cloak Bridge",
-      "note": "Walk through the historic courtyards to the multi-level stone arch bridge and panoramic views of red roofs and the Vltava bend. Skip seasonal palace tours and gardens; beware icy stairs.",
+      "note": "Walk through the historic courtyards to the multi-level stone arch bridge and panoramic views of red roofs and the Vltava bend. Skip seasonal palace tours and gardens; beware icy stairs. The historic courtyards preserve Renaissance architecture; the impressive multi-level Cloak Bridge connects parts of the upper castle. Photo tip: Capture the painted walls, stone arches and S-shaped Vltava bend.",
       "brief": "Classic red roofs and river panorama."
     },
     "d8-latran": {
       "title": "Lazebnický Bridge",
-      "note": "Return downhill toward Latrán and cross the bridge into Old Town. Photograph the painted tower and riverside houses.",
+      "note": "Return downhill toward Latrán and cross the bridge into Old Town. Photograph the painted tower and riverside houses. A historic bridge connecting Latrán with the Inner Town, with picturesque views of riverside houses and the castle tower. Photo tip: Photograph the castle from the bridge.",
       "brief": "Classic tower and river photo spot."
     },
     "d8-lunch": {
       "title": "Lunch at Krčma Šatlava medieval tavern",
-      "note": "Try garlic soup in a bread bowl, grilled ribs and mixed grilled meat. No reservation; choose another nearby Czech restaurant if full.",
+      "note": "Try garlic soup in a bread bowl, grilled ribs and mixed grilled meat. No reservation; choose another nearby Czech restaurant if full. A medieval-style Czech tavern with rustic stone walls and open-fire cooking. Try garlic soup in a bread bowl, grilled pork ribs, a mixed grill or roast duck, subject to the menu. Photo tip: Photograph the rustic interior and grill; no reservation has been made.",
       "brief": "Warm up over fire-grilled meat and garlic soup."
     },
     "d8-oldtown": {
       "title": "Široká Street and Old Town lanes",
-      "note": "Browse colorful buildings, art shops and Czech souvenirs. Shorten outdoor time in snow.",
+      "note": "Browse colorful buildings, art shops and Czech souvenirs. Shorten outdoor time in snow. One of the wider streets in the medieval town, known for historic architecture, galleries and artisan shops. Photo tip: Photograph colorful façades and cobblestones.",
       "brief": "Colorful old houses and souvenir shops."
     },
     "d8-river": {
       "title": "Seminární Garden viewpoint",
-      "note": "Photograph the castle, river and red roofs from the viewpoint on Horní Street. Then continue east toward AN. Skip if weather or timing is poor.",
+      "note": "Photograph the castle, river and red roofs from the viewpoint on Horní Street. Then continue east toward AN. Skip if weather or timing is poor. A free viewpoint on Horní Street overlooking the castle, painted tower and medieval rooftops without climbing a tower. Photo tip: Ideal for a family photo before walking east to AN.",
       "brief": "Final family photo with the castle."
     },
     "d8-market": {
       "title": "Svornosti Square Christmas market",
-      "note": "Official market runs today 11 AM–6 PM. Browse craft stalls and try mulled wine, warm drinks or snacks.",
+      "note": "Official market runs today 11 AM–6 PM. Browse craft stalls and try mulled wine, warm drinks or snacks. The historic heart of town, surrounded by Renaissance façades, the Town Hall and a Marian column. Svornost means harmony or unity. Photo tip: Photograph the square and market stalls; try Svařák mulled wine. The photo is a reference view, not today's market.",
       "brief": "Open today 11 AM–6 PM."
     },
     "d8-busback": {
@@ -415,7 +415,7 @@
     },
     "d8-to-station": {
       "title": "Walk to CK AN bus terminal, platform 7",
-      "note": "Leave by 3:20 PM and reach AN by 3:40 PM. Allow extra time for snow; do not return to Špičák.",
+      "note": "Leave by 3:20 PM and reach AN by 3:40 PM. Allow extra time for snow; do not return to Špičák. The main bus terminal east of the historic center. Arrive by 3:40 PM for the 4 PM departure from platform 7. Photo tip: Follow current signage; the historical photo may differ from the current terminal.",
       "brief": "Reach AN platform 7 by 3:40 PM."
     },
     "d5-sbahn": {
@@ -457,12 +457,12 @@
     },
     "d8-gate": {
       "title": "Budějovická Gate and Latrán Street",
-      "note": "Walk through the historic gate, past colorful Renaissance houses to the castle entrance.",
+      "note": "Walk through the historic gate, past colorful Renaissance houses to the castle entrance. The surviving main town gate features Renaissance architecture. Latrán, the historic district beneath the castle, was once home to craftspeople and is lined with colorful houses. Photo tip: Photograph the arched gateway, colorful façades and the castle's Red Gate.",
       "brief": "Historic gate and colorful old houses."
     },
     "d8-tower": {
       "title": "Castle Museum and Tower (optional climb)",
-      "note": "Winter hours 9:00 AM–3:30 PM. Explore historic noble collections. Climb only if visibility and stairs are safe. Indicative admission: 280 CZK per adult, 80 CZK per child aged 6–17; family total 720 CZK, subject to ticket desk confirmation.",
+      "note": "Winter hours 9:00 AM–3:30 PM. Explore historic noble collections. Climb only if visibility and stairs are safe. Indicative admission: 280 CZK per adult, 80 CZK per child aged 6–17; family total 720 CZK, subject to ticket desk confirmation. The iconic painted tower overlooks the town. The museum presents artifacts from the Rosenberg, Eggenberg and Schwarzenberg noble families. Photo tip: Photograph the painted façade and, if visibility and stairs are safe, the panorama from the tower.",
       "brief": "Museum first; climb only if safe and clear."
     },
     "d8-coffee": {
@@ -472,7 +472,7 @@
     },
     "d8-church": {
       "title": "St. Vitus Church",
-      "note": "Admire the Gothic church and prominent spire; enter only if open and time allows.",
+      "note": "Admire the Gothic church and prominent spire; enter only if open and time allows. A late Gothic church built primarily between 1407 and 1439, whose spire forms part of the iconic skyline. Photo tip: Photograph the spire and Gothic windows; enter only if open.",
       "brief": "Gothic church exterior."
     }
   },
