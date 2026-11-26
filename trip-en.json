@@ -251,49 +251,53 @@
       "note": "Suggested meet-up at 5:50–6:00 AM, leaving promptly via Metro B / Anděl to Na Knížecí. Confirm the exact meeting time with friends and allow boarding time."
     },
     "d8-busout": {
-      "title": "RegioJet outbound: Prague → Český Krumlov",
-      "note": "Thu Nov 26, Prague 7:00 AM → Český Krumlov 9:40 AM. Four seats: 13, 14, 15, 16; fare €31.40 for four, Fun&Relax self service. Booked per traveler; the screenshot shows a timed reservation, so confirm issued tickets and exact stops (previous plan: Praha Na Knížecí → CK AN)."
+      "title": "RegioJet outbound: Prague → CK (early exit at Špičák)",
+      "note": "Issued ticket: 7:00 AM from Praha Na Knížecí, platform 1, seats 13–16, €31.40. Ticket arrival at AN is 9:40 AM; ask staff to let you off at Špičák around 9:35 AM. If unavailable, get off at AN.",
+      "brief": "7 AM, platform 1. Planned early exit at Špičák, around 9:35 AM."
     },
     "d8-walk": {
-      "title": "Arrive at Český Krumlov AN and walk toward the castle",
-      "note": "Arrive at the AN bus terminal at 9:40 AM (not Špičák). Allow about 30–35 minutes to walk through the old town toward the castle."
+      "title": "Get off at Špičák",
+      "note": "Confirm with staff, then walk from the northern bus stop through Budějovická Gate to Latrán and the castle. This avoids backtracking.",
+      "brief": "Enter from the north; depart from AN on the east side."
     },
     "d8-castle": {
-      "title": "Castle courtyards and Vltava viewpoints",
-      "note": "Enjoy castle courtyards, red rooftops and the S-shaped river bend. Tower and indoor museum are optional, not required.",
-      "brief": "Classic red-roof and S-bend river panoramas from the castle grounds. Some interiors close in winter."
+      "title": "Castle courtyards and Cloak Bridge",
+      "note": "Walk through the historic courtyards to the multi-level stone arch bridge and panoramic views of red roofs and the Vltava bend. Skip seasonal palace tours and gardens; beware icy stairs.",
+      "brief": "Classic red roofs and river panorama."
     },
     "d8-latran": {
-      "title": "Latrán Street and Lazebnický Bridge",
-      "note": "Walk among historic buildings and take photos of the castle tower from the wooden bridge.",
-      "brief": "Colorful Latrán houses, Castle Tower and river views from Lazebnický Bridge. Watch slippery stones."
+      "title": "Lazebnický Bridge",
+      "note": "Return downhill toward Latrán and cross the bridge into Old Town. Photograph the painted tower and riverside houses.",
+      "brief": "Classic tower and river photo spot."
     },
     "d8-lunch": {
-      "title": "Czech lunch with friends",
-      "note": "Find a cozy Czech restaurant or tavern for grilled dishes, stew or soup. No reservation yet."
+      "title": "Lunch at Krčma Šatlava medieval tavern",
+      "note": "Try garlic soup in a bread bowl, grilled ribs and mixed grilled meat. No reservation; choose another nearby Czech restaurant if full.",
+      "brief": "Warm up over fire-grilled meat and garlic soup."
     },
     "d8-oldtown": {
-      "title": "Svornosti Square and medieval Old Town",
-      "note": "Explore cobblestone lanes, St. Vitus Church surroundings and historic views.",
-      "brief": "Storybook alleyways and Svornosti Square; photograph rooftops before early dusk."
+      "title": "Široká Street and Old Town lanes",
+      "note": "Browse colorful buildings, art shops and Czech souvenirs. Shorten outdoor time in snow.",
+      "brief": "Colorful old houses and souvenir shops."
     },
     "d8-river": {
-      "title": "Vltava river walk and second photo stop",
-      "note": "Enjoy more riverside viewpoints before sunset. Fog may hide distant castle views.",
-      "brief": "Photograph the Vltava bend and old-town reflections; fog favors close-up street scenes."
+      "title": "Seminární Garden viewpoint",
+      "note": "Photograph the castle, river and red roofs from the viewpoint on Horní Street. Then continue east toward AN. Skip if weather or timing is poor.",
+      "brief": "Final family photo with the castle."
     },
     "d8-market": {
-      "title": "Christmas market (if open) or coffee",
-      "note": "If the market is open, browse briefly; otherwise enjoy coffee, snacks or shops. Leave Old Town by 3:10 PM for the 4:00 PM return coach.",
-      "brief": "Optional market or warm drinks; leave Old Town by 3:10 PM."
+      "title": "Svornosti Square Christmas market",
+      "note": "Official market runs today 11 AM–6 PM. Browse craft stalls and try mulled wine, warm drinks or snacks.",
+      "brief": "Open today 11 AM–6 PM."
     },
     "d8-busback": {
-      "title": "RegioJet return: Český Krumlov → Prague",
-      "note": "Thu Nov 26, Český Krumlov 4:00 PM → Prague 6:45 PM. Four seats: 5, 6, 7, 8; fare €35.10, round trip €66.50 for four. Fun&Relax self service. Booked per traveler; confirm issued tickets and exact stops (previous plan: CK AN → Praha Na Knížecí). Arrive at the stop by 3:45 PM."
+      "title": "RegioJet return: Český Krumlov AN → Prague",
+      "note": "Issued ticket: AN platform 7 at 4:00 PM, Praha Na Knížecí 6:45 PM. Seats 5–8; €35.10, round trip €66.50 for four.",
+      "brief": "4 PM from AN platform 7; 6:45 PM in Prague."
     },
     "d8-hotel": {
       "title": "Return to Hotel Royal and pack for home",
-      "note": "After the scheduled 6:45 PM arrival in Prague, return to Hotel Royal (estimated 7:15–7:45 PM). If arriving at Na Knížecí, take Metro B from Anděl to Křižíkova. Have dinner and pack for tomorrow's 6:30 AM Blacklane pickup."
+      "note": "After the scheduled 6:45 PM arrival, take Metro B from Anděl to Křižíkova, have dinner and pack. Tomorrow's airport pickup follows the latest booking."
     },
     "d9-checkout": {
       "title": "Check out of Hotel Royal",
@@ -410,8 +414,9 @@
       ]
     },
     "d8-to-station": {
-      "title": "Walk from Old Town to Český Krumlov AN",
-      "note": "Leave Old Town by 3:10 PM and aim to reach the ticketed bus stop by 3:45 PM. Previous plan uses CK AN; verify exact stop on issued tickets."
+      "title": "Walk to CK AN bus terminal, platform 7",
+      "note": "Leave by 3:20 PM and reach AN by 3:40 PM. Allow extra time for snow; do not return to Špičák.",
+      "brief": "Reach AN platform 7 by 3:40 PM."
     },
     "d5-sbahn": {
       "title": "Walk to Rosenheimer Platz; S8 to Munich Central Station",
@@ -449,6 +454,26 @@
     "d7-miru-transit": {
       "title": "Travel to Peace Square Christmas market",
       "note": "From Křižíkova take Metro B toward Zličín, change at Můstek to Metro A toward Depo Hostivař or Skalka and get off at Náměstí Míru."
+    },
+    "d8-gate": {
+      "title": "Budějovická Gate and Latrán Street",
+      "note": "Walk through the historic gate, past colorful Renaissance houses to the castle entrance.",
+      "brief": "Historic gate and colorful old houses."
+    },
+    "d8-tower": {
+      "title": "Castle Museum and Tower (optional climb)",
+      "note": "Winter hours 9:00 AM–3:30 PM. Explore historic noble collections. Climb only if visibility and stairs are safe. Indicative admission: 280 CZK per adult, 80 CZK per child aged 6–17; family total 720 CZK, subject to ticket desk confirmation.",
+      "brief": "Museum first; climb only if safe and clear."
+    },
+    "d8-coffee": {
+      "title": "Coffee, hot chocolate and dessert",
+      "note": "Choose a café near the square for a warm break; skip if short of time.",
+      "brief": "Indoor break before the last stops."
+    },
+    "d8-church": {
+      "title": "St. Vitus Church",
+      "note": "Admire the Gothic church and prominent spire; enter only if open and time allows.",
+      "brief": "Gothic church exterior."
     }
   },
   "days": {
@@ -527,13 +552,14 @@
     },
     "2026-11-26": {
       "title": "Český Krumlov winter day trip with friends",
-      "highlight": "Meet friends around 5:50 AM (suggested); RegioJet 7:00–9:40 AM outbound, 4:00–6:45 PM return; booked per traveler.",
-      "routeNote": "Four round-trip RegioJet seats booked per traveler on Nov 24. Outbound 7:00–9:40 AM, return 4:00–6:45 PM. Previous plan uses Praha Na Knížecí and Český Krumlov AN; the new screenshot does not show exact stops, so verify the issued tickets. Meet friends around 5:50–6:00 AM (suggested), leave Old Town by 3:10 PM and reach the return stop by 3:45 PM. Blacklane pickup tomorrow at 6:30 AM.",
+      "highlight": "7:00 AM coach → Špičák around 9:35 AM → castle, Cloak Bridge, tavern lunch, Christmas market → AN platform 7 by 3:40 PM → 4:00 PM coach to Prague.",
+      "routeNote": "Issued tickets confirm Praha Na Knížecí platform 1 at 7:00 AM → CK AN at 9:40 AM. Plan to get off at Špičák around 9:35 AM after confirming with staff. Return from CK AN platform 7 at 4:00 PM, arriving Prague at 6:45 PM. Reach AN by 3:40 PM; leave earlier if slippery. Map pins are approximate; straight lines are not street directions. Open walking directions in event details.",
       "routeGroups": [
-        "Meet friends at Hotel Royal → Na Knížecí bus stop",
-        "RegioJet 7:00–9:40 AM to Český Krumlov AN",
-        "Castle, Latrán, Old Town, river and market",
-        "Walk to CK AN → RegioJet 4:00–6:45 PM back to Prague"
+        "Hotel Royal → Na Knížecí",
+        "RegioJet outbound → Špičák early exit",
+        "Morning: Špičák → old gate → tower → Cloak Bridge → bridge → lunch",
+        "Afternoon: lunch → market → Široká → church → viewpoint → AN",
+        "4 PM RegioJet return to Prague"
       ]
     },
     "2026-11-27": {
@@ -558,7 +584,7 @@
     "todos-10": "Confirm Prague Castle tickets and entry time",
     "todos-11": "Check Petřín funicular service for Nov 24",
     "todos-12": "Buy four tickets for the classical concert on Nov 24",
-    "todos-13": "Nov 26 RegioJet round trip booked for four: 7 AM outbound / 4 PM return (€66.50). Save issued tickets and verify stops.",
+    "todos-13": "Nov 26 RegioJet round trip confirmed (€66.50). Outbound platform 1, planned Špičák early exit; return from AN platform 7 at 4 PM. Save issued tickets.",
     "todos-14": "Prague Blacklane airport ride confirmed for Nov 27",
     "todos-15": "Verify Christmas-market opening dates and times",
     "todos-16": "Download offline maps, flight and train QR codes",
