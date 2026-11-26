@@ -330,10 +330,10 @@
       "day": 8,
       "title": "Český Krumlov｜與朋友同行的冬日小鎮",
       "city": "Český Krumlov",
-      "highlight": "05:50 與朋友集合（建議）；RegioJet 去程 07:00–09:40、回程 16:00–18:45（已訂）；CK 城堡、老城與河岸",
+      "highlight": "07:00 RegioJet 出發 → 約 09:35 Špičák 提前下車 → 城堡、斗篷橋、地窖午餐、聖誕市集 → 15:40 前抵 AN 第 7 月台 → 16:00 回程（18:45 抵布拉格）",
       "hotel": "royal",
       "route": {
-        "note": "11/26 與朋友同行；依使用者 11/24 告知，RegioJet 四人往返已訂。去程 07:00–09:40，回程 16:00–18:45。依原規劃使用 Praha Na Knížecí ↔ Český Krumlov AN；新截圖未顯示站名，須以正式電子票核對。05:50–06:00 集合為建議，與朋友確認。15:10 前離開老城、15:45 前到站。11/27 06:30 Blacklane 送機。地圖點位是地理方位，連線非道路導航。",
+        "note": "往返正式電子票已確認：07:00 Praha Na Knížecí 第 1 月台 → 09:40 CK AN；計畫 09:35 左右在 Špičák 提早下車，須與車上人員確認。回程 16:00 CK AN 第 7 月台 → 18:45 Praha Na Knížecí。下雪時提早離開老城，15:40 前到 AN。地圖座標為概略地點，連線不是街道導航；每段詳情有 Google Maps 步行連結。",
         "groups": [
           {
             "title": "飯店會合 → Na Knížecí 巴士站",
@@ -345,7 +345,7 @@
             ]
           },
           {
-            "title": "RegioJet 07:00–09:40：Praha Na Knížecí → CK AN",
+            "title": "RegioJet 去程 → Špičák 提早下車",
             "mode": "bus",
             "stops": [
               "d8-busout",
@@ -353,24 +353,36 @@
             ]
           },
           {
-            "title": "城堡庭院 → Latrán → 舊城 → 河岸 → 聖誕市集",
+            "title": "上午步行：Špičák → 古城門 → 城堡塔樓 → 斗篷橋 → 理髮師橋 → 午餐",
             "mode": "walking",
             "stops": [
+              "d8-walk",
+              "d8-gate",
+              "d8-tower",
               "d8-castle",
               "d8-latran",
-              "d8-lunch",
-              "d8-oldtown",
-              "d8-river",
-              "d8-market"
+              "d8-lunch"
             ]
           },
           {
-            "title": "步行至 CK AN → RegioJet 16:00–18:45 返回布拉格",
+            "title": "下午步行：午餐 → 聖誕市集 → Široká → 教堂 → 觀景台 → AN",
+            "mode": "walking",
+            "stops": [
+              "d8-lunch",
+              "d8-market",
+              "d8-oldtown",
+              "d8-coffee",
+              "d8-church",
+              "d8-river",
+              "d8-to-station"
+            ]
+          },
+          {
+            "title": "16:00 RegioJet 回程 → 布拉格",
             "mode": "bus",
             "stops": [
-              "d8-market",
-              "d8-to-station",
               "d8-busback",
+              "d8-busout",
               "hotel:royal"
             ]
           }
@@ -2058,21 +2070,21 @@
     {
       "id": "d8-busout",
       "date": "2026-11-26",
-      "time": "07:00–09:40",
-      "title": "RegioJet 去程：布拉格 → CK 小鎮",
+      "time": "07:00–09:35（預估下車）",
+      "title": "RegioJet 去程：07:00 布拉格 → CK（Špičák 提前下車）",
       "cat": "交通",
       "place": "Praha Na Knížecí, Praha, Czechia",
-      "desc": "11/26（四）07:00 布拉格出發，09:40 抵達 CK 小鎮；全家四人，Fun&Relax self service。原規劃 Praha Na Knížecí → Český Krumlov AN，請核對正式票券的站名。",
+      "desc": "電子票確認 Praha Na Knížecí 07:00 出發、第 1 月台，終點 CK AN 09:40。計畫提前在 Špičák 下車（約 09:35），請先告知車上服務人員並確認停靠；若不能提前下車，於 AN 下車後步行至城堡。",
       "duration": "2 小時 40 分",
       "state": "confirmed",
-      "status": "已訂（使用者確認）",
-      "warn": "使用者已告知訂好；截圖仍為限時保留畫面，請確認付款完成並離線保存正式電子票。上下車站以電子票為準。",
-      "trans": "原規劃 Praha Na Knížecí → Český Krumlov AN（請核對電子票）。",
+      "status": "電子票已確認",
+      "warn": "電子票終點為 AN，Špičák 時間非票面時間，以車上公告為準。",
+      "trans": "Praha Na Knížecí → Český Krumlov Špičák（計畫提前下車）；票面終點 AN。",
       "eta": "",
       "sub": [
+        "去程第 1 月台",
         "四人座位：13、14、15、16",
-        "去程四人票價：€31.40",
-        "票種：Fun&Relax self service"
+        "去程四人票價：€31.40"
       ],
       "weather": "",
       "routeLabel": "布拉格 Na Knížecí",
@@ -2096,58 +2108,136 @@
         "checkout": "confirmed",
         "priceEUR": 31.4,
         "tariff": "Fun&Relax self service"
-      }
+      },
+      "brief": "07:00 發車，第 1 月台；預計 Špičák 09:35 提前下車，票面 AN 09:40。"
     },
     {
       "id": "d8-walk",
       "date": "2026-11-26",
-      "time": "09:40–10:15（預估）",
-      "title": "抵達 Český Krumlov AN，步行往 CK 城堡",
+      "time": "09:35–09:40",
+      "title": "Špičák 巴士站下車",
       "cat": "交通",
-      "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "09:40 抵達 Český Krumlov AN 汽車總站，位在老城東側，不是 Špičák 站；沿道路與古城巷弄步行前往城堡，預留約 30–35 分鐘。",
-      "duration": "約 30–35 分（規劃）",
+      "place": "Český Krumlov, Špičák, U Luny 137, Czechia",
+      "desc": "從城堡北側的 Špičák 下車，沿 Latrán 方向走往布傑約維采門。這樣可先走城堡，再往老城與東側 AN 巴士總站，減少回頭路。",
+      "duration": "約 5 分鐘（預估）",
       "state": "planned",
-      "status": "依已訂去程到站時間安排",
+      "status": "提前下車／車上確認",
       "warn": "",
-      "trans": "從 Český Krumlov AN → 老城區 → 城堡，現場以步行導航為準。",
+      "trans": "Špičák → Budějovická brána → Latrán → 城堡",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "CK 汽車總站 AN",
+      "routeLabel": "Špičák 下車站",
       "geo": [
-        48.811598,
-        14.322476
+        48.8154563,
+        14.3159093
+      ],
+      "brief": "從北側進城，下午由東側 AN 離開。",
+      "infoLinks": [
+        {
+          "label": "第一段步行導航：Špičák → 城堡",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=%C5%A0pi%C4%8D%C3%A1k%20bus%20stop%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=Bud%C4%9Bjovick%C3%A1%20br%C3%A1na%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
+        }
+      ]
+    },
+    {
+      "id": "d8-gate",
+      "date": "2026-11-26",
+      "time": "09:40–10:00",
+      "title": "Budějovická brána 古城門＋Latrán 老街",
+      "cat": "景點",
+      "place": "Budějovická brána, Latrán, Český Krumlov, Czechia",
+      "desc": "現存的歷史城門通往 Latrán 彩色老街，沿途可欣賞文藝復興式民居及商店。從城堡紅門進入第一庭院。",
+      "duration": "20 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "brief": "穿過古城門，沿彩色古屋進入城堡區。",
+      "routeLabel": "古城門／Latrán",
+      "geo": [
+        48.814776,
+        14.317098
+      ],
+      "infoLinks": [
+        {
+          "label": "古城門位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Bud%C4%9Bjovick%C3%A1%20br%C3%A1na%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        },
+        {
+          "label": "第一段步行導航",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=%C5%A0pi%C4%8D%C3%A1k%20bus%20stop%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=Bud%C4%9Bjovick%C3%A1%20br%C3%A1na%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
+        }
+      ]
+    },
+    {
+      "id": "d8-tower",
+      "date": "2026-11-26",
+      "time": "10:00–11:00",
+      "title": "城堡博物館＋彩繪塔樓（可選登塔）",
+      "cat": "景點",
+      "place": "Hradní muzeum a zámecká věž, Český Krumlov, Czechia",
+      "desc": "博物館展示羅森堡等貴族歷史與收藏，彩繪塔樓可俯瞰整座老城。11/26 官方冬季開放 09:00–15:30；參考成人 280 CZK、6–17 歲 80 CZK，全家 720 CZK，以售票處為準。",
+      "duration": "60 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "若降雪、濃霧或階梯濕滑，優先博物館，不勉強登塔。",
+      "brief": "冬季開放 09:00–15:30；先看室內文物，能見度與階梯安全才登塔。",
+      "routeLabel": "城堡博物館／塔樓",
+      "geo": [
+        48.81275,
+        14.316
+      ],
+      "infoLinks": [
+        {
+          "label": "官方開放時間",
+          "url": "https://www.zamek-ceskykrumlov.cz/en/plan-your-visit/opening-hours"
+        },
+        {
+          "label": "博物館與塔樓門票",
+          "url": "https://www.zamek-ceskykrumlov.cz/en/visitors-information/tours/1077-castle-museum-and-castle-tower-self-guided-tour"
+        },
+        {
+          "label": "Google Maps 位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        }
       ]
     },
     {
       "id": "d8-castle",
       "date": "2026-11-26",
-      "time": "10:15–11:20",
-      "title": "CK 城堡庭院、紅屋頂與 Vltava 河灣觀景",
+      "time": "11:00–11:45",
+      "title": "CK 城堡庭院＋斗篷橋（Plášťový most）",
       "cat": "景點",
-      "place": "Státní hrad a zámek Český Krumlov, Czechia",
-      "desc": "朋友版重點為全年可走的城堡庭院、多處觀景點、紅屋頂及 S 型河灣。11 月不把宮殿內部導覽或登塔設為必要活動；若天氣與時間許可，城堡博物館／塔樓只是選項。",
-      "duration": "65 分",
+      "place": "Plášťový most, Český Krumlov, Czechia",
+      "desc": "穿越城堡的歷史庭院，欣賞彩繪外牆與多層石拱斗篷橋；橋上及附近觀景點可俯瞰 S 型伏爾塔瓦河灣、紅瓦屋頂和聖維特教堂。冬季一般宮殿導覽及花園不列入今日主線。",
+      "duration": "45 分",
       "state": "planned",
-      "status": "同行規劃／庭院散步",
-      "warn": "若河谷起霧，遠景可能受影響；以城堡庭院與古城街景為主。",
+      "status": "庭院散步／視天候",
+      "warn": "石階和斜坡可能濕滑，遇封閉或結冰不要勉強。",
       "trans": "",
       "eta": "",
       "sub": [
-        "城堡庭院與斗篷橋",
-        "多角度紅屋頂與河灣照片",
-        "塔樓／博物館可選，不影響主線"
+        "城堡庭院",
+        "斗篷橋多層石拱",
+        "俯瞰伏爾塔瓦河與老城"
       ],
       "weather": "如石階結冰或天候不佳，改以室內 Castle Museum 為優先，塔樓可略過。",
       "infoLinks": [
         {
           "label": "官方開放時間",
-          "url": "https://zamek-ceskykrumlov.cz/en/plan-your-visit/opening-hours"
+          "url": "https://www.zamek-ceskykrumlov.cz/en/plan-your-visit/opening-hours"
         },
         {
-          "label": "博物館／塔樓門票",
-          "url": "https://www.zamek-ceskykrumlov.cz/en/visitors-information/tours/1077-castle-museum-and-castle-tower"
+          "label": "第二段步行導航：城堡 → 午餐",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Kr%C4%8Dma%20%C5%A0atlava%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=Pl%C3%A1%C5%A1%C5%A5ov%C3%BD%20most%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia%7CLazebnick%C3%BD%20most%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
       ],
       "photo": {
@@ -2157,22 +2247,22 @@
         "license": "CC BY 4.0",
         "alt": "從城堡眺望 Český Krumlov 老城"
       },
-      "routeLabel": "CK 城堡庭院",
+      "routeLabel": "城堡庭院／斗篷橋",
       "geo": [
         48.8127,
-        14.3151
+        14.313083
       ],
-      "brief": "CK 城堡庭院可俯瞰紅屋頂與 S 型伏爾塔瓦河灣。冬季部分室內不開，以景觀為主。"
+      "brief": "經城堡庭院走到斗篷橋，拍紅屋頂與河灣全景。"
     },
     {
       "id": "d8-latran",
       "date": "2026-11-26",
-      "time": "11:20–12:10",
-      "title": "Latrán 老街與 Lazebnický Bridge",
+      "time": "11:45–12:00",
+      "title": "Lazebnický most 理髮師橋",
       "cat": "景點",
       "place": "Lazebnický most, Český Krumlov, Czechia",
-      "desc": "沿 Latrán 老街欣賞古建築，經 Lazebnický 木橋拍攝城堡塔樓與河景。雨雪時注意石板路防滑。",
-      "duration": "50 分",
+      "desc": "從城堡區下坡回到 Latrán，跨過理髮師橋進入老城。橋上仰拍彩繪塔樓、伏爾塔瓦河及兩岸古屋。",
+      "duration": "15 分",
       "state": "planned",
       "status": "與朋友同行／規劃",
       "warn": "",
@@ -2180,44 +2270,94 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "Latrán／Lazebnický 橋",
+      "routeLabel": "理髮師橋",
       "geo": [
         48.8122,
         14.3151
       ],
-      "brief": "Latrán 老街有彩色古屋與城堡塔樓，Lazebnický 橋拍河景很美。雨雪時防滑。"
+      "brief": "橋上是拍城堡彩繪塔與河景的經典角度。",
+      "infoLinks": [
+        {
+          "label": "理髮師橋位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Lazebnick%C3%BD%20most%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        }
+      ]
     },
     {
       "id": "d8-lunch",
       "date": "2026-11-26",
-      "time": "12:10–13:15",
-      "title": "CK 舊城捷克餐廳午餐",
+      "time": "12:00–13:15",
+      "title": "Krčma Šatlava 中世紀地窖餐廳午餐",
       "cat": "餐飲",
-      "place": "Svornosti Square, Český Krumlov, Czechia",
-      "desc": "與朋友在 CK 舊城或 Latrán 找捷克餐廳，烤肉、燉菜、熱湯為主。特定餐廳尚未訂位，依當天營業調整。",
-      "duration": "65 分",
+      "place": "Krčma Šatlava, Šatlavská 157, Český Krumlov, Czechia",
+      "desc": "推薦石牆、木梁與明火烤肉的歷史餐廳。可點麵包碗蒜頭湯（Česnečka）、烤豬肋排、烤肉拼盤與捷克啤酒。尚未訂位，與朋友同行若客滿則改找附近捷克餐廳。",
+      "duration": "75 分",
       "state": "planned",
-      "status": "餐廳未訂位",
+      "status": "推薦／尚未訂位",
       "warn": "",
       "trans": "",
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "CK 午餐",
+      "routeLabel": "Krčma Šatlava 午餐",
       "geo": [
-        48.8106,
-        14.315
+        48.8106956,
+        14.3158894
+      ],
+      "brief": "冷天進地窖餐廳取暖，推薦蒜頭湯及炭烤肉。",
+      "infoLinks": [
+        {
+          "label": "餐廳官網／菜單",
+          "url": "https://www.satlava.cz/"
+        },
+        {
+          "label": "Google Maps 餐廳位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20%C5%A0atlava%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        }
       ]
+    },
+    {
+      "id": "d8-market",
+      "date": "2026-11-26",
+      "time": "13:15–14:00",
+      "title": "Svornosti 協和廣場＋聖誕市集",
+      "cat": "節慶",
+      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
+      "desc": "老城中心的歷史廣場，欣賞市政廳及彩色建築、木屋攤位。2026 市集 11/21 已開幕，今天週四 11:00–18:00；可喝 Svařák 熱紅酒、熱飲、吃點心、買手工藝。",
+      "duration": "45 分",
+      "state": "planned",
+      "status": "官方公布今日開市",
+      "warn": "15:20 前離開老城往 AN。",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "routeLabel": "CK 聖誕市集",
+      "infoLinks": [
+        {
+          "label": "官方聖誕市集資訊",
+          "url": "https://www.ckrumlov.info/en/events-18086-christmas-market-2026/"
+        },
+        {
+          "label": "第三段步行導航：市集 → 老街 → 觀景台",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Kr%C4%8Dma%20%C5%A0atlava%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia%7C%C5%A0irok%C3%A1%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia%7CKostel%20svat%C3%A9ho%20V%C3%ADta%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
+        }
+      ],
+      "geo": [
+        48.8105,
+        14.315
+      ],
+      "brief": "今日 11:00–18:00 開市；喝熱飲、逛手作攤位。"
     },
     {
       "id": "d8-oldtown",
       "date": "2026-11-26",
-      "time": "13:15–14:15",
-      "title": "Svornosti 廣場、CK 舊城巷弄與聖維特教堂",
+      "time": "14:00–14:30",
+      "title": "Široká 老街＋中世紀巷弄",
       "cat": "景點",
-      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
-      "desc": "慢走中世紀舊城巷弄、Svornosti 廣場與聖維特教堂周邊，尋找不同河灣與紅屋頂角度。",
-      "duration": "60 分",
+      "place": "Široká, Český Krumlov, Czechia",
+      "desc": "沿 Široká 寬街欣賞保存完整的老城建築、藝術與紀念品店，順路逛周邊巷弄；遇雨雪可縮短戶外行程。",
+      "duration": "30 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
@@ -2232,22 +2372,80 @@
         "license": "CC BY 4.0",
         "alt": "Český Krumlov 老城、聖維特教堂及河上的 Jelení 步橋"
       },
-      "routeLabel": "Svornosti 舊城廣場",
+      "routeLabel": "Široká 老街",
+      "geo": [
+        48.8108,
+        14.3139
+      ],
+      "brief": "彩色古屋、藝術商店、捷克紀念品，慢慢逛。",
+      "infoLinks": [
+        {
+          "label": "老街位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=%C5%A0irok%C3%A1%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        }
+      ]
+    },
+    {
+      "id": "d8-coffee",
+      "date": "2026-11-26",
+      "time": "14:30–15:00",
+      "title": "老城咖啡、熱巧克力與甜點",
+      "cat": "餐飲",
+      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
+      "desc": "在老城廣場附近選一家營業中的咖啡館，喝熱巧克力、咖啡或吃蛋糕；留時間給最後兩站。",
+      "duration": "30 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "brief": "室內休息取暖；若時間不足可以略過。",
+      "routeLabel": "老城咖啡（彈性）",
       "geo": [
         48.8105,
         14.315
+      ]
+    },
+    {
+      "id": "d8-church",
+      "date": "2026-11-26",
+      "time": "15:00–15:10",
+      "title": "聖維特教堂（Kostel svatého Víta）",
+      "cat": "景點",
+      "place": "Kostel svatého Víta, Kostelní, Český Krumlov, Czechia",
+      "desc": "老城代表性的哥德式教堂，尖塔高聳於河灣上方。欣賞外觀；若有開放且時間足夠才入內。",
+      "duration": "10 分",
+      "state": "planned",
+      "status": "建議行程",
+      "warn": "",
+      "trans": "",
+      "eta": "",
+      "sub": [],
+      "weather": "",
+      "brief": "哥德式尖塔與歷史教堂，順路短暫拍照。",
+      "routeLabel": "聖維特教堂",
+      "geo": [
+        48.81045,
+        14.3162
       ],
-      "brief": "Svornosti 廣場與中世紀巷弄像童話小鎮，找紅屋頂和聖維特教堂角度。冬季早暗。"
+      "infoLinks": [
+        {
+          "label": "教堂位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Kostel%20svat%C3%A9ho%20V%C3%ADta%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        }
+      ]
     },
     {
       "id": "d8-river",
       "date": "2026-11-26",
-      "time": "14:15–14:40",
-      "title": "Vltava 河岸散步、第二輪觀景",
+      "time": "15:10–15:20",
+      "title": "Seminární zahrada 神學院花園觀景台",
       "cat": "景點",
-      "place": "Vltava River, Český Krumlov, Czechia",
-      "desc": "11 月下旬約 16 時開始變暗，將河灣觀景安排在日落前；天候濃霧時改在老城街景拍照。",
-      "duration": "25 分",
+      "place": "Seminární zahrada, Horní, Český Krumlov, Czechia",
+      "desc": "位於 Horní 街、區域博物館旁的小花園，不需登塔就能從城堡對岸拍彩繪塔、河灣與紅屋頂；適合全家合照。之後沿 Horní 往東走去 AN。若天色或雪況不佳就直接前往車站。",
+      "duration": "10 分",
       "state": "planned",
       "status": "與朋友同行／規劃",
       "warn": "",
@@ -2255,55 +2453,36 @@
       "eta": "",
       "sub": [],
       "weather": "",
-      "routeLabel": "伏爾塔瓦河灣觀景",
+      "routeLabel": "神學院花園觀景台",
       "geo": [
-        48.8105,
-        14.3134
+        48.81085,
+        14.3175
       ],
-      "brief": "伏爾塔瓦河灣環繞 CK 古城，適合拍紅屋頂和倒影。濃霧改拍近距離街景。"
-    },
-    {
-      "id": "d8-market",
-      "date": "2026-11-26",
-      "time": "14:40–15:10",
-      "title": "CK 聖誕市集（若開放）或咖啡熱飲",
-      "cat": "節慶",
-      "place": "Náměstí Svornosti, Český Krumlov, Czechia",
-      "desc": "若市集已開放，在 Svornosti Square 短逛；否則改喝熱飲、吃小點或短逛店家。最晚 15:10 離開，前往回程巴士站。",
-      "duration": "30 分",
-      "state": "planned",
-      "status": "市集規劃／營業時間待再確認",
-      "warn": "為趕 16:00 回程巴士，最晚 15:10 離開老城。",
-      "trans": "",
-      "eta": "",
-      "sub": [],
-      "weather": "",
-      "routeLabel": "CK 聖誕市集",
+      "brief": "城堡對岸的明信片景色，最後拍全家福再去車站。",
       "infoLinks": [
         {
-          "label": "Český Krumlov 官方旅遊資訊",
-          "url": "https://www.ckrumlov.info/en/"
+          "label": "觀景台位置",
+          "url": "https://www.google.com/maps/search/?api=1&query=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        },
+        {
+          "label": "第四段步行導航：觀景台 → AN",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Autobusov%C3%A9%20n%C3%A1dra%C5%BE%C3%AD%2C%20Nemocni%C4%8Dn%C3%AD%20586%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
-      ],
-      "geo": [
-        48.8105,
-        14.315
-      ],
-      "brief": "市集若開放可短逛；否則喝咖啡或熱飲。15:10 前離開老城。"
+      ]
     },
     {
       "id": "d8-to-station",
       "date": "2026-11-26",
-      "time": "15:10–15:45（建議）",
-      "title": "從 CK 老城步行至 Český Krumlov AN 候車",
+      "time": "15:20–15:40",
+      "title": "步行前往 CK AN 巴士總站（第 7 月台）",
       "cat": "交通",
       "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "從 Svornosti 廣場步行回原規劃的 Český Krumlov AN 汽車總站，15:45 前到站，預留至少 15 分鐘候車。請以電子票指定站名為準。",
-      "duration": "約 20–35 分（含緩衝）",
+      "desc": "從神學院花園沿 Horní 往東前往 AN 汽車總站，目標 15:40 前抵達第 7 月台，預留 20 分鐘候車。不要回 Špičák。",
+      "duration": "20 分（含步行緩衝）",
       "state": "planned",
       "status": "建議提前抵達",
-      "warn": "16:00 回程發車，務必核對電子票站名，勿走錯車站。",
-      "trans": "Svornosti Square → Český Krumlov AN；以現場導航為準。",
+      "warn": "16:00 發車；下雪或石板路濕滑時提早離開老城。",
+      "trans": "Seminární zahrada → Český Krumlov AN（Nemocniční 586）",
       "eta": "",
       "sub": [],
       "weather": "石板路冬季濕滑，請預留更多時間。",
@@ -2311,6 +2490,13 @@
       "geo": [
         48.811598,
         14.322476
+      ],
+      "brief": "15:40 前到 AN 第 7 月台，非 Špičák。",
+      "infoLinks": [
+        {
+          "label": "第四段步行導航：觀景台 → AN",
+          "url": "https://www.google.com/maps/dir/?api=1&origin=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Autobusov%C3%A9%20n%C3%A1dra%C5%BE%C3%AD%2C%20Nemocni%C4%8Dn%C3%AD%20586%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
+        }
       ]
     },
     {
@@ -2320,18 +2506,18 @@
       "title": "RegioJet 回程：CK 小鎮 → 布拉格",
       "cat": "交通",
       "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "11/26（四）16:00 CK 小鎮出發，18:45 抵達布拉格。全家四人，Fun&Relax self service；原規劃 CK AN → Praha Na Knížecí，請核對正式票券站名。",
+      "desc": "正式電子票確認 16:00 從 Český Krumlov AN 第 7 月台發車，18:45 抵達 Praha Na Knížecí。",
       "duration": "2 小時 45 分",
       "state": "confirmed",
-      "status": "已訂（使用者確認）",
-      "warn": "使用者已告知訂好；截圖仍為限時保留畫面，請確認付款完成並離線保存正式電子票。上下車站以電子票為準。 15:45 前到站候車。",
-      "trans": "原規劃 CK AN → Praha Na Knížecí，再由 Anděl 搭 Metro B 回 Křižíkova／Hotel Royal；以電子票站名為準。",
+      "status": "電子票已確認",
+      "warn": "15:40 前到 AN 第 7 月台；請確認當日站內公告。",
+      "trans": "CK AN → Praha Na Knížecí，再由 Anděl 搭 Metro B 回 Křižíkova／Hotel Royal。",
       "eta": "",
       "sub": [
+        "回程第 7 月台",
         "四人座位：5、6、7、8",
         "回程四人票價：€35.10",
-        "往返四人合計：€66.50",
-        "票種：Fun&Relax self service"
+        "往返四人合計：€66.50"
       ],
       "weather": "",
       "routeLabel": "CK 汽車總站 AN",
@@ -2355,7 +2541,8 @@
         "checkout": "confirmed",
         "priceEUR": 35.1,
         "tariff": "Fun&Relax self service"
-      }
+      },
+      "brief": "16:00 AN 第 7 月台出發，18:45 抵達布拉格。"
     },
     {
       "id": "d8-hotel",
@@ -2364,7 +2551,7 @@
       "title": "與朋友返回 Hotel Royal、整理返美行李",
       "cat": "休息",
       "place": "Thámova 36, Praha 8, Czechia",
-      "desc": "RegioJet 回程預定 18:45 抵達布拉格；若抵達原規劃的 Na Knížecí，從 Anděl 搭 Metro B 回 Křižíkova，步行回 Hotel Royal。晚餐後整理護照、登機證與四人行李，隔天 06:30 Blacklane 送機。實際時間視交通而定。",
+      "desc": "RegioJet 回程預定 18:45 抵達 Praha Na Knížecí；從 Anděl 搭 Metro B 回 Křižíkova，步行回 Hotel Royal。晚餐後整理護照、登機證及行李；隔天早班機，送機時間依最新預訂。實際時間視交通而定。",
       "duration": "依巴士實際到達時間",
       "state": "planned",
       "status": "回飯店時間預估",
@@ -2773,7 +2960,7 @@
     },
     {
       "id": "todos-13",
-      "text": "11/26 RegioJet 四人往返已訂：07:00 去／16:00 回（€66.50）；保存正式電子票並核對車站",
+      "text": "11/26 RegioJet 四人往返電子票已確認（€66.50）；去程第 1 月台，計畫 Špičák 提前下車；回程 AN 第 7 月台 16:00。保存原始電子票。",
       "activityIds": [
         "d8-busout",
         "d8-busback"
@@ -2975,7 +3162,7 @@
     }
   ],
   "dataVersion": {
-    "updatedAt": "2026-11-25",
-    "revision": "2026.11.25-peace-square-market"
+    "updatedAt": "2026-11-26",
+    "revision": "2026.11.26-ck-spicak-walking-route"
   }
 }
