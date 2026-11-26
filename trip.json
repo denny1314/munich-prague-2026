@@ -2118,14 +2118,17 @@
       "title": "Špičák 巴士站下車",
       "cat": "交通",
       "place": "Český Krumlov, Špičák, U Luny 137, Czechia",
-      "desc": "從城堡北側的 Špičák 下車，沿 Latrán 方向走往布傑約維采門。這樣可先走城堡，再往老城與東側 AN 巴士總站，減少回頭路。",
+      "desc": "從城堡北側的 Špičák 下車，沿 Latrán 方向走往布傑約維采門。這樣可先走城堡，再往老城與東側 AN 巴士總站，減少回頭路。\n位於城堡北側，是進入 Latrán 歷史街區的便利起點。",
       "duration": "約 5 分鐘（預估）",
       "state": "planned",
       "status": "提前下車／車上確認",
       "warn": "",
       "trans": "Špičák → Budějovická brána → Latrán → 城堡",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Špičák Bus Stop — The northern gateway to the historic town, within walking distance of Latrán and the castle.",
+        "拍照重點：沿古城門方向前進；照片為 Špičák 地區遠景，並非站牌。"
+      ],
       "weather": "",
       "routeLabel": "Špičák 下車站",
       "geo": [
@@ -2138,7 +2141,14 @@
           "label": "第一段步行導航：Špičák → 城堡",
           "url": "https://www.google.com/maps/dir/?api=1&origin=%C5%A0pi%C4%8D%C3%A1k%20bus%20stop%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=Bud%C4%9Bjovick%C3%A1%20br%C3%A1na%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_v%C3%BDhled_ze_z%C3%A1meck%C3%A9_v%C4%9B%C5%BEe%2C_%C5%A0pi%C4%8D%C3%A1k_a_Kle%C5%A5.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov%2C_v%C3%BDhled_ze_z%C3%A1meck%C3%A9_v%C4%9B%C5%BEe%2C_%C5%A0pi%C4%8D%C3%A1k_a_Kle%C5%A5.jpg",
+        "author": "Palickap",
+        "license": "CC BY-SA 4.0",
+        "alt": "Špičák 地區遠景（非巴士站）"
+      }
     },
     {
       "id": "d8-gate",
@@ -2147,14 +2157,17 @@
       "title": "Budějovická brána 古城門＋Latrán 老街",
       "cat": "景點",
       "place": "Budějovická brána, Latrán, Český Krumlov, Czechia",
-      "desc": "現存的歷史城門通往 Latrán 彩色老街，沿途可欣賞文藝復興式民居及商店。從城堡紅門進入第一庭院。",
+      "desc": "現存的歷史城門通往 Latrán 彩色老街，沿途可欣賞文藝復興式民居及商店。從城堡紅門進入第一庭院。\n布傑約維采古城門是昔日九座主要城門中保存下來的一座，具文藝復興風格。Latrán 是城堡下方的古老街區，昔日工匠和居民在此生活，今日保留彩色民居與商店。",
       "duration": "20 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Budějovice Gate & Latrán Street — The surviving main town gate features Renaissance architecture. Latrán, the historic district beneath the castle, was once home to craftspeople and is lined with colorful houses.",
+        "拍照重點：拍攝拱形城門、彩色民居及城堡紅門。"
+      ],
       "weather": "",
       "brief": "穿過古城門，沿彩色古屋進入城堡區。",
       "routeLabel": "古城門／Latrán",
@@ -2171,7 +2184,14 @@
           "label": "第一段步行導航",
           "url": "https://www.google.com/maps/dir/?api=1&origin=%C5%A0pi%C4%8D%C3%A1k%20bus%20stop%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&waypoints=Bud%C4%9Bjovick%C3%A1%20br%C3%A1na%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_Latr%C3%A1n%2C_pohled_k_br%C3%A1n%C4%9B.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov%2C_Latr%C3%A1n%2C_pohled_k_br%C3%A1n%C4%9B.jpg",
+        "author": "Aktron / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "alt": "Latrán 老街往古城門方向的夜景"
+      }
     },
     {
       "id": "d8-tower",
@@ -2180,14 +2200,17 @@
       "title": "城堡博物館＋彩繪塔樓（可選登塔）",
       "cat": "景點",
       "place": "Hradní muzeum a zámecká věž, Český Krumlov, Czechia",
-      "desc": "博物館展示羅森堡等貴族歷史與收藏，彩繪塔樓可俯瞰整座老城。11/26 官方冬季開放 09:00–15:30；參考成人 280 CZK、6–17 歲 80 CZK，全家 720 CZK，以售票處為準。",
+      "desc": "博物館展示羅森堡等貴族歷史與收藏，彩繪塔樓可俯瞰整座老城。11/26 官方冬季開放 09:00–15:30；參考成人 280 CZK、6–17 歲 80 CZK，全家 720 CZK，以售票處為準。\n彩繪塔樓是 CK 最具代表性的地標，博物館收藏羅森堡、艾根堡與施瓦岑貝格等貴族家族的歷史文物。",
       "duration": "60 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Castle Museum & Castle Tower — The iconic painted tower overlooks the town. The museum presents artifacts from the Rosenberg, Eggenberg and Schwarzenberg noble families.",
+        "拍照重點：拍塔樓彩繪外牆；若視野清晰且階梯安全，再登頂拍古城全景。"
+      ],
       "weather": "若降雪、濃霧或階梯濕滑，優先博物館，不勉強登塔。",
       "brief": "冬季開放 09:00–15:30；先看室內文物，能見度與階梯安全才登塔。",
       "routeLabel": "城堡博物館／塔樓",
@@ -2208,7 +2231,14 @@
           "label": "Google Maps 位置",
           "url": "https://www.google.com/maps/search/?api=1&query=Castle%20Tower%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Krumlov_castle_tower.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:Krumlov_castle_tower.jpg",
+        "author": "Hu Totya",
+        "license": "CC BY-SA 3.0",
+        "alt": "CK 城堡彩繪塔樓"
+      }
     },
     {
       "id": "d8-castle",
@@ -2217,7 +2247,7 @@
       "title": "CK 城堡庭院＋斗篷橋（Plášťový most）",
       "cat": "景點",
       "place": "Plášťový most, Český Krumlov, Czechia",
-      "desc": "穿越城堡的歷史庭院，欣賞彩繪外牆與多層石拱斗篷橋；橋上及附近觀景點可俯瞰 S 型伏爾塔瓦河灣、紅瓦屋頂和聖維特教堂。冬季一般宮殿導覽及花園不列入今日主線。",
+      "desc": "穿越城堡的歷史庭院，欣賞彩繪外牆與多層石拱斗篷橋；橋上及附近觀景點可俯瞰 S 型伏爾塔瓦河灣、紅瓦屋頂和聖維特教堂。冬季一般宮殿導覽及花園不列入今日主線。\n城堡庭院保留文藝復興彩繪建築；斗篷橋以多層石拱橋墩聞名，連接上城堡不同區域。",
       "duration": "45 分",
       "state": "planned",
       "status": "庭院散步／視天候",
@@ -2227,7 +2257,9 @@
       "sub": [
         "城堡庭院",
         "斗篷橋多層石拱",
-        "俯瞰伏爾塔瓦河與老城"
+        "俯瞰伏爾塔瓦河與老城",
+        "English: Castle Courtyards & Cloak Bridge — The historic courtyards preserve Renaissance architecture; the impressive multi-level Cloak Bridge connects parts of the upper castle.",
+        "拍照重點：拍庭院彩繪、斗篷橋石拱及伏爾塔瓦河 S 型河灣。"
       ],
       "weather": "如石階結冰或天候不佳，改以室內 Castle Museum 為優先，塔樓可略過。",
       "infoLinks": [
@@ -2241,11 +2273,11 @@
         }
       ],
       "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg/960px-View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:View_of_%C4%8Cesk%C3%BD_Krumlov_from_the_castle%2C_20250504_1305_8880.jpg",
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Most_P%C5%82aszczowy_w_Czeskim_Krumlowie%2C_20250504_1440_8905.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:Most_P%C5%82aszczowy_w_Czeskim_Krumlowie%2C_20250504_1440_8905.jpg",
         "author": "Jakub Hałun",
         "license": "CC BY 4.0",
-        "alt": "從城堡眺望 Český Krumlov 老城"
+        "alt": "斗篷橋的多層石拱"
       },
       "routeLabel": "城堡庭院／斗篷橋",
       "geo": [
@@ -2261,14 +2293,17 @@
       "title": "Lazebnický most 理髮師橋",
       "cat": "景點",
       "place": "Lazebnický most, Český Krumlov, Czechia",
-      "desc": "從城堡區下坡回到 Latrán，跨過理髮師橋進入老城。橋上仰拍彩繪塔樓、伏爾塔瓦河及兩岸古屋。",
+      "desc": "從城堡區下坡回到 Latrán，跨過理髮師橋進入老城。橋上仰拍彩繪塔樓、伏爾塔瓦河及兩岸古屋。\n連接 Latrán 與老城中心的重要橋梁，可欣賞河岸古屋和彩繪塔樓。",
       "duration": "15 分",
       "state": "planned",
       "status": "與朋友同行／規劃",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Barber’s Bridge (Lazebnický most) — A historic bridge connecting Latrán with the Inner Town, with picturesque views of riverside houses and the castle tower.",
+        "拍照重點：站在橋上朝城堡方向拍攝。"
+      ],
       "weather": "",
       "routeLabel": "理髮師橋",
       "geo": [
@@ -2281,7 +2316,14 @@
           "label": "理髮師橋位置",
           "url": "https://www.google.com/maps/search/?api=1&query=Lazebnick%C3%BD%20most%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle_tower_in_%C4%8Cesk%C3%BD_Krumlov_viewed_from_Lazebnick%C3%BD_most.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:Castle_tower_in_%C4%8Cesk%C3%BD_Krumlov_viewed_from_Lazebnick%C3%BD_most.jpg",
+        "author": "Андрей Романенко",
+        "license": "CC BY-SA 4.0",
+        "alt": "從理髮師橋眺望城堡塔樓"
+      }
     },
     {
       "id": "d8-lunch",
@@ -2290,14 +2332,17 @@
       "title": "Krčma Šatlava 中世紀地窖餐廳午餐",
       "cat": "餐飲",
       "place": "Krčma Šatlava, Šatlavská 157, Český Krumlov, Czechia",
-      "desc": "推薦石牆、木梁與明火烤肉的歷史餐廳。可點麵包碗蒜頭湯（Česnečka）、烤豬肋排、烤肉拼盤與捷克啤酒。尚未訂位，與朋友同行若客滿則改找附近捷克餐廳。",
+      "desc": "推薦石牆、木梁與明火烤肉的歷史餐廳。可點麵包碗蒜頭湯（Česnečka）、烤豬肋排、烤肉拼盤與捷克啤酒。尚未訂位，與朋友同行若客滿則改找附近捷克餐廳。\n石牆、木桌與明火烤肉營造中世紀氛圍。推薦麵包碗蒜頭湯、炭烤豬肋排、綜合烤肉及捷克烤鴨（依當日菜單）。",
       "duration": "75 分",
       "state": "planned",
       "status": "推薦／尚未訂位",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Medieval Tavern Šatlava — A medieval-style Czech tavern with rustic stone walls and open-fire cooking. Try garlic soup in a bread bowl, grilled pork ribs, a mixed grill or roast duck, subject to the menu.",
+        "拍照重點：拍室內石牆及烤肉；餐廳尚未訂位。"
+      ],
       "weather": "",
       "routeLabel": "Krčma Šatlava 午餐",
       "geo": [
@@ -2313,6 +2358,10 @@
         {
           "label": "Google Maps 餐廳位置",
           "url": "https://www.google.com/maps/search/?api=1&query=Kr%C4%8Dma%20%C5%A0atlava%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
+        },
+        {
+          "label": "餐廳官方照片及介紹 / Official restaurant photos",
+          "url": "https://www.satlava.cz/en/tavern-satlava-cesky-krumlov/1/"
         }
       ]
     },
@@ -2323,14 +2372,17 @@
       "title": "Svornosti 協和廣場＋聖誕市集",
       "cat": "節慶",
       "place": "Náměstí Svornosti, Český Krumlov, Czechia",
-      "desc": "老城中心的歷史廣場，欣賞市政廳及彩色建築、木屋攤位。2026 市集 11/21 已開幕，今天週四 11:00–18:00；可喝 Svařák 熱紅酒、熱飲、吃點心、買手工藝。",
+      "desc": "老城中心的歷史廣場，欣賞市政廳及彩色建築、木屋攤位。2026 市集 11/21 已開幕，今天週四 11:00–18:00；可喝 Svařák 熱紅酒、熱飲、吃點心、買手工藝。\n歷史中心廣場，周圍有市政廳、文藝復興式民居及聖母紀念柱；Svornost 在捷克文意為和諧、團結。",
       "duration": "45 分",
       "state": "planned",
       "status": "官方公布今日開市",
       "warn": "15:20 前離開老城往 AN。",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Svornosti Square & Christmas Market — The historic heart of town, surrounded by Renaissance façades, the Town Hall and a Marian column. Svornost means harmony or unity.",
+        "拍照重點：拍廣場建築及聖誕木屋，喝熱紅酒 Svařák。照片是廣場參考景色，非今日市集。"
+      ],
       "weather": "",
       "routeLabel": "CK 聖誕市集",
       "infoLinks": [
@@ -2347,7 +2399,14 @@
         48.8105,
         14.315
       ],
-      "brief": "今日 11:00–18:00 開市；喝熱飲、逛手作攤位。"
+      "brief": "今日 11:00–18:00 開市；喝熱飲、逛手作攤位。",
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_n%C3%A1m%C4%9Bst%C3%AD_Svornosti_cel%C3%A9.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov%2C_n%C3%A1m%C4%9Bst%C3%AD_Svornosti_cel%C3%A9.jpg",
+        "author": "VitVit",
+        "license": "CC BY-SA 4.0",
+        "alt": "協和廣場歷史建築（參考照片）"
+      }
     },
     {
       "id": "d8-oldtown",
@@ -2356,21 +2415,24 @@
       "title": "Široká 老街＋中世紀巷弄",
       "cat": "景點",
       "place": "Široká, Český Krumlov, Czechia",
-      "desc": "沿 Široká 寬街欣賞保存完整的老城建築、藝術與紀念品店，順路逛周邊巷弄；遇雨雪可縮短戶外行程。",
+      "desc": "沿 Široká 寬街欣賞保存完整的老城建築、藝術與紀念品店，順路逛周邊巷弄；遇雨雪可縮短戶外行程。\nŠiroká 意為寬廣，這條較寬的老街有歷史建築、藝術館、畫廊與特色店鋪。",
       "duration": "30 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Široká Street (Wide Street) — One of the wider streets in the medieval town, known for historic architecture, galleries and artisan shops.",
+        "拍照重點：拍彩色民居、石板街道。"
+      ],
       "weather": "雨雪時縮短河岸石板路，改老城室內咖啡店或博物館。",
       "photo": {
-        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka%2C_20250504_1251_8862.jpg/960px-Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka%2C_20250504_1251_8862.jpg",
-        "source": "https://commons.wikimedia.org/wiki/File:Old_town_in_%C4%8Cesk%C3%BD_Krumlov_with_Jelen%C3%AD_l%C3%A1vka,_20250504_1251_8862.jpg",
-        "author": "Jakub Hałun",
-        "license": "CC BY 4.0",
-        "alt": "Český Krumlov 老城、聖維特教堂及河上的 Jelení 步橋"
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_%C5%A0irok%C3%A1.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov%2C_%C5%A0irok%C3%A1.jpg",
+        "author": "Jerzy Strzelecki",
+        "license": "CC BY 3.0",
+        "alt": "Široká 老街歷史街景"
       },
       "routeLabel": "Široká 老街",
       "geo": [
@@ -2415,14 +2477,17 @@
       "title": "聖維特教堂（Kostel svatého Víta）",
       "cat": "景點",
       "place": "Kostel svatého Víta, Kostelní, Český Krumlov, Czechia",
-      "desc": "老城代表性的哥德式教堂，尖塔高聳於河灣上方。欣賞外觀；若有開放且時間足夠才入內。",
+      "desc": "老城代表性的哥德式教堂，尖塔高聳於河灣上方。欣賞外觀；若有開放且時間足夠才入內。\n主要建於 1407–1439 年，是老城的晚期哥德式地標；尖塔與城堡塔樓構成小鎮天際線。",
       "duration": "10 分",
       "state": "planned",
       "status": "建議行程",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Church of St. Vitus — A late Gothic church built primarily between 1407 and 1439, whose spire forms part of the iconic skyline.",
+        "拍照重點：拍教堂尖塔及石窗；如開放才入內看拱形天花板。"
+      ],
       "weather": "",
       "brief": "哥德式尖塔與歷史教堂，順路短暫拍照。",
       "routeLabel": "聖維特教堂",
@@ -2435,7 +2500,14 @@
           "label": "教堂位置",
           "url": "https://www.google.com/maps/search/?api=1&query=Kostel%20svat%C3%A9ho%20V%C3%ADta%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov_%E2%80%93_winter_view_of_the_historic_town_centre_and_St._Vitus_Church.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov_%E2%80%93_winter_view_of_the_historic_town_centre_and_St._Vitus_Church.jpg",
+        "author": "Ludmila Zellner Rotbauerová",
+        "license": "CC BY-SA 4.0",
+        "alt": "冬季老城與聖維特教堂"
+      }
     },
     {
       "id": "d8-river",
@@ -2444,14 +2516,17 @@
       "title": "Seminární zahrada 神學院花園觀景台",
       "cat": "景點",
       "place": "Seminární zahrada, Horní, Český Krumlov, Czechia",
-      "desc": "位於 Horní 街、區域博物館旁的小花園，不需登塔就能從城堡對岸拍彩繪塔、河灣與紅屋頂；適合全家合照。之後沿 Horní 往東走去 AN。若天色或雪況不佳就直接前往車站。",
+      "desc": "位於 Horní 街、區域博物館旁的小花園，不需登塔就能從城堡對岸拍彩繪塔、河灣與紅屋頂；適合全家合照。之後沿 Horní 往東走去 AN。若天色或雪況不佳就直接前往車站。\nHorní 街旁的免費觀景台，從城堡對岸欣賞彩繪塔樓、紅屋頂及河灣，不需登塔。",
       "duration": "10 分",
       "state": "planned",
       "status": "與朋友同行／規劃",
       "warn": "",
       "trans": "",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Seminary Garden Viewpoint — A free viewpoint on Horní Street overlooking the castle, painted tower and medieval rooftops without climbing a tower.",
+        "拍照重點：推薦全家合照；拍完往東走到 AN。"
+      ],
       "weather": "",
       "routeLabel": "神學院花園觀景台",
       "geo": [
@@ -2468,7 +2543,14 @@
           "label": "第四段步行導航：觀景台 → AN",
           "url": "https://www.google.com/maps/dir/?api=1&origin=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Autobusov%C3%A9%20n%C3%A1dra%C5%BE%C3%AD%2C%20Nemocni%C4%8Dn%C3%AD%20586%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/View_from_Semin%C3%A1rn%C3%AD_zahrada%2C_%C4%8Cesk%C3%BD_Krumlov%2C_Czechia.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:View_from_Semin%C3%A1rn%C3%AD_zahrada%2C_%C4%8Cesk%C3%BD_Krumlov%2C_Czechia.jpg",
+        "author": "Mosbatho",
+        "license": "CC BY 4.0",
+        "alt": "神學院花園觀景台的城堡景色"
+      }
     },
     {
       "id": "d8-to-station",
@@ -2477,14 +2559,17 @@
       "title": "步行前往 CK AN 巴士總站（第 7 月台）",
       "cat": "交通",
       "place": "Český Krumlov autobusové nádraží, Nemocniční 586, Český Krumlov, Czechia",
-      "desc": "從神學院花園沿 Horní 往東前往 AN 汽車總站，目標 15:40 前抵達第 7 月台，預留 20 分鐘候車。不要回 Špičák。",
+      "desc": "從神學院花園沿 Horní 往東前往 AN 汽車總站，目標 15:40 前抵達第 7 月台，預留 20 分鐘候車。不要回 Špičák。\n老城東側的巴士總站；15:40 前抵達，16:00 從第 7 月台回布拉格。",
       "duration": "20 分（含步行緩衝）",
       "state": "planned",
       "status": "建議提前抵達",
       "warn": "16:00 發車；下雪或石板路濕滑時提早離開老城。",
       "trans": "Seminární zahrada → Český Krumlov AN（Nemocniční 586）",
       "eta": "",
-      "sub": [],
+      "sub": [
+        "English: Český Krumlov Bus Terminal (AN) — The main bus terminal east of the historic center. Arrive by 3:40 PM for the 4 PM departure from platform 7.",
+        "拍照重點：站內以今日電子看板為準；照片為歷史參考，車站可能已改建。"
+      ],
       "weather": "石板路冬季濕滑，請預留更多時間。",
       "routeLabel": "CK AN 候車站",
       "geo": [
@@ -2497,7 +2582,14 @@
           "label": "第四段步行導航：觀景台 → AN",
           "url": "https://www.google.com/maps/dir/?api=1&origin=Semin%C3%A1rn%C3%AD%20zahrada%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&destination=Autobusov%C3%A9%20n%C3%A1dra%C5%BE%C3%AD%2C%20Nemocni%C4%8Dn%C3%AD%20586%20%C4%8Cesk%C3%BD%20Krumlov%2C%20Czechia&travelmode=walking"
         }
-      ]
+      ],
+      "photo": {
+        "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8Cesk%C3%BD_Krumlov%2C_stanovi%C5%A1t%C4%9B_autobusov%C3%A9ho_n%C3%A1dra%C5%BE%C3%AD.jpg?width=960",
+        "source": "https://commons.wikimedia.org/wiki/File:%C4%8Cesk%C3%BD_Krumlov%2C_stanovi%C5%A1t%C4%9B_autobusov%C3%A9ho_n%C3%A1dra%C5%BE%C3%AD.jpg",
+        "author": "Aktron / Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "alt": "AN 巴士總站歷史參考照片（2008）"
+      }
     },
     {
       "id": "d8-busback",
@@ -3163,6 +3255,6 @@
   ],
   "dataVersion": {
     "updatedAt": "2026-11-26",
-    "revision": "2026.11.26-ck-spicak-walking-route"
+    "revision": "2026.11.26-ck-bilingual-photo-guide"
   }
 }
